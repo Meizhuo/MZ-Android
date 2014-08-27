@@ -7,7 +7,7 @@ import butterknife.ButterKnife.Finder;
 public class AppStart$$ViewInjector {
   public static void inject(Finder finder, final org.meizhuo.app.AppStart target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131099648, "field 'tv'");
+    view = finder.findRequiredView(source, 2131296256, "field 'tv'");
     target.tv = (android.widget.TextView) view;
   }
 
