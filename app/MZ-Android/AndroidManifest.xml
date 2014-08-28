@@ -26,6 +26,50 @@
             android:name=".acty.Main"
             android:launchMode="singleTask" >
         </activity>
+        <activity
+            android:name=".acty.ConsultChat"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name=".acty.InstitutionConsult"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name=".acty.InstitutionConsultChat"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name=".acty.Institutions"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name=".acty.PublicConsult"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name=".acty.Setting"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name=".acty.UnitInfo"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name=".acty.UnitInfoLastest"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name=".acty.UnitInfoLaw"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name=".acty.UnitInfoPolicy"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name=".acty.UserCenter"
+            android:launchMode="singleTask" >
+        </activity>
     </application>
 
 </manifest>
