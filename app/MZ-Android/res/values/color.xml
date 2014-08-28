@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-      <color name="white">#ffffff</color>
-      <color name="blue_main_item">#02bbf3</color>
+
+    <color name="mz_white">#ffffff</color>
+    <color name="mz_black">#ff000000</color>
+    <color name="mz_grey">#FFE1E8EB</color>
+    <color name="blue_main_item">#02bbf3</color>
+    <color name="black">#ff000000</color>
+
 </resources>

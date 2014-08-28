@@ -1,46 +1,48 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-    </style>
+    <style name="AppBaseTheme" parent="android:Theme.Light"></style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
+
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowNoTitle">true</item>
     </style>
-    <style name="Base_Navigation_rely_top">
+
+    <style name="LinearLayout">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">45dp</item>
-        <item name="android:background">@drawable/ic_navbar_top</item>
-        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
-       <style name="Base_Layout">
+
+    <style name="RelativeLayout">
         <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
-    <style name="Base_CustomView" parent="Base_Layout">
-        <item name="android:layout_height">wrap_content</item>
+
+    <style name="RelativeLayout.main_item">
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:background">@drawable/ic_item_color_lightblue</item>
+        <item name="android:background">@drawable/mz_btn_item_main</item>
+        <item name="android:clickable">true</item>
     </style>
-    
-      <style name="Base_TextView">
+
+    <style name="TextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">20sp</item>
         <item name="android:text">null</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
-    <style name="Better_TextView_main" parent="Base_TextView">
-          <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">18sp</item>
+
+    <style name="ImageView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ImageView.item_main" parent="ImageView">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:background">@drawable/aa_evernote</item>
     </style>
 
 </resources>
