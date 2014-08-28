@@ -17,6 +17,7 @@ public class AppStart extends BaseActivity {
 			public void run() {
 				if (!AppStart.this.isFinishing()) {
 					openActivity(Main.class);
+					closeActivity();
 				}
 
 			}
