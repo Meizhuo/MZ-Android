@@ -5,21 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        style="@style/RelativeLayout"
-        android:layout_height="45dp"
-        android:background="@drawable/ic_bg_title" >
-
-        <TextView
-            android:id="@+id/acty_main_tv_title"
-            style="@style/TextView"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="4dp"
-            android:gravity="left"
-            android:text="Application"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
-    </RelativeLayout>
+    <include layout="@layout/acty_base_header"/>
 
     <LinearLayout
         android:layout_width="match_parent"
