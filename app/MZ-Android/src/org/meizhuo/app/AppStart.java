@@ -1,6 +1,9 @@
 package org.meizhuo.app;
 
+import org.meizhuo.app.acty.Feedback;
 import org.meizhuo.app.acty.Main;
+import org.meizhuo.app.acty.Setting;
+import org.meizhuo.app.acty.SettingAbout;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,10 +19,9 @@ public class AppStart extends BaseActivity {
 			@Override
 			public void run() {
 				if (!AppStart.this.isFinishing()) {
-					openActivity(Main.class);
+					openActivity(Feedback.class);
 					closeActivity();
 				}
-
 			}
 		}, 500);
 	}

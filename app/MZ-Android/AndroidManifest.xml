@@ -70,6 +70,14 @@
             android:name=".acty.UserCenter"
             android:launchMode="singleTask" >
         </activity>
+          <activity
+            android:name=".acty.SettingAbout"
+            android:launchMode="singleTask" >
+        </activity>
+          <activity
+            android:name=".acty.Feedback"
+            android:launchMode="singleTask" >
+        </activity>
     </application>
 
 </manifest>

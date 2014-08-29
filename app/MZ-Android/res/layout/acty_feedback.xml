@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <RelativeLayout
+        style="@style/RelativeLayout"
+        android:layout_height="45dp"
+        android:background="@drawable/ic_bg_tweet" >
+        
+        <RelativeLayout 
+            style="@style/RelativeLayout"
+            >
+        	<Button 
+	    	 android:id="@+id/back"
+	    	android:layout_width="35dp"
+			android:layout_height="35dp"
+			android:layout_alignParentLeft="true"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="10dp"
+			android:background="@drawable/aa_back_btn"
+	    />
+        </RelativeLayout>
+
+        
+    </RelativeLayout>
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            >
+            <EditText 
+                android:id="@+id/feed_et"
+                style="@style/EditText"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:hint="请写下你的意见或者建议"
+                android:padding="6dp"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+         <com.beardedhen.androidbootstrap.BootstrapButton
+             android:id="@+id/feedback_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:text="                              确 定                              "
+                bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_type="primary" />   
+               
+          <com.beardedhen.androidbootstrap.BootstrapButton
+              android:layout_below="@+id/feedback_confirm"
+              android:id="@+id/feedback_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                 android:text="                              取 消                              "
+                bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_type="primary" />   
+    </RelativeLayout>
+    
+ 
+</LinearLayout>
