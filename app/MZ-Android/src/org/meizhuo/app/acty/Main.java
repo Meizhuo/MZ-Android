@@ -6,7 +6,6 @@ import org.meizhuo.app.R;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
@@ -16,10 +15,7 @@ public class Main extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.acty_main);
-		ButterKnife.inject(this);
+		super.onCreate(savedInstanceState,R.layout.acty_main);
 		iv_title_back.setVisibility(View.INVISIBLE);
 	}
 	

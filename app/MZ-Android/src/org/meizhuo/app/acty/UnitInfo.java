@@ -7,7 +7,6 @@ import org.meizhuo.app.R;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
@@ -25,10 +24,7 @@ public class UnitInfo extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	 
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.acty_unitinfo);
-		ButterKnife.inject(this);
-		
+		super.onCreate(savedInstanceState,R.layout.acty_unitinfo);
 		tv_title.setText("单位信息");
 		
 		String[] names = new String[]{"基本职能","职业训练法律法规","职业训练通知"};

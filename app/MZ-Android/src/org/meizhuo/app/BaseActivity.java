@@ -2,6 +2,8 @@ package org.meizhuo.app;
 
 import java.io.Serializable;
 
+import butterknife.ButterKnife;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +16,12 @@ public class BaseActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+	}
+	
+	protected void onCreate(Bundle savedInstanceState ,int layoutId) {
+		super.onCreate(savedInstanceState);
+		setContentView(layoutId);
+		ButterKnife.inject(this);
 	}
 
 	/**
