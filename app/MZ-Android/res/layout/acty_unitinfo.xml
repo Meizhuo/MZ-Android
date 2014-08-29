@@ -10,11 +10,11 @@
         style="@style/RelativeLayout"
         android:layout_height="160dp" >
 
-        <ViewFlipper
+        <org.meizhuo.view.AutoScrollViewPager
+            android:id="@+id/autoscrollviewpage"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" 
-            android:background="@color/bbutton_default_pressed" >
-        </ViewFlipper>
+            android:layout_height="match_parent" >
+        </org.meizhuo.view.AutoScrollViewPager>
     </RelativeLayout>
 
     <ListView
