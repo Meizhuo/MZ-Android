@@ -7,7 +7,7 @@
     <RelativeLayout
         style="@style/RelativeLayout"
         android:layout_height="45dp"
-        android:background="@drawable/ic_bg_tweet" >
+        android:background="@drawable/ic_bg_title" >
         
         <RelativeLayout 
             style="@style/RelativeLayout"

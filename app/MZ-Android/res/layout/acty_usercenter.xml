@@ -4,10 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+
     <RelativeLayout
         style="@style/RelativeLayout"
         android:layout_height="45dp"
-        android:background="@drawable/ic_bg_tweet" >
+        android:background="@drawable/ic_bg_title" >
 
         <TextView
             android:id="@+id/acty_main_tv_title"
@@ -19,63 +20,59 @@
             android:textColor="@color/white"
             android:textSize="15sp" />
     </RelativeLayout>
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-            <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-                android:id="@+id/minimalThree"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                bootstrap:bct_image="@drawable/aa_headshot"
-                bootstrap:bct_size="medium"
-                bootstrap:bct_minimal="true"
-                android:layout_margin="10dp"/>
-            <LinearLayout 
-                android:layout_marginTop="50dp"
-                android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				  >
-				  <TextView 
-				      style="@style/TextView"
-				      android:text="简介：袂卓工作室负责人"
-				      />
-				                
-            </LinearLayout>
-                
+        android:orientation="horizontal" >
+
+        <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+            android:id="@+id/minimalThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            bootstrap:bct_image="@drawable/aa_headshot"
+            bootstrap:bct_minimal="true"
+            bootstrap:bct_size="medium" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp" >
+
+            <TextView
+                style="@style/TextView"
+                android:text="简介：袂卓工作室负责人" />
+        </LinearLayout>
     </LinearLayout>
-    
-    <View 
+
+    <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/ic_line_1"
-        />
-    
-   <LinearLayout 
-       android:layout_width="match_parent"
-       android:layout_height="80dp"
-       android:orientation="vertical"
-       >
-        <TextView 
+        android:background="@drawable/ic_line_1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical" >
+
+        <TextView
             android:id="@+id/mz_settings_tv1"
             style="@style/TextView"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:text="与我相关"
-            />
-   </LinearLayout>
-   
-    <View 
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/ic_line_1"
-        />
-    
+        android:background="@drawable/ic_line_1" />
+
 </LinearLayout>

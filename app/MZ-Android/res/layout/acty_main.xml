@@ -4,21 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        style="@style/RelativeLayout"
-        android:layout_height="45dp"
-        android:background="@drawable/ic_bg_tweet" >
-
-        <TextView
-            android:id="@+id/acty_main_tv_title"
-            style="@style/TextView"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="4dp"
-            android:gravity="left"
-            android:text="Application"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
-    </RelativeLayout>
+    <include layout="@layout/acty_base_header" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,19 +16,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:background="@drawable/bigbang" >
+            <RelativeLayout
+                style="@style/RelativeLayout"
+                android:layout_height="160dp" >
 
-                <ViewFlipper
-                    android:id="@+id/acty_mz_main_vf"
+                <org.meizhuo.view.AutoScrollViewPager
+                    android:id="@+id/autoscrollviewpage"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:autoStart="true"
-                    android:flipInterval="8000" >
-                </ViewFlipper>
-            </FrameLayout>
+                    android:layout_height="match_parent" >
+                </org.meizhuo.view.AutoScrollViewPager>
+            </RelativeLayout>
 
             <LinearLayout
                 style="@style/LinearLayout"
@@ -51,6 +34,7 @@
                 android:orientation="horizontal" >
 
                 <RelativeLayout
+                    android:id="@+id/btn_unitinfo"
                     style="@style/RelativeLayout.main_item"
                     android:background="@drawable/mz_btn_item_main" >
 
@@ -71,6 +55,7 @@
                     android:background="@drawable/vertical_dividing_night" />
 
                 <RelativeLayout
+                    android:id="@+id/btn_institutions"
                     style="@style/RelativeLayout.main_item"
                     android:background="@drawable/mz_btn_item_main" >
 
@@ -82,7 +67,7 @@
                         style="@style/TextView"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
-                        android:text="单位信息" />
+                        android:text="培训机构信息" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -98,6 +83,7 @@
                 android:orientation="horizontal" >
 
                 <RelativeLayout
+                    android:id="@+id/btn_institution_consult"
                     style="@style/RelativeLayout.main_item"
                     android:background="@drawable/mz_btn_item_main" >
 
@@ -109,7 +95,7 @@
                         style="@style/TextView"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
-                        android:text="单位信息" />
+                        android:text="培训机构服务" />
                 </RelativeLayout>
 
                 <View
@@ -118,6 +104,7 @@
                     android:background="@drawable/vertical_dividing_night" />
 
                 <RelativeLayout
+                    android:id="@+id/btn_public_consult"
                     style="@style/RelativeLayout.main_item"
                     android:background="@drawable/mz_btn_item_main" >
 
@@ -129,7 +116,7 @@
                         style="@style/TextView"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
-                        android:text="单位信息" />
+                        android:text="个人服务" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -145,6 +132,7 @@
                 android:orientation="horizontal" >
 
                 <RelativeLayout
+                    android:id="@+id/btn_usercenter"
                     style="@style/RelativeLayout.main_item"
                     android:background="@drawable/mz_btn_item_main" >
 
@@ -156,7 +144,7 @@
                         style="@style/TextView"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
-                        android:text="单位信息" />
+                        android:text="用户中心" />
                 </RelativeLayout>
 
                 <View
@@ -165,6 +153,7 @@
                     android:background="@drawable/vertical_dividing_night" />
 
                 <RelativeLayout
+                    android:id="@+id/btn_setting"
                     style="@style/RelativeLayout.main_item"
                     android:background="@drawable/mz_btn_item_main" >
 
@@ -176,7 +165,7 @@
                         style="@style/TextView"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
-                        android:text="单位信息" />
+                        android:text="设置" />
                 </RelativeLayout>
             </LinearLayout>
 

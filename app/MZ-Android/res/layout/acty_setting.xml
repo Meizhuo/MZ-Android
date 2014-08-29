@@ -6,7 +6,7 @@
     <RelativeLayout
         style="@style/RelativeLayout"
         android:layout_height="45dp"
-        android:background="@drawable/ic_bg_tweet" >
+        android:background="@drawable/ic_bg_title" >
 
         <TextView
             android:id="@+id/acty_main_tv_title"
