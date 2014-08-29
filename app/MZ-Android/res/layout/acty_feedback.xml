@@ -13,7 +13,7 @@
             style="@style/RelativeLayout"
             >
         	<Button 
-	    	 android:id="@+id/back"
+	    	 android:id="@+id/feedback_back"
 	    	android:layout_width="35dp"
 			android:layout_height="35dp"
 			android:layout_alignParentLeft="true"
@@ -34,7 +34,7 @@
             android:layout_height="240dp"
             >
             <EditText 
-                android:id="@+id/feed_et"
+                android:id="@+id/feedback_et"
                 style="@style/EditText"
                 android:layout_height="match_parent"
                 android:gravity="top"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         >
          <com.beardedhen.androidbootstrap.BootstrapButton
-             android:id="@+id/feedback_confirm"
+             android:id="@+id/btn_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -60,13 +60,13 @@
                 bootstrapbutton:bb_type="primary" />   
                
           <com.beardedhen.androidbootstrap.BootstrapButton
-              android:layout_below="@+id/feedback_confirm"
-              android:id="@+id/feedback_cancel"
+              android:layout_below="@+id/btn_confirm"
+              android:id="@+id/btn_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="50dp"
-                 android:text="                              取 消                              "
+                 android:text="                              取消                              "
                 bootstrapbutton:bb_roundedCorners="true"
                 bootstrapbutton:bb_size="default"
                 bootstrapbutton:bb_type="primary" />   
