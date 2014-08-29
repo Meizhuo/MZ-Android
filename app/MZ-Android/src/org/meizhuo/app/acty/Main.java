@@ -1,5 +1,10 @@
 package org.meizhuo.app.acty;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.meizhuo.adapter.ImagePagerAdapter;
+import org.meizhuo.adapter.ImagePagerAdapter.OnItemClickListener;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 
@@ -13,10 +18,39 @@ public class Main extends BaseActivity {
 	
 	@InjectView(R.id.ic_title_back) ImageView iv_title_back;
 
+	
+	@InjectView(R.id.autoscrollviewpage)
+	org.meizhuo.view.AutoScrollViewPager viewPager;
+	
+	ImagePagerAdapter adapter_imagepage;
+
+	List<Integer> imageIdList;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,R.layout.acty_main);
 		iv_title_back.setVisibility(View.INVISIBLE);
+		
+		
+		viewPager.setInterval(2000);
+		viewPager.startAutoScroll();
+
+		imageIdList = new ArrayList<Integer>();
+		imageIdList.add(R.drawable.bigbang);
+		imageIdList.add(R.drawable.aa_evernote);
+		imageIdList.add(R.drawable.hannibal);
+
+		adapter_imagepage = new ImagePagerAdapter(this, imageIdList);
+		adapter_imagepage.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(int position, View view) {
+				//to do some work
+				toast("" + position);
+
+			}
+		});
+		viewPager.setAdapter(adapter_imagepage);
 	}
 	
 	@OnClick(R.id.btn_unitinfo)
