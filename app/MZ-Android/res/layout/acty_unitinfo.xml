@@ -3,6 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
+    <include layout="@layout/acty_base_header" />
+
+    <RelativeLayout
+        style="@style/RelativeLayout"
+        android:layout_height="160dp" >
+
+        <ViewFlipper
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:background="@color/bbutton_default_pressed" >
+        </ViewFlipper>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_unitinfo"
+        style="@style/ListView"
+        android:divider="@drawable/ic_line_1" >
+    </ListView>
 
 </LinearLayout>
