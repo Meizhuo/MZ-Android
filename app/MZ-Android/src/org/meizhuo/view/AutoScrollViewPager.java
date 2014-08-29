@@ -158,8 +158,7 @@ public class AutoScrollViewPager extends ViewPager {
 	 * <li>if event is up, start auto scroll again.</li>
 	 * </ul>
 	 */
-	@Override
-	public boolean onTouchEvent(MotionEvent ev) {
+	@Override public boolean onTouchEvent(MotionEvent ev) {
 		if (stopScrollWhenTouch) {
 			if (ev.getAction() == MotionEvent.ACTION_DOWN && isAutoScroll) {
 				isStopByTouch = true;
@@ -206,8 +205,7 @@ public class AutoScrollViewPager extends ViewPager {
 
 	private class MyHandler extends Handler {
 
-		@Override
-		public void handleMessage(Message msg) {
+		@Override public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 
 			switch (msg.what) {

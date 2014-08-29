@@ -17,12 +17,10 @@ import butterknife.OnItemClick;
  * 
  */
 public class UserCenter extends BaseActivity {
-	
-	@InjectView(R.id.tv_title)
-	TextView tv_title;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+
+	@InjectView(R.id.tv_title) TextView tv_title;
+
+	@Override protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.acty_usercenter);
@@ -30,8 +28,7 @@ public class UserCenter extends BaseActivity {
 		tv_title.setText("用户中心");
 	}
 
-	@OnClick(R.id.btn_title_back)
-	public void back() {
+	@OnClick(R.id.btn_title_back) public void back() {
 		closeActivity();
 	}
 }

@@ -15,50 +15,48 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class UnitinfoAdapter extends BaseAdapter {
-	
+
 	private List<String> mData;
 	private Context mContext;
-	
-	public UnitinfoAdapter(Context context,String[] names){
+
+	public UnitinfoAdapter(Context context, String[] names) {
 		mData = Arrays.asList(names);
 		mContext = context;
 	}
 
-	@Override
-	public int getCount() {
+	@Override public int getCount() {
 		return mData.size();
 	}
 
-	@Override
-	public Object getItem(int position) {
+	@Override public Object getItem(int position) {
 		return mData.get(position);
 	}
 
-	@Override
-	public long getItemId(int position) {
+	@Override public long getItemId(int position) {
 		return position;
 	}
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	@Override public View getView(int position, View convertView,
+			ViewGroup parent) {
 		ViewHolder h;
-		if(convertView == null){
-			convertView = LayoutInflater.from(mContext).inflate(R.layout.lv_unitinfo,null);
+		if (convertView == null) {
+			convertView = LayoutInflater.from(mContext).inflate(
+					R.layout.lv_unitinfo, null);
 			h = new ViewHolder(convertView);
 			convertView.setTag(h);
-		}else{
-			h = (ViewHolder)convertView.getTag();
+		} else {
+			h = (ViewHolder) convertView.getTag();
 		}
-		
+
 		h.tv_name.setText(mData.get(position));
 		return convertView;
 	}
 
-	static class ViewHolder{
+	static class ViewHolder {
 		@InjectView(R.id.tv_name) TextView tv_name;
-		
-		public ViewHolder(View v){
-			ButterKnife.inject(this,v);
+
+		public ViewHolder(View v) {
+			ButterKnife.inject(this, v);
 		}
 	}
 }

@@ -13,29 +13,26 @@ import butterknife.OnClick;
 
 /**
  * 设置里面关于页面的Activity！
+ * 
  * @author Jason
- *
+ * 
  */
-public class SettingAbout extends BaseActivity{
-	
-	
+public class SettingAbout extends BaseActivity {
+
 	@InjectView(R.id.acty_back) Button back;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-	 
+
+	@Override protected void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.acty_settingabout);
 		ButterKnife.inject(this);
-		
+
 		back.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
+			@Override public void onClick(View v) {
 				// TODO Auto-generated method stub
 				closeActivity();
 			}
 		});
 	}
-	
-	
+
 }

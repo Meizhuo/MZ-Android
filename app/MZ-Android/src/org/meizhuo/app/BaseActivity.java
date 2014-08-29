@@ -13,12 +13,11 @@ import android.widget.Toast;
 
 public class BaseActivity extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
-	
-	protected void onCreate(Bundle savedInstanceState ,int layoutId) {
+
+	protected void onCreate(Bundle savedInstanceState, int layoutId) {
 		super.onCreate(savedInstanceState);
 		setContentView(layoutId);
 		ButterKnife.inject(this);
@@ -84,8 +83,8 @@ public class BaseActivity extends Activity {
 	 * @param name
 	 * @return serializable
 	 */
-	@SuppressWarnings("unchecked")
-	protected <V extends Serializable> V getSerializableExtra(final String name) {
+	@SuppressWarnings("unchecked") protected <V extends Serializable> V getSerializableExtra(
+			final String name) {
 		return (V) getIntent().getSerializableExtra(name);
 	}
 
@@ -119,23 +118,19 @@ public class BaseActivity extends Activity {
 		return getIntent().getStringArrayExtra(name);
 	}
 
-	@Override
-	protected void onDestroy() {
+	@Override protected void onDestroy() {
 		super.onDestroy();
 	}
 
-	@Override
-	protected void onPause() {
+	@Override protected void onPause() {
 		super.onPause();
 	}
 
-	@Override
-	protected void onStop() {
+	@Override protected void onStop() {
 		super.onStop();
 	}
 
-	@Override
-	protected void onResume() {
+	@Override protected void onResume() {
 		super.onResume();
 	}
 

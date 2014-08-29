@@ -24,20 +24,15 @@ import butterknife.OnItemClick;
  * 
  */
 public class UnitInfo extends BaseActivity {
-	@InjectView(R.id.tv_title)
-	TextView tv_title;
-	@InjectView(R.id.lv_unitinfo)
-	ListView lv;
-	@InjectView(R.id.autoscrollviewpage)
-	org.meizhuo.view.AutoScrollViewPager viewPager;
+	@InjectView(R.id.tv_title) TextView tv_title;
+	@InjectView(R.id.lv_unitinfo) ListView lv;
+	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
 	UnitinfoAdapter adatper_unitinfo;
 	ImagePagerAdapter adapter_imagepage;
 
 	List<Integer> imageIdList;
-	
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	@Override protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState, R.layout.acty_unitinfo);
 		tv_title.setText("单位信息");
@@ -57,9 +52,8 @@ public class UnitInfo extends BaseActivity {
 		adapter_imagepage = new ImagePagerAdapter(this, imageIdList);
 		adapter_imagepage.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override
-			public void onItemClick(int position, View view) {
-				//to do some work
+			@Override public void onItemClick(int position, View view) {
+				// to do some work
 				toast("" + position);
 
 			}
@@ -68,13 +62,11 @@ public class UnitInfo extends BaseActivity {
 
 	}
 
-	@OnClick(R.id.btn_title_back)
-	public void back() {
+	@OnClick(R.id.btn_title_back) public void back() {
 		closeActivity();
 	}
 
-	@OnItemClick(R.id.lv_unitinfo)
-	public void item_click(int position) {
+	@OnItemClick(R.id.lv_unitinfo) public void item_click(int position) {
 		toast("" + position);
 	}
 }
