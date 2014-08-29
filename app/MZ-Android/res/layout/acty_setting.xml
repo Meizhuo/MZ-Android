@@ -3,6 +3,104 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+    <RelativeLayout
+        style="@style/RelativeLayout"
+        android:layout_height="45dp"
+        android:background="@drawable/ic_bg_title" >
+
+        <TextView
+            android:id="@+id/acty_main_tv_title"
+            style="@style/TextView"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:gravity="left"
+            android:text="Settings"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+    </RelativeLayout>
     
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <RelativeLayout 
+            android:id="@+id/setting_notification"
+            style="@style/RelativeLayout"
+            android:layout_height="70dp"
+            >
+        <TextView 
+            android:id="@+id/mz_settings_tv1"
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:text="新消息提醒"
+            />
+        </RelativeLayout>
+          <View 
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/ic_line_1"
+            />
+               <RelativeLayout 
+                   android:id="@+id/setting_feedback"
+           			 style="@style/RelativeLayout"
+           			 android:layout_height="70dp"
+            
+            >
+        <TextView 
+            android:id="@+id/mz_settings_tv1"
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:text="反馈"
+            />
+        </RelativeLayout>
+          <View 
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/ic_line_1"
+            />
+              <RelativeLayout 
+                   android:id="@+id/about"
+            style="@style/RelativeLayout"
+            android:layout_height="70dp"
+            android:clickable="true"
+            
+            >
+        <TextView 
+            android:id="@+id/mz_settings_tv1"
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:text="关于"
+            />
+        </RelativeLayout>
+          <View 
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/ic_line_1"
+            />
+               
+          
+    </LinearLayout>
 
 </LinearLayout>
