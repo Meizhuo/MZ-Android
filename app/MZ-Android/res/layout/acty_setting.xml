@@ -50,8 +50,8 @@
             />
                <RelativeLayout 
                    android:id="@+id/setting_feedback"
-            style="@style/RelativeLayout"
-            android:layout_height="70dp"
+           			 style="@style/RelativeLayout"
+           			 android:layout_height="70dp"
             
             >
         <TextView 

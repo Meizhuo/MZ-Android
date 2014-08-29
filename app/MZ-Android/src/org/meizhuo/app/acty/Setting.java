@@ -31,4 +31,10 @@ public class Setting extends BaseActivity {
 	public void ToAbout(){
 		openActivity(SettingAbout.class);
 	}
+	
+	@OnClick(R.id.setting_feedback)
+	public void ToFeedback()
+	{
+		openActivity(Feedback.class);
+	}
 }
