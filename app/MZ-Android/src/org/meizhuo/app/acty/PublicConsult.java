@@ -74,15 +74,16 @@ public class PublicConsult extends BaseActivity {
 	{
 		switch (position) {
 		case 0:
-			
+			 openActivity(PublicConsult_Cultivate.class);
 			break;
-
 		case 1:
-			
+			 openActivity(PublicConsult_Org.class);
+
 			break;
 			
 		case 2:
-			
+			 openActivity(PublicConsult_Policy.class);
+
 			break;
 		}
 	}

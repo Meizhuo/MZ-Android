@@ -78,6 +78,18 @@
             android:name=".acty.Feedback"
             android:launchMode="singleTask" >
         </activity>
+         <activity
+            android:name=".acty.PublicConsult_Cultivate"
+            android:launchMode="singleTask" >
+        </activity>
+         <activity
+            android:name=".acty.PublicConsult_Org"
+            android:launchMode="singleTask" >
+        </activity>
+         <activity
+            android:name=".acty.PublicConsult_Policy"
+            android:launchMode="singleTask" >
+        </activity>
     </application>
 
 </manifest>

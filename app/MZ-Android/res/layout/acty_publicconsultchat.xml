@@ -1,8 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:orientation="vertical"
+    >
+        <RelativeLayout
+        android:id="@+id/btn_title_back"
+        android:background="@drawable/mz_btn_title_back"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp" >
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/ic_title_back"
+            style="@style/ImageView"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/icon_action_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextView"
+            android:layout_toRightOf="@+id/ic_title_back"
+            android:layout_alignBottom="@+id/ic_title_back"
+            android:layout_centerVertical="true"
+            android:gravity="left"
+            android:layout_marginLeft="2dp"
+            android:text="Application"
+            android:textColor="@color/white"
+            android:textSize="15sp" 
+            android:layout_marginRight="2dp"/>
+    </RelativeLayout>
+    <LinearLayout 
+        android:id="@+id/chat_et"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/aa_chat_etbg"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        >
+        <ImageButton 
+            android:id="@+id/chat_emoticon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/aa_chat_emoticon"
+            />
+        <ImageButton 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/aa_chat_add"
+            />
+        <EditText 
+            android:id="@+id/send_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="7dp"
+            android:layout_weight="1.5"
+            />
+        <Button 
+            android:id="@+id/send_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3.2"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="3dp"
+            android:textSize="16dp"
+            android:text="发送"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+    <ListView 
+        android:id="@+id/chat_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_title_back"
+		android:layout_above="@+id/chat_et"
+		android:fadingEdge="none"
+		android:background="#f0f0f0"
+		android:divider="#aaaaaa"
+		android:dividerHeight="0px"
+        >
+    </ListView>
+    
+    
+</RelativeLayout>

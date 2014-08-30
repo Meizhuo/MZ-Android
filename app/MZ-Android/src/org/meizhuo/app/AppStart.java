@@ -2,6 +2,7 @@ package org.meizhuo.app;
 
 import org.meizhuo.app.acty.Main;
 import org.meizhuo.app.acty.PublicConsult;
+import org.meizhuo.app.acty.PublicConsult_Cultivate;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,7 +16,7 @@ public class AppStart extends BaseActivity {
 
 			@Override public void run() {
 				if (!AppStart.this.isFinishing()) {
-					openActivity(Main.class);
+					openActivity(PublicConsult_Cultivate.class);
 					closeActivity();
 				}
 			}
