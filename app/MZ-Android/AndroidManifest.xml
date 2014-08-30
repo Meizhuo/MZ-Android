@@ -55,6 +55,10 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
+            android:name=".acty.UnitInfoBase"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
             android:name=".acty.UnitInfoLastest"
             android:launchMode="singleTask" >
         </activity>
@@ -67,14 +71,18 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
+            android:name=".acty.UnitInfoView"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
             android:name=".acty.UserCenter"
             android:launchMode="singleTask" >
         </activity>
-          <activity
+        <activity
             android:name=".acty.SettingAbout"
             android:launchMode="singleTask" >
         </activity>
-          <activity
+        <activity
             android:name=".acty.Feedback"
             android:launchMode="singleTask" >
         </activity>

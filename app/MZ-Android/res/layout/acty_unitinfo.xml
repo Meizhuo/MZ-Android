@@ -18,7 +18,7 @@
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/lv_unitinfo"
+        android:id="@+id/lv"
         style="@style/ListView"
         android:divider="@drawable/ic_line_1" >
     </ListView>

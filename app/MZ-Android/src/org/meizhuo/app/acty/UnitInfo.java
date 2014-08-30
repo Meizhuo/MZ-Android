@@ -25,7 +25,7 @@ import butterknife.OnItemClick;
  */
 public class UnitInfo extends BaseActivity {
 	@InjectView(R.id.tv_title) TextView tv_title;
-	@InjectView(R.id.lv_unitinfo) ListView lv;
+	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
 	UnitinfoAdapter adatper_unitinfo;
 	ImagePagerAdapter adapter_imagepage;
@@ -66,7 +66,7 @@ public class UnitInfo extends BaseActivity {
 		closeActivity();
 	}
 
-	@OnItemClick(R.id.lv_unitinfo) public void item_click(int position) {
-		toast("" + position);
+	@OnItemClick(R.id.lv) public void item_click(int position) {
+		openActivity(UnitInfoBase.class);
 	}
 }
