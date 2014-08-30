@@ -1,30 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
-    <RelativeLayout
-        style="@style/RelativeLayout"
-        android:layout_height="45dp"
-        android:background="@drawable/ic_bg_title" >
-        
-        <RelativeLayout 
-            style="@style/RelativeLayout"
-            >
-        	<Button 
-	    	 android:id="@+id/feedback_back"
-	    	android:layout_width="35dp"
-			android:layout_height="35dp"
-			android:layout_alignParentLeft="true"
-			android:layout_centerVertical="true"
-			android:layout_marginLeft="10dp"
-			android:background="@drawable/aa_back_btn"
-	    />
-        </RelativeLayout>
-
-        
-    </RelativeLayout>
+  <include layout="@layout/acty_base_header" />
     <RelativeLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,28 +27,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-         <com.beardedhen.androidbootstrap.BootstrapButton
-             android:id="@+id/btn_confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:text="                              确 定                              "
-                bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_size="default"
-                bootstrapbutton:bb_type="primary" />   
-               
-          <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button 
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:id="@+id/btn_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mz_bbuton_primary"
+            android:textColor="@color/white"
+            android:text="确定"
+            />
+          <Button 
+              android:layout_marginTop="10dp"
+               android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
               android:layout_below="@+id/btn_confirm"
-              android:id="@+id/btn_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                 android:text="                              取消                              "
-                bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_size="default"
-                bootstrapbutton:bb_type="primary" />   
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mz_bbuton_primary"
+                        android:textColor="@color/white"
+            android:text="取消"
+            />
     </RelativeLayout>
     
  

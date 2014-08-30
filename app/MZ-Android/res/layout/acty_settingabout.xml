@@ -5,32 +5,7 @@
     android:orientation="vertical" 
     android:background="@drawable/aa_about_cover"
     >
-    <RelativeLayout
-        style="@style/RelativeLayout"
-        android:layout_height="45dp"
-        android:background="@drawable/ic_bg_title" >
-
-	<Button 
-	     android:id="@+id/acty_back"
-	    android:layout_width="35dp"
-		android:layout_height="35dp"
-		android:layout_alignParentLeft="true"
-		android:layout_centerVertical="true"
-		android:layout_marginLeft="10dp"
-		android:background="@drawable/aa_back_btn"
-	    />
-	<TextView 
-	   
-	    style="@style/TextView"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_centerHorizontal="true"
-	    android:layout_centerVertical="true"
-	    android:textColor="@color/white"
-	    android:textSize="25sp"
-	    android:text="关于"
-	    />
-    </RelativeLayout>
+    <include layout="@layout/acty_base_header" />
     
     
     

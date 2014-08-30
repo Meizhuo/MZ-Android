@@ -19,7 +19,6 @@ import butterknife.OnClick;
  */
 public class SettingAbout extends BaseActivity {
 
-	@InjectView(R.id.acty_back) Button back;
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 
@@ -27,12 +26,9 @@ public class SettingAbout extends BaseActivity {
 		setContentView(R.layout.acty_settingabout);
 		ButterKnife.inject(this);
 
-		back.setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				// TODO Auto-generated method stub
-				closeActivity();
-			}
-		});
+	}
+	@OnClick(R.id.btn_title_back) public void back() {
+		closeActivity();
 	}
 
 }
