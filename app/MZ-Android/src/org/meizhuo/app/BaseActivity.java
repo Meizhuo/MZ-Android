@@ -2,21 +2,18 @@ package org.meizhuo.app;
 
 import java.io.Serializable;
 
-import butterknife.ButterKnife;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Optional;
 
 public class BaseActivity extends Activity {
-
-	@Override protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-	}
-
+	
 	protected void onCreate(Bundle savedInstanceState, int layoutId) {
 		super.onCreate(savedInstanceState);
 		setContentView(layoutId);
@@ -132,6 +129,12 @@ public class BaseActivity extends Activity {
 
 	@Override protected void onResume() {
 		super.onResume();
+		
+		
 	}
 
+	@Optional @OnClick(R.id.btn_title_back) public void back() {
+		closeActivity();
+	}
+	
 }
