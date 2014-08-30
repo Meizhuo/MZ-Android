@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import butterknife.InjectView;
-import butterknife.OnClick;
 import butterknife.OnItemClick;
 
 /**
@@ -62,9 +61,6 @@ public class UnitInfo extends BaseActivity {
 
 	}
 
-	@OnClick(R.id.btn_title_back) public void back() {
-		closeActivity();
-	}
 
 	@OnItemClick(R.id.lv) public void item_click(int position) {
 		openActivity(UnitInfoBase.class);

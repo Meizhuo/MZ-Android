@@ -134,7 +134,7 @@ public class BaseActivity extends Activity {
 	}
 
 	@Optional @OnClick(R.id.btn_title_back) public void back() {
-		if (this.findViewById(R.id.tv_title).getVisibility() == View.INVISIBLE) {
+		if (this.findViewById(R.id.tv_title).getVisibility() != View.INVISIBLE) {
 			closeActivity();
 		}
 
