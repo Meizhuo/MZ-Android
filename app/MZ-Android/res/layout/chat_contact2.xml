@@ -23,6 +23,7 @@
         android:background="@drawable/mz_chat_right" >
 
         <TextView
+            style="@style/TextView"
             android:id="@+id/chat_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

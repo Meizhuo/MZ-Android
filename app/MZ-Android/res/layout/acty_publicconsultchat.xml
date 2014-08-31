@@ -1,52 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        android:id="@+id/btn_title_back"
-        android:layout_width="fill_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/mz_btn_title_back" >
+    <include layout="@layout/acty_base_header" />
 
-        <ImageView
-            android:id="@+id/ic_title_back"
-            style="@style/ImageView"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/icon_action_back" />
-
-        <TextView
-            android:id="@+id/tv_title"
-            style="@style/TextView"
-            android:layout_alignBottom="@+id/ic_title_back"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_toRightOf="@+id/ic_title_back"
-            android:gravity="left"
-            android:text="Application"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
-    </RelativeLayout>
+    <ListView
+        android:id="@+id/chat_list"
+        style="@style/ListView"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#f0f0f0"
+        android:divider="#aaaaaa"
+        android:dividerHeight="0px"
+        android:fadingEdge="none" >
+    </ListView>
 
     <LinearLayout
-        android:id="@+id/chat_et"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
         android:background="@drawable/aa_chat_etbg"
         android:orientation="horizontal" >
 
         <EditText
             android:id="@+id/send_et"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
             android:layout_height="match_parent"
-             />
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1" />
 
         <ImageView
             android:id="@+id/send_btn"
@@ -57,16 +39,4 @@
             android:background="@drawable/mz_chat_send" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/chat_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/chat_et"
-        android:layout_below="@+id/btn_title_back"
-        android:background="#f0f0f0"
-        android:divider="#aaaaaa"
-        android:dividerHeight="0px"
-        android:fadingEdge="none" >
-    </ListView>
-
-</RelativeLayout>
+</LinearLayout>
