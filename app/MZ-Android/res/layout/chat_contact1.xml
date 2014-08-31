@@ -25,6 +25,7 @@
         >
         <TextView 
         android:id="@+id/chat_text1"
+        style="@style/TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="fffkkk"
