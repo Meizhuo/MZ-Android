@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.meizhuo.app"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -10,7 +10,7 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -102,15 +102,15 @@
             android:name=".acty.PublicConsult_Policy"
             android:launchMode="singleTask" >
         </activity>
-         <activity
+        <activity
             android:name=".acty.InstitutionConsult_Teacher"
             android:launchMode="singleTask" >
         </activity>
-         <activity
+        <activity
             android:name=".acty.InstitutionConsult_Textbook"
             android:launchMode="singleTask" >
         </activity>
-         <activity
+        <activity
             android:name=".acty.InstitutionConsult_Skill"
             android:launchMode="singleTask" >
         </activity>

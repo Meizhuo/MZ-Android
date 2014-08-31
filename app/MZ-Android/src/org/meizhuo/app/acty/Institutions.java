@@ -15,7 +15,6 @@ import butterknife.OnItemClick;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 
 /**
  * 机构列表
@@ -25,7 +24,6 @@ import android.widget.TextView;
  */
 public class Institutions extends BaseActivity {
 
-	@InjectView(R.id.tv_title) TextView tv_title;
 	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
 	UnitinfoAdapter adatper_unitinfo;
@@ -36,7 +34,7 @@ public class Institutions extends BaseActivity {
 	@Override protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState, R.layout.acty_institutions);
-		tv_title.setText("培训机构信息");
+		setAppTitle("培训机构信息");
 
 		String[] names = new String[] { "文思特（北京）管理咨询有限公司", "培训机构1", "培训机构1" , "培训机构1", "培训机构1"};
 		adatper_unitinfo = new UnitinfoAdapter(this, names);

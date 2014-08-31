@@ -28,7 +28,7 @@ public class Main extends BaseActivity {
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.acty_main);
 		iv_title_back.setVisibility(View.INVISIBLE);
-		tv_title.setText(getResources().getString(R.string.app_name));
+	 
 		
 		viewPager.setInterval(2000);
 		viewPager.startAutoScroll();
