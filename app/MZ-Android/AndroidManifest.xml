@@ -43,6 +43,10 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
+            android:name=".acty.InstitutionsInfo"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
             android:name=".acty.PublicConsult"
             android:launchMode="singleTask" >
         </activity>
@@ -52,6 +56,10 @@
         </activity>
         <activity
             android:name=".acty.UnitInfo"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name=".acty.UnitInfoBase"
             android:launchMode="singleTask" >
         </activity>
         <activity
@@ -67,26 +75,30 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
+            android:name=".acty.UnitInfoView"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
             android:name=".acty.UserCenter"
             android:launchMode="singleTask" >
         </activity>
-          <activity
+        <activity
             android:name=".acty.SettingAbout"
             android:launchMode="singleTask" >
         </activity>
-          <activity
+        <activity
             android:name=".acty.Feedback"
             android:launchMode="singleTask" >
         </activity>
-         <activity
+        <activity
             android:name=".acty.PublicConsult_Cultivate"
             android:launchMode="singleTask" >
         </activity>
-         <activity
+        <activity
             android:name=".acty.PublicConsult_Org"
             android:launchMode="singleTask" >
         </activity>
-         <activity
+        <activity
             android:name=".acty.PublicConsult_Policy"
             android:launchMode="singleTask" >
         </activity>

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mz_white"
     android:orientation="vertical" >
 
     <include layout="@layout/acty_base_header" />
@@ -29,7 +30,7 @@
 
             <LinearLayout
                 style="@style/LinearLayout"
-                android:layout_height="90dp"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:orientation="horizontal" >
 
@@ -40,7 +41,8 @@
 
                     <ImageView
                         android:id="@+id/iv_icon"
-                        style="@style/ImageView.item_main" />
+                        style="@style/ImageView.item_main"
+                        android:src="@drawable/ic_icon_unitinfo" />
 
                     <TextView
                         style="@style/TextView"
@@ -52,7 +54,7 @@
                 <View
                     android:layout_width="1px"
                     android:layout_height="match_parent"
-                    android:background="@drawable/vertical_dividing_night" />
+                    android:background="@color/mz_grey" />
 
                 <RelativeLayout
                     android:id="@+id/btn_institutions"
@@ -61,7 +63,8 @@
 
                     <ImageView
                         android:id="@+id/iv_icon"
-                        style="@style/ImageView.item_main" />
+                        style="@style/ImageView.item_main"
+                        android:src="@drawable/ic_icon_institutions" />
 
                     <TextView
                         style="@style/TextView"
@@ -74,11 +77,11 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@drawable/vertical_dividing_night" />
+                android:background="@drawable/ic_line_1" />
 
             <LinearLayout
                 style="@style/LinearLayout"
-                android:layout_height="90dp"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:orientation="horizontal" >
 
@@ -89,7 +92,8 @@
 
                     <ImageView
                         android:id="@+id/iv_icon"
-                        style="@style/ImageView.item_main" />
+                        style="@style/ImageView.item_main"
+                        android:src="@drawable/ic_icon_institution_consult" />
 
                     <TextView
                         style="@style/TextView"
@@ -101,7 +105,7 @@
                 <View
                     android:layout_width="1px"
                     android:layout_height="match_parent"
-                    android:background="@drawable/vertical_dividing_night" />
+                    android:background="@color/mz_grey" />
 
                 <RelativeLayout
                     android:id="@+id/btn_public_consult"
@@ -110,7 +114,8 @@
 
                     <ImageView
                         android:id="@+id/iv_icon"
-                        style="@style/ImageView.item_main" />
+                        style="@style/ImageView.item_main"
+                        android:src="@drawable/ic_icon_public_consult" />
 
                     <TextView
                         style="@style/TextView"
@@ -123,22 +128,24 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@drawable/vertical_dividing_night" />
+                android:background="@drawable/ic_line_1" />
 
             <LinearLayout
                 style="@style/LinearLayout"
-                android:layout_height="90dp"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:orientation="horizontal" >
 
                 <RelativeLayout
                     android:id="@+id/btn_usercenter"
                     style="@style/RelativeLayout.main_item"
-                    android:background="@drawable/mz_btn_item_main" >
+                    android:background="@drawable/mz_btn_item_main"
+                     >
 
                     <ImageView
                         android:id="@+id/iv_icon"
-                        style="@style/ImageView.item_main" />
+                        style="@style/ImageView.item_main"
+                        android:src="@drawable/ic_icon_usercenter" />
 
                     <TextView
                         style="@style/TextView"
@@ -150,7 +157,7 @@
                 <View
                     android:layout_width="1px"
                     android:layout_height="match_parent"
-                    android:background="@drawable/vertical_dividing_night" />
+                    android:background="@color/mz_grey" />
 
                 <RelativeLayout
                     android:id="@+id/btn_setting"
@@ -159,7 +166,8 @@
 
                     <ImageView
                         android:id="@+id/iv_icon"
-                        style="@style/ImageView.item_main" />
+                        style="@style/ImageView.item_main"
+                        android:src="@drawable/ic_icon_setting" />
 
                     <TextView
                         style="@style/TextView"
@@ -172,7 +180,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@drawable/vertical_dividing_night" />
+                android:background="@drawable/ic_line_1" />
         </LinearLayout>
     </ScrollView>
 

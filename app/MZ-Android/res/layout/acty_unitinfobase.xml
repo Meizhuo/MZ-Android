@@ -6,15 +6,10 @@
 
     <include layout="@layout/acty_base_header" />
 
-    <TextView
-        android:id="@+id/tv_atricle_title"
-        style="@style/TextView"
-        android:layout_margin="6dp"
-        android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_atricle_content"
-        style="@style/TextView"
-        android:layout_margin="4dp" />
+    <ListView
+        android:id="@+id/lv"
+        style="@style/ListView" >
+    </ListView>
 
 </LinearLayout>
