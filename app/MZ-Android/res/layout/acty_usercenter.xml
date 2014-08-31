@@ -10,7 +10,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal" 
+        android:background="@drawable/mz_btn_item_main"
+              android:clickable="true"
+        >
 
         <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
             android:id="@+id/minimalThree"
@@ -28,7 +31,7 @@
 
             <TextView
                 style="@style/TextView"
-                android:text="简介：袂卓工作室负责人" />
+                android:text="简介:袂卓工作室负责人林涌鑫  " />
         </LinearLayout>
     </LinearLayout>
 
@@ -40,7 +43,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+      android:background="@drawable/mz_btn_item_main"
+      android:clickable="true"
+
+         >
 
         <TextView
             android:id="@+id/mz_settings_tv1"
