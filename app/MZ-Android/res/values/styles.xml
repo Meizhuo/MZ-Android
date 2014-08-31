@@ -7,6 +7,16 @@
 
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/Animations.activity</item>
+    </style>
+
+    <style name="Animations" />
+
+    <style name="Animations.activity">
+        <item name="android:activityOpenEnterAnimation">@anim/push_left_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/push_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/push_right_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/push_right_out</item>
     </style>
 
     <style name="LinearLayout">
