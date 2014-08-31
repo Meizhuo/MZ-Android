@@ -15,7 +15,7 @@ import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class PublicConsult_Policy extends BaseActivity {
+public class InstitutionConsult_Skill extends BaseActivity{
 
 	@InjectView(R.id.tv_title) TextView tv_title;
 	ArrayList<HashMap<String,Object>> chatList = null;
@@ -34,7 +34,7 @@ public class PublicConsult_Policy extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState,R.layout.acty_publicconsultchat);
-		tv_title.setText("政策咨询");
+		tv_title.setText("培训咨询");
 		chatList =  new ArrayList<HashMap<String,Object>>();
 		addTextToList("有兴趣跟我们谈合作吗？", Me);
 		addTextToList("可以！", OTHER);
@@ -79,4 +79,5 @@ public class PublicConsult_Policy extends BaseActivity {
 		map.put("text", text);
 		chatList.add(map);
 	}
+
 }

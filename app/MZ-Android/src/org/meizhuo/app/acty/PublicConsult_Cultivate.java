@@ -13,6 +13,7 @@ import butterknife.OnClick;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,7 +27,7 @@ public class PublicConsult_Cultivate extends BaseActivity {
 	
 	public final static int OTHER = 1;
 	public final static int Me = 0 ;
-	@InjectView(R.id.send_btn) Button chatSendbtn;
+	@InjectView(R.id.send_btn) ImageView chatSendbtn;
 	@InjectView(R.id.send_et) EditText chatSendet;
 	@InjectView(R.id.chat_list) ListView chatlv;
 	ChatAdapter adapter;
@@ -35,6 +36,7 @@ public class PublicConsult_Cultivate extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState,R.layout.acty_publicconsultchat);
+		tv_title.setText("培训咨询");
 		chatList =  new ArrayList<HashMap<String,Object>>();
 		addTextToList("有兴趣跟我们谈合作吗？", Me);
 		addTextToList("可以！", OTHER);

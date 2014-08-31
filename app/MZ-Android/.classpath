@@ -6,12 +6,12 @@
 	<classpathentry exported="true" kind="lib" path="libs/butterknife-5.1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/android-async-http-1.4.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/universal-image-loader-1.9.2.jar"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="src" path=".apt_generated">
 		<attributes>
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

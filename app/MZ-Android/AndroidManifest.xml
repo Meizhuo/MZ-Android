@@ -102,6 +102,18 @@
             android:name=".acty.PublicConsult_Policy"
             android:launchMode="singleTask" >
         </activity>
+         <activity
+            android:name=".acty.InstitutionConsult_Teacher"
+            android:launchMode="singleTask" >
+        </activity>
+         <activity
+            android:name=".acty.InstitutionConsult_Textbook"
+            android:launchMode="singleTask" >
+        </activity>
+         <activity
+            android:name=".acty.InstitutionConsult_Skill"
+            android:launchMode="singleTask" >
+        </activity>
     </application>
 
 </manifest>
