@@ -6,13 +6,13 @@
     android:orientation="horizontal" >
 
     <RelativeLayout
-        android:id="@+id/btn_title_back"
+        android:id="@+id/btn_app_back"
         android:background="@drawable/mz_btn_title_back"
         android:layout_width="wrap_content"
         android:layout_height="45dp" >
 
         <ImageView
-            android:id="@+id/ic_title_back"
+            android:id="@+id/iv_app_icon_back"
             style="@style/ImageView"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
@@ -20,10 +20,10 @@
             android:background="@drawable/icon_action_back" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_app_title"
             style="@style/TextView"
-            android:layout_toRightOf="@+id/ic_title_back"
-            android:layout_alignBottom="@+id/ic_title_back"
+            android:layout_toRightOf="@+id/iv_app_icon_back"
+            android:layout_alignBottom="@+id/iv_app_icon_back"
             android:layout_centerVertical="true"
             android:gravity="left"
             android:layout_marginLeft="2dp"

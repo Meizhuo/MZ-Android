@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.ButterKnife;
@@ -16,19 +17,34 @@ import butterknife.OnClick;
 import butterknife.Optional;
 
 public class BaseActivity extends Activity {
-	@Optional @InjectView(R.id.tv_title) TextView tv_title;
+	@Optional @InjectView(R.id.tv_app_title) TextView tv_title;
+	@Optional @InjectView(R.id.iv_app_icon_back) ImageView iv_app_icon_back;
 
 	protected void onCreate(Bundle savedInstanceState, int layoutId) {
 		super.onCreate(savedInstanceState);
 		setContentView(layoutId);
 		ButterKnife.inject(this);
 		setAppTitle(getResources().getString(R.string.app_name));
+		setDisplayBackIcon(true);
 	}
 
 	public void setAppTitle(String title) {
 		if (tv_title != null) {
 			tv_title.setText(title);
 		}
+	}
+
+	public void setDisplayBackIcon(boolean display) {
+		if(display){
+			if ( iv_app_icon_back != null) {
+				iv_app_icon_back.setVisibility(View.VISIBLE);
+			}
+		}else{
+			if ( iv_app_icon_back != null) {
+				iv_app_icon_back.setVisibility(View.INVISIBLE);
+			}
+		}
+		
 	}
 
 	/**
@@ -143,8 +159,8 @@ public class BaseActivity extends Activity {
 
 	}
 
-	@Optional @OnClick(R.id.btn_title_back) public void back() {
-		if (this.findViewById(R.id.tv_title).getVisibility() != View.INVISIBLE) {
+	@Optional @OnClick(R.id.btn_app_back) public void back() {
+		if (this.findViewById(R.id.tv_app_title).getVisibility() != View.INVISIBLE) {
 			closeActivity();
 		}
 	}

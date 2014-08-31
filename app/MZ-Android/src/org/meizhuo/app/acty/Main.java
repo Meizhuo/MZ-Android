@@ -10,14 +10,10 @@ import org.meizhuo.app.R;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class Main extends BaseActivity {
-	@InjectView(R.id.ic_title_back) ImageView iv_title_back;
-	@InjectView(R.id.tv_title) TextView tv_title;
 
 	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
 
@@ -27,8 +23,7 @@ public class Main extends BaseActivity {
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.acty_main);
-		iv_title_back.setVisibility(View.INVISIBLE);
-	 
+		setDisplayBackIcon(false);
 		
 		viewPager.setInterval(2000);
 		viewPager.startAutoScroll();
