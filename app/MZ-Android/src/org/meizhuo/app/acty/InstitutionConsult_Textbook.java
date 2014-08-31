@@ -11,13 +11,11 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class InstitutionConsult_Textbook extends BaseActivity{
 
-	@InjectView(R.id.tv_title) TextView tv_title;
 	ArrayList<HashMap<String,Object>> chatList = null;
 	String[] from = {"image","text"};
 	int[] to = {R.id.chat_contact1,R.id.chat_text1,R.id.chat_contact2,R.id.chat_text2};
@@ -32,9 +30,10 @@ public class InstitutionConsult_Textbook extends BaseActivity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState,R.layout.acty_publicconsultchat);
-		tv_title.setText("培训咨询");
+		
+		setAppTitle("培训咨询");
+		
 		chatList =  new ArrayList<HashMap<String,Object>>();
 		addTextToList("有兴趣跟我们谈合作吗？", Me);
 		addTextToList("可以！", OTHER);
@@ -63,14 +62,6 @@ public class InstitutionConsult_Textbook extends BaseActivity{
 		chatlv.setSelection(chatList.size() - 1);
 	}
 		
-	
-	
-	
-	
-	@OnClick(R.id.btn_title_back) public void back() {
-		closeActivity();
-	}
-	
 	public void addTextToList(String text, int who)
 	{
 		HashMap<String, Object> map = new HashMap<String, Object>();

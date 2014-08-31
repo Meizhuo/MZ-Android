@@ -13,10 +13,8 @@ import org.meizhuo.view.AutoScrollViewPager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
 import butterknife.OnItemClick;
 
 /**
@@ -27,7 +25,6 @@ import butterknife.OnItemClick;
  */
 public class PublicConsult extends BaseActivity {
 
-	@InjectView(R.id.tv_title) TextView tv_title;
 	@InjectView(R.id.lv_publicconsult) ListView lv;
 	@InjectView(R.id.autoscrollviewpage) AutoScrollViewPager viewPager;
 	PublicConsultAdapter adapter_publicconsult;
@@ -39,7 +36,7 @@ public class PublicConsult extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.acty_publiconsult);
 		ButterKnife.inject(this);
-		tv_title.setText("公众咨询");
+		setAppTitle("公众咨询");
 		
 		String[] names =  new String[] { "培训咨询","机构咨询","政策咨询" };
 		adapter_publicconsult =  new PublicConsultAdapter(this, names);
@@ -65,10 +62,6 @@ public class PublicConsult extends BaseActivity {
 		viewPager.setAdapter(adapter_imagepage);
 	}
 	
-	
-	@OnClick(R.id.btn_title_back) public void back() {
-		closeActivity();
-	}
 	
 	@OnItemClick(R.id.lv_publicconsult) public void item_click(int position)
 	{
