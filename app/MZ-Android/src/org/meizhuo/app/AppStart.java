@@ -18,7 +18,7 @@ public class AppStart extends BaseActivity {
 					closeActivity();
 				}
 			}
-		}, 500);
+		}, 1500);
 	}
 
 }
