@@ -19,7 +19,6 @@ import butterknife.InjectView;
  */
 public class InstitutionsInfo extends BaseActivity {
 
-	@InjectView(R.id.tv_title) TextView tv_title;
 	@InjectView(R.id.tv_atricle_title) TextView tv_atricle_title;
 	@InjectView(R.id.tv_atricle_content) TextView tv_atricle_content;
 
@@ -28,8 +27,8 @@ public class InstitutionsInfo extends BaseActivity {
 	@Override protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState, R.layout.acty_institutionsinfo);
-		tv_title.setText("详情");
-
+		setAppTitle("详情");
+		
 		tv_atricle_title.setText("文思特（北京）管理咨询有限公司");
 		tv_atricle_content.setMovementMethod(ScrollingMovementMethod
 				.getInstance());// 滚动

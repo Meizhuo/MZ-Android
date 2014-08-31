@@ -12,7 +12,6 @@ import org.meizhuo.app.R;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.OnItemClick;
 
@@ -23,7 +22,6 @@ import butterknife.OnItemClick;
  * 
  */
 public class UnitInfo extends BaseActivity {
-	@InjectView(R.id.tv_title) TextView tv_title;
 	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
 	UnitinfoAdapter adatper_unitinfo;
@@ -34,7 +32,7 @@ public class UnitInfo extends BaseActivity {
 	@Override protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState, R.layout.acty_unitinfo);
-		tv_title.setText("单位信息");
+		setAppTitle("单位信息");
 
 		String[] names = new String[] { "基本职能", "职业训练法律法规", "职业训练通知" };
 		adatper_unitinfo = new UnitinfoAdapter(this, names);

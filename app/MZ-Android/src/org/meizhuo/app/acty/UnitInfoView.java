@@ -18,7 +18,6 @@ import butterknife.InjectView;
  * 
  */
 public class UnitInfoView extends BaseActivity {
-	@InjectView(R.id.tv_title) TextView tv_title;
 	@InjectView(R.id.tv_atricle_title) TextView tv_atricle_title;
 	@InjectView(R.id.tv_atricle_content) TextView tv_atricle_content;
 
@@ -27,8 +26,8 @@ public class UnitInfoView extends BaseActivity {
 	@Override protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState, R.layout.acty_unitinfoview);
-		tv_title.setText("详情");
-
+		setAppTitle("详情");
+		
 		tv_atricle_title.setText("基本职能");
 		tv_atricle_content.setMovementMethod(ScrollingMovementMethod
 				.getInstance());// 滚动

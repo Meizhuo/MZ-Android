@@ -8,17 +8,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.Optional;
 
 public class BaseActivity extends Activity {
+	@Optional @InjectView(R.id.tv_title) TextView tv_title;
 
 	protected void onCreate(Bundle savedInstanceState, int layoutId) {
 		super.onCreate(savedInstanceState);
 		setContentView(layoutId);
 		ButterKnife.inject(this);
+		setAppTitle(getResources().getString(R.string.app_name));
+	}
+
+	public void setAppTitle(String title) {
+		if (tv_title != null) {
+			tv_title.setText(title);
+		}
 	}
 
 	/**
@@ -137,7 +147,5 @@ public class BaseActivity extends Activity {
 		if (this.findViewById(R.id.tv_title).getVisibility() != View.INVISIBLE) {
 			closeActivity();
 		}
-
 	}
-
 }
