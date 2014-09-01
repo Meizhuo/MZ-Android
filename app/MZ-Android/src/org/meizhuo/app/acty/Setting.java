@@ -4,6 +4,7 @@ import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -16,9 +17,9 @@ import butterknife.OnClick;
  */
 public class Setting extends BaseActivity {
 
-	@InjectView(R.id.setting_notification) RelativeLayout newssettings;
-	@InjectView(R.id.setting_feedback) RelativeLayout feedback;
-	@InjectView(R.id.about) RelativeLayout about;
+	@InjectView(R.id.setting_notification) LinearLayout newssettings;
+	@InjectView(R.id.setting_feedback) LinearLayout feedback;
+	@InjectView(R.id.about) LinearLayout about;
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 

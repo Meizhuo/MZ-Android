@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <include layout="@layout/acty_base_header"/>
-
-    <LinearLayout
+	
+    <FrameLayout 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" 
-        android:background="@drawable/mz_btn_item_main"
-              android:clickable="true"
+        android:layout_height="230dp"
         >
-
-        <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-            android:id="@+id/minimalThree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            bootstrap:bct_image="@drawable/aa_headshot"
-            bootstrap:bct_minimal="true"
-            bootstrap:bct_size="medium" />
-
-        <LinearLayout
+        <ImageView 
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="50dp" >
-
-            <TextView
+            android:layout_height="160dp"
+            android:background="@drawable/aa_user_bg"
+            />
+        <LinearLayout 
+            android:layout_marginTop="-20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            >
+         <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/thumbnailThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_image="@drawable/aa_headshot"
+                bootstrap:bct_size="medium"
+                android:layout_margin="10dp"/>
+               <TextView
+                   android:layout_gravity="bottom"
                 style="@style/TextView"
+                android:layout_marginBottom="15dp"
                 android:text="简介:袂卓工作室负责人林涌鑫  " />
         </LinearLayout>
-    </LinearLayout>
+      
+    </FrameLayout >
+       
+        
+       
+
 
     <View
         android:layout_width="match_parent"
@@ -42,13 +50,38 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+      android:background="@drawable/mz_btn_item_main"
+      android:clickable="true"
+
+         >
+        <TextView
+            android:id="@+id/mz_settings_tv1"
+            style="@style/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="单位  ：袂卓移动开发工作室"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/ic_line_1" />
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:orientation="vertical"
       android:background="@drawable/mz_btn_item_main"
       android:clickable="true"
 
          >
-
         <TextView
             android:id="@+id/mz_settings_tv1"
             style="@style/TextView"
@@ -56,16 +89,85 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:text="与我相关"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="梦想  ： 创业"
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@drawable/ic_line_1" />
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+      android:background="@drawable/mz_btn_item_main"
+      android:clickable="true"
+         >
+        <TextView
+            android:id="@+id/mz_settings_tv1"
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+			 android:text="员工号  ： AP110004351"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+    </LinearLayout>
+    
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+      android:background="@drawable/mz_btn_item_main"
+      android:clickable="true"
+
+         >
+        <TextView
+            android:id="@+id/mz_settings_tv1"
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="微信号  ： GreatMe520"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/ic_line_1" />
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+      android:background="@drawable/mz_btn_item_main"
+      android:clickable="true"
+
+         >
+        <TextView
+            android:id="@+id/mz_settings_tv1"
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="座右铭  ：人人为我，我为人人"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+    </LinearLayout>
+
 
 </LinearLayout>
