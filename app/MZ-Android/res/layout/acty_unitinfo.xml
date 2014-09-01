@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <include layout="@layout/acty_base_header" />
 
-    <RelativeLayout
-        style="@style/RelativeLayout"
-        android:layout_height="160dp" >
+   <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:background="@android:color/white"
+        android:textSize="14sp"
+        app:pstsIndicatorColor="@color/mz_blue_title_nomal"
+        app:pstsIndicatorHeight="4dp"
+        app:pstsShouldExpand="true" />
 
-        <org.meizhuo.view.AutoScrollViewPager
-            android:id="@+id/autoscrollviewpage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-        </org.meizhuo.view.AutoScrollViewPager>
-    </RelativeLayout>
-
-    <ListView
-        android:id="@+id/lv"
-        style="@style/ListView"
-        android:divider="@drawable/ic_line_1" >
-    </ListView>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </android.support.v4.view.ViewPager>
 
 </LinearLayout>

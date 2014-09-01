@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,7 +17,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.Optional;
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
 	@Optional @InjectView(R.id.tv_app_title) TextView tv_title;
 	@Optional @InjectView(R.id.iv_app_icon_back) ImageView iv_app_icon_back;
 

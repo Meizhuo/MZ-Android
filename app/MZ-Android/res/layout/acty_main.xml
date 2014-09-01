@@ -7,26 +7,28 @@
 
     <include layout="@layout/acty_base_header" />
 
+    <RelativeLayout
+        style="@style/RelativeLayout"
+        android:layout_height="160dp" >
+
+        <org.meizhuo.view.AutoScrollViewPager
+            android:id="@+id/autoscrollviewpage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </org.meizhuo.view.AutoScrollViewPager>
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/ic_home_black_bg"
+        android:paddingTop="4dp"
         android:scrollbarStyle="@null" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
-            <RelativeLayout
-                style="@style/RelativeLayout"
-                android:layout_height="160dp" >
-
-                <org.meizhuo.view.AutoScrollViewPager
-                    android:id="@+id/autoscrollviewpage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
-                </org.meizhuo.view.AutoScrollViewPager>
-            </RelativeLayout>
 
             <LinearLayout
                 style="@style/LinearLayout"
@@ -37,7 +39,7 @@
                 <RelativeLayout
                     android:id="@+id/btn_unitinfo"
                     style="@style/RelativeLayout.main_item"
-                    android:background="@drawable/mz_btn_item_main" >
+                    android:background="@drawable/btn_home_item" >
 
                     <ImageView
                         android:id="@+id/iv_icon"
@@ -45,7 +47,7 @@
                         android:src="@drawable/ic_icon_unitinfo" />
 
                     <TextView
-                        style="@style/TextView"
+                        style="@style/TextView.home_item"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
                         android:text="单位信息" />
@@ -59,7 +61,7 @@
                 <RelativeLayout
                     android:id="@+id/btn_institutions"
                     style="@style/RelativeLayout.main_item"
-                    android:background="@drawable/mz_btn_item_main" >
+                    android:background="@drawable/btn_home_item" >
 
                     <ImageView
                         android:id="@+id/iv_icon"
@@ -67,7 +69,7 @@
                         android:src="@drawable/ic_icon_institutions" />
 
                     <TextView
-                        style="@style/TextView"
+                        style="@style/TextView.home_item"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
                         android:text="培训机构信息" />
@@ -88,7 +90,7 @@
                 <RelativeLayout
                     android:id="@+id/btn_institution_consult"
                     style="@style/RelativeLayout.main_item"
-                    android:background="@drawable/mz_btn_item_main" >
+                    android:background="@drawable/btn_home_item" >
 
                     <ImageView
                         android:id="@+id/iv_icon"
@@ -96,7 +98,7 @@
                         android:src="@drawable/ic_icon_institution_consult" />
 
                     <TextView
-                        style="@style/TextView"
+                        style="@style/TextView.home_item"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
                         android:text="培训机构服务" />
@@ -110,7 +112,7 @@
                 <RelativeLayout
                     android:id="@+id/btn_public_consult"
                     style="@style/RelativeLayout.main_item"
-                    android:background="@drawable/mz_btn_item_main" >
+                    android:background="@drawable/btn_home_item" >
 
                     <ImageView
                         android:id="@+id/iv_icon"
@@ -118,7 +120,7 @@
                         android:src="@drawable/ic_icon_public_consult" />
 
                     <TextView
-                        style="@style/TextView"
+                        style="@style/TextView.home_item"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
                         android:text="个人服务" />
@@ -139,8 +141,7 @@
                 <RelativeLayout
                     android:id="@+id/btn_usercenter"
                     style="@style/RelativeLayout.main_item"
-                    android:background="@drawable/mz_btn_item_main"
-                     >
+                    android:background="@drawable/btn_home_item" >
 
                     <ImageView
                         android:id="@+id/iv_icon"
@@ -148,7 +149,7 @@
                         android:src="@drawable/ic_icon_usercenter" />
 
                     <TextView
-                        style="@style/TextView"
+                        style="@style/TextView.home_item"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
                         android:text="用户中心" />
@@ -162,7 +163,7 @@
                 <RelativeLayout
                     android:id="@+id/btn_setting"
                     style="@style/RelativeLayout.main_item"
-                    android:background="@drawable/mz_btn_item_main" >
+                    android:background="@drawable/btn_home_item" >
 
                     <ImageView
                         android:id="@+id/iv_icon"
@@ -170,7 +171,7 @@
                         android:src="@drawable/ic_icon_setting" />
 
                     <TextView
-                        style="@style/TextView"
+                        style="@style/TextView.home_item"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
                         android:text="设置" />
