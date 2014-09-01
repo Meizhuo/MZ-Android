@@ -2,7 +2,6 @@ package org.meizhuo.app;
 
 import java.io.Serializable;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;

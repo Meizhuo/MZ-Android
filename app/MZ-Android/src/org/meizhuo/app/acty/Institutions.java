@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.meizhuo.adapter.ImagePagerAdapter;
-import org.meizhuo.adapter.UnitinfoAdapter;
+import org.meizhuo.adapter.InstitutionAdapter;
 import org.meizhuo.adapter.ImagePagerAdapter.OnItemClickListener;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
+import org.meizhuo.model.MTrainingInstitution;
 
 import butterknife.InjectView;
 import butterknife.OnItemClick;
@@ -26,7 +27,8 @@ public class Institutions extends BaseActivity {
 
 	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
-	UnitinfoAdapter adatper_unitinfo;
+	
+	InstitutionAdapter adapter_institution;
 	ImagePagerAdapter adapter_imagepage;
 
 	List<Integer> imageIdList;
@@ -36,10 +38,7 @@ public class Institutions extends BaseActivity {
 		super.onCreate(savedInstanceState, R.layout.acty_institutions);
 		setAppTitle("培训机构信息");
 
-		String[] names = new String[] { "文思特（北京）管理咨询有限公司", "培训机构1", "培训机构1" , "培训机构1", "培训机构1"};
-		adatper_unitinfo = new UnitinfoAdapter(this, names);
-		lv.setAdapter(adatper_unitinfo);
-
+		//AD
 		viewPager.setInterval(2000);
 		viewPager.startAutoScroll();
 
@@ -58,7 +57,14 @@ public class Institutions extends BaseActivity {
 			}
 		});
 		viewPager.setAdapter(adapter_imagepage);
-
+		//ListView
+		List<MTrainingInstitution> institutions = new ArrayList<MTrainingInstitution>();
+		for(int i=0;i<10;i++){
+			institutions.add(MTrainingInstitution.getTestData());
+		}
+		adapter_institution = new InstitutionAdapter(getContext(), institutions);
+		lv.setAdapter(adapter_institution);
+		
 	}
 
 	@OnItemClick(R.id.lv) public void item_click(int position) {

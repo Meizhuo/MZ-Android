@@ -4,6 +4,9 @@
     <color name="mz_white">#ffffff</color>
     <color name="mz_black">#ff000000</color>
     <color name="mz_grey">#FFE1E8EB</color>
+    <color name="mz_grey_lv_one">#BFBFBF</color>
+    <color name="mz_grey_lv_two">#808080</color>
+    <color name="mz_grey_lv_two_1">#DBDBDB</color>
     <color name="mz_blue_light">#00CCFF</color>
     <color name="mz_blue_strong">#FF0066FF</color>
     <color name="mz_blue_title_nomal">#3B5998</color>

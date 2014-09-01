@@ -44,7 +44,7 @@
                     <ImageView
                         android:id="@+id/iv_icon"
                         style="@style/ImageView.item_main"
-                        android:src="@drawable/ic_icon_unitinfo" />
+                        android:src="@drawable/a_ic_icon_unitinfo" />
 
                     <TextView
                         style="@style/TextView.home_item"
@@ -66,7 +66,7 @@
                     <ImageView
                         android:id="@+id/iv_icon"
                         style="@style/ImageView.item_main"
-                        android:src="@drawable/ic_icon_institutions" />
+                        android:src="@drawable/a_ic_icon_institutions" />
 
                     <TextView
                         style="@style/TextView.home_item"
@@ -95,7 +95,7 @@
                     <ImageView
                         android:id="@+id/iv_icon"
                         style="@style/ImageView.item_main"
-                        android:src="@drawable/ic_icon_institution_consult" />
+                        android:src="@drawable/a_ic_icon_institution_consult" />
 
                     <TextView
                         style="@style/TextView.home_item"
@@ -117,7 +117,7 @@
                     <ImageView
                         android:id="@+id/iv_icon"
                         style="@style/ImageView.item_main"
-                        android:src="@drawable/ic_icon_public_consult" />
+                        android:src="@drawable/a_ic_icon_public_consult" />
 
                     <TextView
                         style="@style/TextView.home_item"
@@ -146,7 +146,7 @@
                     <ImageView
                         android:id="@+id/iv_icon"
                         style="@style/ImageView.item_main"
-                        android:src="@drawable/ic_icon_usercenter" />
+                        android:src="@drawable/a_ic_icon_usercenter" />
 
                     <TextView
                         style="@style/TextView.home_item"
@@ -168,7 +168,7 @@
                     <ImageView
                         android:id="@+id/iv_icon"
                         style="@style/ImageView.item_main"
-                        android:src="@drawable/ic_icon_setting" />
+                        android:src="@drawable/a_ic_icon_setting" />
 
                     <TextView
                         style="@style/TextView.home_item"

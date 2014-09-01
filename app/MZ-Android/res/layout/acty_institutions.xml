@@ -20,6 +20,7 @@
     <ListView
         android:id="@+id/lv"
         style="@style/ListView"
+        android:layout_height="match_parent"
         android:divider="@drawable/ic_line_1" >
     </ListView>
 
