@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -8,84 +9,191 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/mz_btn_item_main"
+        android:clickable="true"
+        android:orientation="horizontal" >
+
+       
+             <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/minimalFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_image="@drawable/aa_headshot"
+                bootstrap:bct_size="small"
+                bootstrap:bct_minimal="true"
+                android:layout_margin="10dp"/>
+             
+             
+         <TextView
+            android:id="@+id/mz_settings_tv1"
+            style="@style/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="20dp"
+            android:text="账号设置"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+
+       
+
+    </LinearLayout>
+    
+     <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/ic_line_1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/setting_notification"
             style="@style/RelativeLayout"
-            android:layout_height="70dp" 
+            android:layout_height="60dp" 
             android:background="@drawable/mz_btn_item_main"
               android:clickable="true"
+              android:orientation="horizontal"
             >
-
+			<ImageView 
+			    android:layout_gravity="center_vertical"
+			    android:layout_marginLeft="20dp"
+			    android:layout_width="25dp"
+			    android:layout_height="25dp"
+			    android:background="@drawable/aa_news"
+			    />
+            
             <TextView
+                android:layout_gravity="center_vertical"
+                android:gravity="right"
                 android:id="@+id/mz_settings_tv1"
                 style="@style/TextView"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
-                android:gravity="center_vertical"
-                android:text="新消息提醒"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-        </RelativeLayout>
+        	   android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:text="新消息提醒"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"  />
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@drawable/ic_line_1" />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/setting_feedback"
             style="@style/RelativeLayout"
-            android:layout_height="70dp" 
+            android:layout_height="60dp" 
+            android:orientation="horizontal"
             android:background="@drawable/mz_btn_item_main"
               android:clickable="true"
             >
+            
+            	<ImageView 
+            	    android:layout_gravity="center_vertical"
+			android:layout_marginLeft="20dp"
+			    android:layout_width="25dp"
+			    android:layout_height="25dp"
+			    android:background="@drawable/aa_settings_fb"
+			    />
 
             <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
                 android:id="@+id/mz_settings_tv1"
+                android:gravity="right"
                 style="@style/TextView"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
-              android:gravity="center_vertical"
-                android:text="反馈"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-        </RelativeLayout>
+        	   android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="反馈"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"  />
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@drawable/ic_line_1" />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/about"
             style="@style/RelativeLayout"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:clickable="true" 
             android:background="@drawable/mz_btn_item_main"
+            android:orientation="horizontal"
             >
+		
+            	<ImageView 
+            	    
+			    android:layout_gravity="center_vertical"
+		android:layout_marginLeft="20dp"
+			    android:layout_width="25dp"
+			    android:layout_height="25dp"
+			    android:background="@drawable/aa_settings_myself"
+			    />
+            <TextView
+                android:layout_marginTop="15dp"
+                android:id="@+id/mz_settings_tv1"
+                android:gravity="right"
+                style="@style/TextView"
+        	   android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="关于本软件"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"  />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/ic_line_1" />
+        
+        
+         <LinearLayout
+            android:id="@+id/about"
+            style="@style/RelativeLayout"
+            android:layout_height="60dp"
+            android:clickable="true" 
+            android:background="@drawable/mz_btn_item_main"
+            android:orientation="horizontal"
+            >
+            	<ImageView 
+			    android:layout_gravity="center_vertical"
+			    android:layout_marginLeft="20dp"
+			    android:layout_width="25dp"
+			    android:layout_height="25dp"
+			    android:background="@drawable/aa_settings_logout"
+			    />
 
             <TextView
-                android:id="@+id/mz_settings_tv1"
+                android:layout_marginTop="15dp"
+             android:id="@+id/mz_settings_tv1"
+             android:gravity="right"
                 style="@style/TextView"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
-                  android:gravity="center_vertical"
-                android:text="关于"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-        </RelativeLayout>
+        	   android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="退出"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"  />
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
