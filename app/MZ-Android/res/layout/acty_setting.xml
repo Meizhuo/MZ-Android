@@ -16,13 +16,15 @@
 
        
              <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                 android:layout_gravity="center_vertical"
                 android:id="@+id/minimalFour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 bootstrap:bct_image="@drawable/aa_headshot"
                 bootstrap:bct_size="small"
                 bootstrap:bct_minimal="true"
-                android:layout_margin="10dp"/>
+                android:layout_marginLeft="20dp"
+             />
              
              
          <TextView
@@ -69,19 +71,19 @@
 			    />
             
             <TextView
-                android:layout_gravity="center_vertical"
-                android:gravity="right"
                 android:id="@+id/mz_settings_tv1"
                 style="@style/TextView"
-        	   android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:text="新消息提醒"
-            android:textColor="@android:color/black"
-            android:textSize="17sp"  />
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="新消息提醒"
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+
         </LinearLayout>
 
         <View
