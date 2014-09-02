@@ -62,6 +62,7 @@ public class Institutions extends BaseActivity {
 		for(int i=0;i<10;i++){
 			institutions.add(MTrainingInstitution.getTestData());
 		}
+		debug("size-->"+institutions.size());
 		adapter_institution = new InstitutionAdapter(getContext(), institutions);
 		lv.setAdapter(adapter_institution);
 		

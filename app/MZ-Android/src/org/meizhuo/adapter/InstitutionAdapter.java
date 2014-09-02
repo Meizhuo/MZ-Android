@@ -1,10 +1,11 @@
 package org.meizhuo.adapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.meizhuo.app.R;
 import org.meizhuo.model.MTrainingInstitution;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -18,7 +19,7 @@ import butterknife.InjectView;
 
 public class InstitutionAdapter extends BaseAdapter {
 
-	private List<MTrainingInstitution> data = new ArrayList<MTrainingInstitution>();
+	private List<MTrainingInstitution> data;
 	private Context mContext;
 
 	public InstitutionAdapter(Context context,
@@ -50,6 +51,14 @@ public class InstitutionAdapter extends BaseAdapter {
 			h  =(ViewHolder)convertView.getTag();
 		}
 		//TODO 处理UI....
+		if(data.get(position).getImage_urls() !=null && data.get(position).getImage_urls().size()>0){
+			ImageLoader.getInstance().displayImage(data.get(position).getImage_urls().get(0), h.iv_avater); 
+		}else{
+		  	// use default image
+		}
+		h.tv_name.setText(data.get(position).getName());
+		h.tv_description.setText(data.get(position).getDescription());
+		 
 		return convertView;
 	}
 

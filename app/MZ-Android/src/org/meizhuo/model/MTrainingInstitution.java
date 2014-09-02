@@ -12,6 +12,7 @@ public class MTrainingInstitution {
 		ti.setLocation("北京市海淀区花园北路14号环星大厦A座828室 ");
 		List<String> urls = new ArrayList<String>();
 		urls.add("http://www.win-starcn.com/images/logo2.png");
+		ti.setImage_urls(urls);
 		return ti;
 	}
 
