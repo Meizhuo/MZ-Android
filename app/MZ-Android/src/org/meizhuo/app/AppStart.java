@@ -11,7 +11,6 @@ public class AppStart extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.acty_appstart);
 		new Handler().postDelayed(new Runnable() {
-
 			@Override public void run() {
 				if (!AppStart.this.isFinishing()) {
 					openActivity(Main.class);
