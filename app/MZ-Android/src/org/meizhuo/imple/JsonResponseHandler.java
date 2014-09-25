@@ -8,7 +8,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.nostra13.universalimageloader.utils.L;
 /**
  * AsyncHttpResponseHandler封装<br>
- * 这个库不是已经有了一个吗，为毛还要自己实现一个封装
+ *
  * @author Jason
  *
  */
