@@ -10,6 +10,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -95,4 +96,5 @@ public class Login extends BaseActivity{
 		flipper.setInAnimation(this, R.anim.push_up_in);
 		flipper.setOutAnimation(this, R.anim.push_up_out);
 	}
+	
 }
