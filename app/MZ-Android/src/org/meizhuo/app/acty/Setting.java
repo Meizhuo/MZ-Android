@@ -27,6 +27,10 @@ public class Setting extends BaseActivity {
 		setAppTitle("设置");
 
 	}
+	
+	@OnClick(R.id.user_login) public void Login() {
+		openActivity(Login.class);
+	}
 
 	@OnClick(R.id.about) public void ToAbout() {
 		openActivity(SettingAbout.class);

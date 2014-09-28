@@ -16,7 +16,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
 import butterknife.InjectView;
+import butterknife.OnItemClick;
 
 /**
  * 单位信息列表
@@ -25,6 +28,7 @@ import butterknife.InjectView;
  * 
  */
 public class UnitInfo extends BaseActivity {
+	@InjectView(R.id.tv_app_title_search) ImageView title_Search;
 	@InjectView(R.id.tabs) com.astuetz.PagerSlidingTabStrip mPagerSlidingTabStrip;
 	@InjectView(R.id.viewpager) ViewPager mViewPager;
 	UnitinfoAdapter adatper_unitinfo;
@@ -44,7 +48,17 @@ public class UnitInfo extends BaseActivity {
 		mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),
 				fragments));
 		mPagerSlidingTabStrip.setViewPager(mViewPager);
+		
+		title_Search.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				openActivity(UnitInfo_Search.class);
+				
+			}
+		});
 	}
+	
 
 	public class MyPagerAdapter extends FragmentPagerAdapter {
 

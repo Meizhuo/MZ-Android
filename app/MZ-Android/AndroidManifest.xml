@@ -121,6 +121,18 @@
             android:name=".acty.InstitutionConsult_Skill"
             android:launchMode="singleTask" >
         </activity>
+          <activity
+            android:name=".acty.UnitInfo_Search"
+            android:launchMode="singleTask" >
+        </activity>
+          <activity
+            android:name=".acty.Login"
+            android:launchMode="singleTask" >
+        </activity>
+          <activity
+            android:name=".acty.Employer_Register"
+            android:launchMode="singleTask" >
+        </activity>
     </application>
 
 </manifest>
