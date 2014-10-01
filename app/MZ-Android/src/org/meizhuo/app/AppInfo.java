@@ -77,8 +77,8 @@ public class AppInfo {
 	}
 	
 	/**
-	 * 
-	 * @param context
+	 * created by jason
+	 * @param context   
 	 * @param publicer
 	 * @return
 	 */

@@ -25,10 +25,20 @@ import android.content.SharedPreferences;
  */
 public class DataPool {
 	
-	public static final String SP_Name_User = "User"; //SharedPreference's name
-	public final static String SP_Key_User = "user";//key name in SharedPreference 
-	public static final String SP_Key_User_Name = "username"; //登录账号 可以是邮箱或者手机号码
-	public static final String SP_Key_User_PSW = "psw"; //登录密码
+	/**普通用户账号密码以及信息的存储*/
+	
+	public static final String SP_Name_Publicer = "Publicer"; //SharedPreference's name 用来保存公共用户账号密码的数据池
+	public final static String SP_Key_Publicer = "publicer";//key name in SharedPreference  保存用户信息
+	public static final String SP_Key_Publicer_Name = "publicername"; //登录账号 可以是邮箱或者手机号码
+	public static final String SP_Key_Publicer_PSW = "publicerpsw"; //登录密码
+	
+	/**用人单位以及相关信息的存储*/
+	public static final String SP_Name_Employer = "Employer"; //用来保存用人单位的信息的sharePreference
+	public static final String SP_Key_Employer = "employer";  //Key name in SharePreference  保存用人单位信息
+	public static final String SP_Key_Employer_Name = "employer_name"; // 用人用户的账号
+	public static final String SP_Key_Employer_PSW = "employerpsw";  //登录密码
+	
+	
 	
 	private Context context;
 	private String DataPoolName = "DataPool";

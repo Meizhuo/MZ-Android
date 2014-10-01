@@ -31,10 +31,22 @@ public class StringUtils {
 	 * @return true if is Ok
 	 */
 	public static boolean isNickname(String sequence) {
-		final String format = "[^\\u4E00-\\u9FA5\\uF900-\\uFA2D\\w-_a-zA-Z]";
+		final String format = "[\u4e00-\u9fa5]";
 		Pattern pattern = Pattern.compile(format);
 		Matcher matcher = pattern.matcher(sequence);
 		return matcher.find();
+	}
+	
+	/**
+	 * create by jason
+	 * 检测是否11位手机号码
+	 * @param phonename
+	 * @return
+	 */
+	public static boolean isPhoneName(String phonename){
+		Pattern pattern = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
+		Matcher match = pattern.matcher(phonename);
+		return match.find();
 	}
 	
 	/**

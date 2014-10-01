@@ -1,6 +1,13 @@
 package org.meizhuo.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
 
 /**
  * 用人单位用户
@@ -9,11 +16,53 @@ import java.io.Serializable;
  */
 @SuppressWarnings("serial")
 public class Employer implements Serializable{
+	
+	/**
+	 * 解析单个用户
+	 * @param json 单个用户的json字符串 
+	 * @return Employer
+	 */
+	public static Employer create_by_json(String json) {
+		try {
+			Gson gson =  new Gson();
+			return (Employer)gson.fromJson(json, Employer.class);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**
+	 *  解析一个用户列表的列表
+	 * @param jsonarray
+	 * @return
+	 */
+	public static List<Employer> create_by_jsonarray(String jsonarray) {
+		ArrayList<Employer> list =  new ArrayList<Employer>();
+		JSONObject obj = null;
+		JSONArray array = null;
+		try {
+			obj =  new JSONObject(jsonarray);
+			array =  obj.getJSONArray("employer");
+			for (int i = 0 ; i < array.length() ; i++) {
+				list.add(create_by_json(array.getJSONObject(i).toString()));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			list =  null;
+		}
+		return list;
+	}
 
 	public Employer() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
+
+	/**id */
+	private int id;
 	/**邮箱*/
 	private String email;
 
@@ -49,10 +98,12 @@ public class Employer implements Serializable{
 		this.address = address;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "Employer [email=" + email + ", phoneNumber=" + phoneNumber
-				+ ", name=" + name + ", address=" + address + "]";
+		return "Employer [id=" + id + ", email=" + email + ", phoneNumber="
+				+ phoneNumber + ", name=" + name + ", address=" + address + "]";
 	}
+	
 
 }
