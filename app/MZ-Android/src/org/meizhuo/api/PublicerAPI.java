@@ -72,11 +72,11 @@ public class PublicerAPI {
 	 * @param work_place
 	 * @param responseHandler
 	 */
-	public void updateProfile(int id, String nickname, String sex, String work_place, AsyncHttpResponseHandler responseHandler){
+	public void updateProfile(String nickname, String sex, String work_place, AsyncHttpResponseHandler responseHandler){
 		RequestParams params =  new RequestParams();
-		params.put("nickname", nickname);
-		params.put("sex", sex);
-		params.put("work_place", work_place);
+		params.add("nickname", nickname);
+		params.add("sex", sex);
+		params.add("work_place", work_place);
 		RestClient.post("/home/user/update", params, responseHandler);
 	}
 	
@@ -88,6 +88,7 @@ public class PublicerAPI {
 	public void getProfile(AsyncHttpResponseHandler asyncHttpResponseHandler) {
 		RestClient.get("/home/user/info", null, asyncHttpResponseHandler);
 	}
+	
 	
 	/**
 	 * 通过id  从数据库查询相应用户的信息，然后获取

@@ -3,12 +3,19 @@ package org.meizhuo.app.acty;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.meizhuo.adapter.ImagePagerAdapter;
 import org.meizhuo.adapter.ImagePagerAdapter.OnItemClickListener;
+import org.meizhuo.api.PublicerAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.CoreService;
 import org.meizhuo.app.R;
+import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.utils.Constants;
+
+import com.google.gson.JsonObject;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -78,7 +85,40 @@ public class Main extends BaseActivity {
 	}
 
 	@OnClick(R.id.btn_usercenter) public void usercenter() {
-		openActivity(UserCenter.class);
+		PublicerAPI publicerApi =  new PublicerAPI();
+		publicerApi.getProfile(new JsonResponseHandler() {
+			
+			@Override
+			public void onOK(Header[] headers, JSONObject obj) {
+				// TODO Auto-generated method stub
+				toast("获取用户资料成功");
+				try {
+					String phone = obj.getString("phone");
+					String sex = obj.getString("sex");
+					String level = obj.getString("level");
+					String status = obj.getString("status");
+					String email = obj.getString("email");
+					String nickname = obj.getString("nickname");
+					String work_place = obj.getString("work_place");
+					Intent intent = new Intent(Main.this, UserCenter.class);
+					intent.putExtra("sex", sex);
+					intent.putExtra("nickname", nickname);
+					intent.putExtra("work_place", work_place);
+					startActivity(intent);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			@Override
+			public void onFaild(int errorType, int errorCode) {
+				// TODO Auto-generated method stub
+				toast("获取用户资料失败!");
+			}
+		});
+		
+	
 	}
 
 	@OnClick(R.id.btn_setting) public void setting() {

@@ -6,7 +6,73 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <include layout="@layout/acty_base_header"/>
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/mz_blue_title_nomal"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/btn_app_back"
+        android:background="@drawable/mz_btn_title_back"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp" >
+
+        <ImageView
+            android:id="@+id/iv_app_icon_back"
+            style="@style/ImageView"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/icon_action_back" />
+
+        <TextView
+            android:id="@+id/tv_app_title"
+            style="@style/TextView"
+            android:layout_toRightOf="@+id/iv_app_icon_back"
+            android:layout_alignBottom="@+id/iv_app_icon_back"
+            android:layout_centerVertical="true"
+            android:gravity="left"
+            android:layout_marginLeft="2dp"
+            android:text="Application"
+            android:textColor="@color/white"
+            android:textSize="15sp" 
+            android:layout_marginRight="2dp"/>
+        <TextView 
+            android:id="@+id/tv_userinfo_edit"
+            style="@style/TextView"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="编辑资料"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            />
+           <TextView 
+            android:id="@+id/tv_userinfo_edit_ok"
+            style="@style/TextView"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:visibility="gone"
+            />
+           <TextView 
+                android:layout_toLeftOf="@+id/tv_userinfo_edit_ok"
+               android:id="@+id/tv_userinfo_edit_cancel"
+               style="@style/TextView"
+               android:layout_marginTop="10dp"
+               android:text="取消"
+               android:layout_marginRight="10dp"
+               android:textColor="@color/white"
+               android:textSize="17sp"
+               android:visibility="gone"
+               />
+    </RelativeLayout>
+
+</LinearLayout>
 	
     <FrameLayout 
         android:layout_width="match_parent"
@@ -30,13 +96,9 @@
                 bootstrap:bct_image="@drawable/aa_headshot"
                 bootstrap:bct_size="medium"
                 android:layout_margin="10dp"/>
-               <TextView
-                   android:layout_gravity="bottom"
-                style="@style/TextView"
-                android:layout_marginBottom="15dp"
-                android:text="简介:袂卓工作室负责人林涌鑫  " />
         </LinearLayout>
-      
+        
+      	
     </FrameLayout >
        
         
@@ -57,7 +119,6 @@
 
          >
         <TextView
-            android:id="@+id/mz_settings_tv1"
             style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -65,9 +126,21 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
-            android:text="单位  ：袂卓移动开发工作室"
+            android:text="姓名:"
             android:textColor="@android:color/black"
             android:textSize="17sp" />
+            <TextView 
+            android:id="@+id/mz_usercenter_name_tv"
+            style="@style/TextView.UserCenter_item"
+           
+            android:text="李志雄"
+            />
+   
+        <EditText 
+            android:id="@+id/mz_usercenter_name_et"
+            style="@style/EditText.Usercenter_item"
+            android:text="李志雄"
+            />
     </LinearLayout>
 
     <View
@@ -77,102 +150,72 @@
       <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
       android:background="@drawable/mz_btn_item_main"
       android:clickable="true"
 
          >
-        <TextView
-            android:id="@+id/mz_settings_tv1"
+          <TextView
             style="@style/TextView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
-            android:text="梦想  ： 创业"
+            android:text="性别:"
             android:textColor="@android:color/black"
             android:textSize="17sp" />
+        <TextView 
+            android:id="@+id/mz_usercenter_sex_tv"
+            style="@style/TextView.UserCenter_item"
+           
+            android:text="男"
+            />
+         <EditText 
+            android:id="@+id/mz_usercenter_sex_et"
+            style="@style/EditText.Usercenter_item"
+            android:text="男"
+            />
+        
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@drawable/ic_line_1" />
-      <LinearLayout
+   <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
       android:background="@drawable/mz_btn_item_main"
       android:clickable="true"
+
          >
-        <TextView
-            android:id="@+id/mz_settings_tv1"
+          <TextView
             style="@style/TextView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
-			 android:text="员工号  ： AP110004351"
+            android:text="工作单位:"
             android:textColor="@android:color/black"
             android:textSize="17sp" />
-    </LinearLayout>
-    
-      <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@drawable/ic_line_1" />
-    
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="vertical"
-      android:background="@drawable/mz_btn_item_main"
-      android:clickable="true"
-
-         >
-        <TextView
-            android:id="@+id/mz_settings_tv1"
-            style="@style/TextView"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:text="微信号  ： GreatMe520"
-            android:textColor="@android:color/black"
-            android:textSize="17sp" />
+        <TextView 
+            android:id="@+id/mz_usercenter_workplace_tv"
+            style="@style/TextView.UserCenter_item"
+            android:text="袂卓工作室"
+            />
+         <EditText 
+            android:id="@+id/mz_usercenter_workplace_et"
+            style="@style/EditText.Usercenter_item"
+            android:text="袂卓工作室"
+            />
+        
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@drawable/ic_line_1" />
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="vertical"
-      android:background="@drawable/mz_btn_item_main"
-      android:clickable="true"
-
-         >
-        <TextView
-            android:id="@+id/mz_settings_tv1"
-            style="@style/TextView"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:text="座右铭  ：人人为我，我为人人"
-            android:textColor="@android:color/black"
-            android:textSize="17sp" />
-    </LinearLayout>
 
 
 </LinearLayout>

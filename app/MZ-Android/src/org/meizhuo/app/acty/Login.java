@@ -19,6 +19,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -33,6 +34,8 @@ import android.widget.ViewFlipper;
  *
  */
 public class Login extends BaseActivity{
+	private static final String TAG = "Login";
+	
 	
 	/*
 	 * 
@@ -70,7 +73,7 @@ public class Login extends BaseActivity{
 			toast("不能为空");
 			return ;
 		}
-		publicApi.Login(EditTextUtils.getText(et_login_password), 
+		publicApi.Login(EditTextUtils.getText(et_login_username), 
 				EditTextUtils.getText(et_login_password), 
 				new JsonResponseHandler() {
 					@Override
@@ -83,7 +86,7 @@ public class Login extends BaseActivity{
 					public void onOK(Header[] headers, JSONObject obj) {
 						// TODO Auto-generated method stub
 						toast("登录成功");
-						saveLoginInfo(obj.toString());
+						Log.i(TAG, "登录成功" + obj);
 					}
 					
 					@Override
@@ -147,6 +150,7 @@ public class Login extends BaseActivity{
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				toast("注册成功!");
+				Log.i(TAG, "注册成功" + obj);
 				flipper.showPrevious();
 			}
 			
