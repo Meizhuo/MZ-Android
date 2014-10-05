@@ -133,6 +133,22 @@
             android:name=".acty.Employer_Register"
             android:launchMode="singleTask" >
         </activity>
+           <activity
+            android:name=".acty.UserCenter_EditInfo"
+            android:launchMode="singleTask" >
+        </activity>
+        <!-- Major_Search -->
+           <activity
+            android:name=".acty.Major_Search"
+            android:launchMode="singleTask" >
+        </activity>
+        <!-- Major_Search_lv -->
+           <activity
+            android:name=".acty.Major_Search_lv"
+            android:launchMode="singleTask" >
+        </activity>
+        
+        
     </application>
 
 </manifest>

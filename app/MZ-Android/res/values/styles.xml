@@ -9,8 +9,35 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@style/Animations.activity</item>
     </style>
+    
+    <style name="Base_ProgressBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:indeterminateBehavior">repeat</item>
+        <item name="android:indeterminateDrawable">@drawable/dialog_progressbar_round_two</item>
+        <item name="android:interpolator">@android:anim/linear_interpolator</item>
+        <item name="android:indeterminateDuration">1000</item>
+    </style>
+    
+    <style name="progressBar_Dialog_style" parent="@style/Base_ProgressBar">
+        <item name="android:indeterminateDuration">2000</item>
+    </style>
+    
+      <style name="BaseDialog" parent="@android:Theme.Dialog">
+        <item name="android:windowBackground">@color/lucency_white</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@style/Animations.dialog</item>
+    </style>
 
     <style name="Animations" />
+    
+    <style name="Animations.dialog">
+        <item name="@android:windowEnterAnimation">@anim/zoom_in</item>
+        <item name="@android:windowExitAnimation">@anim/zoom_out</item>
+    </style>
 
     <style name="Animations.activity">
         <item name="android:activityOpenEnterAnimation">@anim/push_left_in</item>

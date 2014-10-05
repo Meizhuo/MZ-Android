@@ -80,45 +80,13 @@ public class Main extends BaseActivity {
 		openActivity(InstitutionConsult.class);
 	}
 
-	@OnClick(R.id.btn_public_consult) public void public_consult() {
-		openActivity(PublicConsult.class);
+	@OnClick(R.id.btn_major_search) public void major_search() {
+		openActivity(Major_Search.class);
+		
 	}
 
 	@OnClick(R.id.btn_usercenter) public void usercenter() {
-		PublicerAPI publicerApi =  new PublicerAPI();
-		publicerApi.getProfile(new JsonResponseHandler() {
-			
-			@Override
-			public void onOK(Header[] headers, JSONObject obj) {
-				// TODO Auto-generated method stub
-				toast("获取用户资料成功");
-				try {
-					String phone = obj.getString("phone");
-					String sex = obj.getString("sex");
-					String level = obj.getString("level");
-					String status = obj.getString("status");
-					String email = obj.getString("email");
-					String nickname = obj.getString("nickname");
-					String work_place = obj.getString("work_place");
-					Intent intent = new Intent(Main.this, UserCenter.class);
-					intent.putExtra("sex", sex);
-					intent.putExtra("nickname", nickname);
-					intent.putExtra("work_place", work_place);
-					startActivity(intent);
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-			@Override
-			public void onFaild(int errorType, int errorCode) {
-				// TODO Auto-generated method stub
-				toast("获取用户资料失败!");
-			}
-		});
-		
-	
+		openActivity(UserCenter.class);
 	}
 
 	@OnClick(R.id.btn_setting) public void setting() {
@@ -142,7 +110,7 @@ public class Main extends BaseActivity {
 				Log.i(TAG, "SUCCESSFUL");
 				AlertDialog.Builder  builder=new AlertDialog.Builder(Main.this);
 				builder.setTitle("发现新版本");
-				builder.setMessage( updateInfo);
+				builder.setMessage(updateInfo);
 				
 				builder.setPositiveButton("立刻更新 ", new DialogInterface.OnClickListener() {
 					

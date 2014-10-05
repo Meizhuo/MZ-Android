@@ -5,6 +5,8 @@ import org.json.JSONObject;
 import org.meizhuo.utils.JsonUtils;
 import org.meizhuo.utils.L;
 
+import android.util.Log;
+
 import com.loopj.android.http.AsyncHttpResponseHandler;
 /**
  * AsyncHttpResponseHandler封装<br>
@@ -54,6 +56,7 @@ public abstract class JsonResponseHandler extends AsyncHttpResponseHandler{
 				//can't not create JSONObject , server response the wrong format json string !
 				String json =  new String(data);
 				onFaild(Error_JsonParse,JsonUtils.getErrorCode(json));
+				
 			}
 		} else {
 			// statusCode:201-204

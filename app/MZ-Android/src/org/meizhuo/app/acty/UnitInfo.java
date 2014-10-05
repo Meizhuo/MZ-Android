@@ -28,7 +28,6 @@ import butterknife.OnItemClick;
  * 
  */
 public class UnitInfo extends BaseActivity {
-	@InjectView(R.id.tv_app_title_search) ImageView title_Search;
 	@InjectView(R.id.tabs) com.astuetz.PagerSlidingTabStrip mPagerSlidingTabStrip;
 	@InjectView(R.id.viewpager) ViewPager mViewPager;
 	UnitinfoAdapter adatper_unitinfo;
@@ -49,14 +48,6 @@ public class UnitInfo extends BaseActivity {
 				fragments));
 		mPagerSlidingTabStrip.setViewPager(mViewPager);
 		
-		title_Search.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				openActivity(UnitInfo_Search.class);
-				
-			}
-		});
 	}
 	
 
