@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 这是Adapter里面的一项 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/mz_btn_white2grey"
+    android:minHeight="100dp"
+    android:orientation="horizontal"
+    android:padding="6dp" >
+
+    <LinearLayout
+        style="@style/LinearLayout"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="4dp"
+        android:paddingTop="4dp" >
+
+        <TextView
+            style="@style/TextView"
+            android:layout_gravity="left|"
+            android:text="补贴项:"
+            android:textSize="17sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:ellipsize="end"
+                android:text="证书类型:"
+                android:textColor="@color/mz_grey_lv_two"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/search_tv_certificate_type"
+                style="@style/TextView"
+                android:ellipsize="end"
+                android:text="B(国家职业资格证书、计算机信息高新技术证书、专项职业能力证书)"
+                android:textColor="@color/mz_grey_lv_two"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:ellipsize="end"
+                android:text="等级:"
+                android:textColor="@color/mz_grey_lv_two"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/search_tv_level"
+                style="@style/TextView"
+                android:ellipsize="end"
+                android:text="B1-1"
+                android:textColor="@color/mz_grey_lv_two"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:ellipsize="end"
+                android:text="补贴金额:"
+                android:textColor="@color/mz_grey_lv_two"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/search_tv_money"
+                style="@style/TextView"
+                android:ellipsize="end"
+                android:text="200元"
+                android:textColor="@color/mz_grey_lv_two"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        style="@style/ImageView"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerCrop"
+        android:src="@drawable/aa_mini_webview_forward_disable" />
+
+</LinearLayout>

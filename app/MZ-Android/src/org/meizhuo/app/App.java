@@ -1,5 +1,8 @@
 package org.meizhuo.app;
 
+import org.meizhuo.api.RestClient;
+
+import com.loopj.android.http.PersistentCookieStore;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -10,9 +13,13 @@ import butterknife.ButterKnife;
 import android.app.Application;
 
 public class App extends Application {
+	
+	
 
 	@Override public void onCreate() {
 		ButterKnife.setDebug(true);
+		//init RestClient
+		RestClient.init(getApplicationContext());
 		
 		//在baseActivity onDestroy中清理clearMemoryCache();
 		DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
@@ -32,4 +39,17 @@ public class App extends Application {
 				.defaultDisplayImageOptions(defaultOptions).build();
 		ImageLoader.getInstance().init(config);
 	}
+	
+	
+	/**
+	 * 退出的时候清除数据
+	 */
+	public void cleanUpInfo() {
+		
+		PersistentCookieStore cs = new PersistentCookieStore(this);
+		cs.clear();
+		
+	}
+	
+
 }

@@ -16,7 +16,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
 import butterknife.InjectView;
+import butterknife.OnItemClick;
 
 /**
  * 单位信息列表
@@ -44,7 +47,9 @@ public class UnitInfo extends BaseActivity {
 		mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),
 				fragments));
 		mPagerSlidingTabStrip.setViewPager(mViewPager);
+		
 	}
+	
 
 	public class MyPagerAdapter extends FragmentPagerAdapter {
 

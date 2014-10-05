@@ -20,7 +20,7 @@ public class RestClient {
 	private static AsyncHttpClient client = new AsyncHttpClient();
 	
 	/**
-	 * 初始化:如果需要调用登陆验证记录session的函数钱，必须调用这个方法，否则请求失败
+	 * 初始化:如果需要调用登陆验证记录session的函数前，必须调用这个方法，否则请求失败
 	 * @param context Activity or Application context
 	 */
 	public static void init(Context context) {
@@ -50,6 +50,8 @@ public class RestClient {
 	}
 	/**
 	 * 请求前初始化<br>
+	 * 必须在请求之前初始化，不然cookie失效
+	 * context不为空时带着cookie去访问
 	 */
 	private static void initClient(){
 		if(context != null)

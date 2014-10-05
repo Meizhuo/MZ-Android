@@ -12,7 +12,7 @@ import butterknife.InjectView;
 /**
  * 设置里面关于页面的Activity！
  * 
- * @author Jason
+ * 
  * @author Jayin
  * 
  */

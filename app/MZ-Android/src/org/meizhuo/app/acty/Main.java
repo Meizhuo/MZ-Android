@@ -3,12 +3,19 @@ package org.meizhuo.app.acty;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.meizhuo.adapter.ImagePagerAdapter;
 import org.meizhuo.adapter.ImagePagerAdapter.OnItemClickListener;
+import org.meizhuo.api.PublicerAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.CoreService;
 import org.meizhuo.app.R;
+import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.utils.Constants;
+
+import com.google.gson.JsonObject;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -73,8 +80,9 @@ public class Main extends BaseActivity {
 		openActivity(InstitutionConsult.class);
 	}
 
-	@OnClick(R.id.btn_public_consult) public void public_consult() {
-		openActivity(PublicConsult.class);
+	@OnClick(R.id.btn_major_search) public void major_search() {
+		openActivity(Major_Search.class);
+		
 	}
 
 	@OnClick(R.id.btn_usercenter) public void usercenter() {
@@ -102,7 +110,7 @@ public class Main extends BaseActivity {
 				Log.i(TAG, "SUCCESSFUL");
 				AlertDialog.Builder  builder=new AlertDialog.Builder(Main.this);
 				builder.setTitle("发现新版本");
-				builder.setMessage( updateInfo);
+				builder.setMessage(updateInfo);
 				
 				builder.setPositiveButton("立刻更新 ", new DialogInterface.OnClickListener() {
 					

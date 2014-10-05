@@ -3,9 +3,11 @@ package org.meizhuo.imple;
 import org.apache.http.Header;
 import org.json.JSONObject;
 import org.meizhuo.utils.JsonUtils;
+import org.meizhuo.utils.L;
+
+import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.nostra13.universalimageloader.utils.L;
 /**
  * AsyncHttpResponseHandler封装<br>
  *
@@ -36,6 +38,7 @@ public abstract class JsonResponseHandler extends AsyncHttpResponseHandler{
    //在这里打log ...
 	@Override
 	public void onSuccess(int statusCode, Header[] headers, byte[] data) {
+		
 		if (statusCode == 200) {
 			JSONObject obj = null;
 			try {
@@ -44,14 +47,16 @@ public abstract class JsonResponseHandler extends AsyncHttpResponseHandler{
 				if (JsonUtils.isOK(json)) {
 					onOK(headers, obj);
 				} else {
-					if(data!=null)L.e(new String(data));  //log error
+					if(data!=null) L.e(new String(data)); //log error
 					//json string include `error_code`
 					onFaild(Error_Response,JsonUtils.getErrorCode(json));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 				//can't not create JSONObject , server response the wrong format json string !
-				onFaild(Error_JsonParse,statusCode);
+				String json =  new String(data);
+				onFaild(Error_JsonParse,JsonUtils.getErrorCode(json));
+				
 			}
 		} else {
 			// statusCode:201-204
