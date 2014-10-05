@@ -35,6 +35,9 @@ public class Main extends BaseActivity {
 	private static final String TAG = "Appstart";
 	
 	private BroadcastReceiver mReceiver = null;
+	private BroadcastReceiver loginReceiver = null;
+	private boolean is_Publicer_Login;
+	private boolean is_Employer_Login;
 
 	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
 
@@ -47,6 +50,7 @@ public class Main extends BaseActivity {
 		setDisplayBackIcon(false);
 		checkVersion();
 		initReceiver();
+		initLoginReceiver();
 		
 		viewPager.setInterval(2000);
 		viewPager.startAutoScroll();
@@ -86,12 +90,26 @@ public class Main extends BaseActivity {
 	}
 
 	@OnClick(R.id.btn_usercenter) public void usercenter() {
-		openActivity(UserCenter.class);
+		if(is_Publicer_Login){
+			openActivity(UserCenter_Publicer.class);
+		}
+		if(is_Employer_Login){
+			
+		}
+		
 	}
 
 	@OnClick(R.id.btn_setting) public void setting() {
 		openActivity(Setting.class);
 	}
+	private void initLoginReceiver(){
+		loginReceiver =  new LoginReceiver();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(Constants.Action_Publicer_isLogin);;
+		filter.addAction(Constants.Action_Employer_isLogin);
+		registerReceiver(loginReceiver, filter);
+	}
+	
 	private void initReceiver() {
 		mReceiver =  new AppStartReceiver();
 		IntentFilter filter = new IntentFilter();
@@ -99,6 +117,7 @@ public class Main extends BaseActivity {
 		registerReceiver(mReceiver, filter);
 		
 	}
+	
 	class  AppStartReceiver extends BroadcastReceiver {
 
 		@Override
@@ -126,6 +145,21 @@ public class Main extends BaseActivity {
 				builder.setNegativeButton("稍后更新", null);
 				AlertDialog dialog =  builder.create();
 				dialog.show();
+			}
+		}
+	}
+	
+	class LoginReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			toast("onReceive");
+			String action = intent.getAction();
+			if(action.equals(Constants.Action_Publicer_isLogin)){
+				is_Publicer_Login = true;
+			}
+			if(action.equals(Constants.Action_Employer_isLogin)){
+				is_Employer_Login = true;
 			}
 		}
 		

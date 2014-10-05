@@ -24,8 +24,11 @@ public class EmployerAPI {
 		params.add("nickname", nickname);
 		params.add("email", email);
 		params.add("psw", psw);
+		if(!(phone == null || phone.equals("")))
 		params.add("phone", phone);
+		if(!(contact_phone == null || contact_phone.equals("")))
 		params.add("contact_phone", contact_phone);
+		if(!(address == null || address.equals("")))
 		params.add("address", address);
 		RestClient.post("/home/employer/register", params, responseHandler);
 	}

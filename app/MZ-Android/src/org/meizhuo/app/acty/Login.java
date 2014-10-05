@@ -3,13 +3,16 @@ package org.meizhuo.app.acty;
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.meizhuo.api.EmployerAPI;
 import org.meizhuo.api.PublicerAPI;
 import org.meizhuo.app.AppInfo;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
+import org.meizhuo.model.Employer;
 import org.meizhuo.model.ErrorCode;
 import org.meizhuo.model.Publicer;
+import org.meizhuo.utils.Constants;
 import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.utils.JsonUtils;
 import org.meizhuo.utils.StringUtils;
@@ -18,6 +21,7 @@ import org.meizhuo.utils.StringUtils;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -56,6 +60,9 @@ public class Login extends BaseActivity{
 	@InjectView(R.id.acty_register_et_email) EditText et_reg_email;
 	@InjectView(R.id.acty_register_et_workplace) EditText et_reg_workplace;
 	private PublicerAPI publicApi;
+	private EmployerAPI employerAPI;
+	Employer employer;
+	Publicer publicer;
 	
 	 
 	@Override
@@ -73,6 +80,9 @@ public class Login extends BaseActivity{
 			toast("不能为空");
 			return ;
 		}
+		//普通用户登录，手机判断
+		if(StringUtils.isPhone(EditTextUtils.getText(et_login_username)))
+		{
 		publicApi.Login(EditTextUtils.getText(et_login_username), 
 				EditTextUtils.getText(et_login_password), 
 				new JsonResponseHandler() {
@@ -85,8 +95,10 @@ public class Login extends BaseActivity{
 					@Override
 					public void onOK(Header[] headers, JSONObject obj) {
 						// TODO Auto-generated method stub
-						toast("登录成功");
+						toast("登录成功" + obj);
 						Log.i(TAG, "登录成功" + obj);
+						Intent intent = new Intent(Constants.Action_Publicer_isLogin);
+						sendBroadcast(intent);
 					}
 					
 					@Override
@@ -95,6 +107,30 @@ public class Login extends BaseActivity{
 						toast(ErrorCode.errorList.get(errorCode));
 					}
 				});
+		}
+		//用人单位登录，邮箱判断
+		if(StringUtils.isEmail(EditTextUtils.getText(et_login_username))){
+			if(employerAPI == null)
+				employerAPI =  new EmployerAPI();
+			employerAPI.Login(EditTextUtils.getText(et_login_username),
+					EditTextUtils.getText(et_login_password), 
+					new JsonResponseHandler() {
+						
+						@Override
+						public void onOK(Header[] headers, JSONObject obj) {
+							// TODO Auto-generated method stub
+							toast("登录成功" + obj);
+							Intent intent =  new Intent(Constants.Action_Employer_isLogin);
+							sendBroadcast(intent);
+						}
+						
+						@Override
+						public void onFaild(int errorType, int errorCode) {
+							// TODO Auto-generated method stub
+							toast("登录失败" + errorCode);
+						}
+					});
+		}
 	}
 	
 	/*点击进去普通注册*/
@@ -128,7 +164,7 @@ public class Login extends BaseActivity{
 		if (!StringUtils.isNickname(EditTextUtils.getText(et_reg_name))){
 			toast("请填写您的中文名字");
 		}
-		if (!StringUtils.isPhoneName(EditTextUtils.getText(et_reg_phone))){
+		if (!StringUtils.isPhone(EditTextUtils.getText(et_reg_phone))){
 			toast("请填写11位手机号码");
 		}
 	
@@ -149,7 +185,6 @@ public class Login extends BaseActivity{
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				toast("注册成功!");
 				Log.i(TAG, "注册成功" + obj);
 				flipper.showPrevious();
 			}

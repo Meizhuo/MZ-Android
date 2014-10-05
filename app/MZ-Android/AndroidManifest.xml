@@ -86,7 +86,7 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.UserCenter"
+            android:name=".acty.UserCenter_Publicer"
             android:launchMode="singleTask" >
         </activity>
         <activity
@@ -134,7 +134,7 @@
             android:launchMode="singleTask" >
         </activity>
            <activity
-            android:name=".acty.UserCenter_EditInfo"
+            android:name=".acty.UserCenter_Publicer_EditInfo"
             android:launchMode="singleTask" >
         </activity>
         <!-- Major_Search -->
@@ -147,7 +147,11 @@
             android:name=".acty.Major_Search_lv"
             android:launchMode="singleTask" >
         </activity>
-        
+           <!-- UserCenter_Employer -->
+        <activity
+            android:name=".acty.UserCenter_Employer"
+            android:launchMode="singleTask" >
+        </activity>
         
     </application>
 
