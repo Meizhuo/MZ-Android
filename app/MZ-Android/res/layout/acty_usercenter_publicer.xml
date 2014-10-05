@@ -48,28 +48,6 @@
             android:textColor="@color/white"
             android:textSize="17sp"
             />
-           <TextView 
-            android:id="@+id/tv_userinfo_edit_ok"
-            style="@style/TextView"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:text="保存"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:visibility="gone"
-            />
-           <TextView 
-                android:layout_toLeftOf="@+id/tv_userinfo_edit_ok"
-               android:id="@+id/tv_userinfo_edit_cancel"
-               style="@style/TextView"
-               android:layout_marginTop="10dp"
-               android:text="取消"
-               android:layout_marginRight="10dp"
-               android:textColor="@color/white"
-               android:textSize="17sp"
-               android:visibility="gone"
-               />
     </RelativeLayout>
 
 </LinearLayout>
@@ -136,11 +114,6 @@
             android:text="李志雄"
             />
    
-        <EditText 
-            android:id="@+id/mz_usercenter_name_et"
-            style="@style/EditText.Usercenter_item"
-            android:text="李志雄"
-            />
     </LinearLayout>
 
     <View
@@ -172,11 +145,6 @@
            
             android:text="男"
             />
-         <EditText 
-            android:id="@+id/mz_usercenter_sex_et"
-            style="@style/EditText.Usercenter_item"
-            android:text="男"
-            />
         
     </LinearLayout>
 
@@ -206,11 +174,6 @@
         <TextView 
             android:id="@+id/mz_usercenter_workplace_tv"
             style="@style/TextView.UserCenter_item"
-            android:text="袂卓工作室"
-            />
-         <EditText 
-            android:id="@+id/mz_usercenter_workplace_et"
-            style="@style/EditText.Usercenter_item"
             android:text="袂卓工作室"
             />
         
