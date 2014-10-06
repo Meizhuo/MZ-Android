@@ -15,13 +15,28 @@
         android:orientation="vertical"
         android:paddingLeft="4dp"
         android:paddingTop="4dp" >
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
-        <TextView
-            style="@style/TextView"
-            android:layout_gravity="left|"
-            android:text="补贴项:"
-            android:textSize="17sp" />
+            <TextView
+                style="@style/TextView"
+                android:ellipsize="end"
+                android:text="资格名称:"
+                android:textColor="@color/mz_grey_lv_two"
+                android:textSize="12sp" />
 
+            <TextView
+                android:id="@+id/search_tv_title"
+                style="@style/TextView"
+                android:ellipsize="end"
+                android:text="餐饮信息化系统管理"
+                android:textColor="@color/mz_grey_lv_two"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+	
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

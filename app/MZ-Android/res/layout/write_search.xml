@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     <EditText 
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:id="@+id/write_search_et"
         android:layout_marginTop="10dp"
         style="@style/EditText"
@@ -14,7 +16,7 @@
         android:layout_marginTop="10dp"
                 style="@style/TextView"
                 android:ellipsize="end"
-                android:text="     如：输入补贴,则搜索到与补贴相关的项"
+                android:text="     如：输入家具备料,则搜索到与补贴相关的项"
                 android:textColor="@color/mz_grey_lv_two"
                 android:textSize="12sp"
         />

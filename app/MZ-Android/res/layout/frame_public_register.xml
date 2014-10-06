@@ -189,6 +189,7 @@
                     android:text="性别"
                     />
                 <RadioGroup android:id="@+id/radioGroup" 
+                    android:layout_marginTop="10dp"
                     android:contentDescription="性别"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -210,16 +211,10 @@
                         android:text="女"
                         android:textColor="@color/white"
                         android:textSize="16sp"
-                        android:checked="true"
+                        android:checked="false"
                         />
                 </RadioGroup>
             </LinearLayout>
-             <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/white" >
-            </View>
               <LinearLayout 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
