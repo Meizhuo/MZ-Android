@@ -36,12 +36,12 @@ import android.widget.Toast;
  */
 public class UserCenter_Publicer extends BaseActivity {
 	
-	private static final String TAG = "UserCenter";
+	private static final String TAG = "UserCenter_Publicer";
 	
 	@InjectView(R.id.mz_usercenter_name_tv) TextView name_tv;
 	@InjectView(R.id.mz_usercenter_sex_tv) TextView sex_tv;
 	@InjectView(R.id.mz_usercenter_workplace_tv) TextView workplace_tv;
-	@InjectView(R.id.tv_userinfo_edit) TextView edit_tv;  // 右上角的编辑信息
+	@InjectView(R.id.tv_userinfo_publicer_edit) TextView edit_tv;  // 右上角的编辑信息
 	private Publicer publicer;
 	private PublicerAPI publicApi;
 	private UCHandler handler =  new UCHandler();
@@ -56,7 +56,7 @@ public class UserCenter_Publicer extends BaseActivity {
 		
 	}
 	
-	@OnClick(R.id.tv_userinfo_edit) public void EditInfo() {
+	@OnClick(R.id.tv_userinfo_publicer_edit) public void EditInfo() {
 		String name = publicer.getName();
 		String gender = publicer.getGender();
 		String workplace = publicer.getWorkPlace();
@@ -77,6 +77,7 @@ public class UserCenter_Publicer extends BaseActivity {
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
+				Log.i(TAG, obj.toString());
 				try {
 					String sex = obj.getString("sex");
 					String nickname = obj.getString("nickname");

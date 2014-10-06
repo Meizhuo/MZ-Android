@@ -39,7 +39,7 @@
             android:textSize="15sp" 
             android:layout_marginRight="2dp"/>
         <TextView 
-            android:id="@+id/tv_userinfo_edit"
+            android:id="@+id/tv_userinfo_publicer_edit"
             style="@style/TextView"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
@@ -71,7 +71,7 @@
                 android:id="@+id/thumbnailThree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                bootstrap:bct_image="@drawable/aa_headshot"
+                bootstrap:bct_image="@drawable/mz_gender_male_normal"
                 bootstrap:bct_size="medium"
                 android:layout_margin="10dp"/>
         </LinearLayout>

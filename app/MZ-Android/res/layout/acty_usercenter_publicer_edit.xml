@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/mz_blue_title_nomal"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/btn_app_back"
+        android:background="@drawable/mz_btn_title_back"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp" >
+
+        <ImageView
+            android:id="@+id/iv_app_icon_back"
+            style="@style/ImageView"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/icon_action_back" />
+
+        <TextView
+            android:id="@+id/tv_app_title"
+            style="@style/TextView"
+            android:layout_toRightOf="@+id/iv_app_icon_back"
+            android:layout_alignBottom="@+id/iv_app_icon_back"
+            android:layout_centerVertical="true"
+            android:gravity="left"
+            android:layout_marginLeft="2dp"
+            android:text="Application"
+            android:textColor="@color/white"
+            android:textSize="15sp" 
+            android:layout_marginRight="2dp"/>
+             <TextView 
+            android:id="@+id/tv_userinfo_edit_save"
+            style="@style/TextView"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="@drawable/mz_btn_item_main"
+        >
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            style="@style/TextView"
+            android:text="姓名:" 
+            />
+        <EditText 
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/usercenter_editInfo_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+    </LinearLayout>
+    
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/ic_line_1" />
+    
+        <LinearLayout 
+            android:layout_gravity="center_vertical"
+            android:id="@+id/usercenter_editInfo_sex"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="@drawable/mz_btn_item_main"
+        >
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            style="@style/TextView"
+            android:text="性别:" 
+            />
+        <TextView
+            android:id="@+id/usercenter_editInfo_sex_tv"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            style="@style/TextView"
+            android:text="男" 
+            />
+        
+    </LinearLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/ic_line_1" />
+        <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="@drawable/mz_btn_item_main"
+        >
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            style="@style/TextView"
+            android:text="工作单位:" 
+            />
+        <EditText 
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/usercenter_editInfo_workplace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            
+            />
+    </LinearLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/ic_line_1" />
+</LinearLayout>
