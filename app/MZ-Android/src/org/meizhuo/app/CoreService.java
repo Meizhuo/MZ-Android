@@ -61,27 +61,22 @@ public class CoreService extends Service {
 	
 	private void checkVersion(){
 		VersionAPI api = new VersionAPI();
-		Log.d(TAG, "checkVersion" + "检测版本");
 		api.getLatestInfo(new JsonResponseHandler() {
 			@Override
 			public void onOK(Header[] headers, JSONObject obj)  {
 				// TODO Auto-generated method stub
 				try {
-					Log.d(TAG, "开始" + obj.toString());
 					System.out.println(obj.toString());
 					int versioncode = Integer.parseInt(obj
 							.getString("version_code"));
 					int currentVersion = AndroidUtils
 							.getAppVersionCode(getApplicationContext());
 					
-					Log.d(TAG, "开始版本比较" + versioncode + " = " + currentVersion);
 					String updateInfo = obj.getString("description");
-					Log.d(TAG, "你妹" + updateInfo);
-					if (versioncode == currentVersion) {
+					if (versioncode > currentVersion) {
 						AlertDialog.Builder builder = new Builder(getApplicationContext());
 						builder.setMessage("应用有新版本，请更新");
 						builder.setTitle("更新应用");
-						Log.d(TAG, "这里执行到了吗" + "执行了");
 					}
 					Intent intent = new Intent(Constants.Action_Receive_VersionInfo);
 					intent.putExtra("version_code", versioncode);
