@@ -16,6 +16,7 @@ public class InstitutionAPI {
 	 * @param type
 	 * @param page
 	 * @param responseHandler
+	 * 
 	 */
 	public static void getInstitutionInfo(String status, String name, String type,  String page,
 			AsyncHttpResponseHandler responseHandler){
