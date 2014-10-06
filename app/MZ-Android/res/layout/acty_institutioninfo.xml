@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    	
+      <include layout="@layout/acty_base_header" />
+      <RelativeLayout 
+          style="@style/RelativeLayout"
+          android:layout_height="160dp"
+          >
+          <org.meizhuo.view.AutoScrollViewPager 
+              android:id="@+id/autoscrollviewpage"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              >
+          </org.meizhuo.view.AutoScrollViewPager>
+      </RelativeLayout>
+      <android.support.v4.widget.SwipeRefreshLayout 
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+      <ListView 
+          android:id="@+id/lv_institutionInfo"
+          style="@style/ListView"
+          android:divider="@drawable/ic_line_1"
+          ></ListView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

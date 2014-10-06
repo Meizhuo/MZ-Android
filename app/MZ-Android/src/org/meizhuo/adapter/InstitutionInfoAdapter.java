@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.meizhuo.app.R;
+import org.meizhuo.model.Institution;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -15,13 +16,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class InstitutionConsultAdapter extends BaseAdapter{
+public class InstitutionInfoAdapter extends BaseAdapter{
 	
-	private List<String> mData;
+	private List<Institution> mData;
 	private Context mContext;
-	public InstitutionConsultAdapter(Context context, String[] names) {
+	public InstitutionInfoAdapter(Context context, List<Institution>list) {
 		// TODO Auto-generated constructor stub
-		mData = Arrays.asList(names);
+		mData = list;
 		mContext=context;
 	}
 
@@ -49,18 +50,24 @@ public class InstitutionConsultAdapter extends BaseAdapter{
 		ViewHolder h;
 		if (convertView == null)
 		{
-			convertView = LayoutInflater.from(mContext).inflate(R.layout.lv_publicconsult, null);
+			convertView = LayoutInflater.from(mContext).inflate(R.layout.lv_institution_info_item, null);
 			h = new ViewHolder(convertView);
 			convertView.setTag(h);
 		}else
 		{
 			h = (ViewHolder)convertView.getTag();
 		}
-		h.tv_name.setText(mData.get(position));
+		h.tv_name.setText(mData.get(position).getName().toString());
+		h.tv_addr.setText(mData.get(position).getAddress().toString());
+		h.tv_type.setText(mData.get(position).getType().toString());
+		h.tv_description.setText(mData.get(position).getDescription().toString());
 		return convertView;
 	}
 	static class ViewHolder {
-		@InjectView(R.id.tv_name) TextView tv_name;
+		@InjectView(R.id.tv_institution_name) TextView tv_name;
+		@InjectView(R.id.tv_institution_addr) TextView tv_addr;
+		@InjectView(R.id.tv_institution_type) TextView tv_type;
+		@InjectView(R.id.tv_institution_description) TextView tv_description;
 		
 		public ViewHolder(View v) {
 			// TODO Auto-generated constructor stub
