@@ -73,7 +73,7 @@ public class Main extends BaseActivity {
 	}
 
 	@OnClick(R.id.btn_unitinfo) public void unitinfo() {
-		openActivity(UnitInfo.class);
+		openActivity(Professional_Training.class);
 	}
 
 	@OnClick(R.id.btn_institutions) public void Institutions() {

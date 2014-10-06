@@ -2,7 +2,7 @@ package org.meizhuo.fragment;
 
 import org.meizhuo.adapter.UnitinfoAdapter;
 import org.meizhuo.app.R;
-import org.meizhuo.app.acty.UnitInfoView;
+import org.meizhuo.app.acty.Professional_TrainingView;
 
 import butterknife.InjectView;
 import butterknife.OnItemClick;
@@ -30,6 +30,6 @@ public class UnitInfoLastest extends BaseFragment {
 	}
 	
 	@OnItemClick(R.id.lv) public void item_click(int position) {
-		openActivity(UnitInfoView.class);
+		openActivity(Professional_TrainingView.class);
 	}
 }

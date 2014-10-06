@@ -27,7 +27,7 @@ import butterknife.OnItemClick;
  * @author Jayin
  * 
  */
-public class UnitInfo extends BaseActivity {
+public class Professional_Training extends BaseActivity {
 	@InjectView(R.id.tabs) com.astuetz.PagerSlidingTabStrip mPagerSlidingTabStrip;
 	@InjectView(R.id.viewpager) ViewPager mViewPager;
 	UnitinfoAdapter adatper_unitinfo;
@@ -38,7 +38,7 @@ public class UnitInfo extends BaseActivity {
 	@Override protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState, R.layout.acty_unitinfo);
-		setAppTitle("单位信息");
+		setAppTitle("职业培训信息");
 
 		fragments.add(new UnitInfoLastest());
 		fragments.add(new UnitInfoBase());

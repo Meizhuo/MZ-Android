@@ -62,27 +62,11 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.UnitInfo"
+            android:name=".acty.Professional_Training"
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.UnitInfoBase"
-            android:launchMode="singleTask" >
-        </activity>
-        <activity
-            android:name=".acty.UnitInfoLastest"
-            android:launchMode="singleTask" >
-        </activity>
-        <activity
-            android:name=".acty.UnitInfoLaw"
-            android:launchMode="singleTask" >
-        </activity>
-        <activity
-            android:name=".acty.UnitInfoPolicy"
-            android:launchMode="singleTask" >
-        </activity>
-        <activity
-            android:name=".acty.UnitInfoView"
+            android:name=".acty.Professional_TrainingView"
             android:launchMode="singleTask" >
         </activity>
         <activity
