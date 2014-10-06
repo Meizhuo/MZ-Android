@@ -25,7 +25,7 @@ public class StringUtils {
 	}
 	
 	/**
-	 * 检测字符串中只能包含: 中文.数字.下划线.横线,英文a-z  A-Z
+	 * 检测字符串中只能包含: 中文
 	 * 
 	 * @param sequence
 	 * @return true if is Ok
@@ -43,7 +43,7 @@ public class StringUtils {
 	 * @param phonename
 	 * @return
 	 */
-	public static boolean isPhoneName(String phonename){
+	public static boolean isPhone(String phonename){
 		Pattern pattern = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
 		Matcher match = pattern.matcher(phonename);
 		return match.find();
@@ -58,6 +58,28 @@ public class StringUtils {
 		Pattern pattern = Pattern.compile("^([a-z0-9A-Z]+[-_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
 		Matcher matcher = pattern.matcher(sequence);
 		return matcher.find();
+	}
+	
+	/**
+	 * 判断是否密码
+	 * @param password
+	 * @return
+	 */
+	public static boolean isPassword(String password){
+		Pattern pattern = Pattern.compile("^[a-z0-9A-Z]{8,16}$");
+		Matcher matcher = pattern.matcher(password);
+		return matcher.find();
+	}
+	/***
+	 * 检测字符串中只能包含：中文、数字、下划线、横线,英文a-z A-Z
+	 * @param companyName
+	 * @return
+	 */
+	public static boolean isCompanyName(String companyName){
+		final String format = "[^\\u4E00-\\u9FA5\\uF900-\\uFA2D\\w-_a-zA-Z]";
+		Pattern pattern = Pattern.compile(format);
+		Matcher matcher = pattern.matcher(companyName);
+		return !matcher.find();
 	}
 
 }
