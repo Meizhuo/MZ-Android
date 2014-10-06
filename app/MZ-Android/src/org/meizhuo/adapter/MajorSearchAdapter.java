@@ -58,6 +58,7 @@ public class MajorSearchAdapter extends BaseAdapter{
 		h.tv_certificate_type.setText(data.get(position).getCertificate_type());
 		h.tv_level.setText(data.get(position).getLevel());
 		h.tv_money.setText(data.get(position).getMoney());
+		h.tv_title.setText(data.get(position).getTitle());
 		return convertView;
 	}
 	
@@ -65,6 +66,7 @@ public class MajorSearchAdapter extends BaseAdapter{
 		@InjectView(R.id.search_tv_certificate_type) TextView tv_certificate_type;
 		@InjectView(R.id.search_tv_level) TextView tv_level;
 		@InjectView(R.id.search_tv_money) TextView tv_money;
+		@InjectView(R.id.search_tv_title) TextView tv_title;
 		
 		public ViewHolder(View v) {
 			// TODO Auto-generated constructor stub
