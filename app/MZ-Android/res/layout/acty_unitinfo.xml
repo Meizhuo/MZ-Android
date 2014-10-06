@@ -4,49 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:orientation="horizontal"
-        android:background="@color/mz_blue_title_nomal"
-        >
-	      <RelativeLayout
-        android:id="@+id/btn_app_back"
-        android:background="@drawable/mz_btn_title_back"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp" >
-
-        <ImageView
-            android:id="@+id/iv_app_icon_back"
-            style="@style/ImageView"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/icon_action_back" />
-
-        <TextView
-            android:id="@+id/tv_app_title"
-            style="@style/TextView"
-            android:layout_toRightOf="@+id/iv_app_icon_back"
-            android:layout_alignBottom="@+id/iv_app_icon_back"
-            android:layout_centerVertical="true"
-            android:gravity="left"
-            android:layout_marginLeft="2dp"
-            android:text="Application"
-            android:textColor="@color/white"
-            android:textSize="15sp" 
-            android:layout_marginRight="2dp"/>
-        <ImageView 
-            android:id="@+id/tv_app_title_search"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/aa_mz_search"
-            />
-    </RelativeLayout>
-    </LinearLayout>
+	<include layout="@layout/acty_base_header"/>
    
 
    <com.astuetz.PagerSlidingTabStrip
