@@ -90,11 +90,16 @@ public class Main extends BaseActivity {
 	}
 
 	@OnClick(R.id.btn_usercenter) public void usercenter() {
+		boolean isLogin = is_Publicer_Login || is_Employer_Login;
+		if(!isLogin){
+			toast("请先到设置模块进行登录");
+		}
 		if(is_Publicer_Login){
 			openActivity(UserCenter_Publicer.class);
 		}
-		if(is_Employer_Login){
-			
+		
+		if (is_Employer_Login) {
+			openActivity(UserCenter_Employer.class);
 		}
 		
 	}
