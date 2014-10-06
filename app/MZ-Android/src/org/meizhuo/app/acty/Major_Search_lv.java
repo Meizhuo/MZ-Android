@@ -87,10 +87,26 @@ public class Major_Search_lv extends BaseActivity implements OnRefreshListener, 
 	public void onRefresh() {
 		// TODO Auto-generated method stub
 		isloading = true;
-		 kind = getIntent().getStringExtra("kind");
-		level =  getIntent().getStringExtra("level");
-		certificate_type = getIntent().getStringExtra("certificate_type");
-		title = "";
+			if(!(getIntent().getStringExtra("kind")==null && getIntent().getStringExtra("kind").equals(""))){
+				kind = getIntent().getStringExtra("kind");
+			}else{
+				kind = "";
+			}
+			if(!(getIntent().getStringExtra("level")==null && getIntent().getStringExtra("level").equals(""))){
+				level = getIntent().getStringExtra("level");
+			}else{
+				level = "";
+			}
+			if(!(getIntent().getStringExtra("certificate_type")==null && getIntent().getStringExtra("certificate_type").equals(""))){
+				certificate_type = getIntent().getStringExtra("certificate_type");
+			}else{
+				certificate_type = "";
+			}
+			if(!(getIntent().getStringExtra("title")==null && getIntent().getStringExtra("title").equals(""))){
+				title = getIntent().getStringExtra("title");
+			}else{
+				title = "";
+			}
 		if(searchAPI == null)
 			searchAPI = new SearchAPI();
 		searchAPI.getSubsidy(certificate_type, title, kind, level, "1", new JsonResponseHandler() {
