@@ -146,6 +146,11 @@
             android:name=".acty.Professional_Article"
             android:launchMode="singleTask" >
         </activity>
+        <!-- Professional_Evaluation -->
+          <activity
+            android:name=".acty.Professional_Evaluation"
+            android:launchMode="singleTask" >
+        </activity>
         
     </application>
 
