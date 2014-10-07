@@ -1,6 +1,7 @@
 package org.meizhuo.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -8,7 +9,7 @@ import org.json.JSONObject;
 
 import com.google.gson.Gson;
 /**
- * 新闻列表以及内容
+ * 新闻列表 包含内容 看下面的属性
  * @author Jason
  *
  */
@@ -35,7 +36,7 @@ public class DocumentInfo implements Serializable{
 	 * @return
 	 */
 	public static List<DocumentInfo> create_by_jsonarray(String jsonarray){
-		List<DocumentInfo> list =  null;
+		List<DocumentInfo> list =  new ArrayList<DocumentInfo>();
 		JSONObject obj = null;
 		JSONArray array = null;
 		try {
@@ -52,6 +53,8 @@ public class DocumentInfo implements Serializable{
 		}
 		return list;
 	}
+	
+	
 	
 
 	public DocumentInfo() {
