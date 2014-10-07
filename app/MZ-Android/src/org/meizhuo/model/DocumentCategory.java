@@ -16,7 +16,7 @@ import com.google.gson.Gson;
  */
 
 @SuppressWarnings("serial")
-public class DocumentList implements Serializable{
+public class DocumentCategory implements Serializable{
 	
 	
 	/**
@@ -24,10 +24,10 @@ public class DocumentList implements Serializable{
 	 * @param json
 	 * @return
 	 */
-	public static DocumentList create_by_json(String json){
+	public static DocumentCategory create_by_json(String json){
 		try {
 			Gson gson = new Gson();
-			return (DocumentList)gson.fromJson(json, DocumentList.class);
+			return (DocumentCategory)gson.fromJson(json, DocumentCategory.class);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -40,8 +40,8 @@ public class DocumentList implements Serializable{
 	 * @param jsonarray
 	 * @return
 	 */
-	public static List<DocumentList> create_by_jsonarray(String jsonarray){
-		List<DocumentList>list = null;
+	public static List<DocumentCategory> create_by_jsonarray(String jsonarray){
+		List<DocumentCategory>list = null;
 		JSONObject obj = null;
 		JSONArray array = null;
 		try {
@@ -59,7 +59,7 @@ public class DocumentList implements Serializable{
 		return list;
 	}
 
-	public DocumentList() {
+	public DocumentCategory() {
 		// TODO Auto-generated constructor stub
 	}
 	
