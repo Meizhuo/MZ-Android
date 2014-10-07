@@ -38,7 +38,7 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.InstitutionConsult"
+            android:name=".acty.InstitutionInfo"
             android:launchMode="singleTask" >
         </activity>
         <activity
@@ -139,6 +139,11 @@
         <!-- UserCenter_Employer_EditInfo -->
          <activity
             android:name=".acty.UserCenter_Employer_EditInfo"
+            android:launchMode="singleTask" >
+        </activity>
+        <!-- Professional_Article -->
+          <activity
+            android:name=".acty.Professional_Article"
             android:launchMode="singleTask" >
         </activity>
         
