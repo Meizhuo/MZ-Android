@@ -72,6 +72,7 @@ public class Professional_Training_Policy extends BaseFragment implements OnRefr
 			@Override
 			public void onStart() {
 				// TODO Auto-generated method stub
+				swipeRefreshLayout.setRefreshing(true);
 				toast("执行到" + "onStart");
 			}
 			
