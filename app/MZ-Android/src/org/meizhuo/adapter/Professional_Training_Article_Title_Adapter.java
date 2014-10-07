@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.meizhuo.app.R;
-import org.meizhuo.model.DocumentList;
+import org.meizhuo.model.DocumentInfo;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,10 +17,10 @@ import butterknife.InjectView;
 
 public class Professional_Training_Article_Title_Adapter extends BaseAdapter {
 
-	private List<DocumentList> mData;
+	private List<DocumentInfo> mData;
 	private Context mContext;
 
-	public Professional_Training_Article_Title_Adapter(Context context, List<DocumentList> list) {
+	public Professional_Training_Article_Title_Adapter(Context context, List<DocumentInfo> list) {
 		mData = list;
 		mContext = context;
 	}
