@@ -127,7 +127,7 @@ public class Institution implements Serializable{
 		this.description = description;
 	}
 
-	private String uid;
+	
 	@Override
 	public String toString() {
 		return "Institution [uid=" + uid + ", nickname=" + nickname
@@ -136,7 +136,7 @@ public class Institution implements Serializable{
 				+ ", name=" + name + ", address=" + address + ", type=" + type
 				+ ", description=" + description + "]";
 	}
-
+	private String uid;
 	private String nickname;
 	private String phone;
 	private String email;
