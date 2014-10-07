@@ -92,7 +92,7 @@ public class Professional_Training_Base extends BaseFragment implements OnRefres
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
-				
+				toast("出错了，请检查你的网络设置!");
 			}
 			
 			@Override
@@ -129,7 +129,8 @@ public class Professional_Training_Base extends BaseFragment implements OnRefres
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
-				
+				toast("网络不给力,请检查你的网络设置!");
+
 			}
 			@Override
 			public void onFinish() {
