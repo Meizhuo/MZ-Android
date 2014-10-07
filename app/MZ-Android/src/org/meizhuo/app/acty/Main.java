@@ -72,16 +72,16 @@ public class Main extends BaseActivity {
 		viewPager.setAdapter(adapter_imagepage);
 	}
 
-	@OnClick(R.id.btn_unitinfo) public void unitinfo() {
+	@OnClick(R.id.btn_professional_training) public void Professional_Training() {
 		openActivity(Professional_Training.class);
 	}
 
-	@OnClick(R.id.btn_institutions) public void Institutions() {
-		openActivity(Institutions.class);
+	@OnClick(R.id.btn_professional_evaluation) public void Professional_Evaluation() {
+		openActivity(Professional_Evaluation.class);
 	}
 
-	@OnClick(R.id.btn_institution_consult) public void institution_consult() {
-		openActivity(InstitutionConsult.class);
+	@OnClick(R.id.btn_institution_info) public void InstitutionInfo() {
+		openActivity(InstitutionInfo.class);
 	}
 
 	@OnClick(R.id.btn_major_search) public void major_search() {
