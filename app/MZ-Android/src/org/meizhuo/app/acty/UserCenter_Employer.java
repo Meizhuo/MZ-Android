@@ -46,12 +46,6 @@ public class UserCenter_Employer extends BaseActivity {
 		employer =  new Employer();
 		initData();
 	}
-	/**
-	 * 	
-	@InjectView(R.id.mz_usercenter_em_workplace_name) TextView workplace_name;
-	@InjectView(R.id.mz_usercenter_em_contact_phone) TextView contact_name;
-	@InjectView(R.id.mz_usercenter_em_addr) TextView work_addr;
-	*/
 	
 		@OnClick(R.id.tv_userinfo_employer_edit) public void edit_info(){
 			Intent intent  =  new Intent(this, UserCenter_Employer_EditInfo.class);
