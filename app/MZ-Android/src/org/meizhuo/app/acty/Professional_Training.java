@@ -29,13 +29,12 @@ public class Professional_Training extends BaseActivity {
 	
 	@InjectView(R.id.tabs) com.astuetz.PagerSlidingTabStrip mPagerSlidingTabStrip;
 	@InjectView(R.id.viewpager) ViewPager mViewPager;
-	ImagePagerAdapter adapter_imagepage;
  
 	List<Fragment> fragments = new ArrayList<Fragment>();
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState, R.layout.acty_unitinfo );
+		super.onCreate(savedInstanceState, R.layout.acty_profession_training );
 		setAppTitle("职业培训信息");
 
 		fragments.add(new Professional_Training_AboutNews());
