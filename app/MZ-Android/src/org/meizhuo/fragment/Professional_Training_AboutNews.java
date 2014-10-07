@@ -45,7 +45,7 @@ public class Professional_Training_AboutNews extends BaseFragment implements OnR
 	Professional_Training_Article_Title_Adapter adatper_title;
 	/**文档列表 其实也包括了内容*/
 	List<DocumentInfo>data;
-	String category_id = "1",title = "",content = "", page = "1";
+	String category_id = "3",title = "",content = "", page = "1";
 	boolean hasMore = true, isloading = false;
 	
 	
@@ -78,7 +78,7 @@ public class Professional_Training_AboutNews extends BaseFragment implements OnR
 	@Override
 	public void onRefresh() {
 		// TODO Auto-generated method stub
-		ArticleAPI.getArticleInfo("1", title, content, page, new JsonResponseHandler() {
+		ArticleAPI.getArticleInfo(category_id, title, content, page, new JsonResponseHandler() {
 			
 			@Override
 			public void onStart() {
@@ -157,8 +157,8 @@ public class Professional_Training_AboutNews extends BaseFragment implements OnR
 	
 	@OnItemClick(R.id.lv) public void item_click(int position) {
 		Intent intent =  new Intent(getActivity(), Professional_Article.class);
-		intent.putExtra("id", data.get(position).getCategory_id());
-		intent.putExtra("id", data.get(position).getId());
+		intent.putExtra("content", data.get(position).getContent());
+		intent.putExtra("title", data.get(position).getTitle());
 		startActivity(intent);
 	}
 	
