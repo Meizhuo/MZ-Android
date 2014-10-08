@@ -40,6 +40,7 @@ public class Professional_Training extends BaseActivity {
 		fragments.add(new Professional_Training_AboutNews());
 		fragments.add(new Professional_Training_Base());
 		fragments.add(new Professional_Training_Policy());
+		fragments.add(new Professional_Training_Notification());
 
 		mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),
 				fragments));
@@ -52,7 +53,7 @@ public class Professional_Training extends BaseActivity {
 
 		List<Fragment> fragments;
 
-		private final String[] TITLES = {  "相关新闻","基本职能","法规政策" };
+		private final String[] TITLES = {  "相关新闻","基本职能","法规政策","通知信息" };
 
 		public MyPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
 			super(fm);
