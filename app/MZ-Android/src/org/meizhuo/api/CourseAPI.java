@@ -24,5 +24,9 @@ public class CourseAPI {
 		RestClient.get("/home/course/search", params, responseHandler);
 	}
 	
+	public static void getCourseListInfo(AsyncHttpResponseHandler responseHandler){
+		RestClient.get("/home/course/search", null, responseHandler);
+	}
+	
 
 }
