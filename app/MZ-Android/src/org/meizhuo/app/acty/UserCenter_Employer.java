@@ -52,7 +52,7 @@ public class UserCenter_Employer extends BaseActivity {
 			intent.putExtra("work_addr", employer.getAddress());
 			intent.putExtra("workplace_name", employer.getNickname());
 			intent.putExtra("contact_phone", employer.getContact_phone());
-			startActivity(intent);
+			startActivityForResult(intent, 100);
 		}
 	
 	private void initData() {
@@ -111,6 +111,20 @@ public class UserCenter_Employer extends BaseActivity {
 				waittingDialog = null;
 				break;
 			}
+		}
+	}
+	@Override
+	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(arg0, arg1, arg2);
+		if (arg0 == 100 && arg1 == 101){
+			String workplace = arg2.getStringExtra("workplace");
+			String contactphone = arg2.getStringExtra("contact_phone");
+			String workaddr = arg2.getStringExtra("work_addr");
+			workplace_name.setText(workplace);
+			contact_phone.setText(contactphone);
+			work_addr.setText(workaddr);
+			
 		}
 	}
 

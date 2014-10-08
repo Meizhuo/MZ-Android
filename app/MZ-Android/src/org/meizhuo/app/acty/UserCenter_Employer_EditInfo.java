@@ -109,6 +109,16 @@ public class UserCenter_Employer_EditInfo extends BaseActivity{
 				if(dialog.isShowing()){
 					dialog.dismiss();
 				}
+				dialog = null;
+				String workplace = edit_workplace.getText().toString();
+				String contact_phone =edid_contact_phone.getText().toString();
+				String work_addr = edit_workplace_addr.getText().toString();
+				Intent backintent = new Intent();
+				backintent.putExtra("workplace", workplace);
+				backintent.putExtra("contact_phone", contact_phone);
+				backintent.putExtra("work_addr", work_addr);
+				setResult(101, backintent);
+				UserCenter_Employer_EditInfo.this.finish();
 			}
 		}
 	}
