@@ -13,6 +13,7 @@ import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.CoreService;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
+import org.meizhuo.utils.AndroidUtils;
 import org.meizhuo.utils.Constants;
 
 import com.google.gson.JsonObject;
@@ -23,6 +24,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -130,13 +132,18 @@ public class Main extends BaseActivity {
 			// TODO Auto-generated method stub
 			String action =  intent.getAction();
 			String updateInfo = intent.getStringExtra("updateInfo");
+			String versionname = intent.getStringExtra("version_name");
 			final String url = intent.getStringExtra("url");
 			if(action.equals(Constants.Action_Receive_VersionInfo)){
 				Log.i(TAG, "SUCCESSFUL");
 				AlertDialog.Builder  builder=new AlertDialog.Builder(Main.this);
 				builder.setTitle("发现新版本");
-				builder.setMessage(updateInfo);
-				
+				try {
+					builder.setMessage("当前版本:" + AndroidUtils.getAppVersionName(Main.this) + "\n更新版本号:"+ versionname + "\n" +  updateInfo);
+				} catch (NameNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				builder.setPositiveButton("立刻更新 ", new DialogInterface.OnClickListener() {
 					
 					@Override

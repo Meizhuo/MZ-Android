@@ -69,6 +69,7 @@ public class CoreService extends Service {
 					System.out.println(obj.toString());
 					int versioncode = Integer.parseInt(obj
 							.getString("version_code"));
+					String versionname = obj.getString("version_name");
 					int currentVersion = AndroidUtils
 							.getAppVersionCode(getApplicationContext());
 					String url = obj.getString("url");
@@ -76,6 +77,7 @@ public class CoreService extends Service {
 					if (versioncode > currentVersion) {
 						Intent intent = new Intent(Constants.Action_Receive_VersionInfo);
 						intent.putExtra("version_code", versioncode);
+						intent.putExtra("version_name", versionname);
 						intent.putExtra("updateInfo", updateInfo);
 						intent.putExtra("url", url);
 						sendBroadcast(intent);
