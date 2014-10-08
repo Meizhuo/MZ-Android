@@ -31,22 +31,22 @@ import android.widget.ListView;
  *
  */
 public class Professional_Training_Policy extends BaseFragment implements OnRefreshListener, OnScrollListener{
-	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	@InjectView(R.id.lv) ListView lv;
+	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	Professional_Training_Article_Title_Adapter adatper_title;
 	List<DocumentInfo>data;
 	String category_id = "2", title = "", content = "", page = "1";
 	boolean hasMore = true, isloading = false;
-	
+
 	@Override public View onCreateView(LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		super.onCreateView(inflater, container, savedInstanceState,R.layout.fm_professional_training_policy);
+		super.onCreateView(inflater, container, savedInstanceState,
+				R.layout.fm_professional_training_policy);
 		initData();
 		initLayout();
 		onRefresh();
 		return contentView;
 	}
-	
 	
 	private void initData(){
 		data = new ArrayList<DocumentInfo>();
@@ -63,7 +63,6 @@ public class Professional_Training_Policy extends BaseFragment implements OnRefr
 		lv.setOnScrollListener(this);
 	}
 	
-
 	@Override
 	public void onRefresh() {
 		// TODO Auto-generated method stub
@@ -73,7 +72,6 @@ public class Professional_Training_Policy extends BaseFragment implements OnRefr
 			public void onStart() {
 				// TODO Auto-generated method stub
 				swipeRefreshLayout.setRefreshing(true);
-				toast("执行到" + "onStart");
 			}
 			
 			@Override
@@ -86,22 +84,19 @@ public class Professional_Training_Policy extends BaseFragment implements OnRefr
 				page = "1";
 				if (documentInfos.size() < 10){
 					hasMore = false;
-				} else {
+				}else {
 					hasMore = true;
 				}
 			}
-			
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
 				toast("出错了，请检查你的网络设置!");
-
 			}
 			
 			@Override
 			public void onFinish() {
 				// TODO Auto-generated method stub
-				toast("执行到" + "onFinish");
 				swipeRefreshLayout.setRefreshing(false);
 				isloading = false;
 			}
@@ -126,16 +121,16 @@ public class Professional_Training_Policy extends BaseFragment implements OnRefr
 				List<DocumentInfo>documentInfos = DocumentInfo.create_by_jsonarray(obj.toString());
 				data.addAll(documentInfos);
 				adatper_title.notifyDataSetChanged();
-				if (obj.isNull("response") || documentInfos.size() <10)
-					hasMore  = false;
+				if(obj.isNull("response") || documentInfos.size() < 10)
+					hasMore = false;
 			}
 			
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
 				toast("网络不给力,请检查你的网络设置!");
+
 			}
-			
 			@Override
 			public void onFinish() {
 				// TODO Auto-generated method stub
@@ -144,34 +139,37 @@ public class Professional_Training_Policy extends BaseFragment implements OnRefr
 			}
 		});
 	}
-
 	
-
-
-		@Override
-		public void onScroll(AbsListView view, int firstVisibleItem,
-				int visibleItemCount, int totalItemCount) {
-			// TODO Auto-generated method stub
-			if(swipeRefreshLayout.isRefreshing() || isloading)
-				return ;
-			if (firstVisibleItem + visibleItemCount >= totalItemCount && totalItemCount != 0 && hasMore)
-				isloading = true;
-				onLoadMore();
+	@Override
+	public void onScroll(AbsListView view, int firstVisibleItem,
+			int visibleItemCount, int totalItemCount) {
+		// TODO Auto-generated method stub
+		if (swipeRefreshLayout.isRefreshing() || isloading)
+			return ;
+		if (firstVisibleItem + visibleItemCount >= totalItemCount && totalItemCount != 0 && hasMore){
+			isloading = true;
+			onLoadMore();
 		}
-		
-		@OnItemClick(R.id.lv) public void item_click(int position) {
-			Intent intent =  new Intent(getActivity(), Professional_Article.class);
-			intent.putExtra("content", data.get(position).getContent());
-			intent.putExtra("title", data.get(position).getTitle());
-			startActivity(intent);
-		}
-
-
-		@Override
-		public void onScrollStateChanged(AbsListView view, int scrollState) {
-			// TODO Auto-generated method stub
 			
-		}
+	}
+	
+	
+	
+	@OnItemClick(R.id.lv) public void item_click(int position) {
+		Intent intent =  new Intent(getActivity(), Professional_Article.class);
+		intent.putExtra("content", data.get(position).getContent());
+		intent.putExtra("title", data.get(position).getTitle());
+		startActivity(intent);
+	}
+
+
+
+
+	@Override
+	public void onScrollStateChanged(AbsListView view, int scrollState) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 
