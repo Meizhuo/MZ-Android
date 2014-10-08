@@ -16,7 +16,7 @@
         android:layout_marginTop="10dp"
                 style="@style/TextView"
                 android:ellipsize="end"
-                android:text="     如：输入家具备料,则搜索到与补贴相关的项"
+                android:text="     如：输入挖掘,则搜索到与挖掘相关的项"
                 android:textColor="@color/mz_grey_lv_two"
                 android:textSize="12sp"
         />
