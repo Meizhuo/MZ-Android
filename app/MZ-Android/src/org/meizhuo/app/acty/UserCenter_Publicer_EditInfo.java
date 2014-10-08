@@ -131,6 +131,7 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 				backintent.putExtra("work_place", work_place);
 				UserCenter_Publicer_EditInfo.this.setResult(1001, backintent);
 				UserCenter_Publicer_EditInfo.this.finish();
+				
 			default:
 				break;
 			}

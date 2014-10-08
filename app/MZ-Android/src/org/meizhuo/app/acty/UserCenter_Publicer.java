@@ -147,18 +147,22 @@ public class UserCenter_Publicer extends BaseActivity {
 		}
 		
 	}
-	
+	/**
+	 * @InjectView(R.id.mz_usercenter_name_tv) TextView name_tv;
+	@InjectView(R.id.mz_usercenter_sex_tv) TextView sex_tv;
+	@InjectView(R.id.mz_usercenter_workplace_tv) TextView workplace_tv;
+	 */
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == 1000 && resultCode == 1001){
-			toast("执行鸟");
 			String name = data.getStringExtra("name");
 			String sex = data.getStringExtra("sex");
 			String workplace = data.getStringExtra("work_place");
-			Log.i(TAG, "name =" + name + "..." + "sex = " + sex + " workplace= " + workplace ); 
+			name_tv.setText(name);
+			sex_tv.setText(sex);
+			workplace_tv.setText(workplace);
 		}
 		
 	}

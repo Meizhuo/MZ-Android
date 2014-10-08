@@ -74,14 +74,12 @@
     </LinearLayout>
     
     
+    
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@drawable/ic_line_1" />
-    
-        <LinearLayout 
-            android:layout_gravity="center_vertical"
-            android:id="@+id/usercenter_editInfo_sex"
+    <!--   <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
@@ -91,11 +89,25 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             style="@style/TextView"
+            android:text="工作单位:" 
+            /> -->
+    
+        <LinearLayout 
+            android:id="@+id/usercenter_editInfo_sex"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="@drawable/mz_btn_item_main"
+        >
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            style="@style/TextView"
             android:text="性别:" 
             />
         <TextView
             android:id="@+id/usercenter_editInfo_sex_tv"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             style="@style/TextView"
             android:text="男" 

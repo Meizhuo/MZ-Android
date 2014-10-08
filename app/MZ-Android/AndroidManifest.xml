@@ -119,7 +119,7 @@
         </activity>
            <activity
             android:name=".acty.UserCenter_Publicer_EditInfo"
-            android:launchMode="singleTask" >
+            android:launchMode="standard" >
         </activity>
         <!-- Major_Search -->
            <activity
