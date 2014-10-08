@@ -158,7 +158,6 @@ public class Main extends BaseActivity {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// TODO Auto-generated method stub
-			toast("onReceive");
 			String action = intent.getAction();
 			if(action.equals(Constants.Action_Publicer_isLogin)){
 				is_Publicer_Login = true;

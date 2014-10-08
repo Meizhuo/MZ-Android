@@ -80,7 +80,7 @@ public class Employer_Register extends BaseActivity{
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				toast("" + obj);
+				toast("注册成功");
 			}
 			
 			@Override

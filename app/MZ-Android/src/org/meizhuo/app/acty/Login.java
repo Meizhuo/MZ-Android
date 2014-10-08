@@ -24,12 +24,8 @@ import butterknife.OnClick;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 /**
@@ -95,7 +91,7 @@ public class Login extends BaseActivity{
 					@Override
 					public void onOK(Header[] headers, JSONObject obj) {
 						// TODO Auto-generated method stub
-						toast("登录成功" + obj);
+						toast("登录成功");
 						Log.i(TAG, "登录成功" + obj);
 						Intent intent = new Intent(Constants.Action_Publicer_isLogin);
 						sendBroadcast(intent);
@@ -119,7 +115,7 @@ public class Login extends BaseActivity{
 						@Override
 						public void onOK(Header[] headers, JSONObject obj) {
 							// TODO Auto-generated method stub
-							toast("登录成功" + obj);
+							toast("登录成功");
 							Intent intent =  new Intent(Constants.Action_Employer_isLogin);
 							sendBroadcast(intent);
 						}
