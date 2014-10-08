@@ -60,42 +60,102 @@ public class Course implements Serializable{
 	public Course() {
 		// TODO Auto-generated constructor stub
 	}
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getInstitution_id() {
 		return institution_id;
 	}
+
 	public void setInstitution_id(String institution_id) {
 		this.institution_id = institution_id;
 	}
+
 	public String getSubsidy_id() {
 		return subsidy_id;
 	}
+
 	public void setSubsidy_id(String subsidy_id) {
 		this.subsidy_id = subsidy_id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPage() {
-		return page;
+
+	public String getStart_time() {
+		return start_time;
 	}
-	public void setPage(String page) {
-		this.page = page;
+
+	public void setStart_time(String start_time) {
+		this.start_time = start_time;
 	}
-	/**机构id*/
-	private String institution_id ;
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
+	}
+
+	public String getIntroduction() {
+		return introduction;
+	}
+
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+
+	public String getCost() {
+		return cost;
+	}
+
+	public void setCost(String cost) {
+		this.cost = cost;
+	}
 	@Override
 	public String toString() {
-		return "Course [institution_id=" + institution_id + ", subsidy_id="
-				+ subsidy_id + ", name=" + name + ", page=" + page + "]";
+		return "Course [id=" + id + ", institution_id=" + institution_id
+				+ ", subsidy_id=" + subsidy_id + ", name=" + name
+				+ ", start_time=" + start_time + ", address=" + address
+				+ ", teacher=" + teacher + ", introduction=" + introduction
+				+ ", cost=" + cost + "]";
 	}
+	//文章id
+	private String id;
+	/**机构id*/
+	private String institution_id ;
 	/**对应的补贴项目id*/
 	private String subsidy_id;
 	/**课程名称*/
 	private String name;
-	/**页码*/
-	private String page;
+	
+	private String start_time;
+	
+	private String address;
+	
+	private String teacher;
+	
+	private String introduction;
+	
+	private String cost;
 	
 }
