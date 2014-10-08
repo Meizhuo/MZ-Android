@@ -53,6 +53,11 @@
             android:name=".acty.InstitutionsInfo"
             android:launchMode="singleTask" >
         </activity>
+        <!-- InstitutionsInfo_details -->
+         <activity
+            android:name=".acty.InstitutionsInfo_details"
+            android:launchMode="singleTask" >
+        </activity>
         <activity
             android:name=".acty.PublicConsult"
             android:launchMode="singleTask" >
