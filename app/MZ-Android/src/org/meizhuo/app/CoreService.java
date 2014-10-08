@@ -71,17 +71,16 @@ public class CoreService extends Service {
 							.getString("version_code"));
 					int currentVersion = AndroidUtils
 							.getAppVersionCode(getApplicationContext());
-					
+					String url = obj.getString("url");
 					String updateInfo = obj.getString("description");
 					if (versioncode > currentVersion) {
-						AlertDialog.Builder builder = new Builder(getApplicationContext());
-						builder.setMessage("应用有新版本，请更新");
-						builder.setTitle("更新应用");
+						Intent intent = new Intent(Constants.Action_Receive_VersionInfo);
+						intent.putExtra("version_code", versioncode);
+						intent.putExtra("updateInfo", updateInfo);
+						intent.putExtra("url", url);
+						sendBroadcast(intent);
 					}
-					Intent intent = new Intent(Constants.Action_Receive_VersionInfo);
-					intent.putExtra("version_code", versioncode);
-					intent.putExtra("updateInfo", updateInfo);
-					sendBroadcast(intent);
+					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

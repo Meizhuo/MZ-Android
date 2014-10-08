@@ -130,6 +130,7 @@ public class Main extends BaseActivity {
 			// TODO Auto-generated method stub
 			String action =  intent.getAction();
 			String updateInfo = intent.getStringExtra("updateInfo");
+			final String url = intent.getStringExtra("url");
 			if(action.equals(Constants.Action_Receive_VersionInfo)){
 				Log.i(TAG, "SUCCESSFUL");
 				AlertDialog.Builder  builder=new AlertDialog.Builder(Main.this);
@@ -142,7 +143,7 @@ public class Main extends BaseActivity {
 					public void onClick(DialogInterface dialog, int which) {
 						// TODO Auto-generated method stub
 						Intent intent =  new Intent(Intent.ACTION_VIEW);
-						Uri uri = Uri.parse("http://etips.github.io");
+						Uri uri = Uri.parse(url);
 						intent.setData(uri);
 						startActivity(intent);
 					}
