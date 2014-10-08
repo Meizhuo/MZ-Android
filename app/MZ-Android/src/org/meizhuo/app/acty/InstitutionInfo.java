@@ -15,6 +15,7 @@ import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.Institution;
 import org.meizhuo.view.AutoScrollViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
@@ -27,6 +28,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import butterknife.OnItemClick;
 
 /**
@@ -56,12 +58,9 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 		setAppTitle("培训机构信息");
 		initData();
 		initLayout();
-	
 	}
 	
 	private void initLayout(){
-	
-		
 
 		viewPager.setInterval(2000);
 		viewPager.startAutoScroll();
@@ -95,20 +94,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 		adapter_lv = new InstitutionInfoAdapter(this, data);
 	}
 
-	@OnItemClick(R.id.lv_institutionInfo) public void item_click(int position) {
-		switch (position) {
-		case 0:
-			openActivity(InstitutionConsult_Teacher.class);
-			break;
-		case 1:
-			openActivity(InstitutionConsult_Textbook.class);
-			break;
-		case 2:
-			openActivity(InstitutionConsult_Skill.class);
 
-			break;
-		}
-	}
 	@Override
 	public void onRefresh() {
 		// TODO Auto-generated method stub
@@ -213,6 +199,11 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 		// TODO Auto-generated method stub
 		
 	}
-
 	
+	@OnItemClick(R.id.lv_institutionInfo) public void item_click(int position) {
+		Intent intent = new Intent(this,InstitutionsInfo_details.class);
+		intent.putExtra("id", position);
+		startActivity(intent);
+	}
+
 }

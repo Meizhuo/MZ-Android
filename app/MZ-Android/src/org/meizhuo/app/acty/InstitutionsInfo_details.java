@@ -1,13 +1,28 @@
 package org.meizhuo.app.acty;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.Header;
+import org.json.JSONObject;
+import org.meizhuo.api.CourseAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
+import org.meizhuo.imple.JsonResponseHandler;
+import org.meizhuo.model.Course;
+import org.meizhuo.utils.Constants;
+import org.meizhuo.view.WaittingDialog;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.TextView;
 import butterknife.InjectView;
 
@@ -17,32 +32,87 @@ import butterknife.InjectView;
  * @author Jayin
  * 
  */
-public class InstitutionsInfo_details extends BaseActivity {
+public class InstitutionsInfo_details extends BaseActivity  {
 
-	@InjectView(R.id.tv_atricle_title) TextView tv_atricle_title;
-	@InjectView(R.id.tv_atricle_content) TextView tv_atricle_content;
-
-	List<Integer> imageIdList;
+	
+	@InjectView(R.id.institution_course_title) TextView title; 
+	@InjectView(R.id.institution_course_start_time) TextView time;
+	@InjectView(R.id.institution_course_teacher) TextView teacher;
+	@InjectView(R.id.institution_course_introdution) TextView introdution;
+	List<Course>data;
+	int id ;
+	
+	boolean hasMore = true, isloading = false;
+	
+	IIHandler handler = new IIHandler();
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState, R.layout.acty_institutioninfo_details);
-		setAppTitle("详情");
-		
-		tv_atricle_title.setText("文思特（北京）管理咨询有限公司");
-		tv_atricle_content.setMovementMethod(ScrollingMovementMethod
-				.getInstance());// 滚动
-		tv_atricle_content
-				.setText(Html
-						.fromHtml("<p>　　文思特（北京）管理咨询有限公司致力于为企业提供先进生产运营方式的咨询与培训服务。推广先进管理方式，打造理论与实践的联接桥梁是我们的重要使命。我们的主要的业务领域包括以下方面：</p>"
-								+ "<p>先进制造技术：敏捷制造、精益生产、六西格玛</p>"
-								+ "<p>运营战略及员工能力：运营战略、员工能力</p>"
-								+ "<p>   我们的咨询师全部来自于世界知名公司，接受到过良好的教育，有着丰富的实际工作经验，并在咨询行业工作多年。为了时刻保持为顾客提供高价值服务的能力，公司建立了良好的培训教育机制，通过系统的培训不断提升咨询师为企业提供问题解决方案的能力。</p>"));
-		
-		
-		
-		
-		
-	
+		setAppTitle("课程信息");
+		initData();
+		initLayout();
 	}
+	
+	private void initData(){
+		Intent intent =  getIntent();
+		 id = intent.getIntExtra("id", 1);
+		data = new ArrayList<Course>();
+	}
+	
+	private void initLayout(){
+		handler.sendEmptyMessage(Constants.Start);
+		final Message msg = handler.obtainMessage();
+		CourseAPI.getCourseListInfo(new JsonResponseHandler() {
+			
+			@Override
+			public void onOK(Header[] headers, JSONObject obj) {
+				// TODO Auto-generated method stub
+				data = Course.create_by_jsonarray(obj.toString());
+				msg.what = Constants.Finish;
+				handler.sendMessage(msg);
+			}
+			
+			@Override
+			public void onFaild(int errorType, int errorCode) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+	}
+	
+	class IIHandler extends Handler{
+		WaittingDialog dialog;
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			switch (msg.what) {
+			case Constants.Start:
+				dialog = new WaittingDialog(InstitutionsInfo_details.this);
+				dialog.show();
+				break;
+				/**
+				  @InjectView(R.id.institution_course_title) TextView title; 
+	@InjectView(R.id.institution_course_start_time) TextView time;
+	@InjectView(R.id.institution_course_teacher) TextView teacher;
+	@InjectView(R.id.institution_course_introdution) TextView introdution;
+				 */
+			case Constants.Finish:
+				if (dialog.isShowing())
+					dialog.dismiss();
+				dialog = null;
+				title.setText(data.get(id).getName().toString());
+				time.setText(data.get(id).getStart_time().toString());
+				teacher.setText(data.get(id).getTeacher().toString());
+				introdution.setText(data.get(id).getIntroduction().toString());
+			default:
+				break;
+			}
+		}
+		
+		
+	}
+
+
 }
