@@ -71,7 +71,7 @@ public class Major_Search extends BaseActivity{
 		initCertificateAdapter();
 	}
 	
-	@OnClick(R.id.write_search_tv) public void write_search() {
+	@OnClick(R.id.btn_search_content) public void write_search() {
 		LayoutInflater inflater = LayoutInflater.from(Major_Search.this);
 		View dialogView = inflater.inflate(R.layout.write_search, null);
 		final EditText write_search_et =(EditText) dialogView.findViewById(R.id.write_search_et);

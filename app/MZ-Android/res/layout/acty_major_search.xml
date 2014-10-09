@@ -5,51 +5,14 @@
     android:orientation="vertical" 
     android:background="@color/white"
     >
-    <LinearLayout 
-    android:layout_width="match_parent"
-    android:layout_height="45dp"
-    android:background="@color/mz_blue_title_nomal"
-    android:orientation="horizontal" >
-
-    <RelativeLayout
-        android:id="@+id/btn_app_back"
-        android:background="@drawable/mz_btn_title_back"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp" >
-
-        <ImageView
-            android:id="@+id/iv_app_icon_back"
-            style="@style/ImageView"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/icon_action_back" />
-
-        <TextView
-            android:id="@+id/tv_app_title"
-            style="@style/TextView"
-            android:layout_toRightOf="@+id/iv_app_icon_back"
-            android:layout_alignBottom="@+id/iv_app_icon_back"
-            android:layout_centerVertical="true"
-            android:gravity="left"
-            android:layout_marginLeft="2dp"
-            android:text="Application"
-            android:textColor="@color/white"
-            android:textSize="15sp" 
-            android:layout_marginRight="2dp"/>
-        <TextView 
-            android:id="@+id/write_search_tv"
-            style="@style/TextView"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:text="手写查询"
-            />
-    </RelativeLayout>
-
-</LinearLayout>
+    <include layout ="@layout/acty_base_header"/>
+    
+    <TextView 
+        android:layout_gravity="center_horizontal"
+        style="@style/TextView"
+        android:text="按类别查询"
+        android:textSize="25dp"
+        />
     
     <LinearLayout 
         android:padding="10dp"
@@ -60,8 +23,7 @@
         <TextView 
             style="@style/TextView"
             android:text="证书类别:"
-            android:textSize="25dp"
-            android:textStyle="bold"
+            android:textSize="20dp"
             />
         <Spinner 
             android:id="@+id/certificate_sp"
@@ -79,8 +41,7 @@
         <TextView 
             style="@style/TextView"
             android:text="项目类别:"
-            android:textSize="25dp"
-            android:textStyle="bold"
+            android:textSize="20dp"
             />
         <Spinner 
             android:id="@+id/project_sp"
@@ -97,8 +58,7 @@
         <TextView 
             style="@style/TextView"
             android:text="等级:"
-            android:textSize="25dp"
-            android:textStyle="bold"
+            android:textSize="20dp"
             />
         <Spinner 
             style="@style/Spinner"
@@ -122,6 +82,41 @@
             android:background="@drawable/mz_bbuton_primary"
             android:textColor="@color/white"
             android:text="查询"
+            />
+          
+          </LinearLayout>
+          
+          
+          <View
+              android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/ic_line_1" />
+          
+               
+          <LinearLayout 
+              android:layout_marginTop="20dp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              >
+               
+    	<TextView 
+        android:layout_gravity="center_horizontal"
+        style="@style/TextView"
+        android:text="按内容查询"
+        android:textSize="25dp"
+        />
+              <Button 
+            android:id="@+id/btn_search_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mz_bbuton_primary"
+            android:textColor="@color/white"
+            android:text="内容查询"
             />
           
           </LinearLayout>
