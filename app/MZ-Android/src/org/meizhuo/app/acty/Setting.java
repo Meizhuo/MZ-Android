@@ -4,12 +4,26 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.api.PublicerAPI;
+import org.meizhuo.api.VersionAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
+import org.meizhuo.utils.AndroidUtils;
+import org.meizhuo.utils.Constants;
 import org.meizhuo.utils.DataPool;
+import org.meizhuo.view.WaittingDialog;
 
+import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -27,6 +41,8 @@ public class Setting extends BaseActivity {
 	@InjectView(R.id.setting_feedback) LinearLayout feedback;
 	@InjectView(R.id.about) LinearLayout about;
 	PublicerAPI publicerApi;
+	UpdateHandler handler = new UpdateHandler();
+	
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 
@@ -46,6 +62,43 @@ public class Setting extends BaseActivity {
 		}
 		closeActivity();
 	}
+	
+	@OnClick(R.id.settings_update_software) public void update(){
+		if(!AndroidUtils.isNetworkConnected(Setting.this))
+		{
+			toast("请打开您的网络开关！");
+			return ;
+		}
+		VersionAPI api = new VersionAPI();
+		handler.sendEmptyMessage(Constants.Start);
+		final Message msg = handler.obtainMessage();
+		api.getLatestInfo(new JsonResponseHandler() {
+			
+			@Override
+			public void onOK(Header[] headers, JSONObject obj) {
+				// TODO Auto-generated method stub
+				try {
+				
+					msg.what = Constants.Finish;
+					msg.obj = obj ;
+					handler.sendMessage(msg);
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+					msg.what = Constants.Fail;
+					handler.sendMessage(msg);
+				}
+			
+			}
+			
+			@Override
+			public void onFaild(int errorType, int errorCode) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	}
+	
 
 	@OnClick(R.id.about) public void ToAbout() {
 		
@@ -62,11 +115,12 @@ public class Setting extends BaseActivity {
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				try {
-					int code = Integer.parseInt(obj.getString("code"));
-					String response = obj.getString("response");
-					toast(code + response);
+						String response = obj.getString("response");
+						toast(response);
+					
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -74,11 +128,9 @@ public class Setting extends BaseActivity {
 				}
 				
 			}
-			
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
-				toast("成功登出");
 			}
 		});
 	}
@@ -92,5 +144,69 @@ public class Setting extends BaseActivity {
 		else 
 			return false;
 	}
+	
+	class UpdateHandler extends Handler{
+		WaittingDialog dialog;
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			switch (msg.what) {
+			case Constants.Start:
+					dialog =  new WaittingDialog(Setting.this);
+					dialog.setText("正在加载更新信息!");
+					dialog.show();
+				break;
+				
+			case Constants.Finish:
+				if (dialog.isShowing())
+					dialog.dismiss();
+				dialog = null;
+				JSONObject obj1 = (JSONObject) msg.obj;
+				try {
+					int versioncode = Integer.parseInt(obj1
+							.getString("version_code"));
+					String versionname = obj1.getString("version_name");
+					int currentVersion = AndroidUtils
+							.getAppVersionCode(getApplicationContext());
+					final String url = obj1.getString("url");
+					String updateInfo = obj1.getString("description");
+					if(currentVersion == versioncode)
+					{
+						toast("已经是最新版本，无需更新");
+						return ;
+					}
+					AlertDialog.Builder builder =  new AlertDialog.Builder(Setting.this);
+					builder.setTitle("更新提示");
+					builder.setMessage("当前版本:" + AndroidUtils.getAppVersionName(Setting.this) + "\n更新版本号:" + versionname + "\n" + updateInfo);
+					builder.setPositiveButton("立刻更新", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+							Intent intent =  new Intent(Intent.ACTION_VIEW);
+							Uri uri = Uri.parse(url);
+							intent.setData(uri);
+							startActivity(intent);
+						}
+					});
+					builder.setNegativeButton("稍后更新", null);
+					AlertDialog alertdialog = builder.create();
+					alertdialog.show();
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NameNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	
 
 }

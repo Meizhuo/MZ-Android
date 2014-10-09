@@ -52,6 +52,7 @@
 </LinearLayout>
     
     <LinearLayout 
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -59,15 +60,18 @@
         <TextView 
             style="@style/TextView"
             android:text="证书类别:"
+            android:textSize="25dp"
+            android:textStyle="bold"
             />
         <Spinner 
             android:id="@+id/certificate_sp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            style="@style/Spinner"
+
             />
     </LinearLayout>
     
-     <LinearLayout 
+     <LinearLayout
+         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -75,15 +79,17 @@
         <TextView 
             style="@style/TextView"
             android:text="项目类别:"
+            android:textSize="25dp"
+            android:textStyle="bold"
             />
         <Spinner 
             android:id="@+id/project_sp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+             style="@style/Spinner"
             />
     </LinearLayout>
     
       <LinearLayout 
+          android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -91,11 +97,12 @@
         <TextView 
             style="@style/TextView"
             android:text="等级:"
+            android:textSize="25dp"
+            android:textStyle="bold"
             />
         <Spinner 
+            style="@style/Spinner"
             android:id="@+id/lever_sp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
             />
     </LinearLayout>
     
