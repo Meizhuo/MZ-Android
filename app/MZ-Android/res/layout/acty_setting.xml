@@ -92,6 +92,41 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@drawable/ic_line_1" />
+        
+        <LinearLayout
+        android:id="@+id/settings_update_software"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/mz_btn_item_main"
+        android:clickable="true"
+        android:orientation="horizontal" >
+         	<ImageView 
+            	    android:layout_gravity="center_vertical"
+				android:layout_marginLeft="20dp"
+			    android:layout_width="25dp"
+			    android:layout_height="25dp"
+			    android:scaleType="centerCrop"
+			    android:background="@drawable/aa_settings_update"
+			    />
+
+         <TextView
+            style="@style/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="软件更新"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+
+
+    </LinearLayout>
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/ic_line_1" />
 
         <LinearLayout
             android:id="@+id/about"
