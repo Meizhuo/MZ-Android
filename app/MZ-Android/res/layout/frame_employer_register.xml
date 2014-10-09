@@ -27,12 +27,12 @@
                    android:src="@drawable/ic_login_icon_user_name"
                    />
                <EditText 
-                   android:id="@+id/acty_emRegister_et_username"
+                   android:id="@+id/acty_emRegister_et_email"
                    android:layout_width="200dp"
                    android:layout_height="wrap_content"
                    android:layout_marginLeft="6dp"
                    android:background="@color/lucency_white"
-                   android:hint="邮箱/手机号码"
+                   android:hint="邮箱(账户)"
                    android:textColor="@color/white"
                    android:textColorHint="@color/white"
                    android:textCursorDrawable="@null"
@@ -123,7 +123,7 @@
                     android:src="@drawable/ic_login_icon_user_name"
                     />
                 <EditText 
-                    android:id="@+id/acty_emRegister_et_phone"
+                    android:id="@+id/acty_emRegister_contact_phone"
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
@@ -136,6 +136,37 @@
                     />
             </LinearLayout>
                <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/white" >
+            </View>
+                     <LinearLayout 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                >
+                <ImageView 
+                    android:layout_width="wrap_content" 
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_login_icon_user_name"
+                    />
+                <EditText 
+                    android:id="@+id/acty_emRegister_et_phone"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:background="@color/lucency_white"
+                    android:hint="手机号码"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textCursorDrawable="@null"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
@@ -154,12 +185,43 @@
                     android:src="@drawable/ic_login_icon_user_name"
                     />
                 <EditText 
+                    android:id="@+id/acty_emRegister_et_name"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:background="@color/lucency_white"
+                    android:hint="单位名称"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textCursorDrawable="@null"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/white" >
+            </View>
+                     <LinearLayout 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                >
+                <ImageView 
+                    android:layout_width="wrap_content" 
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_login_icon_user_name"
+                    />
+                <EditText 
                     android:id="@+id/acty_emRegister_et_addr"
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
                     android:background="@color/lucency_white"
-                    android:hint="用人单位地址"
+                    android:hint="单位地址"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textCursorDrawable="@null"

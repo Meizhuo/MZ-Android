@@ -12,6 +12,10 @@ public class Constants {
 	
 	/** 获得版本信息*/
 	public static final String Action_Receive_VersionInfo = "Receive_VersionInfo"; 
+	/**普通用户登录*/
+	public static final String Action_Publicer_isLogin = "Publicer_isLogin";
+	/**用人单位登录*/
+	public static final String Action_Employer_isLogin = "Employer_isLogin";
 	
 	/**http请求状态*/
 	public final static int Start = 0;

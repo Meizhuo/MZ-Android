@@ -39,7 +39,7 @@ import com.google.gson.Gson;
 
 
 public class Major_Search extends BaseActivity{
-	private static final String[] certificate_Types = {"国家职业资格证书","计算机信息高新技术证书","专项职业能力证书",""};
+	private static final String[] certificate_Types = {"B(国家职业资格证书、计算机信息高新技术证书、专项职业能力证书)",""};
 	private static final String[] kind = {"B1(专项职业能力)","B2","B3","B4","B5","B6",""};
 	private static final String[] level = {"B1-1","B1-2","B1-3","B1-4","B2-1(初、中级)","B2-2(高级)","B3-1(初、中级)","B3-2(高级)","B3-2(技师、高级技师)","B4-1(初、中级)","B4-2(高级)","B5-3(技师、高级技师)","B6-1(初、中级)","B6-2(高级)","B6-3(技师、高级技师)",""};
 	private static final String TAG  = "Major_Search";
@@ -76,7 +76,7 @@ public class Major_Search extends BaseActivity{
 		View dialogView = inflater.inflate(R.layout.write_search, null);
 		final EditText write_search_et =(EditText) dialogView.findViewById(R.id.write_search_et);
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("输入关键字搜索");
+		builder.setTitle("输入资格名称搜索");
 		builder.setView(dialogView);
 		builder.setPositiveButton("搜索", new DialogInterface.OnClickListener() {
 			
@@ -84,10 +84,14 @@ public class Major_Search extends BaseActivity{
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				String input = EditTextUtils.getText(write_search_et);
+				String kind = "";
+				String level = "";
+				String certificate_type = "";
 				Intent intent = new Intent(Major_Search.this, Major_Search_lv.class);
-				intent.putExtra("kind", input);
-				intent.putExtra("level", input);
-				intent.putExtra("certificate_type", input);
+				intent.putExtra("title", input);
+				intent.putExtra("kind", kind);
+				intent.putExtra("level", level);
+				intent.putExtra("certificate_type", certificate_type);
 				startActivity(intent);
 				
 			}
@@ -103,10 +107,12 @@ public class Major_Search extends BaseActivity{
 		String kind = kinds.getKind();
 		String level = levels.getLevel();
 		String certificate_type = certificateTypes.getCertificate_type();
+		String title = "";
 		Intent intent = new Intent(Major_Search.this, Major_Search_lv.class);
 		intent.putExtra("kind", kind);
 		intent.putExtra("level", level);
 		intent.putExtra("certificate_type", certificate_type);
+		intent.putExtra("title", title);
 		startActivity(intent);
 	}
 	

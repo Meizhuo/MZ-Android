@@ -36,7 +36,7 @@
                 android:orientation="horizontal" >
 
                 <RelativeLayout
-                    android:id="@+id/btn_unitinfo"
+                    android:id="@+id/btn_professional_training"
                     style="@style/RelativeLayout.main_item"
                     android:background="@drawable/btn_home_item" >
 
@@ -58,7 +58,7 @@
                     android:background="@color/mz_grey" />
 
                 <RelativeLayout
-                    android:id="@+id/btn_institutions"
+                    android:id="@+id/btn_professional_evaluation"
                     style="@style/RelativeLayout.main_item"
                     android:background="@drawable/btn_home_item" >
 
@@ -86,7 +86,7 @@
                 android:orientation="horizontal" >
 
                 <RelativeLayout
-                    android:id="@+id/btn_institution_consult"
+                    android:id="@+id/btn_institution_info"
                     style="@style/RelativeLayout.main_item"
                     android:background="@drawable/btn_home_item" >
 
@@ -108,7 +108,7 @@
                     android:background="@color/mz_grey" />
 
                 <RelativeLayout
-                    android:id="@+id/btn_public_consult"
+                    android:id="@+id/btn_major_search"
                     style="@style/RelativeLayout.main_item"
                     android:background="@drawable/btn_home_item" >
 

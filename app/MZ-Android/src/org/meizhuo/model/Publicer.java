@@ -73,7 +73,17 @@ public class Publicer implements Serializable{
 	private String gender;
 	/**工作地点*/
 	private String workPlace;
+	/**是否已登录*/
+	private boolean isLogin;
 	
+	public boolean isLogin() {
+		return isLogin;
+	}
+
+	public void setLogin(boolean isLogin) {
+		this.isLogin = isLogin;
+	}
+
 	public int getId() {
 		return id;
 	}

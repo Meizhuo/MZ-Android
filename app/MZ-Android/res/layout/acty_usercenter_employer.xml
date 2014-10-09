@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/mz_blue_title_nomal"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/btn_app_back"
+        android:background="@drawable/mz_btn_title_back"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp" >
+
+        <ImageView
+            android:id="@+id/iv_app_icon_back"
+            style="@style/ImageView"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/icon_action_back" />
+
+        <TextView
+            android:id="@+id/tv_app_title"
+            style="@style/TextView"
+            android:layout_toRightOf="@+id/iv_app_icon_back"
+            android:layout_alignBottom="@+id/iv_app_icon_back"
+            android:layout_centerVertical="true"
+            android:gravity="left"
+            android:layout_marginLeft="2dp"
+            android:text="Application"
+            android:textColor="@color/white"
+            android:textSize="15sp" 
+            android:layout_marginRight="2dp"/>
+        <TextView 
+            android:id="@+id/tv_userinfo_employer_edit"
+            style="@style/TextView"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="编辑资料"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
+	
+    <FrameLayout 
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        >
+        <ImageView 
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@drawable/aa_user_bg"
+            />
+        <LinearLayout 
+            android:layout_marginTop="-20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            >
+         <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                android:id="@+id/thumbnailThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bct_image="@drawable/mz_gender_female_normal"
+                bootstrap:bct_size="medium"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+        
+      	
+    </FrameLayout >
+       
+        
+       
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/ic_line_1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+      android:background="@drawable/mz_btn_item_main"
+      android:clickable="true"
+
+         >
+        <TextView
+            style="@style/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="单位名称:"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+            <TextView 
+            android:id="@+id/mz_usercenter_em_workplace_name"
+            style="@style/TextView.UserCenter_item"
+           
+            android:text="袂卓工作室"
+            />
+   
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/ic_line_1" />
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+      android:background="@drawable/mz_btn_item_main"
+      android:clickable="true"
+
+         >
+          <TextView
+            style="@style/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="联系电话:"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+        <TextView 
+            android:id="@+id/mz_usercenter_em_contact_phone"
+            style="@style/TextView.UserCenter_item"
+           
+            android:text="13692658694"
+            />
+        
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/ic_line_1" />
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+      android:background="@drawable/mz_btn_item_main"
+      android:clickable="true"
+
+         >
+          <TextView
+            style="@style/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="用人单位地址:"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+        <TextView 
+            android:id="@+id/mz_usercenter_em_addr"
+            style="@style/TextView.UserCenter_item"
+            android:text="朝阳区50号"
+            />
+        
+    </LinearLayout>
+
+
+
+</LinearLayout>

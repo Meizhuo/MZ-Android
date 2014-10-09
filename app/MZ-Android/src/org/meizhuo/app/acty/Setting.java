@@ -24,7 +24,6 @@ import butterknife.OnClick;
  */
 public class Setting extends BaseActivity {
 
-	@InjectView(R.id.setting_notification) LinearLayout newssettings;
 	@InjectView(R.id.setting_feedback) LinearLayout feedback;
 	@InjectView(R.id.about) LinearLayout about;
 	PublicerAPI publicerApi;
@@ -35,7 +34,7 @@ public class Setting extends BaseActivity {
 		setAppTitle("设置");
 		publicerApi = new PublicerAPI();
 
-	}
+ 	}
 	
 	@OnClick(R.id.user_login) public void Login() {
 		if(checkLoginInfo()){

@@ -10,24 +10,19 @@
     <LinearLayout
         android:id="@+id/user_login"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:background="@drawable/mz_btn_item_main"
         android:clickable="true"
         android:orientation="horizontal" >
+         	<ImageView 
+            	    android:layout_gravity="center_vertical"
+				android:layout_marginLeft="20dp"
+			    android:layout_width="25dp"
+			    android:layout_height="25dp"
+			    android:scaleType="centerCrop"
+			    android:background="@drawable/aa_settings_login"
+			    />
 
-       
-             <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-                 android:layout_gravity="center_vertical"
-                android:id="@+id/minimalFour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                bootstrap:bct_image="@drawable/aa_headshot"
-                bootstrap:bct_size="small"
-                bootstrap:bct_minimal="true"
-                android:layout_marginLeft="20dp"
-             />
-             
-             
          <TextView
             android:id="@+id/mz_settings_tv1"
             style="@style/TextView"
@@ -35,13 +30,12 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="20dp"
-            android:text="账号设置"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="登录"
             android:textColor="@android:color/black"
             android:textSize="17sp" />
 
-       
 
     </LinearLayout>
     
@@ -55,37 +49,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <LinearLayout
-            android:id="@+id/setting_notification"
-            style="@style/RelativeLayout"
-            android:layout_height="60dp" 
-            android:background="@drawable/mz_btn_item_main"
-              android:clickable="true"
-              android:orientation="horizontal"
-            >
-			<ImageView 
-			    android:layout_gravity="center_vertical"
-			    android:layout_marginLeft="20dp"
-			    android:layout_width="25dp"
-			    android:layout_height="25dp"
-			    android:background="@drawable/aa_news"
-			    />
-            
-            <TextView
-                android:id="@+id/mz_settings_tv1"
-                style="@style/TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:text="新消息提醒"
-                android:textColor="@android:color/black"
-                android:textSize="17sp" />
-
-        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -103,9 +66,10 @@
             
             	<ImageView 
             	    android:layout_gravity="center_vertical"
-			android:layout_marginLeft="20dp"
+				android:layout_marginLeft="20dp"
 			    android:layout_width="25dp"
 			    android:layout_height="25dp"
+			    android:scaleType="centerCrop"
 			    android:background="@drawable/aa_settings_fb"
 			    />
 
@@ -168,7 +132,7 @@
         
         
          <LinearLayout
-            android:id="@+id/about"
+            android:id="@+id/logout"
             style="@style/RelativeLayout"
             android:layout_height="60dp"
             android:clickable="true" 

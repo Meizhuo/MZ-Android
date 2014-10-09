@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout = "@layout/acty_base_header"/>
+
+        
+        <TextView
+            android:id="@+id/institution_course_title"
+            style="@style/TextView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="挖掘导论1_1"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            style="@style/LinearLayout"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:text="开课时间:"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/institution_course_start_time"
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:text="10月10日"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LinearLayout"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="开课老师:"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/institution_course_teacher"
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="小星心"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LinearLayout"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:text="课程简介:"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LinearLayout"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/institution_course_introdution"
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:text="小心星 挖掘理论创始人"
+                android:textSize="16sp" />
+        </LinearLayout>
+</LinearLayout>
