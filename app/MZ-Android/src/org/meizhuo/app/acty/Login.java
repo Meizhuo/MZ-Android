@@ -12,6 +12,7 @@ import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.Employer;
 import org.meizhuo.model.ErrorCode;
 import org.meizhuo.model.Publicer;
+import org.meizhuo.utils.AndroidUtils;
 import org.meizhuo.utils.Constants;
 import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.utils.JsonUtils;
@@ -70,6 +71,11 @@ public class Login extends BaseActivity{
 	}
 	/* 登录 */
 	@OnClick(R.id.acty_login_btn_login) public void Login(){
+		if (!(AndroidUtils.isNetworkConnected(this)))
+		{
+			toast("请打开您的网络开关");
+			return ;
+		}
 		if (StringUtils.isEmpty(EditTextUtils.getText(et_login_username)) 
 				|| StringUtils.isEmpty(EditTextUtils.getText(et_login_password))
 				){
@@ -95,6 +101,8 @@ public class Login extends BaseActivity{
 						Log.i(TAG, "登录成功" + obj);
 						Intent intent = new Intent(Constants.Action_Publicer_isLogin);
 						sendBroadcast(intent);
+						Login.this.finish();
+						
 					}
 					
 					@Override
@@ -115,9 +123,18 @@ public class Login extends BaseActivity{
 						@Override
 						public void onOK(Header[] headers, JSONObject obj) {
 							// TODO Auto-generated method stub
-							toast("登录成功");
-							Intent intent =  new Intent(Constants.Action_Employer_isLogin);
-							sendBroadcast(intent);
+							try {
+								if (obj.getString("code").equals("200"))
+								{
+									toast("登录成功");
+									Intent intent =  new Intent(Constants.Action_Employer_isLogin);
+									sendBroadcast(intent);
+									Login.this.finish();
+								}
+							} catch (JSONException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						}
 						
 						@Override
@@ -145,32 +162,58 @@ public class Login extends BaseActivity{
 	
 	 /*普通注册页面 判断*/
 	@OnClick(R.id.acty_register_btn_regist) public void Register(){
-		if (StringUtils.isEmpty(EditTextUtils.getText(et_reg_phone)) 
-				|| StringUtils.isEmpty(EditTextUtils.getText(et_reg_password))
-				|| StringUtils.isEmpty(EditTextUtils.getText(et_reg_confirm))
-				|| StringUtils.isEmpty(EditTextUtils.getText(et_reg_name))
-				){
-			toast("输入不能为空!");
+		if (!(AndroidUtils.isNetworkConnected(this)))
+		{
+			toast("请先打开您的网络开关");
+			return ;
+		}
+		if (StringUtils.isEmpty(EditTextUtils.getText(et_reg_phone)))
+		{
+			toast("手机号码不能为空!");
+			return ;
+		}
+		if (StringUtils.isEmpty(EditTextUtils.getText(et_reg_password)))
+		{
+			toast("密码不能为空!");
+			return ;
+		}
+		if (StringUtils.isEmpty(EditTextUtils.getText(et_reg_name)))
+		{
+			toast("名字不能为空!");
 			return ;
 		}
 		if (!EditTextUtils.getText(et_reg_password).equals(EditTextUtils.getTextTrim(et_reg_confirm))){
-			toast("输入密码不一致");
+			toast("两次输入密码不一致");
 			return ;
 		}
 		if (!StringUtils.isNickname(EditTextUtils.getText(et_reg_name))){
-			toast("请填写您的中文名字");
+			toast("名字请填写您的中文名字");
+			return ;
 		}
 		if (!StringUtils.isPhone(EditTextUtils.getText(et_reg_phone))){
-			toast("请填写11位手机号码");
+			toast("请填写正确11位手机号码格式");
+			return ;
 		}
-	
+		if (!StringUtils.isPassword(EditTextUtils.getText(et_reg_password))){
+			toast("密码请填写8-16位数字或字母");
+			return ;
+		}
+		
+		String email = EditTextUtils.getText(et_reg_email).trim();
+		if (!(email.equals("")))
+		{
+			if (!StringUtils.isEmail(EditTextUtils.getText(et_reg_email).trim())){
+				toast("请输入正确的邮箱格式!");
+				return ;
+			}
+		}
 		//这里是手机号码
 		String publicerPhone = EditTextUtils.getText(et_reg_phone);
-		String email = EditTextUtils.getText(et_reg_email);
+		
 		String password = EditTextUtils.getText(et_reg_password);
 		//真名
 		String nickname = EditTextUtils.getText(et_reg_name);
-		String sex = null;
+		String sex = "";
 		boolean maleIsChecked = maleRadio.isChecked();//男性被点击
 		if(maleIsChecked) sex = "男";
 		boolean femaleIsChecked = femaleRadio.isChecked(); //女性被点击
@@ -181,14 +224,22 @@ public class Login extends BaseActivity{
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				Log.i(TAG, "注册成功" + obj);
+				try {
+					if(obj.getString("code").equals("200"))
+					{
+						toast("注册成功!");
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				flipper.showPrevious();
 			}
 			
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
-				toast("注册失败" + ErrorCode.errorList.get(errorCode));
+				toast("网络不给力,注册失败! 请检查您的网络设置" );
 			}
 		});
 				
