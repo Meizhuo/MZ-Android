@@ -201,8 +201,8 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	}
 	
 	@OnItemClick(R.id.lv_institutionInfo) public void item_click(int position) {
-		Intent intent = new Intent(this,InstitutionsInfo_details.class);
-		intent.putExtra("id", position);
+		Intent intent = new Intent(this,InstitutionInfo_Details.class);
+		intent.putExtra("uid", data.get(position).getUid());
 		startActivity(intent);
 	}
 

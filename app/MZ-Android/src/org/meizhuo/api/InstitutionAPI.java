@@ -9,6 +9,7 @@ public class InstitutionAPI {
 		// TODO Auto-generated constructor stub
 	}
 	/**
+	 * 列表
 	 * 获取培训机构的信息 <br> limit ：就每次显示10项吧 ，所以不写入
 	 * 
 	 * @param status
@@ -31,6 +32,20 @@ public class InstitutionAPI {
 			params.add("page", page);
 		RestClient.get("/home/institution/search", params, responseHandler);
 	}
+	
+	/**
+	 * 获取某个机构的信息
+	 * @param institution_id 机构的id
+	 * @param responseHandler
+	 */
+	public static void getOneInstitution(String institution_id, AsyncHttpResponseHandler responseHandler){
+		RequestParams params =  new RequestParams();
+		if (!(institution_id == null || institution_id.equals("")))
+			params.add("institution_id", institution_id);
+		RestClient.get("/home/institution/info", params, responseHandler);
+	}
+	
+	
 	
 	
 	
