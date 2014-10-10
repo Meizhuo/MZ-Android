@@ -8,7 +8,7 @@
 
         
         <TextView
-            android:id="@+id/institution_name"
+            android:id="@+id/institution_course_name"
             style="@style/TextView"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
@@ -29,11 +29,11 @@
             <TextView
                 style="@style/TextView"
                 android:layout_marginLeft="8dp"
-                android:text="公司名称:"
+                android:text="开课时间:"
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/company_name"
+                android:id="@+id/institution_course_time"
                 style="@style/TextView"
                 android:layout_marginLeft="8dp"
                 android:text=""
@@ -55,11 +55,11 @@
                 style="@style/TextView"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="10dp"
-                android:text="办学类型:"
+                android:text="开课地址:"
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/institution_teach_type"
+                android:id="@+id/institution_course_addr"
                 style="@style/TextView"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="10dp"
@@ -82,11 +82,11 @@
                 style="@style/TextView"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="10dp"
-                android:text="负责人:"
+                android:text="开课教师:"
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/institution_manager"
+                android:id="@+id/institution_course_teacher"
                 style="@style/TextView"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="10dp"
@@ -111,11 +111,11 @@
                 style="@style/TextView"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="10dp"
-                android:text="培训类型:"
+                android:text="课程费用:"
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/institution_traning_type"
+                android:id="@+id/institution_course_cost"
                 style="@style/TextView"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="10dp"
@@ -141,77 +141,7 @@
             <TextView
                 style="@style/TextView"
                 android:layout_marginLeft="8dp"
-                android:text="公司描述 ："
-                android:textSize="17sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/LinearLayout"
-            android:layout_marginTop="15dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/company_description"
-                style="@style/TextView"
-                android:layout_marginLeft="8dp"
-                android:text=""
-                android:textSize="17sp" />
-        </LinearLayout>
-        
-           <View
-              android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@drawable/ic_line_1" />
-           
-           
-        <LinearLayout
-            style="@style/LinearLayout"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal" >
-
-            <TextView
-                style="@style/TextView"
-                android:layout_marginLeft="8dp"
-                android:text="师资力量:"
-                android:textSize="17sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/LinearLayout"
-            android:layout_marginTop="15dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/company_teacher_resource"
-                style="@style/TextView"
-                android:layout_marginLeft="8dp"
-                android:text=""
-                android:textSize="17sp" />
-        </LinearLayout>
-        
-           <View
-              android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@drawable/ic_line_1" />
-           
-           
-        
-        
-           <LinearLayout
-            style="@style/LinearLayout"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal" >
-
-            <TextView
-                style="@style/TextView"
-                android:layout_marginLeft="8dp"
-                android:text="具体课程"
+                android:text="课程介绍:"
                 android:textSize="17sp" />
         </LinearLayout>
 
@@ -226,22 +156,17 @@
                 style="@style/TextView"
                 android:layout_marginLeft="8dp"
                 android:text=""
-                android:textSize="16sp" />
+                android:textSize="17sp" />
         </LinearLayout>
         
-        <Button 
-            android:id="@+id/institution_course_detail_btn"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+           <View
+              android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/mz_bbuton_primary"
-            android:textColor="@color/white"
-            android:text="课程列表"
-            />
-        
-        
+            android:layout_height="2dp"
+            android:background="@drawable/ic_line_1" />
+           
+           
+           
         
           
           

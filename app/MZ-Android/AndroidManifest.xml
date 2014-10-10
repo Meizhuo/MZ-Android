@@ -157,6 +157,21 @@
             android:name=".acty.Professional_Evaluation"
             android:launchMode="singleTask" >
         </activity>
+        <!-- CourseDetails -->
+          <activity
+            android:name=".acty.CourseDetails"
+            android:launchMode="singleTask" >
+        </activity>
+        <!-- InstitutionInfo_Details -->
+            <activity
+            android:name=".acty.InstitutionInfo_Details"
+            android:launchMode="singleTask" >
+        </activity>
+        <!-- CourseDetails_OneCourse -->
+                  <activity
+            android:name=".acty.CourseDetails_OneCourse"
+            android:launchMode="singleTask" >
+        </activity>
         
     </application>
 

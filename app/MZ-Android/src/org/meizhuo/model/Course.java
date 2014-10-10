@@ -147,15 +147,15 @@ public class Course implements Serializable{
 	private String subsidy_id;
 	/**课程名称*/
 	private String name;
-	
+	/**开课时间*/
 	private String start_time;
-	
+	/**开课地址*/
 	private String address;
-	
+	/** 开课教师*/
 	private String teacher;
-	
+	/**课程介绍*/
 	private String introduction;
-	
+	/**课程费用*/
 	private String cost;
 	
 }
