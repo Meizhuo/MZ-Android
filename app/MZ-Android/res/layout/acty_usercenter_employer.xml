@@ -71,7 +71,7 @@
                 android:id="@+id/thumbnailThree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                bootstrap:bct_image="@drawable/mz_gender_female_normal"
+                bootstrap:bct_image="@drawable/mz_gender_male_normal"
                 bootstrap:bct_size="medium"
                 android:layout_margin="10dp"/>
         </LinearLayout>
@@ -111,7 +111,7 @@
             android:id="@+id/mz_usercenter_em_workplace_name"
             style="@style/TextView.UserCenter_item"
            
-            android:text="袂卓工作室"
+            android:text=""
             />
    
     </LinearLayout>
@@ -143,7 +143,7 @@
             android:id="@+id/mz_usercenter_em_contact_phone"
             style="@style/TextView.UserCenter_item"
            
-            android:text="13692658694"
+            android:text=""
             />
         
     </LinearLayout>
@@ -174,7 +174,7 @@
         <TextView 
             android:id="@+id/mz_usercenter_em_addr"
             style="@style/TextView.UserCenter_item"
-            android:text="朝阳区50号"
+            android:text=""
             />
         
     </LinearLayout>

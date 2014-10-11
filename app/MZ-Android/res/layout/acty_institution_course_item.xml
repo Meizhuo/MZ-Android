@@ -20,6 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@drawable/ic_line_1" />
+          
+           
 
         <LinearLayout
             style="@style/LinearLayout"
@@ -164,6 +166,35 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@drawable/ic_line_1" />
+           
+             <LinearLayout
+            style="@style/LinearLayout"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="所属机构:"
+                android:textSize="17sp" />
+
+          
+        </LinearLayout>
+        
+             <Button
+                android:id="@+id/institution_course_belong_institution"
+                style="@style/TextView"
+                    android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mz_bbuton_primary"
+            android:textColor="@color/white"
+            android:text="" />
+           
+           
            
            
            

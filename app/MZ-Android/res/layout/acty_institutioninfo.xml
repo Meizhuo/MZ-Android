@@ -4,8 +4,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    	
-      <include layout="@layout/acty_base_header" />
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/mz_blue_title_nomal"
+        android:orientation="horizontal"
+        >
+     <RelativeLayout
+        android:id="@+id/btn_app_back"
+        android:background="@drawable/mz_btn_title_back"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp" >
+
+        <ImageView
+            android:id="@+id/iv_app_icon_back"
+            style="@style/ImageView"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/icon_action_back" />
+
+        <TextView
+            android:id="@+id/tv_app_title"
+            style="@style/TextView"
+            android:layout_toRightOf="@+id/iv_app_icon_back"
+            android:layout_alignBottom="@+id/iv_app_icon_back"
+            android:layout_centerVertical="true"
+            android:gravity="left"
+            android:layout_marginLeft="2dp"
+            android:text="Application"
+            android:textColor="@color/white"
+            android:textSize="15sp" 
+            android:layout_marginRight="2dp"/>
+        <TextView 
+            android:id="@+id/tv_institution_search"
+            style="@style/TextView"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:text="查询某个机构"
+            android:textColor="@color/white"
+            />
+        
+    </RelativeLayout>
+    </LinearLayout>
       <RelativeLayout 
           style="@style/RelativeLayout"
           android:layout_height="160dp"

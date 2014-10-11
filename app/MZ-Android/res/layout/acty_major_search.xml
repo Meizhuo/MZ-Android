@@ -8,11 +8,18 @@
     <include layout ="@layout/acty_base_header"/>
     
     <TextView 
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         style="@style/TextView"
         android:text="按类别查询"
         android:textSize="25dp"
         />
+    
+          <View
+              android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/ic_line_1" />
     
     <LinearLayout 
         android:padding="10dp"
@@ -107,6 +114,12 @@
         android:text="按内容查询"
         android:textSize="25dp"
         />
+    	
+    	      <View
+              android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/ic_line_1" />
               <Button 
             android:id="@+id/btn_search_content"
             android:layout_marginTop="20dp"

@@ -24,6 +24,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -40,8 +41,11 @@ public class Setting extends BaseActivity {
 
 	@InjectView(R.id.setting_feedback) LinearLayout feedback;
 	@InjectView(R.id.about) LinearLayout about;
+	@InjectView(R.id.user_login) LinearLayout login;
+	@InjectView(R.id.logout) LinearLayout logout;
 	PublicerAPI publicerApi;
 	UpdateHandler handler = new UpdateHandler();
+	 BroadcastReceiver isLoginReceiver;
 	
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +53,16 @@ public class Setting extends BaseActivity {
 		super.onCreate(savedInstanceState, R.layout.acty_setting);
 		setAppTitle("设置");
 		publicerApi = new PublicerAPI();
-
+		openReceiver();
  	}
+	
+	private void openReceiver(){
+		isLoginReceiver = new isLoginReceiver();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(Constants.Action_Employer_isLogin);//用人单位登录
+		filter.addAction(Constants.Action_Publicer_isLogin);
+		registerReceiver(isLoginReceiver, filter);
+	}
 	
 	@OnClick(R.id.user_login) public void Login() {
 		if(checkLoginInfo()){
@@ -207,6 +219,20 @@ public class Setting extends BaseActivity {
 			}
 		}
 	}
+	
+	class isLoginReceiver extends BroadcastReceiver {
+		
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			toast("执行了");
+			if (intent.getAction().equals(Constants.Action_Employer_isLogin) ||intent.getAction().equals(Constants.Action_Publicer_isLogin)){
+				login.setVisibility(View.INVISIBLE);
+				logout.setVisibility(View.VISIBLE);
+			}
+		}
+	}
+	
 	
 
 }

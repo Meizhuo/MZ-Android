@@ -10,6 +10,7 @@ import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.utils.AndroidUtils;
 import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.utils.StringUtils;
+import org.meizhuo.view.WaittingDialog;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -30,6 +31,7 @@ public class Employer_Register extends BaseActivity{
 	@InjectView(R.id.acty_emRegister_et_addr) EditText et_addr;
 	
 	EmployerAPI  employerAPI;
+	WaittingDialog dialog;
 	
 
 	@Override
@@ -37,6 +39,7 @@ public class Employer_Register extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState, R.layout.frame_employer_register);
 		employerAPI =  new EmployerAPI();
+		dialog = new WaittingDialog(this);
 	}
 	
 	/**用人单位注册*/
@@ -91,6 +94,15 @@ public class Employer_Register extends BaseActivity{
 		employerAPI.register(nickname, email, psw, phone, contact_phone, address, new JsonResponseHandler() {
 			
 			@Override
+			public void onStart() {
+				// TODO Auto-generated method stub
+				if (dialog == null)
+					dialog = new WaittingDialog(Employer_Register.this);
+				dialog.setText("正在注册");
+				dialog.show();
+			}
+			
+			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				try {
@@ -108,6 +120,14 @@ public class Employer_Register extends BaseActivity{
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
 				toast("注册失败");
+			}
+			
+			@Override
+			public void onFinish() {
+				// TODO Auto-generated method stub
+				if (dialog.isShowing())
+					dialog.dismiss();
+				dialog = null;
 			}
 		});
 		

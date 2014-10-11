@@ -17,6 +17,7 @@ import org.meizhuo.utils.Constants;
 import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.utils.JsonUtils;
 import org.meizhuo.utils.StringUtils;
+import org.meizhuo.view.WaittingDialog;
 
 
 import butterknife.InjectView;
@@ -60,6 +61,7 @@ public class Login extends BaseActivity{
 	private EmployerAPI employerAPI;
 	Employer employer;
 	Publicer publicer;
+	WaittingDialog dialog;
 	
 	 
 	@Override
@@ -68,6 +70,7 @@ public class Login extends BaseActivity{
 		super.onCreate(savedInstanceState, R.layout.acty_login);
 		initFlipper();
 		publicApi =  new PublicerAPI();
+		dialog = new WaittingDialog(this);
 	}
 	/* 登录 */
 	@OnClick(R.id.acty_login_btn_login) public void Login(){
@@ -91,7 +94,10 @@ public class Login extends BaseActivity{
 					@Override
 					public void onStart() {
 						// TODO Auto-generated method stub
-						super.onStart();
+						if (dialog == null)
+							dialog = new WaittingDialog(Login.this);
+						dialog.setText("正在登录");
+						dialog.show();
 					}
 					
 					@Override
@@ -102,13 +108,23 @@ public class Login extends BaseActivity{
 						Intent intent = new Intent(Constants.Action_Publicer_isLogin);
 						sendBroadcast(intent);
 						Login.this.finish();
-						
 					}
 					
 					@Override
 					public void onFaild(int errorType, int errorCode) {
 						// TODO Auto-generated method stub
-						toast(ErrorCode.errorList.get(errorCode));
+						if (dialog.isShowing())
+							dialog.dismiss();
+						dialog = null;
+						toast("网络不给力，请检查你的网络设置!");
+					}
+					
+					@Override
+					public void onFinish() {
+						// TODO Auto-generated method stub
+						if (dialog.isShowing())
+							dialog.dismiss();
+						dialog = null;
 					}
 				});
 		}
@@ -119,12 +135,21 @@ public class Login extends BaseActivity{
 			employerAPI.Login(EditTextUtils.getText(et_login_username),
 					EditTextUtils.getText(et_login_password), 
 					new JsonResponseHandler() {
+				@Override
+				public void onStart() {
+					// TODO Auto-generated method stub
+					if (dialog == null)
+						dialog = new WaittingDialog(Login.this);
+					dialog.setText("正在登录");
+					dialog.show();
+				}
+				
 						
 						@Override
 						public void onOK(Header[] headers, JSONObject obj) {
 							// TODO Auto-generated method stub
 							try {
-								if (obj.getString("code").equals("200"))
+								if (obj.getString("code").equals("20000"))
 								{
 									toast("登录成功");
 									Intent intent =  new Intent(Constants.Action_Employer_isLogin);
@@ -140,7 +165,18 @@ public class Login extends BaseActivity{
 						@Override
 						public void onFaild(int errorType, int errorCode) {
 							// TODO Auto-generated method stub
-							toast("登录失败" + errorCode);
+							if (dialog.isShowing())
+								dialog.dismiss();
+							dialog = null;
+							toast("登录失败,请检查你的网络设置!" );
+						}
+						
+						@Override
+						public void onFinish() {
+							// TODO Auto-generated method stub
+							if (dialog.isShowing())
+								dialog.dismiss();
+							dialog = null;
 						}
 					});
 		}
@@ -222,6 +258,15 @@ public class Login extends BaseActivity{
 		publicApi.regist(nickname, publicerPhone, email, password, sex, work_place, new JsonResponseHandler() {
 			
 			@Override
+			public void onStart() {
+				// TODO Auto-generated method stub
+				if (dialog == null)
+					dialog = new WaittingDialog(Login.this);
+				dialog.setText("正在注册");
+				dialog.show();
+			}
+			
+			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				try {
@@ -239,7 +284,18 @@ public class Login extends BaseActivity{
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
+				if (dialog.isShowing())
+					dialog.dismiss();
+				dialog = null;
 				toast("网络不给力,注册失败! 请检查您的网络设置" );
+			}
+			
+			@Override
+			public void onFinish() {
+				// TODO Auto-generated method stub
+				if (dialog.isShowing())
+					dialog.dismiss();
+				dialog = null;
 			}
 		});
 				

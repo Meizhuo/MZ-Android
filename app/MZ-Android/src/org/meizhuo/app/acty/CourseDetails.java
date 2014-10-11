@@ -99,6 +99,9 @@ public class CourseDetails extends BaseActivity implements OnRefreshListener , O
 				} else {
 					hasMore = true;
 				}
+				if (list.size() == 0) {
+					toast("该培训机构暂时无开设课程!");
+				}
 			}
 			
 			@Override
@@ -137,7 +140,11 @@ public class CourseDetails extends BaseActivity implements OnRefreshListener , O
 				adapter.notifyDataSetChanged();
 				hasMore = true;
 				if (obj.isNull("response")||course.size() <10)
+				{
 					hasMore = false;
+					toast("已经到达底部");
+				}
+				
 			}
 			
 			@Override

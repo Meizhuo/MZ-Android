@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.meizhuo.app"
-    android:versionCode="1"
-    android:versionName="1.0.0" >
+    android:versionCode="2"
+    android:versionName="1.1.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -172,7 +172,17 @@
             android:name=".acty.CourseDetails_OneCourse"
             android:launchMode="singleTask" >
         </activity>
-        
+        <!-- InstitutionInfo_Search_lv -->
+                  <activity
+            android:name=".acty.InstitutionInfo_Search_lv"
+            android:launchMode="singleTask" >
+        </activity>
+        <!-- Major_Search_Course_Lv -->
+                         <activity
+            android:name=".acty.Major_Search_Course_Lv"
+            android:launchMode="singleTask" >
+        </activity>    
+                  
     </application>
 
 </manifest>

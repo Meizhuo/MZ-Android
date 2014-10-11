@@ -32,6 +32,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.DialerFilter;
 import android.widget.ListView;
 import butterknife.InjectView;
+import butterknife.OnItemClick;
 
 import com.google.gson.Gson;
 
@@ -46,6 +47,7 @@ public class Major_Search_lv extends BaseActivity implements OnRefreshListener, 
 	List<Subsidy> data;
 	String page = "1";
 	String maxPage = "3";
+	String subsidy_id;
 	boolean hasMore = true, isloading = false;
 	
 	@Override
@@ -71,6 +73,14 @@ public class Major_Search_lv extends BaseActivity implements OnRefreshListener, 
 		search_lv.setAdapter(adapter);
 		search_lv.setOnScrollListener(this);
 		onRefresh();
+	}
+	
+	@OnItemClick(R.id.search_ListView) public void item_click(int position){
+		Intent it =  new Intent(this, Major_Search_Course_Lv.class);
+		 subsidy_id = data.get(position).getId();
+		 it.putExtra("subsidy_id", subsidy_id);
+		 startActivity(it);
+		
 	}
 	
 	@Override
@@ -131,6 +141,9 @@ public class Major_Search_lv extends BaseActivity implements OnRefreshListener, 
 				} else {
 					hasMore = true;
 				}
+				if (subsidy.size() == 0){
+					toast("该项查询无结果!");
+				}
 			}
 			
 			@Override
@@ -171,7 +184,11 @@ public class Major_Search_lv extends BaseActivity implements OnRefreshListener, 
 				adapter.notifyDataSetChanged();
 				hasMore = true;
 				if(obj.isNull("response") || subsidy.size() < 10)
+				{
 					hasMore = false;
+					toast("已经到达底部");
+				}
+					
 			}
 			@Override
 			public void onFaild(int errorType, int errorCode) {

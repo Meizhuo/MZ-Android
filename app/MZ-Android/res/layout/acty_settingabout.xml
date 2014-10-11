@@ -6,6 +6,29 @@
     android:orientation="vertical" >
 
     <include layout="@layout/acty_base_header" />
+    
+    <LinearLayout 
+        style="@style/LinearLayout"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView 
+            style="@style/TextView"
+            android:text="更新信息:"
+            android:textSize="20dp"
+            />
+         <TextView 
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="3dp"
+        android:id="@+id/updatecontent"
+        style="@style/TextView"
+        android:text=""
+        android:textColor="@color/mz_grey_lv_two"
+        />
+        
+    </LinearLayout>
+    
+   
 
     <RelativeLayout
         android:layout_width="match_parent"

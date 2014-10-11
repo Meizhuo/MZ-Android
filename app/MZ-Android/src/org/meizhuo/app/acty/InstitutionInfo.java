@@ -13,16 +13,21 @@ import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.Institution;
+import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.view.AutoScrollViewPager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -44,6 +49,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	@InjectView(R.id.autoscrollviewpage) AutoScrollViewPager viewPager;
 	@InjectView(R.id.tv_app_title) TextView appTitle;
 	@InjectView(R.id.iv_app_icon_back) ImageView backicon;
+	@InjectView(R.id.tv_institution_search) TextView tv_institution_search;
 	InstitutionInfoAdapter adapter_lv;
 	ImagePagerAdapter adapter_imagepage;
 	List<Institution>data;
@@ -89,6 +95,33 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 		onRefresh();
 		
 	}
+	/**
+	 @InjectView(R.id.tv_institution_search) TextView tv_institution_search;
+	 */
+	@OnClick(R.id.tv_institution_search) public void search_institution(){
+		LayoutInflater inflater = LayoutInflater.from(InstitutionInfo.this);
+		View dialogView = inflater.inflate(R.layout.dialog_institution_search, null);
+		final EditText et_search_institution =(EditText) dialogView.findViewById(R.id.et_search_institution);
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("输入机构名称搜索");
+		builder.setView(dialogView);
+		builder.setPositiveButton("搜索", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				String input = EditTextUtils.getText(et_search_institution);
+				Intent intent = new Intent(InstitutionInfo.this, InstitutionInfo_Search_lv.class);
+				intent.putExtra("name", input);
+				startActivity(intent);
+				
+			}
+		});
+		builder.setNegativeButton("取消", null);
+		AlertDialog dialog =  builder.create();
+		dialog.show();
+	}
+	
 	private void initData(){
 		data = new ArrayList<Institution>();
 		adapter_lv = new InstitutionInfoAdapter(this, data);
@@ -161,7 +194,11 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 				adapter_lv.notifyDataSetChanged();
 				hasMore = true;
 				if(obj.isNull("response") || institutions.size() < 10)
+				{
 					hasMore = false;
+					toast("已经到达底部");
+				}
+					
 			}
 			
 			@Override
