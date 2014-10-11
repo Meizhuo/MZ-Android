@@ -22,12 +22,14 @@ import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 import butterknife.InjectView;
@@ -155,12 +157,32 @@ public class Main extends BaseActivity {
 						startActivity(intent);
 					}
 				});
-				builder.setNegativeButton("稍后更新", null);
+				builder.setCancelable(false);
+				builder.setOnKeyListener(keylistener);
 				AlertDialog dialog =  builder.create();
 				dialog.show();
 			}
 		}
 	}
+	
+	OnKeyListener keylistener = new DialogInterface.OnKeyListener() {
+		
+		@Override
+		public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+			// TODO Auto-generated method stub
+			if (keyCode == KeyEvent.KEYCODE_BACK)
+			{
+				return true;
+			}else{
+				return false;
+			}
+		
+		}
+	};
+	
+	
+	
+	
 	
 	class LoginReceiver extends BroadcastReceiver {
 		@Override
