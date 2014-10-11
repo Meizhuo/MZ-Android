@@ -88,6 +88,9 @@ public class InstitutionInfo_Search_lv extends BaseActivity implements OnRefresh
 				} else {
 					hasMore = true;
 				}
+				if (institution.size() == 0){
+					toast("该项无查询结果");
+				}
 			}
 			
 			@Override
@@ -127,7 +130,11 @@ public class InstitutionInfo_Search_lv extends BaseActivity implements OnRefresh
 				adapte_lv.notifyDataSetChanged();
 				hasMore = true;
 				if(obj.isNull("response") || institutions.size() < 10)
+				{
 					hasMore = false;
+					toast("已经到达底部");
+				}
+					
 			}
 			
 			@Override

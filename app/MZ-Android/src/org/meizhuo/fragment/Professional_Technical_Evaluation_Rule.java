@@ -123,7 +123,11 @@ public class Professional_Technical_Evaluation_Rule extends BaseFragment impleme
 				data.addAll(documentInfos);
 				adatper_title.notifyDataSetChanged();
 				if(obj.isNull("response") || documentInfos.size() < 10)
+				{
 					hasMore = false;
+					toast("已经到达底部");
+				}
+					
 			}
 			
 			@Override

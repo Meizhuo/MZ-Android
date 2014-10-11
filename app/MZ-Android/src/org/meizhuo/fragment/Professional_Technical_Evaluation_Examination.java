@@ -78,7 +78,6 @@ public class Professional_Technical_Evaluation_Examination extends BaseFragment 
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				toast("执行了");
 				List<DocumentInfo>documentInfos = DocumentInfo.create_by_jsonarray(obj.toString());
 				data.clear();
 				data.addAll(documentInfos);
@@ -120,12 +119,15 @@ public class Professional_Technical_Evaluation_Examination extends BaseFragment 
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				toast("执行完");
 				List<DocumentInfo>documentInfos = DocumentInfo.create_by_jsonarray(obj.toString());
 				data.addAll(documentInfos);
 				adatper_title.notifyDataSetChanged();
 				if(obj.isNull("response") || documentInfos.size() < 10)
+				{
 					hasMore = false;
+					toast("已经到达底部");
+				}
+					
 			}
 			
 			@Override

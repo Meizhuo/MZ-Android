@@ -122,7 +122,11 @@ public class Professional_Training_Policy extends BaseFragment implements OnRefr
 				data.addAll(documentInfos);
 				adatper_title.notifyDataSetChanged();
 				if(obj.isNull("response") || documentInfos.size() < 10)
+				{
 					hasMore = false;
+					toast("已经到达底部");
+				}
+					
 			}
 			
 			@Override

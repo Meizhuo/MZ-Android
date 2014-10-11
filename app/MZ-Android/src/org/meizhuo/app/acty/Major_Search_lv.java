@@ -131,6 +131,9 @@ public class Major_Search_lv extends BaseActivity implements OnRefreshListener, 
 				} else {
 					hasMore = true;
 				}
+				if (subsidy.size() == 0){
+					toast("该项查询无结果!");
+				}
 			}
 			
 			@Override
@@ -171,7 +174,11 @@ public class Major_Search_lv extends BaseActivity implements OnRefreshListener, 
 				adapter.notifyDataSetChanged();
 				hasMore = true;
 				if(obj.isNull("response") || subsidy.size() < 10)
+				{
 					hasMore = false;
+					toast("已经到达底部");
+				}
+					
 			}
 			@Override
 			public void onFaild(int errorType, int errorCode) {

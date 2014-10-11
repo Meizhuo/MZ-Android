@@ -112,7 +112,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 				// TODO Auto-generated method stub
 				String input = EditTextUtils.getText(et_search_institution);
 				Intent intent = new Intent(InstitutionInfo.this, InstitutionInfo_Search_lv.class);
-				intent.putExtra("name", name);
+				intent.putExtra("name", input);
 				startActivity(intent);
 				
 			}
@@ -194,7 +194,11 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 				adapter_lv.notifyDataSetChanged();
 				hasMore = true;
 				if(obj.isNull("response") || institutions.size() < 10)
+				{
 					hasMore = false;
+					toast("已经到达底部");
+				}
+					
 			}
 			
 			@Override
