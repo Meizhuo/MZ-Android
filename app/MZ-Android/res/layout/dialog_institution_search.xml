@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <EditText 
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/et_search_institution"
+        android:layout_marginTop="10dp"
+        style="@style/EditText"
+        android:hint="请输入关键字进行搜索"
+        android:textColorHint="@color/lucency_white"
+        />
+    <TextView 
+        android:layout_marginTop="10dp"
+                style="@style/TextView"
+                android:ellipsize="end"
+                android:text="     如：输入竭诚,则搜索到竭诚培训有限公司"
+                android:textColor="@color/mz_grey_lv_two"
+                android:textSize="12sp"
+        />
+
+</LinearLayout>
