@@ -111,7 +111,7 @@
             android:id="@+id/mz_usercenter_name_tv"
             style="@style/TextView.UserCenter_item"
            
-            android:text="李志雄"
+            android:text=""
             />
    
     </LinearLayout>
@@ -143,7 +143,7 @@
             android:id="@+id/mz_usercenter_sex_tv"
             style="@style/TextView.UserCenter_item"
            
-            android:text="男"
+            android:text=""
             />
         
     </LinearLayout>
@@ -174,7 +174,7 @@
         <TextView 
             android:id="@+id/mz_usercenter_workplace_tv"
             style="@style/TextView.UserCenter_item"
-            android:text="袂卓工作室"
+            android:text=""
             />
         
     </LinearLayout>

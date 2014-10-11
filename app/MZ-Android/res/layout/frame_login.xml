@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
                     android:background="@color/lucency_white"
-                    android:hint="请输入账户"
+                    android:hint="账户(邮箱或手机号码)"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textCursorDrawable="@null"
