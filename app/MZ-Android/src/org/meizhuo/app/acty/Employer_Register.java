@@ -1,11 +1,13 @@
 package org.meizhuo.app.acty;
 
 import org.apache.http.Header;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.api.EmployerAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
+import org.meizhuo.utils.AndroidUtils;
 import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.utils.StringUtils;
 
@@ -39,14 +41,25 @@ public class Employer_Register extends BaseActivity{
 	
 	/**用人单位注册*/
 	@OnClick(R.id.acty_emRegister_btn_regist) public void Register(){
-		
-		if (StringUtils.isEmpty(EditTextUtils.getText(et_email))
-			|| StringUtils.isEmpty(EditTextUtils.getText(et_password))
-			|| StringUtils.isEmpty(EditTextUtils.getText(et_name))
-			|| StringUtils.isEmpty(EditTextUtils.getText(et_cofirmpassword))
-				){
-			toast("输入不能为空");
+		if(!AndroidUtils.isNetworkConnected(Employer_Register.this))
+		{
+			toast("请先打开您的网络开关");
 			return ;
+		}
+		if (StringUtils.isEmpty(EditTextUtils.getText(et_email)))
+		{
+				toast("邮箱不能为空");
+				return ;
+		}
+		if (StringUtils.isEmpty(EditTextUtils.getText(et_password)))
+		{
+						toast("密码不能为空");
+						return ;
+		}
+		if (StringUtils.isEmpty(EditTextUtils.getText(et_name)))
+		{
+						toast("单位名称不能为空");
+						return ;
 		}
 		
 		if (!EditTextUtils.getText(et_password).equals(EditTextUtils.getTextTrim(et_cofirmpassword))){
@@ -80,9 +93,17 @@ public class Employer_Register extends BaseActivity{
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				toast("注册成功");
+				try {
+					if(obj.getString("code").equals("200"))
+					{
+						toast("注册成功!");
+						Employer_Register.this.finish();
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub

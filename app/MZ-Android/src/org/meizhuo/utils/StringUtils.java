@@ -66,7 +66,7 @@ public class StringUtils {
 	 * @return
 	 */
 	public static boolean isPassword(String password){
-		Pattern pattern = Pattern.compile("^[a-z0-9A-Z]{8,16}$");
+		Pattern pattern = Pattern.compile("^[A-Za-z0-9]{8,16}$");
 		Matcher matcher = pattern.matcher(password);
 		return matcher.find();
 	}

@@ -137,7 +137,7 @@ public class Major_Search_lv extends BaseActivity implements OnRefreshListener, 
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
 				Log.e(TAG, "无法获取数据" + errorCode);
-				toast("出错了");
+				toast("出错了，请检查你的网络设置!");
 			}
 			@Override
 			public void onFinish() {
