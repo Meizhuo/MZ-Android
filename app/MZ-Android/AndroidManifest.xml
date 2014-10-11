@@ -177,6 +177,11 @@
             android:name=".acty.InstitutionInfo_Search_lv"
             android:launchMode="singleTask" >
         </activity>
+        <!-- Major_Search_Course_Lv -->
+                         <activity
+            android:name=".acty.Major_Search_Course_Lv"
+            android:launchMode="singleTask" >
+        </activity>    
                   
     </application>
 

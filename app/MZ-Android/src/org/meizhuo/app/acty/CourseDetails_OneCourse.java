@@ -1,12 +1,22 @@
 package org.meizhuo.app.acty;
 
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.meizhuo.api.InstitutionAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
+import org.meizhuo.imple.JsonResponseHandler;
+import org.meizhuo.model.Institution;
+import org.meizhuo.utils.AndroidUtils;
+import org.meizhuo.view.WaittingDialog;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import butterknife.OnItemClick;
 
 
@@ -29,8 +39,12 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 	@InjectView(R.id.institution_course_cost) TextView course_cost;
 	/**课程介绍*/
 	@InjectView(R.id.institution_course_introdution) TextView course_introdution;
+	/**所属机构*/
+	@InjectView(R.id.institution_course_belong_institution) Button belong_institution;
 
-	String name,start_time,address,teacher,introduction,cost;
+	String name,start_time,address,teacher,introduction,cost ,institution_id;
+	WaittingDialog dialog;
+	Institution institution;
 	
 	
 	@Override
@@ -38,6 +52,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState , R.layout.acty_institution_course_item);
 		setAppTitle("课程信息");
+		dialog  = new WaittingDialog(CourseDetails_OneCourse.this);
 		initData();
 		initLayout();
 	}
@@ -49,7 +64,10 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		 address = intent.getStringExtra("address");
 		 teacher = intent.getStringExtra("teacher");
 		 introduction = intent.getStringExtra("introduction");
+		 institution_id = intent.getStringExtra("institution_id");
 		 cost = intent.getStringExtra("cost");
+		 
+		 institution =  new Institution();
 	}
 	
 	private void initLayout(){
@@ -59,8 +77,54 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		 course_teacher.setText(teacher);
 		 course_cost.setText(cost);
 		 course_introdution.setText(introduction);
+		 InstitutionAPI.getOneInstitution(institution_id, new JsonResponseHandler() {
+			 
+			 @Override
+			public void onStart() {
+				// TODO Auto-generated method stub
+				 if (dialog == null)
+					 dialog = new WaittingDialog(CourseDetails_OneCourse.this);
+				 dialog.show();
+			}
+			
+			@Override
+			public void onOK(Header[] headers, JSONObject obj) {
+				// TODO Auto-generated method stub
+				try {
+					institution = Institution.create_by_json(obj.getString("response"));
+					belong_institution.setText(institution.getNickname());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			
+			@Override
+			public void onFaild(int errorType, int errorCode) {
+				// TODO Auto-generated method stub
+				toast("网络不给力,请检查您的网络设置!");
+			}
+			
+			@Override
+			public void onFinish() {
+				// TODO Auto-generated method stub
+				if (dialog.isShowing())
+					dialog.dismiss();
+			}
+		});
 	}
-
+	
+  @OnClick(R.id.institution_course_belong_institution) public void toTheInstitution(){
+	  if (!AndroidUtils.isNetworkConnected(CourseDetails_OneCourse.this))
+	  {
+		  toast("请连接网络");
+		  return ;
+	  }
+	  Intent it = new Intent(this, InstitutionInfo_Details.class);
+	  it.putExtra("uid", institution_id);
+	  startActivity(it);
+  }
 
 
 }
