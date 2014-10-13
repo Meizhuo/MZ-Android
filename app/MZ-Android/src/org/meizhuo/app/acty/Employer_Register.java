@@ -106,7 +106,7 @@ public class Employer_Register extends BaseActivity{
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				try {
-					if(obj.getString("code").equals("200"))
+					if(obj.getString("code").equals("20000"))
 					{
 						toast("注册成功!");
 						Employer_Register.this.finish();

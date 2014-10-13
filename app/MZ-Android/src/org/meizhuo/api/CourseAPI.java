@@ -13,11 +13,11 @@ public class CourseAPI {
 			String page,
 			AsyncHttpResponseHandler responseHandler ){
 		RequestParams params = new RequestParams();
-		if (!(institution_id == null && institution_id.equals("")))
+		if (!(institution_id == null|| institution_id.equals("")))
 			params.add("institution_id", institution_id);
-		if (!(subsidy_id == null && subsidy_id.equals("")))
+		if (!(subsidy_id == null || subsidy_id.equals("")))
 			params.add("subsidy_id", subsidy_id);
-		if (!(page == null && page.equals("")))
+		if (!(page == null || page.equals("")))
 			params.add("page", page);
 		RestClient.get("/home/course/search", params, responseHandler);
 	}

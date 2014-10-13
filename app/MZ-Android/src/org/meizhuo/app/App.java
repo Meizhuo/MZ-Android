@@ -1,6 +1,7 @@
 package org.meizhuo.app;
 
 import org.meizhuo.api.RestClient;
+import org.meizhuo.utils.Constants;
 
 import com.loopj.android.http.PersistentCookieStore;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
@@ -11,9 +12,16 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import butterknife.ButterKnife;
 import android.app.Application;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.widget.Toast;
 
 public class App extends Application {
 	
+	
+
 	
 
 	@Override public void onCreate() {
@@ -41,6 +49,7 @@ public class App extends Application {
 	}
 	
 	
+	
 	/**
 	 * 退出的时候清除数据
 	 */
@@ -50,6 +59,7 @@ public class App extends Application {
 		cs.clear();
 		
 	}
+	
 	
 
 }

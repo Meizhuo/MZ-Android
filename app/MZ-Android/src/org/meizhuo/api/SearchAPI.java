@@ -24,13 +24,13 @@ public class SearchAPI {
 			String page,
 			  AsyncHttpResponseHandler asyncHttpResponseHandler) {
 		RequestParams  params =  new RequestParams();
-		if(!(certificate_type == null && certificate_type.equals("")))
+		if(!(certificate_type == null || certificate_type.equals("")))
 			params.add("certificate_type", certificate_type);
-		if(!(title == null && title.equals("")))
+		if(!(title == null || title.equals("")))
 			params.add("title", title);
-		if(!(kind == null && kind.equals("")))
+		if(!(kind == null || kind.equals("")))
 			params.add("kind", kind);
-		if(!(level == null && level.equals("")))
+		if(!(level == null || level.equals("")))
 			params.add("level", level);
 			params.add("page", page);
 		RestClient.get("/home/subsidy/search", params, asyncHttpResponseHandler);

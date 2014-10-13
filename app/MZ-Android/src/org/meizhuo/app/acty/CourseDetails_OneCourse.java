@@ -13,6 +13,7 @@ import org.meizhuo.view.WaittingDialog;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import butterknife.InjectView;
@@ -26,6 +27,7 @@ import butterknife.OnItemClick;
  *
  */
 public class CourseDetails_OneCourse extends  BaseActivity {
+	private static final String TAG = "CourseDetails_OneCourse";
 	
 	/**课程名称*/
 	@InjectView(R.id.institution_course_name) TextView course_name;
@@ -53,6 +55,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		super.onCreate(savedInstanceState , R.layout.acty_institution_course_item);
 		setAppTitle("课程信息");
 		dialog  = new WaittingDialog(CourseDetails_OneCourse.this);
+		institution =  new Institution();
 		initData();
 		initLayout();
 	}
@@ -67,7 +70,6 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		 institution_id = intent.getStringExtra("institution_id");
 		 cost = intent.getStringExtra("cost");
 		 
-		 institution =  new Institution();
 	}
 	
 	private void initLayout(){
@@ -96,6 +98,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					
 				}
 				
 			}
@@ -104,6 +107,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
 				toast("网络不给力,请检查您的网络设置!");
+				CourseDetails_OneCourse.this.finish();
 			}
 			
 			@Override
