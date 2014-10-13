@@ -173,6 +173,7 @@
             android:clickable="true" 
             android:background="@drawable/mz_btn_item_main"
             android:orientation="horizontal"
+            android:visibility="gone"
             >
             	<ImageView 
 			    android:layout_gravity="center_vertical"

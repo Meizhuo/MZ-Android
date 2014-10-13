@@ -97,6 +97,11 @@ public class Main extends BaseActivity {
 		boolean isLogin = is_Publicer_Login || is_Employer_Login;
 		if(!isLogin){
 			toast("请先到设置模块进行登录");
+			return;
+		}
+		if (!AndroidUtils.isNetworkConnected(Main.this)){
+			toast("请打开您的网络开关 ");
+			return;
 		}
 		if(is_Publicer_Login){
 			openActivity(UserCenter_Publicer.class);
@@ -109,7 +114,10 @@ public class Main extends BaseActivity {
 	}
 
 	@OnClick(R.id.btn_setting) public void setting() {
-		openActivity(Setting.class);
+		boolean isLogin = is_Publicer_Login || is_Employer_Login;
+		Intent it = new Intent(this, Setting.class);
+		it.putExtra("isLogin", isLogin);
+		startActivity(it);
 	}
 	private void initLoginReceiver(){
 		loginReceiver =  new LoginReceiver();

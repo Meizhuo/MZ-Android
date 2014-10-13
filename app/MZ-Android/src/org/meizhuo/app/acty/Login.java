@@ -39,13 +39,6 @@ public class Login extends BaseActivity{
 	private static final String TAG = "Login";
 	
 	
-	/*
-	 * 
-		btn_login = _getView(R.id.acty_login_btn_login);
-		btn_regitst = _getView(R.id.acty_login_btn_regist);
-		btn_ok = _getView(R.id.acty_register_btn_regist);
-		btn_cancle = _getView(R.id.acty_register_btn_cancle);
-	 */
 	@InjectView(R.id.acty_login_flipper) ViewFlipper flipper;
 	@InjectView(R.id.acty_login_et_username) EditText et_login_username;
 	@InjectView(R.id.acty_login_et_password) EditText et_login_password;
@@ -103,20 +96,28 @@ public class Login extends BaseActivity{
 					@Override
 					public void onOK(Header[] headers, JSONObject obj) {
 						// TODO Auto-generated method stub
-						toast("登录成功");
-						Log.i(TAG, "登录成功" + obj);
-						Intent intent = new Intent(Constants.Action_Publicer_isLogin);
-						sendBroadcast(intent);
-						Login.this.finish();
+						try {
+							if(obj.getString("code").equals("20000")){
+								
+							toast("登录成功");
+							Log.i(TAG, "登录成功" + obj);
+							Intent intent = new Intent(Constants.Action_Publicer_isLogin);
+							Login.this.sendBroadcast(intent);
+							closeActivity();
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 					
 					@Override
 					public void onFaild(int errorType, int errorCode) {
 						// TODO Auto-generated method stub
-						if (dialog.isShowing())
-							dialog.dismiss();
-						dialog = null;
 						toast("网络不给力，请检查你的网络设置!");
+						if(dialog.isShowing())
+							dialog.dismiss();
+						Login.this.finish();
 					}
 					
 					@Override
@@ -153,12 +154,14 @@ public class Login extends BaseActivity{
 								{
 									toast("登录成功");
 									Intent intent =  new Intent(Constants.Action_Employer_isLogin);
-									sendBroadcast(intent);
-									Login.this.finish();
+									Login.this.sendBroadcast(intent);
+									closeActivity();
 								}
 							} catch (JSONException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
+								toast("网络不给力，请检查你的网络设置");
+								closeActivity();
 							}
 						}
 						
@@ -168,7 +171,8 @@ public class Login extends BaseActivity{
 							if (dialog.isShowing())
 								dialog.dismiss();
 							dialog = null;
-							toast("登录失败,请检查你的网络设置!" );
+							toast("登录失败,请检查你的网络设置" );
+							closeActivity();
 						}
 						
 						@Override
@@ -270,7 +274,7 @@ public class Login extends BaseActivity{
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				try {
-					if(obj.getString("code").equals("200"))
+					if(obj.getString("code").equals("20000"))
 					{
 						toast("注册成功!");
 					}
