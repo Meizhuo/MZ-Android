@@ -103,12 +103,23 @@ public class Login extends BaseActivity{
 							Log.i(TAG, "登录成功" + obj);
 							Intent intent = new Intent(Constants.Action_Publicer_isLogin);
 							Login.this.sendBroadcast(intent);
-							closeActivity();
+							savePublicerLoginInfo();
 							}
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						
+						try {
+							if(obj.getString("error_code").equals("40000")){
+								toast("密码错误");
+								return ;
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
 					}
 					
 					@Override
@@ -156,12 +167,22 @@ public class Login extends BaseActivity{
 									Intent intent =  new Intent(Constants.Action_Employer_isLogin);
 									Login.this.sendBroadcast(intent);
 									closeActivity();
+									
 								}
 							} catch (JSONException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 								toast("网络不给力，请检查你的网络设置");
 								closeActivity();
+							}
+							try {
+								if(obj.getString("error_code").equals("40000")){
+									toast("密码错误");
+									return ;
+								}
+							} catch (JSONException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
 							}
 						}
 						
@@ -306,39 +327,18 @@ public class Login extends BaseActivity{
 	}
 	
 	/**
-	 * 保存登录信息 
-	 * @param json
+	 * 保存普通用户登录信息 
 	 */
-	private void saveLoginInfo(String json) {
-		int id = JsonUtils.getInt(json, "id");
-		PublicerAPI api =  new PublicerAPI();
-		api.getProfile(new JsonResponseHandler() {
-			@Override
-			public void onOK(Header[] headers, JSONObject obj) {
-				// TODO Auto-generated method stub
-				try {
-					Publicer  publicer = Publicer.create_by_json(obj.getJSONObject("publicer").toString());
-					AppInfo.setUser(getContext(), publicer);
-					//保存账号密码
-					AppInfo.setPublicername(getContext(), et_login_username.getText().toString());
-					AppInfo.setPublicerPSW(getContext(), et_login_password.getText().toString());
-					openActivity(Main.class);
-					closeActivity();
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					toast("网络异常，解析错误");
-				}
-			
-			}
-			
-			@Override
-			public void onFaild(int errorType, int errorCode) {
-				// TODO Auto-generated method stub
-				toast(ErrorCode.errorList.get(errorCode));
-			}
-		});
+	private void savePublicerLoginInfo() {
+		Publicer publicer =  new Publicer();
+		AppInfo.setPublicer(getContext(), publicer);
+		//保存用户账号密码
+		AppInfo.setPublicername(getContext(), et_login_username.getText().toString());
+		AppInfo.setPublicerPSW(getContext(), et_login_password.getText().toString());
+		Log.i(TAG, "登录保存信息" + AppInfo.getPublicername(getContext()));
+		closeActivity();
 	}
+	
 	
 	
 	private void initFlipper() {
