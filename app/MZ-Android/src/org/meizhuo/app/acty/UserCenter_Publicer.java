@@ -102,6 +102,8 @@ public class UserCenter_Publicer extends BaseActivity {
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
 				toast("获取数据失败" + errorCode);
+				msg.what = Constants.Fail;
+				handler.sendMessage(msg);
 			}
 		});
 		
@@ -136,11 +138,11 @@ public class UserCenter_Publicer extends BaseActivity {
 				dialog = null;
 				break;
 			case Constants.Fail:
-				if (!dialog.isShowing()){
-					dialog = null;
-					break;
+				if (dialog.isShowing()){
+					dialog.dismiss();
 				}
 				toast("网络不给力,请检查你的网络设置");
+				UserCenter_Publicer.this.finish();
 				break;
 
 			}

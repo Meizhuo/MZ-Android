@@ -12,10 +12,24 @@ public class Constants {
 	
 	/** 获得版本信息*/
 	public static final String Action_Receive_VersionInfo = "Receive_VersionInfo"; 
-	/**普通用户登录*/
+	/**普通用户第一次登录*/
 	public static final String Action_Publicer_isLogin = "Publicer_isLogin";
-	/**用人单位登录*/
+	/**用人单位第一次登录*/
 	public static final String Action_Employer_isLogin = "Employer_isLogin";
+	/**普通用户再次去登录*/
+	public static final String Action_Publicer_To_ReLogin = "Publicer_To_ReLogin ";
+	/***用人单位再次去登录*/
+	public static final String Action_Employer_To_Relogin = "Employer_To_Relogin";
+	/**普通用户再次登录成功*/
+	public static final String Action_Publicer_ReLoginSuccessful = "Publicer_ReLoginSuccessful" ;
+	/***用人单位再次登录成功*/
+	public static final String Action_Employer_ReLoginSuccessful = "Employer_ReLoginSuccessful" ;
+	/***普通用户再次登录失败*/
+	public static final String Action_Publicer_ReLoginFaild = "Publicer_ReLoginFaild" ;
+	/***用人单位再次登录失败*/
+	public static final String Action_Employer_ReloginFaild = "Employer_ReloginFaild" ;
+
+
 	
 	/**http请求状态*/
 	public final static int Start = 0;

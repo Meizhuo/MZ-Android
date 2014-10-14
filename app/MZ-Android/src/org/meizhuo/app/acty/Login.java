@@ -155,10 +155,9 @@ public class Login extends BaseActivity{
 					dialog.setText("正在登录");
 					dialog.show();
 				}
-				
 						
-						@Override
-						public void onOK(Header[] headers, JSONObject obj) {
+				@Override
+				public void onOK(Header[] headers, JSONObject obj) {
 							// TODO Auto-generated method stub
 							try {
 								if (obj.getString("code").equals("20000"))
@@ -166,8 +165,7 @@ public class Login extends BaseActivity{
 									toast("登录成功");
 									Intent intent =  new Intent(Constants.Action_Employer_isLogin);
 									Login.this.sendBroadcast(intent);
-									closeActivity();
-									
+									saveEmployerLoginInfo();
 								}
 							} catch (JSONException e) {
 								// TODO Auto-generated catch block
@@ -338,7 +336,18 @@ public class Login extends BaseActivity{
 		Log.i(TAG, "登录保存信息" + AppInfo.getPublicername(getContext()));
 		closeActivity();
 	}
-	
+	/**
+	 * 保存用人单位信息
+	 */
+	private void saveEmployerLoginInfo(){
+		Employer employer = new Employer();
+		AppInfo.setEmployer(getContext(), employer);
+		//保存用户账号密码
+		AppInfo.setEmployername(getContext(), et_login_username.getText().toString());
+		AppInfo.setEmployerPSW(getContext(), et_login_password.getText().toString());
+		Log.i(TAG, "保存用人单位" + AppInfo.getEmployername(getContext()));
+		closeActivity();
+	}
 	
 	
 	private void initFlipper() {
