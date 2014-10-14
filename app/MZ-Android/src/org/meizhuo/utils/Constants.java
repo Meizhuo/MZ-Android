@@ -28,6 +28,8 @@ public class Constants {
 	public static final String Action_Publicer_ReLoginFaild = "Publicer_ReLoginFaild" ;
 	/***用人单位再次登录失败*/
 	public static final String Action_Employer_ReloginFaild = "Employer_ReloginFaild" ;
+	/***退出*/
+	public static final String Action_Logout = "Logout";
 
 
 	

@@ -63,11 +63,14 @@ public class Main extends BaseActivity {
 	ImagePagerAdapter adapter_imagepage;
 
 	List<Integer> imageIdList;
+	
+	private BroadcastReceiver logoutReceiver;
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.acty_main);
 		setDisplayBackIcon(false);
 		initLoginReceiver();
+		initLogout_Receiver();
 		checkPublicerReLogin();
 		checkEmployerReLogin();
 		checkVersion();
@@ -141,7 +144,7 @@ public class Main extends BaseActivity {
 	}
 
 	@OnClick(R.id.btn_setting) public void setting() {
-		boolean isLogin = is_Publicer_Login || is_Employer_Login;
+		boolean isLogin = is_Publicer_Login || is_Employer_Login || Publicer_reLogin || Employer_reLogin;
 		Intent it = new Intent(this, Setting.class);
 		it.putExtra("isLogin", isLogin);
 		startActivity(it);
@@ -154,6 +157,14 @@ public class Main extends BaseActivity {
 		filter.addAction(Constants.Action_Publicer_ReLoginSuccessful);
 		filter.addAction(Constants.Action_Employer_ReLoginSuccessful);
 		registerReceiver(loginReceiver, filter);
+	}
+	
+	private void initLogout_Receiver(){
+		logoutReceiver =  new LogoutReceiver();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(Constants.Action_Logout);
+		registerReceiver(logoutReceiver, filter);
+		
 	}
 	
 	private void initReceiver() {
@@ -242,6 +253,18 @@ public class Main extends BaseActivity {
 			}
 		}
 		
+	}
+	
+	class LogoutReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			String action =  intent.getAction();
+			if(action.equals(Constants.Action_Logout))
+			{
+				Main.this.finish();
+			}
+		}
 	}
 	
 	private void checkVersion() {

@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.meizhuo.api.PublicerAPI;
 import org.meizhuo.api.VersionAPI;
 import org.meizhuo.app.App;
+import org.meizhuo.app.AppInfo;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
@@ -134,21 +135,29 @@ public class Setting extends BaseActivity {
 	}
 	
 	@OnClick(R.id.logout) public void logout() {
+		if(!AndroidUtils.isNetworkConnected(Setting.this))
+		{
+			toast("请先打开网络开关!");
+			return ;
+		}
 		publicerApi.logout(new JsonResponseHandler() {
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				try {
 						String response = obj.getString("response");
-						toast(response);
-					
+						if(response.equals("logout successfully"))
+							toast("成功退出!");
+						sendBroadcast(new Intent(Constants.Action_Logout));
+					finish();	
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
-					
 					e.printStackTrace();
+					toast("注销失败!请检查您的网络!");
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					toast("注销失败!请检查您的网络!");
 				}
 				
 			}
