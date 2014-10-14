@@ -83,7 +83,7 @@ public class UserCenter_Publicer extends BaseActivity {
 					String nickname = obj.getString("nickname");
 					String work_place = obj.getString("work_place");
 					
-					if (!sex.equals("") && !nickname.equals("") && !work_place.equals("")){
+					if (!sex.equals("") && !nickname.equals("") ){
 						publicer.setGender(sex);
 						publicer.setName(nickname);
 						publicer.setWorkPlace(work_place);
