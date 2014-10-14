@@ -5,7 +5,17 @@
     android:orientation="vertical" >
 
     <include layout = "@layout/acty_base_header"/>
-
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp"
+        android:scrollbarStyle="@null"
+        >
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    >
         
         <TextView
             android:id="@+id/institution_name"
@@ -241,9 +251,9 @@
             android:text="课程列表"
             />
         
-        
+        </LinearLayout>
         
           
-          
+          </ScrollView>
           
 </LinearLayout>
