@@ -33,6 +33,18 @@ public class ArticleAPI {
 			params.add("page", page);
 		RestClient.get("/home/document/search", params, responseHandler);
 	}
+	/**
+	 * 获取一篇文章
+	 * @param doc_id
+	 * @param responseHandler
+	 */
+	public static void getOneArticle(String doc_id, AsyncHttpResponseHandler responseHandler){
+		RequestParams params =  new RequestParams();
+		if(!(doc_id == null || doc_id.equals("")))
+			params.add("doc_id", doc_id);
+		RestClient.get("/admin/index/viewDocument", params, responseHandler);
+	}
+	
 	
 	
 }

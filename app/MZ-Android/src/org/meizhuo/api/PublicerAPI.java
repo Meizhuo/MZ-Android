@@ -52,9 +52,11 @@ public class PublicerAPI {
 	 * @param psw 密码
 	 * @param responseHandler 处理器
 	 */
-	public void Login(String account, String psw, AsyncHttpResponseHandler responseHandler) {
+	public  void Login(String account, String psw, AsyncHttpResponseHandler responseHandler) {
 		RequestParams params = new RequestParams();
+		if (!(account == null || account.equals("")))
 		params.add("account", account);
+		if (!(psw == null || psw.equals("")))
 		params.add("psw", psw);
 		RestClient.post("/home/user/login", params, responseHandler);
 	}
