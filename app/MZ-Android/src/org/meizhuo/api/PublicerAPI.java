@@ -30,11 +30,17 @@ public class PublicerAPI {
 			String password, String sex, String work_place,
 			AsyncHttpResponseHandler responseHandler) {
 		RequestParams params = new RequestParams();
+		if(!(nickname == null || nickname.equals("")))
 		params.add("nickname", nickname);
+		if(!(phone == null || phone.equals("")))
 		params.add("phone", phone);
+		if(!(email == null || email.equals("")))
 		params.add("email", email);
+		if(!(password == null || password.equals("")))
 		params.add("psw", password);
+		if(!(sex == null || sex.equals("")))
 		params.add("sex", sex);
+		if(!(work_place == null || work_place.equals("")))
 		params.add("work_place", work_place);
 		RestClient.post("/home/user/register", params, responseHandler);
 	}
@@ -46,9 +52,11 @@ public class PublicerAPI {
 	 * @param psw 密码
 	 * @param responseHandler 处理器
 	 */
-	public void Login(String account, String psw, AsyncHttpResponseHandler responseHandler) {
+	public  void Login(String account, String psw, AsyncHttpResponseHandler responseHandler) {
 		RequestParams params = new RequestParams();
+		if (!(account == null || account.equals("")))
 		params.add("account", account);
+		if (!(psw == null || psw.equals("")))
 		params.add("psw", psw);
 		RestClient.post("/home/user/login", params, responseHandler);
 	}

@@ -2,6 +2,7 @@ package org.meizhuo.app;
 
 import org.meizhuo.app.acty.Main;
 import org.meizhuo.utils.Constants;
+import org.meizhuo.utils.DataPool;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -31,6 +32,10 @@ public class AppStart extends BaseActivity {
 			}
 		}, 1500);
 	}
+	
+
+	
+	
 	
 	
 

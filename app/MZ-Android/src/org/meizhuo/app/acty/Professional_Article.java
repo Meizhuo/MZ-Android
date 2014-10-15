@@ -2,17 +2,20 @@ package org.meizhuo.app.acty;
 
 import java.util.List;
 
+import org.apache.http.Header;
+import org.json.JSONObject;
 import org.meizhuo.api.ArticleAPI;
+import org.meizhuo.api.RestClient;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
+import org.meizhuo.imple.JsonResponseHandler;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
-import android.text.Html;
-import android.text.method.ScrollingMovementMethod;
-import android.widget.TextView;
+import android.webkit.WebView;
 import butterknife.InjectView;
 
 /**
@@ -24,11 +27,12 @@ import butterknife.InjectView;
 public class Professional_Article extends BaseActivity  {
 	
 	private static final String TAG = "Professional_Article";
-	@InjectView(R.id.tv_atricle_title) TextView tv_atricle_title;
-	@InjectView(R.id.tv_atricle_content) TextView tv_atricle_content;
+	@InjectView(R.id.webview) WebView webview;
 	String content = "";
 	String title = "";
 	List<Integer> imageIdList;
+	String url;
+	String doc_id;
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 
@@ -42,21 +46,21 @@ public class Professional_Article extends BaseActivity  {
 	/*
 	 * Intent intent =  new Intent(getActivity(), Professional_Article.class);
 		intent.putExtra("Category_id", data.get(position).getCategory_id());
-		intent.putExtra("id", data.get(position).getId());
+		intent.putExtra("doc_id", data.get(position).getId());
 		intent.putExtra("content", data.get(position).getContent());
 	 */
 	private void initData(){
-		 content = getIntent().getStringExtra("content");
-		 title =  getIntent().getStringExtra("title");
+		Intent intent = getIntent();
+		String doc_id = intent.getStringExtra("doc_id");
+		String baseurl = RestClient.BASE_URL;
+		url = baseurl + "/admin/index/viewDocument" + "/" + "doc_id" + "/" + doc_id;
 	}
 	
 	private void initLayout(){
-		tv_atricle_title.setText(title);
-		tv_atricle_content.setMovementMethod(ScrollingMovementMethod
-				.getInstance());// 滚动
-		tv_atricle_content
-		.setText(Html.fromHtml(content));
+		webview.loadUrl(url);
+		
 	}
+	
 
 
 }

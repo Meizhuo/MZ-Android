@@ -184,6 +184,7 @@ public class CourseDetails extends BaseActivity implements OnRefreshListener , O
 		String teacher = data.get(position).getTeacher();
 		String introduction = data.get(position).getIntroduction();
 		String cost = data.get(position).getCost();
+		String institution_id = data.get(position).getInstitution_id();
 		Intent intent = new Intent(CourseDetails.this, CourseDetails_OneCourse.class);
 		intent.putExtra("name", name);
 		intent.putExtra("start_time", start_time);
@@ -191,6 +192,7 @@ public class CourseDetails extends BaseActivity implements OnRefreshListener , O
 		intent.putExtra("teacher", teacher);
 		intent.putExtra("introduction", introduction);
 		intent.putExtra("cost", cost);
+		intent.putExtra("institution_id", institution_id);
 		startActivity(intent);
 		
 	}

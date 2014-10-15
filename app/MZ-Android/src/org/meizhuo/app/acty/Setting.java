@@ -5,6 +5,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.api.PublicerAPI;
 import org.meizhuo.api.VersionAPI;
+import org.meizhuo.app.App;
+import org.meizhuo.app.AppInfo;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
@@ -24,6 +26,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -38,14 +41,15 @@ import butterknife.OnClick;
  * 
  */
 public class Setting extends BaseActivity {
+	private static final String TAG = "jason";
 
 	@InjectView(R.id.setting_feedback) LinearLayout feedback;
 	@InjectView(R.id.about) LinearLayout about;
 	@InjectView(R.id.user_login) LinearLayout login;
 	@InjectView(R.id.logout) LinearLayout logout;
 	PublicerAPI publicerApi;
+	boolean isLogin;
 	UpdateHandler handler = new UpdateHandler();
-	 BroadcastReceiver isLoginReceiver;
 	
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +57,25 @@ public class Setting extends BaseActivity {
 		super.onCreate(savedInstanceState, R.layout.acty_setting);
 		setAppTitle("设置");
 		publicerApi = new PublicerAPI();
-		openReceiver();
+		initData();
+		initLayout();
  	}
 	
-	private void openReceiver(){
-		isLoginReceiver = new isLoginReceiver();
-		IntentFilter filter = new IntentFilter();
-		filter.addAction(Constants.Action_Employer_isLogin);//用人单位登录
-		filter.addAction(Constants.Action_Publicer_isLogin);
-		registerReceiver(isLoginReceiver, filter);
+	private void initData(){
+		Intent intent =  getIntent();
+		isLogin = intent.getBooleanExtra("isLogin", false);
 	}
+	
+	private void initLayout(){
+		if(isLogin == true)
+		{
+			login.setVisibility(View.INVISIBLE);
+			logout.setVisibility(View.VISIBLE);
+		}
+		
+	}
+	
+	
 	
 	@OnClick(R.id.user_login) public void Login() {
 		if(checkLoginInfo()){
@@ -122,21 +135,29 @@ public class Setting extends BaseActivity {
 	}
 	
 	@OnClick(R.id.logout) public void logout() {
+		if(!AndroidUtils.isNetworkConnected(Setting.this))
+		{
+			toast("请先打开网络开关!");
+			return ;
+		}
 		publicerApi.logout(new JsonResponseHandler() {
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				try {
 						String response = obj.getString("response");
-						toast(response);
-					
+						if(response.equals("logout successfully"))
+							toast("成功退出!");
+						sendBroadcast(new Intent(Constants.Action_Logout));
+					finish();	
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
-					
 					e.printStackTrace();
+					toast("注销失败!请检查您的网络!");
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					toast("注销失败!请检查您的网络!");
 				}
 				
 			}
@@ -220,18 +241,6 @@ public class Setting extends BaseActivity {
 		}
 	}
 	
-	class isLoginReceiver extends BroadcastReceiver {
-		
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			// TODO Auto-generated method stub
-			toast("执行了");
-			if (intent.getAction().equals(Constants.Action_Employer_isLogin) ||intent.getAction().equals(Constants.Action_Publicer_isLogin)){
-				login.setVisibility(View.INVISIBLE);
-				logout.setVisibility(View.VISIBLE);
-			}
-		}
-	}
 	
 	
 

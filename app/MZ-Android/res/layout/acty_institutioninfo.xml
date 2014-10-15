@@ -42,7 +42,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:text="查询某个机构"
+            android:text="机构查询"
             android:textColor="@color/white"
             />
         

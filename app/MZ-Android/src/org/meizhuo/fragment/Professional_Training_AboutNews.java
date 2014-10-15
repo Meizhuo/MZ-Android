@@ -172,6 +172,7 @@ public class Professional_Training_AboutNews extends BaseFragment implements OnR
 		Intent intent =  new Intent(getActivity(), Professional_Article.class);
 		intent.putExtra("content", data.get(position).getContent());
 		intent.putExtra("title", data.get(position).getTitle());
+		intent.putExtra("doc_id", data.get(position).getId());
 		startActivity(intent);
 	}
 

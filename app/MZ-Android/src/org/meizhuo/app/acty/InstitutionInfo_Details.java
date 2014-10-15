@@ -84,6 +84,7 @@ public class InstitutionInfo_Details extends BaseActivity {
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
 				toast("出错了，请检查你的网络设置!");
+				closeActivity();
 			}
 		});
 		

@@ -5,7 +5,20 @@
     android:orientation="vertical" >
 
     <include layout = "@layout/acty_base_header"/>
-
+    
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="4dp"
+        android:scrollbarStyle="@null"
+        >
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    >
+	    
+	
         
         <TextView
             android:id="@+id/institution_course_name"
@@ -193,9 +206,9 @@
             android:background="@drawable/mz_bbuton_primary"
             android:textColor="@color/white"
             android:text="" />
+           </LinearLayout>
            
-           
-           
+           </ScrollView>
            
            
         

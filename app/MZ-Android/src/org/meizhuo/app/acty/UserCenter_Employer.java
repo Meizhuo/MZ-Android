@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.TextView;
 
 public class UserCenter_Employer extends BaseActivity {
@@ -74,7 +75,6 @@ public class UserCenter_Employer extends BaseActivity {
 					e.printStackTrace();
 				}
 				
-				
 				msg.what = Constants.Finish;
 				handler.sendMessage(msg);
 			}
@@ -127,5 +127,17 @@ public class UserCenter_Employer extends BaseActivity {
 			
 		}
 	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		if (keyCode == KeyEvent.KEYCODE_BACK){
+			closeActivity();
+			return false;
+		}else{
+			return super.onKeyDown(keyCode, event);
+		}
+	}
+	
 
 }

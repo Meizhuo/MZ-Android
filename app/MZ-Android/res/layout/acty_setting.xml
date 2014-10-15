@@ -173,6 +173,7 @@
             android:clickable="true" 
             android:background="@drawable/mz_btn_item_main"
             android:orientation="horizontal"
+            android:visibility="gone"
             >
             	<ImageView 
 			    android:layout_gravity="center_vertical"
@@ -192,7 +193,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:text="注销"
+            android:text="退出"
             android:textColor="@android:color/black"
             android:textSize="17sp"  />
         </LinearLayout>

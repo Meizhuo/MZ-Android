@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import org.meizhuo.model.Employer;
 import org.meizhuo.model.Publicer;
 import org.meizhuo.utils.DataPool;
 import org.meizhuo.utils.FilePath;
@@ -44,6 +45,30 @@ public class AppInfo {
 		return (String) dp.get(DataPool.SP_Key_Publicer_PSW);
 	}
 	
+	/*** 保存用人单位账户*/
+	public static boolean setEmployername(Context context, String employername){
+		DataPool dp =  new DataPool(DataPool.SP_Name_Employer, context);
+		return dp.put(DataPool.SP_Key_Employer_Name, employername);
+	}
+	
+	/**获取用人单位账号*/
+	public static String getEmployername(Context context)
+	{
+		DataPool dp =  new DataPool(DataPool.SP_Name_Employer, context);
+		return (String)dp.get(DataPool.SP_Key_Employer_Name);
+	}
+	/**保存用人单位用户密码*/
+	public static boolean setEmployerPSW(Context context, String employerpsw){
+		DataPool dp = new DataPool(DataPool.SP_Name_Employer, context);
+		return dp.put(DataPool.SP_Key_Employer_PSW, employerpsw);
+	}
+	/**获取用人单位密码*/
+	public static String getEmployerPSW(Context context) {
+		DataPool dp = new DataPool(DataPool.SP_Name_Employer, context);
+		return (String)dp.get(DataPool.SP_Key_Employer_PSW);
+	}
+	
+	
 	/**
 	 * 获取普通 用户信息
 	 * @param context
@@ -52,6 +77,11 @@ public class AppInfo {
 	public static Publicer getPublicer(Context context) {
 		DataPool dp = new DataPool(DataPool.SP_Name_Publicer, context);
 		return (Publicer) dp.get(DataPool.SP_Key_Publicer);
+	}
+	
+	public static Employer getEmployer(Context context) {
+		DataPool dp =  new DataPool(DataPool.SP_Name_Employer, context);
+		return (Employer) dp.get(DataPool.SP_Key_Employer);
 	}
 	
 	/**
@@ -82,11 +112,25 @@ public class AppInfo {
 	 * @param publicer
 	 * @return
 	 */
-	public static boolean setUser(Context context, Publicer publicer) {
+	public static boolean setPublicer(Context context, Publicer publicer) {
 		DataPool dp = new DataPool(DataPool.SP_Name_Publicer, context);
 		dp.remove(DataPool.SP_Key_Publicer);
 		return dp.put(DataPool.SP_Name_Publicer, publicer);
 	}
+	
+	/**
+	 * 
+	 * @param context
+	 * @param employer
+	 * @return
+	 */
+	public static boolean setEmployer(Context context, Employer employer) {
+		DataPool dp =  new DataPool(DataPool.SP_Name_Employer, context);
+		dp.remove(DataPool.SP_Key_Employer);
+		return dp.put(DataPool.SP_Name_Employer, employer);
+	}
+	
+	
 	
 	/**
 	 * 获得自定义的主页背景图片

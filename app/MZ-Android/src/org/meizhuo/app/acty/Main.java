@@ -4,19 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.Header;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.adapter.ImagePagerAdapter;
 import org.meizhuo.adapter.ImagePagerAdapter.OnItemClickListener;
 import org.meizhuo.api.PublicerAPI;
+import org.meizhuo.app.AppInfo;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.CoreService;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.utils.AndroidUtils;
 import org.meizhuo.utils.Constants;
-
-import com.google.gson.JsonObject;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -26,40 +24,65 @@ import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Toast;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class Main extends BaseActivity {
-	private static final String TAG = "Appstart";
+	private static final String TAG = "Main";
 	
 	private BroadcastReceiver mReceiver = null;
 	private BroadcastReceiver loginReceiver = null;
+	/**普通用户第一次登陆*/
 	private boolean is_Publicer_Login;
+	/**用人单位第一次登陆*/
 	private boolean is_Employer_Login;
+	/***普通用户重新登陆*/
+	private boolean Publicer_reLogin;
+	/**用人单位重新登陆*/
+	private boolean Employer_reLogin;
+	/*
+	 	@Optional @OnClick(R.id.btn_app_back) public void back() {
+		if (this.findViewById(R.id.tv_app_title).getVisibility() != View.INVISIBLE) {
+			closeActivity();
+		}
+	}
+	 */
 
 	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
 
 	ImagePagerAdapter adapter_imagepage;
 
 	List<Integer> imageIdList;
+	
+	private BroadcastReceiver logoutReceiver;
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.acty_main);
 		setDisplayBackIcon(false);
+		initLoginReceiver();
+		initLogout_Receiver();
+		checkPublicerReLogin();
+		checkEmployerReLogin();
 		checkVersion();
 		initReceiver();
-		initLoginReceiver();
+		
 		
 		viewPager.setInterval(2000);
 		viewPager.startAutoScroll();
 
 		imageIdList = new ArrayList<Integer>();
+		
+		
 		imageIdList.add(R.drawable.bigbang);
 		imageIdList.add(R.drawable.aa_evernote);
 		imageIdList.add(R.drawable.hannibal);
@@ -74,6 +97,13 @@ public class Main extends BaseActivity {
 			}
 		});
 		viewPager.setAdapter(adapter_imagepage);
+	}
+	
+	
+	@OnClick(R.id.btn_app_back) public void back(){
+		if (this.findViewById(R.id.tv_app_title).getVisibility() != View.INVISIBLE) {
+			return ;
+		}
 	}
 
 	@OnClick(R.id.btn_professional_training) public void Professional_Training() {
@@ -94,29 +124,47 @@ public class Main extends BaseActivity {
 	}
 
 	@OnClick(R.id.btn_usercenter) public void usercenter() {
-		boolean isLogin = is_Publicer_Login || is_Employer_Login;
+		boolean isLogin = is_Publicer_Login || is_Employer_Login || Publicer_reLogin || Employer_reLogin;
 		if(!isLogin){
 			toast("请先到设置模块进行登录");
+			return;
 		}
-		if(is_Publicer_Login){
+		if (!AndroidUtils.isNetworkConnected(Main.this)){
+			toast("请打开您的网络开关 ");
+			return;
+		}
+		if(is_Publicer_Login ||Publicer_reLogin ){
 			openActivity(UserCenter_Publicer.class);
 		}
 		
-		if (is_Employer_Login) {
+		if (is_Employer_Login || Employer_reLogin) {
 			openActivity(UserCenter_Employer.class);
 		}
 		
 	}
 
 	@OnClick(R.id.btn_setting) public void setting() {
-		openActivity(Setting.class);
+		boolean isLogin = is_Publicer_Login || is_Employer_Login || Publicer_reLogin || Employer_reLogin;
+		Intent it = new Intent(this, Setting.class);
+		it.putExtra("isLogin", isLogin);
+		startActivity(it);
 	}
 	private void initLoginReceiver(){
 		loginReceiver =  new LoginReceiver();
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Constants.Action_Publicer_isLogin);;
 		filter.addAction(Constants.Action_Employer_isLogin);
+		filter.addAction(Constants.Action_Publicer_ReLoginSuccessful);
+		filter.addAction(Constants.Action_Employer_ReLoginSuccessful);
 		registerReceiver(loginReceiver, filter);
+	}
+	
+	private void initLogout_Receiver(){
+		logoutReceiver =  new LogoutReceiver();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(Constants.Action_Logout);
+		registerReceiver(logoutReceiver, filter);
+		
 	}
 	
 	private void initReceiver() {
@@ -195,8 +243,28 @@ public class Main extends BaseActivity {
 			if(action.equals(Constants.Action_Employer_isLogin)){
 				is_Employer_Login = true;
 			}
+			if(action.equals(Constants.Action_Publicer_ReLoginSuccessful)){
+				Log.i(TAG, "普通用户重新登录");
+				Publicer_reLogin = true;
+			}
+			if(action.equals(Constants.Action_Employer_ReLoginSuccessful)){
+				Log.i(TAG, "用人单位重新登录");
+				Employer_reLogin = true;
+			}
 		}
 		
+	}
+	
+	class LogoutReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			String action =  intent.getAction();
+			if(action.equals(Constants.Action_Logout))
+			{
+				Main.this.finish();
+			}
+		}
 	}
 	
 	private void checkVersion() {
@@ -204,5 +272,19 @@ public class Main extends BaseActivity {
 		service.setAction(Constants.Action_checkVersion);
 		startService(service);
 	}
+	
+	private void  checkPublicerReLogin(){
+		Intent service =  new Intent(getContext(), CoreService.class);
+		service.setAction(Constants.Action_Publicer_To_ReLogin);
+		startService(service);
+	}
+	
+	private void checkEmployerReLogin(){
+		Intent service =  new Intent(getContext(), CoreService.class);
+		service.setAction(Constants.Action_Employer_To_Relogin);
+		startService(service);
+	}
+	
+
 
 }
