@@ -14,5 +14,6 @@
     <color name="blue_main_item">#02bbf3</color>
     <color name="black">#ff000000</color>
     <color name="lucency_white">#00ffffff</color>
+    <color name="lucency_black">#9000</color>
 
 </resources>

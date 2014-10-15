@@ -24,7 +24,7 @@ import butterknife.OnItemClick;
  * 
  */
 public class PublicConsult extends BaseActivity {
-
+/*
 	@InjectView(R.id.lv_publicconsult) ListView lv;
 	@InjectView(R.id.autoscrollviewpage) AutoScrollViewPager viewPager;
 	PublicConsultAdapter adapter_publicconsult;
@@ -79,5 +79,5 @@ public class PublicConsult extends BaseActivity {
 
 			break;
 		}
-	}
+	}*/
 }

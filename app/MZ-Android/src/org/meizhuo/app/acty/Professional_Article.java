@@ -37,21 +37,22 @@ public class Professional_Article extends BaseActivity  {
 	@Override protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState, R.layout.acty_professional_artilecontent);
-		setAppTitle("详情");
 		
 		
 		initData();
 		initLayout();
+		setAppTitle(title);
 	}
 	/*
 	 * Intent intent =  new Intent(getActivity(), Professional_Article.class);
-		intent.putExtra("Category_id", data.get(position).getCategory_id());
+		intent.putExtra("title", data.get(position).getTitle());
 		intent.putExtra("doc_id", data.get(position).getId());
 		intent.putExtra("content", data.get(position).getContent());
 	 */
 	private void initData(){
 		Intent intent = getIntent();
 		String doc_id = intent.getStringExtra("doc_id");
+		title  = intent.getStringExtra("title");
 		String baseurl = RestClient.BASE_URL;
 		url = baseurl + "/admin/index/viewDocument" + "/" + "doc_id" + "/" + doc_id;
 	}
