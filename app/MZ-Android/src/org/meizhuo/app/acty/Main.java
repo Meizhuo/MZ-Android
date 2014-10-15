@@ -3,18 +3,14 @@ package org.meizhuo.app.acty;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.Header;
-import org.json.JSONObject;
 import org.meizhuo.adapter.ImagePagerAdapter;
 import org.meizhuo.adapter.ImagePagerAdapter.OnItemClickListener;
-import org.meizhuo.api.PublicerAPI;
-import org.meizhuo.app.AppInfo;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.CoreService;
 import org.meizhuo.app.R;
-import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.utils.AndroidUtils;
 import org.meizhuo.utils.Constants;
+
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -24,10 +20,6 @@ import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +27,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import butterknife.Optional;
 
 public class Main extends BaseActivity {
 	private static final String TAG = "Main";
@@ -50,19 +41,15 @@ public class Main extends BaseActivity {
 	private boolean Publicer_reLogin;
 	/**用人单位重新登陆*/
 	private boolean Employer_reLogin;
-	/*
-	 	@Optional @OnClick(R.id.btn_app_back) public void back() {
-		if (this.findViewById(R.id.tv_app_title).getVisibility() != View.INVISIBLE) {
-			closeActivity();
-		}
-	}
-	 */
+	
+
 
 	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
-
 	ImagePagerAdapter adapter_imagepage;
 
 	List<Integer> imageIdList;
+	
+	List<String> ad_list;
 	
 	private BroadcastReceiver logoutReceiver;
 
@@ -76,18 +63,22 @@ public class Main extends BaseActivity {
 		checkVersion();
 		initReceiver();
 		
-		
-		viewPager.setInterval(2000);
+
+		viewPager.setInterval(3000);
 		viewPager.startAutoScroll();
 
 		imageIdList = new ArrayList<Integer>();
+		ad_list =  new ArrayList<String>();
+		ad_list.add("市人力资源局召开2014年就业工作座谈会");
+		ad_list.add("积极组织企业赴外招工 搭建劳务对接平台");
+		ad_list.add("执行国家和省有关劳动工作的方正政策");
+	
 		
-		
-		imageIdList.add(R.drawable.bigbang);
 		imageIdList.add(R.drawable.aa_evernote);
+		imageIdList.add(R.drawable.bigbang);
 		imageIdList.add(R.drawable.hannibal);
 
-		adapter_imagepage = new ImagePagerAdapter(this, imageIdList);
+		adapter_imagepage = new ImagePagerAdapter(this, imageIdList , ad_list);
 		adapter_imagepage.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override public void onItemClick(int position, View view) {
@@ -284,6 +275,8 @@ public class Main extends BaseActivity {
 		service.setAction(Constants.Action_Employer_To_Relogin);
 		startService(service);
 	}
+	
+
 	
 
 

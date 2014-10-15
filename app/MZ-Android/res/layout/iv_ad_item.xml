@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:orientation="vertical" >
+    
+    <FrameLayout 
+        android:id="@+id/framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/aa_evernote"
+        
+        >
+
+    <TextView
+        style="@style/TextView"
+        android:id="@+id/tv_ad_title"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@color/lucency_black"
+        android:paddingTop="8dp"
+        android:paddingLeft="15dp"
+        android:text="今天吃饭了"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+  <!--   <ImageView 
+        android:id="@+id/ad_title_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        /> -->
+</FrameLayout>
+</LinearLayout>

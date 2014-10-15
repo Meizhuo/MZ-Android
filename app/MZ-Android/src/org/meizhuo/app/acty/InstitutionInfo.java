@@ -54,6 +54,8 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	ImagePagerAdapter adapter_imagepage;
 	List<Institution>data;
 	List<Integer> imageIdList;
+	List<String> ad_list;
+//	List<ImageView>imageIdList;
 	String status = "";
 	String name = "";
 	String type = "";
@@ -68,15 +70,35 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	
 	private void initLayout(){
 
-		viewPager.setInterval(2000);
+		viewPager.setInterval(3000);
 		viewPager.startAutoScroll();
 
 		imageIdList = new ArrayList<Integer>();
 		imageIdList.add(R.drawable.bigbang);
 		imageIdList.add(R.drawable.aa_evernote);
 		imageIdList.add(R.drawable.hannibal);
+	/*	imageIdList = new ArrayList<ImageView>();
+		
+		imageIdList = new ArrayList<ImageView>();
+		ImageView imageView =  new ImageView(this);
+		imageView.setImageResource(R.drawable.bigbang);
+		
+		ImageView imageView2 =  new ImageView(this);
+		imageView2.setImageResource(R.drawable.aa_evernote);
+		
+		ImageView imageView3 =  new ImageView(this);
+		imageView3.setImageResource(R.drawable.hannibal);
+		
+		imageIdList.add(imageView);
+		imageIdList.add(imageView2);
+		imageIdList.add(imageView3);*/
+		
+		ad_list =  new ArrayList<String>();
+		ad_list.add("市人力资源局召开2014年就业工作座谈会");
+		ad_list.add("积极组织企业赴外招工 搭建劳务对接平台");
+		ad_list.add("执行国家和省有关劳动工作的方正政策");
 
-		adapter_imagepage = new ImagePagerAdapter(this, imageIdList);
+		adapter_imagepage = new ImagePagerAdapter(this, imageIdList,ad_list);
 		adapter_imagepage.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override public void onItemClick(int position, View view) {
