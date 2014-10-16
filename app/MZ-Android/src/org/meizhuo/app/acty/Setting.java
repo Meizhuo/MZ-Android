@@ -42,14 +42,20 @@ import butterknife.OnClick;
  */
 public class Setting extends BaseActivity {
 	private static final String TAG = "jason";
+	private static final int logoff_status_start = 0;
+	private static final int logoff_status_faild = 1;
+	private static final int logoff_status_finish = 2;
 
 	@InjectView(R.id.setting_feedback) LinearLayout feedback;
 	@InjectView(R.id.about) LinearLayout about;
 	@InjectView(R.id.user_login) LinearLayout login;
 	@InjectView(R.id.logout) LinearLayout logout;
+	@InjectView(R.id.logoff) LinearLayout logoff;
 	PublicerAPI publicerApi;
 	boolean isLogin;
 	UpdateHandler handler = new UpdateHandler();
+	
+	
 	
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +77,7 @@ public class Setting extends BaseActivity {
 		{
 			login.setVisibility(View.INVISIBLE);
 			logout.setVisibility(View.VISIBLE);
+			logoff.setVisibility(View.VISIBLE);
 		}
 		
 	}
@@ -134,22 +141,55 @@ public class Setting extends BaseActivity {
 		openActivity(Feedback.class);
 	}
 	
-	@OnClick(R.id.logout) public void logout() {
+	@OnClick(R.id.logoff) public void logoff() {
 		if(!AndroidUtils.isNetworkConnected(Setting.this))
 		{
 			toast("请先打开网络开关!");
 			return ;
 		}
-		publicerApi.logout(new JsonResponseHandler() {
+		
+		final Handler h =  new Handler(){
+			@Override
+			public void handleMessage(Message msg) {
+				// TODO Auto-generated method stub
+				switch (msg.what) {
+				case logoff_status_start:
+					toast("正在注销...");
+					break;
+				case logoff_status_faild:
+				    break;
+				case logoff_status_finish:
+					toast("成功注销");
+					login.setVisibility(View.VISIBLE);
+					logoff.setVisibility(View.INVISIBLE);
+					logout.setVisibility(View.INVISIBLE);
+					break;
+				default:
+					break;
+				}
+			}
+		};
+		publicerApi.logoff(new JsonResponseHandler() {
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				try {
 						String response = obj.getString("response");
 						if(response.equals("logout successfully"))
-							toast("成功退出!");
-						sendBroadcast(new Intent(Constants.Action_Logout));
-					finish();	
+						{
+							sendBroadcast(new Intent(Constants.Action_Logoff));
+						}
+						
+						new Thread(new Runnable() {
+							
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								h.sendEmptyMessage(logoff_status_start);
+								((App)getApplication()).cleanUpInfo();
+								h.sendEmptyMessage(logoff_status_finish);
+							}
+						}).start();
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -164,8 +204,14 @@ public class Setting extends BaseActivity {
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
+				toast("退出失败！");
 			}
 		});
+	}
+	//退出
+	@OnClick(R.id.logout) public void logout(){
+		sendBroadcast(new Intent(Constants.Action_Logout));
+		finish();	
 	}
 	
 

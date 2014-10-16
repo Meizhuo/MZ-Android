@@ -30,6 +30,8 @@ public class Constants {
 	public static final String Action_Employer_ReloginFaild = "Employer_ReloginFaild" ;
 	/***退出*/
 	public static final String Action_Logout = "Logout";
+	/**注销*/
+	public static final String Action_Logoff = "Logoff";
 
 
 	
