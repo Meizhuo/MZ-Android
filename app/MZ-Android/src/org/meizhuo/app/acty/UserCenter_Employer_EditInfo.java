@@ -73,7 +73,6 @@ public class UserCenter_Employer_EditInfo extends BaseActivity{
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				toast("保存成功!");
 				msg.what = Constants.Finish;
 				handler.sendMessage(msg);
 			}
@@ -103,7 +102,9 @@ public class UserCenter_Employer_EditInfo extends BaseActivity{
 			switch (msg.what) {
 			case Constants.Start:
 				dialog =  new WaittingDialog(UserCenter_Employer_EditInfo.this);
+				dialog.setText("正在保存...");
 				dialog.show();
+				
 				break;
 			case  Constants.Finish:
 				if(dialog.isShowing()){

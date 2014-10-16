@@ -196,6 +196,7 @@
         </LinearLayout>
         
              <Button
+                 android:layout_marginBottom="20dp"
                 android:id="@+id/institution_course_belong_institution"
                 style="@style/TextView"
                     android:layout_marginTop="10dp"

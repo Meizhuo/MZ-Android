@@ -133,6 +133,7 @@
             android:layout_height="2dp"
             android:background="@drawable/ic_line_1" />
               <Button 
+                  android:layout_marginBottom="20dp"
             android:id="@+id/btn_search_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"

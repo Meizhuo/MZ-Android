@@ -40,6 +40,10 @@ public class InstitutionInfo_Details extends BaseActivity {
 	@InjectView(R.id.institution_manager) TextView company_manager;
 	@InjectView(R.id.institution_traning_type) TextView training_scope;
 	@InjectView(R.id.company_teacher_resource) TextView teacher_resource;
+	@InjectView(R.id.institution_traning_contach_phone) TextView contach_phone;
+	@InjectView(R.id.institution_email) TextView institution_email;
+	@InjectView(R.id.institution_traning_institution_addr) TextView company_addr;
+	@InjectView(R.id.institution_traning_contact_people) TextView contact_people;
 	
 	
 	Institution institution;
@@ -111,6 +115,12 @@ public class InstitutionInfo_Details extends BaseActivity {
 				if (dialog.isShowing())
 					dialog.dismiss();
 				dialog = null;
+				/*
+				 @InjectView(R.id.institution_traning_contach_phone) TextView contach_phone;
+	@InjectView(R.id.institution_email) TextView institution_email;
+	@InjectView(R.id.institution_traning_institution_addr) TextView company_addr;
+	@InjectView(R.id.institution_traning_contact_people) TextView contact_people;
+				 */
 				institution_name.setText(institution.getNickname().toString());
 				company_name.setText(institution.getName().toString());
 				institution_teach_type.setText(institution.getType().toString());
@@ -118,6 +128,9 @@ public class InstitutionInfo_Details extends BaseActivity {
 				company_manager.setText(institution.getManager().toString());
 				training_scope.setText(institution.getTraining_scope().toString());
 				teacher_resource.setText(institution.getTeacher_resource().toString());
+				//contach_phone.setText(institution.getPhone().toString());
+				institution_email.setText(institution.getEmail().toString());
+				company_addr.setText(institution.getAddress().toString());
 				
 			default:
 				break;
