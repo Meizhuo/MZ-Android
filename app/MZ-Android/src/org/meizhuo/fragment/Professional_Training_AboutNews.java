@@ -43,7 +43,7 @@ public class Professional_Training_AboutNews extends BaseFragment implements OnR
 	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	Professional_Training_Article_Title_Adapter adatper_title;
-	List<DocumentInfo>data;
+	List<DocumentInfo>data; 
 	String category_id = "3", title = "", content = "", page = "1";
 	boolean hasMore = true, isloading = false;
 

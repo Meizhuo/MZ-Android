@@ -40,6 +40,10 @@ public class InstitutionInfo_Details extends BaseActivity {
 	@InjectView(R.id.institution_manager) TextView company_manager;
 	@InjectView(R.id.institution_traning_type) TextView training_scope;
 	@InjectView(R.id.company_teacher_resource) TextView teacher_resource;
+	@InjectView(R.id.institution_traning_contach_phone) TextView contach_phone;
+	@InjectView(R.id.institution_email) TextView institution_email;
+	@InjectView(R.id.institution_traning_institution_addr) TextView company_addr;
+	@InjectView(R.id.institution_traning_contact_people) TextView contact_people;
 	
 	
 	Institution institution;
@@ -111,13 +115,83 @@ public class InstitutionInfo_Details extends BaseActivity {
 				if (dialog.isShowing())
 					dialog.dismiss();
 				dialog = null;
-				institution_name.setText(institution.getNickname().toString());
-				company_name.setText(institution.getName().toString());
-				institution_teach_type.setText(institution.getType().toString());
-				company_description.setText(institution.getDescription().toString());
-				company_manager.setText(institution.getManager().toString());
-				training_scope.setText(institution.getTraining_scope().toString());
-				teacher_resource.setText(institution.getTeacher_resource().toString());
+				/*
+				 @InjectView(R.id.institution_traning_contach_phone) TextView contach_phone;
+	@InjectView(R.id.institution_email) TextView institution_email;
+	@InjectView(R.id.institution_traning_institution_addr) TextView company_addr;
+	@InjectView(R.id.institution_traning_contact_people) TextView contact_people;
+				 */
+				if (institution.getNickname() == null)
+				{
+					institution_name.setText("");
+				}else
+				{
+					institution_name.setText(institution.getNickname().toString());
+				}
+				if (institution.getName() == null)
+				{
+					company_name.setText("");
+				}
+				else
+				{
+					company_name.setText(institution.getName().toString());
+				}
+				if (institution.getType() == null)
+				{
+					institution_teach_type.setText("");
+				}
+				else{
+					institution_teach_type.setText(institution.getType().toString());
+				}
+				if (institution.getDescription() == null)
+				{
+					company_description.setText("");
+				}else{
+					company_description.setText(institution.getDescription().toString());
+				}
+				if (institution.getManager() == null)
+				{
+					company_manager.setText("");
+				}else{
+					company_manager.setText(institution.getManager().toString());
+				}
+				if (institution.getTraining_scope() == null)
+				{
+					training_scope.setText("");
+				}else{
+					training_scope.setText(institution.getTraining_scope().toString());
+				}
+				if (institution.getTeacher_resource() == null)
+				{
+					teacher_resource.setText("");
+				}else{
+					teacher_resource.setText(institution.getTeacher_resource().toString());
+				}
+				if(institution.getContact_phone() == null)
+				{
+					contach_phone.setText("");
+				}else
+				{
+					contach_phone.setText(institution.getContact_phone().toString());
+				}
+				if(institution.getContact_email() == null)
+				{
+					institution_email.setText("");
+				}else{
+					institution_email.setText(institution.getContact_email().toString());
+				}
+				if (institution.getAddress() == null)
+				{
+					company_addr.setText("");
+				}else{
+					company_addr.setText(institution.getAddress().toString());
+				}
+				if (institution.getContact_member() == null)
+				{
+					contact_people.setText("");
+				}else {
+					contact_people.setText(institution.getContact_member());
+				}
 				
 			default:
 				break;

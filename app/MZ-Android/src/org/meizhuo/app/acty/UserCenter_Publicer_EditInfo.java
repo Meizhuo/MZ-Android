@@ -1,6 +1,7 @@
 package org.meizhuo.app.acty;
 
 import org.apache.http.Header;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.api.PublicerAPI;
 import org.meizhuo.app.BaseActivity;
@@ -56,14 +57,26 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				msg.what = Constants.Finish;
-				handler.sendMessage(msg);
+				try {
+					if(obj.getString("code").equals("20000"))
+					{
+						msg.what = Constants.Finish;
+						handler.sendMessage(msg);
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					msg.what = Constants.Fail;
+					handler.sendMessage(msg);
+				}
 			}
 			
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
-				
+			
+				msg.what = Constants.Fail;
+				handler.sendMessage(msg);
 			}
 		});
 	} 
@@ -131,7 +144,10 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 				backintent.putExtra("work_place", work_place);
 				UserCenter_Publicer_EditInfo.this.setResult(1001, backintent);
 				UserCenter_Publicer_EditInfo.this.finish();
-				
+			case Constants.Fail:
+				if (waittingDialog.isShowing())
+					waittingDialog.dismiss();
+				toast("保存失败，请检查您的网络");
 			default:
 				break;
 			}

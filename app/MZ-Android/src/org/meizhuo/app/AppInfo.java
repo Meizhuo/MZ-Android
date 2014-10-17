@@ -130,6 +130,15 @@ public class AppInfo {
 		return dp.put(DataPool.SP_Name_Employer, employer);
 	}
 	
+	public static void removeAllUser(Context context){
+		DataPool dp =  new DataPool(DataPool.SP_Name_Publicer, context);
+		if(dp!=null)
+			dp.remove(DataPool.SP_Key_Employer);
+		DataPool dp2 = new DataPool(DataPool.SP_Name_Employer, context);
+		if (dp2!=null)
+			dp2.remove(DataPool.SP_Key_Publicer);
+	}
+	
 	
 	
 	/**

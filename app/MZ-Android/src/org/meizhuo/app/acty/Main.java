@@ -33,6 +33,7 @@ public class Main extends BaseActivity {
 	
 	private BroadcastReceiver mReceiver = null;
 	private BroadcastReceiver loginReceiver = null;
+	private BroadcastReceiver logoffReceiver = null;
 	/**普通用户第一次登陆*/
 	private boolean is_Publicer_Login;
 	/**用人单位第一次登陆*/
@@ -41,6 +42,8 @@ public class Main extends BaseActivity {
 	private boolean Publicer_reLogin;
 	/**用人单位重新登陆*/
 	private boolean Employer_reLogin;
+	/**注销 */
+	private boolean logoff;
 	
 
 
@@ -58,6 +61,7 @@ public class Main extends BaseActivity {
 		setDisplayBackIcon(false);
 		initLoginReceiver();
 		initLogout_Receiver();
+		initLogoffReceiver();
 		checkPublicerReLogin();
 		checkEmployerReLogin();
 		checkVersion();
@@ -116,7 +120,7 @@ public class Main extends BaseActivity {
 
 	@OnClick(R.id.btn_usercenter) public void usercenter() {
 		boolean isLogin = is_Publicer_Login || is_Employer_Login || Publicer_reLogin || Employer_reLogin;
-		if(!isLogin){
+		if(!isLogin || logoff){
 			toast("请先到设置模块进行登录");
 			return;
 		}
@@ -148,6 +152,11 @@ public class Main extends BaseActivity {
 		filter.addAction(Constants.Action_Publicer_ReLoginSuccessful);
 		filter.addAction(Constants.Action_Employer_ReLoginSuccessful);
 		registerReceiver(loginReceiver, filter);
+	}
+	
+	private void initLogoffReceiver(){
+		logoffReceiver =  new LogoffReceiver();
+		registerReceiver(logoffReceiver, new IntentFilter(Constants.Action_Logoff));
 	}
 	
 	private void initLogout_Receiver(){
@@ -222,7 +231,7 @@ public class Main extends BaseActivity {
 	
 	
 	
-	
+	/**登录接收器*/
 	class LoginReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -245,7 +254,7 @@ public class Main extends BaseActivity {
 		}
 		
 	}
-	
+	/**退出接收器*/
 	class LogoutReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -255,6 +264,21 @@ public class Main extends BaseActivity {
 			{
 				Main.this.finish();
 			}
+		}
+	}
+	
+	class LogoffReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			String action = intent.getAction();
+			if (action.equals(Constants.Action_Logoff))
+			{
+				logoff = true;
+				is_Employer_Login = false;
+				is_Publicer_Login = false;
+			}
+			
 		}
 	}
 	
