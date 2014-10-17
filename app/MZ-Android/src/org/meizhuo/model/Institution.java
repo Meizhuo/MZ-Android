@@ -63,6 +63,8 @@ public class Institution implements Serializable{
 
 	
 	
+
+
 	public String getNickname() {
 		return nickname;
 	}
@@ -191,8 +193,35 @@ public class Institution implements Serializable{
 		this.teacher_resource = teacher_resource;
 	}
 
+	public String getContact_member() {
+		return contact_member;
+	}
 
-	private String nickname;
+	public void setContact_member(String contact_member) {
+		this.contact_member = contact_member;
+	}
+
+	public String getContact_phone() {
+		return contact_phone;
+	}
+
+	public void setContact_phone(String contact_phone) {
+		this.contact_phone = contact_phone;
+	}
+
+	public String getContact_email() {
+		return contact_email;
+	}
+
+	public void setContact_email(String contact_email) {
+		this.contact_email = contact_email;
+	}
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "Institution [nickname=" + nickname + ", phone=" + phone
@@ -202,9 +231,18 @@ public class Institution implements Serializable{
 				+ ", type=" + type + ", approval_number=" + approval_number
 				+ ", validity_date=" + validity_date + ", training_scope="
 				+ training_scope + ", description=" + description
-				+ ", teacher_resource=" + teacher_resource + "]";
+				+ ", teacher_resource=" + teacher_resource
+				+ ", contact_member=" + contact_member + ", contact_phone="
+				+ contact_phone + ", contact_email=" + contact_email + "]";
 	}
 
+
+
+
+
+
+	/**公司昵称*/
+	private String nickname;
 	/**电话*/
 	private String phone;
 	/**电子邮件 */
@@ -235,7 +273,11 @@ public class Institution implements Serializable{
 	private String description;
 	/**教师资源*/
 	private String teacher_resource;
-	
-	
+	/**联系人*/
+	private String contact_member;
+	/**联系电话*/
+	private String contact_phone;
+	/**联系邮箱*/
+	private String contact_email;
 
 }
