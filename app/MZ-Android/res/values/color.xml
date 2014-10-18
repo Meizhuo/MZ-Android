@@ -15,5 +15,5 @@
     <color name="black">#ff000000</color>
     <color name="lucency_white">#00ffffff</color>
     <color name="lucency_black">#9000</color>
-
+	 <color name="transparent_background">#80000000</color>
 </resources>
