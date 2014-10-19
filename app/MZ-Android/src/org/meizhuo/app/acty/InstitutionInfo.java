@@ -19,6 +19,7 @@ import org.meizhuo.view.AutoScrollViewPager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
@@ -53,10 +54,9 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	InstitutionInfoAdapter adapter_lv;
 	ImagePagerAdapter adapter_imagepage;
 	List<Institution>data;
-	List<Integer> imageIdList;
+	List<Drawable> imageIdList;
 	List<String> ad_list;
 //	List<ImageView>imageIdList;
-	String status = "";
 	String name = "";
 	String type = "";
 	String page = "1";
@@ -73,25 +73,21 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 		viewPager.setInterval(3000);
 		viewPager.startAutoScroll();
 
-		imageIdList = new ArrayList<Integer>();
-		imageIdList.add(R.drawable.bigbang);
+		imageIdList = new ArrayList<Drawable>();
+		
+		
+		Drawable d1 = this.getResources().getDrawable(R.drawable.aa_evernote);
+		Drawable d2 = this.getResources().getDrawable(R.drawable.bigbang);
+		Drawable d3 = this.getResources().getDrawable(R.drawable.hannibal);
+	
+		imageIdList.add(d1);
+		imageIdList.add(d2);
+		imageIdList.add(d3);
+		
+/*		imageIdList.add(R.drawable.bigbang);
 		imageIdList.add(R.drawable.aa_evernote);
-		imageIdList.add(R.drawable.hannibal);
-	/*	imageIdList = new ArrayList<ImageView>();
-		
-		imageIdList = new ArrayList<ImageView>();
-		ImageView imageView =  new ImageView(this);
-		imageView.setImageResource(R.drawable.bigbang);
-		
-		ImageView imageView2 =  new ImageView(this);
-		imageView2.setImageResource(R.drawable.aa_evernote);
-		
-		ImageView imageView3 =  new ImageView(this);
-		imageView3.setImageResource(R.drawable.hannibal);
-		
-		imageIdList.add(imageView);
-		imageIdList.add(imageView2);
-		imageIdList.add(imageView3);*/
+		imageIdList.add(R.drawable.hannibal);*/
+	
 		
 		ad_list =  new ArrayList<String>();
 		ad_list.add("市人力资源局召开2014年就业工作座谈会");
@@ -154,7 +150,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	public void onRefresh() {
 		// TODO Auto-generated method stub
 		isloading = true;
-		InstitutionAPI.getInstitutionInfo(status, name, type, "1", new JsonResponseHandler() {
+		InstitutionAPI.getInstitutionInfo( name, type, "1", new JsonResponseHandler() {
 			
 			@Override
 			public void onStart() {
@@ -198,7 +194,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 		int i = Integer.parseInt(page);
 		i+=1;
 		page = String.valueOf(i);
-		InstitutionAPI.getInstitutionInfo(status, name, type, page, new JsonResponseHandler() {
+		InstitutionAPI.getInstitutionInfo( name, type, page, new JsonResponseHandler() {
 			
 			@Override
 			public void onStart() {

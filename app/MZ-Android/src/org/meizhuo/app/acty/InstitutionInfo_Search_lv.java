@@ -30,7 +30,6 @@ public class InstitutionInfo_Search_lv extends BaseActivity implements OnRefresh
 	@InjectView(R.id.lv_institutionInfo) ListView lv_institution;
 	List<Institution>data;
 	InstitutionInfoAdapter adapte_lv;
-	String status = "";
 	String name = "";
 	String type = "";
 	String page = "1";
@@ -68,7 +67,7 @@ public class InstitutionInfo_Search_lv extends BaseActivity implements OnRefresh
 	@Override
 	public void onRefresh() {
 		isloading = true;
-		InstitutionAPI.getInstitutionInfo(status, name, type, "1", new JsonResponseHandler() {
+		InstitutionAPI.getInstitutionInfo( name, type, "1", new JsonResponseHandler() {
 			
 			@Override
 			public void onStart() {
@@ -113,7 +112,7 @@ public class InstitutionInfo_Search_lv extends BaseActivity implements OnRefresh
 		int i = Integer.parseInt(page);
 		i+=1;
 		page = String.valueOf(i);
-		InstitutionAPI.getInstitutionInfo(status, name, type, page, new JsonResponseHandler() {
+		InstitutionAPI.getInstitutionInfo( name, type, page, new JsonResponseHandler() {
 			
 			@Override
 			public void onStart() {
