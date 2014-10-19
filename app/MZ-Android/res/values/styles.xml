@@ -10,6 +10,13 @@
         <item name="android:windowAnimationStyle">@style/Animations.activity</item>
     </style>
     
+       <style name="Transparent">
+           <item name="android:windowBackground">@color/mz_grey_black</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@+android:style/Animation.Translucent</item>
+    </style>
+    
     <style name="Base_ProgressBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -44,6 +45,7 @@ public class InstitutionInfo_Details extends BaseActivity {
 	@InjectView(R.id.institution_email) TextView institution_email;
 	@InjectView(R.id.institution_traning_institution_addr) TextView company_addr;
 	@InjectView(R.id.institution_traning_contact_people) TextView contact_people;
+	
 	
 	
 	Institution institution;
@@ -93,6 +95,15 @@ public class InstitutionInfo_Details extends BaseActivity {
 		});
 		
 	}
+	// 进入公司简介页面
+	@OnClick(R.id.ll_company_description) public void enter_company_intro(){
+		Intent it =  new Intent(this, InstitutionInfo_Details_com_intro.class);
+		it.putExtra("content", institution.getDescription().toString());
+		it.putExtra("title", institution.getNickname().toString());
+		startActivity(it);
+		
+	}
+	//进入课程详情页面
 	@OnClick(R.id.institution_course_detail_btn) public void enter_course(){
 		Intent intent =  new Intent(this, CourseDetails.class);
 		intent.putExtra("institution_id", institution_id);
