@@ -72,6 +72,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		 
 	}
 	
+	
 	private void initLayout(){
 		 course_name.setText(name);
 		 course_time.setText(start_time);
@@ -117,6 +118,14 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 					dialog.dismiss();
 			}
 		});
+	}
+	
+	@OnClick(R.id.ll_course_description) public void ToCourseDescription(){
+		Intent intent =  new Intent(CourseDetails_OneCourse.this, CourseDetails_description.class);
+		intent.putExtra("content", introduction);
+		intent.putExtra("content", name);
+		startActivity(intent);
+		
 	}
 	
   @OnClick(R.id.institution_course_belong_institution) public void toTheInstitution(){

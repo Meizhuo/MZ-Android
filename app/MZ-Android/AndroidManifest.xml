@@ -190,7 +190,17 @@
             android:screenOrientation="portrait"
             android:theme="@style/Transparent"  >
         </activity>    
-                  
+        
+         <!-- InstitutionInfo_Details_com_intro -->
+ 	  <activity
+            android:name=".acty.InstitutionInfo_Details_com_intro"
+            android:launchMode="singleTask" >
+        </activity>   
+         <!-- CourseDetails_description -->
+         <activity
+            android:name=".acty.CourseDetails_description"
+            android:launchMode="singleTask" >
+        </activity>   
     </application>
 
 </manifest>
