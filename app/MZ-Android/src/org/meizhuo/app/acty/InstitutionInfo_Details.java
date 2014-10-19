@@ -18,6 +18,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -95,6 +96,13 @@ public class InstitutionInfo_Details extends BaseActivity {
 		});
 		
 	}
+	@OnClick(R.id.institution_traning_contach_phone) public void dial(){
+		Intent intent =  new Intent();
+		intent.setAction("android.intent.action.DIAL");
+		intent.setData(Uri.parse("tel:" + 10086));
+		startActivity(intent);
+	}
+	
 	// 进入公司简介页面
 	@OnClick(R.id.ll_company_description) public void enter_company_intro(){
 		Intent it =  new Intent(this, InstitutionInfo_Details_com_intro.class);
@@ -180,7 +188,6 @@ public class InstitutionInfo_Details extends BaseActivity {
 				}
 				if(institution.getContact_phone() == null)
 				{
-					contach_phone.setText("");
 				}else
 				{
 					contach_phone.setText(institution.getContact_phone().toString());
