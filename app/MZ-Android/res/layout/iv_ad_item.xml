@@ -8,11 +8,17 @@
         android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/aa_evernote"
-        
         >
+         <ImageView 
+        android:id="@+id/ad_title_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/aa_evernote"
+        /> 
 
     <TextView
+        android:layout_gravity="bottom"
         style="@style/TextView"
         android:id="@+id/tv_ad_title"
         android:layout_width="match_parent"
@@ -20,15 +26,10 @@
         android:background="@color/lucency_black"
         android:paddingTop="8dp"
         android:paddingLeft="15dp"
-        android:text="今天吃饭了"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="12sp" />
 
-  <!--   <ImageView 
-        android:id="@+id/ad_title_iv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        /> -->
+ 
 </FrameLayout>
 </LinearLayout>

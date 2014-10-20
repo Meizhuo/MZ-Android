@@ -3,6 +3,7 @@ package org.meizhuo.adapter;
 import java.util.List;
 
 import org.meizhuo.app.R;
+import org.meizhuo.model.Advertisement;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -17,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 import com.jakewharton.salvage.RecyclingPagerAdapter;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * 图片轮播(默认无限)
@@ -28,18 +30,18 @@ import com.jakewharton.salvage.RecyclingPagerAdapter;
 public class ImagePagerAdapter extends RecyclingPagerAdapter {
 
 	private Context context;
-	private List<Integer> imageIdList;
-	private List<String>adString;
+	private List<Advertisement> imageIdList;
+//	private List<String>adString;
 
 	private int size;
 	private boolean isInfiniteLoop;
 	private OnItemClickListener mOnItemClickListener = null;
 
-	public ImagePagerAdapter(Context context, List<Integer> imageIdList, List<String>list) {
+	public ImagePagerAdapter(Context context, List<Advertisement> imageIdList, List<String>list) {
 		this.context = context;
 		this.imageIdList = imageIdList;
 		this.size = imageIdList.size();
-		this.adString = list;
+//		this.adString = list;
 		isInfiniteLoop = true;
 	}
 
@@ -67,7 +69,7 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 //			view = holder.imageView = new ImageView(context);
 			view.setTag(holder);
 			
-			holder.framelayout.setOnClickListener(new OnClickListener() {
+			holder.imageView.setOnClickListener(new OnClickListener() {
 
 				@Override public void onClick(View v) {
 					if (mOnItemClickListener != null) {
@@ -81,15 +83,25 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 		}
 		/*holder.imageView.setImageResource(imageIdList
 				.get(getPosition(position)));*/
-		holder.framelayout.setBackgroundResource(imageIdList.get(getPosition(position)));
-		holder.tv_ad_title.setText(adString.get(getPosition(position)));
+//		holder.framelayout.setBackgroundResource(imageIdList.get(getPosition(position)));
+//		holder.framelayout.setBackgroundDrawable(imageIdList.get(getPosition(position)));
+//		holder.tv_ad_title.setText(adString.get(getPosition(position)));
+		if(imageIdList.get(getPosition(position)).getPic_url() != null && imageIdList.get(getPosition(position)).getPic_url().length() > 0){
+			ImageLoader.getInstance().displayImage(imageIdList.get(getPosition(position)).getPic_url(), holder.imageView);
+		}else{
+			//use default image
+		}
+		if(imageIdList.get(getPosition(position)).getDescription()!= null)
+		{
+			holder.tv_ad_title.setText(imageIdList.get(getPosition(position)).getDescription());
+		}
 		return view;
 	}
 
 	 static class ViewHolder {
 		
-//		@InjectView(R.id.ad_title_iv) ImageView imageView;
-		@InjectView(R.id.framelayout) FrameLayout framelayout;
+		@InjectView(R.id.ad_title_iv) ImageView imageView;
+//		@InjectView(R.id.framelayout) FrameLayout framelayout;
 		@InjectView(R.id.tv_ad_title) TextView tv_ad_title;
 		
 		public ViewHolder(View v) {
