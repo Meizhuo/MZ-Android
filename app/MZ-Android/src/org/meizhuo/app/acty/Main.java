@@ -52,7 +52,7 @@ public class Main extends BaseActivity {
 	
 	ImagePagerAdapter adapter_imagepage;
 
-	List<Drawable> imageIdList;
+//	List<Drawable> imageIdList;
 	
 	List<String> ad_list;
 	
@@ -103,8 +103,10 @@ public class Main extends BaseActivity {
 
 			@Override public void onItemClick(int position, View view) {
 				// to do some work
-				toast("" + position);
-				
+				Intent intent =  new Intent(Main.this, Main_Advertise.class);
+				intent.putExtra("url", ad.get(position).getUrl());
+				intent.putExtra("description", ad.get(position).getDescription());
+				startActivity(intent);
 
 			}
 		});

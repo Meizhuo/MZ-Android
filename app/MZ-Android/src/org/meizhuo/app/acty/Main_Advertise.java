@@ -1,73 +1,59 @@
 package org.meizhuo.app.acty;
 
-import java.util.List;
-
-import org.meizhuo.api.RestClient;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 
+import butterknife.InjectView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
-import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import butterknife.InjectView;
 
 /**
- * 新闻显示
- * 
- * @author Jayin
- * 
+ * 广告显示页面
+ * @author Jason
+ *
  */
 @SuppressLint("SetJavaScriptEnabled")
-public class Professional_Article extends BaseActivity  {
+public class Main_Advertise extends BaseActivity{
 	
-	private static final String TAG = "Professional_Article";
 	@InjectView(R.id.webview) WebView webview;
-	String content = "";
-	String title = "";
-	List<Integer> imageIdList;
-	String url;
-	String doc_id;
-
-	  @SuppressLint("SetJavaScriptEnabled")  
-	@Override protected void onCreate(Bundle savedInstanceState) {
-
-		super.onCreate(savedInstanceState, R.layout.acty_professional_artilecontent);
 	
+	String url = "";
+	String description = "";
+	
+	@SuppressLint("SetJavaScriptEnabled")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState, R.layout.acty_professional_artilecontent);
+		
 		initData();
 		initLayout();
-		setAppTitle(title);
+		setAppTitle("新闻详情");//到时候填写的是新闻的description
 	}
 	/*
-	 * Intent intent =  new Intent(getActivity(), Professional_Article.class);
-		intent.putExtra("title", data.get(position).getTitle());
-		intent.putExtra("doc_id", data.get(position).getId());
-		intent.putExtra("content", data.get(position).getContent());
+	 intent.putExtra("url", ad.get(position).getUrl());
+				intent.putExtra("description", ad.get(position).getDescription());
 	 */
 	private void initData(){
-		Intent intent = getIntent();
-		String doc_id = intent.getStringExtra("doc_id");
-		title  = intent.getStringExtra("title");
-		String baseurl = RestClient.BASE_URL;
-		
-		url = baseurl + "/admin/index/viewDocument" + "/" + "doc_id" + "/" + doc_id;
-		
+		url = getIntent().getStringExtra("url");
+		description = getIntent().getStringExtra("description");
 	}
 	
+	@SuppressLint("JavascriptInterface")
 	private void initLayout(){
 		webview.getSettings().setJavaScriptEnabled(true);
-	
 		webview.loadUrl(url);
 		webview.setWebViewClient(new MyWebViewClient());
-		//添加js交互接口类
+		//添加js交互接口类 
 		webview.addJavascriptInterface(new JavascriptInterface(this), "imagelistner");
 	}
+	
 	
 	private void addImageClickListner() {
 		webview.loadUrl("javascript:(function(){" +
@@ -84,6 +70,7 @@ public class Professional_Article extends BaseActivity  {
 	
 	/**
 	 * js通信接口类
+	 * @author Jason
 	 *
 	 */
 	public class JavascriptInterface {
@@ -91,12 +78,11 @@ public class Professional_Article extends BaseActivity  {
 		
 		public JavascriptInterface(Context context) {
 			// TODO Auto-generated constructor stub
-			this.context = context;
+			this.context =  context;
 		}
 		
-		@android.webkit.JavascriptInterface
-		public void openImage(String img) {
-			Log.i(TAG, "执行了");
+		public void openImage(String img){
+			
 			
 			Intent intent = new Intent();
 			intent.putExtra("image", img);
@@ -105,24 +91,24 @@ public class Professional_Article extends BaseActivity  {
 		}
 	}
 	
-	private class MyWebViewClient extends WebViewClient {
+	
+
+	private class MyWebViewClient extends WebViewClient{
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			// TODO Auto-generated method stub
 			return super.shouldOverrideUrlLoading(view, url);
 		}
 		
-		@SuppressLint("SetJavaScriptEnabled")
 		@Override
 		public void onPageFinished(WebView view, String url) {
 			// TODO Auto-generated method stub
 			view.getSettings().setJavaScriptEnabled(true);
 			super.onPageFinished(view, url);
-			//html加载完成之后,添加监听图片的点击js函数
+			//html加载完成之后,添加监听图片点击的js函数
 			addImageClickListner();
 		}
 		
-		@SuppressLint("SetJavaScriptEnabled")
 		@Override
 		public void onPageStarted(WebView view, String url, Bitmap favicon) {
 			// TODO Auto-generated method stub
@@ -138,9 +124,5 @@ public class Professional_Article extends BaseActivity  {
 			super.onReceivedError(view, errorCode, description, failingUrl);
 		}
 	}
-	
-
-	
-
 
 }

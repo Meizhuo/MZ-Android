@@ -66,6 +66,8 @@ public class ShowWebImageActivity extends BaseActivity {
 				} catch (IOException e) {
 					e.printStackTrace();
 					Log.i(TAG, "出错了" + e.getMessage());
+					msg.what = status_faild;
+					h.sendMessage(msg);
 				}
 			}
 		}).start();
@@ -80,6 +82,7 @@ public class ShowWebImageActivity extends BaseActivity {
 			switch (msg.what) {
 			case status_start:
 					dialog =  new WaittingDialog(ShowWebImageActivity.this);
+					dialog.setText("正在加载");
 					dialog.show();
 				break;
 			case status_finish:
@@ -89,7 +92,12 @@ public class ShowWebImageActivity extends BaseActivity {
 				imageView.setImageBitmap(((BitmapDrawable)pic).getBitmap());
 				break;
 			case status_faild:
-				
+					if (dialog.isShowing())
+					{
+						dialog.setText("网络不给力，请检查您的网络设置");
+						dialog.dismiss();
+					}
+						
 				break;
 			default:
 				break;

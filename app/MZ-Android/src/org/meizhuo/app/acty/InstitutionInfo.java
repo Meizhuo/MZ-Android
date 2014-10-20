@@ -12,6 +12,7 @@ import org.meizhuo.api.InstitutionAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
+import org.meizhuo.model.Advertisement;
 import org.meizhuo.model.Institution;
 import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.view.AutoScrollViewPager;
@@ -54,8 +55,10 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	InstitutionInfoAdapter adapter_lv;
 	ImagePagerAdapter adapter_imagepage;
 	List<Institution>data;
-	List<Drawable> imageIdList;
-	List<String> ad_list;
+//	List<Advertisement>imageIdList;
+	List<Advertisement>ad;
+	
+//	List<String> ad_list;
 //	List<ImageView>imageIdList;
 	String name = "";
 	String type = "";
@@ -73,33 +76,37 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 		viewPager.setInterval(3000);
 		viewPager.startAutoScroll();
 
-		imageIdList = new ArrayList<Drawable>();
+//		imageIdList = new ArrayList<Advertisement>();
+		ad = Advertisement.getListTestData();
 		
 		
-		Drawable d1 = this.getResources().getDrawable(R.drawable.aa_evernote);
+		/*Drawable d1 = this.getResources().getDrawable(R.drawable.aa_evernote);
 		Drawable d2 = this.getResources().getDrawable(R.drawable.bigbang);
 		Drawable d3 = this.getResources().getDrawable(R.drawable.hannibal);
 	
 		imageIdList.add(d1);
 		imageIdList.add(d2);
-		imageIdList.add(d3);
+		imageIdList.add(d3);*/
 		
 /*		imageIdList.add(R.drawable.bigbang);
 		imageIdList.add(R.drawable.aa_evernote);
 		imageIdList.add(R.drawable.hannibal);*/
 	
 		
-		ad_list =  new ArrayList<String>();
+		/*ad_list =  new ArrayList<String>();
 		ad_list.add("市人力资源局召开2014年就业工作座谈会");
 		ad_list.add("积极组织企业赴外招工 搭建劳务对接平台");
-		ad_list.add("执行国家和省有关劳动工作的方正政策");
+		ad_list.add("执行国家和省有关劳动工作的方正政策");*/
 
-		adapter_imagepage = new ImagePagerAdapter(this, imageIdList,ad_list);
+		adapter_imagepage = new ImagePagerAdapter(this, ad,null);
 		adapter_imagepage.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override public void onItemClick(int position, View view) {
 				// TODO Auto-generated method stub
-				toast("" + position);
+				Intent intent =  new Intent(InstitutionInfo.this, Main_Advertise.class);
+				intent.putExtra("url", ad.get(position).getUrl());
+				intent.putExtra("description", ad.get(position).getDescription());
+				startActivity(intent);
 			}
 		});
 		viewPager.setAdapter(adapter_imagepage);
