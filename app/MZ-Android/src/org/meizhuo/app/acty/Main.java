@@ -170,6 +170,7 @@ public class Main extends BaseActivity {
 		filter.addAction(Constants.Action_Employer_isLogin);
 		filter.addAction(Constants.Action_Publicer_ReLoginSuccessful);
 		filter.addAction(Constants.Action_Employer_ReLoginSuccessful);
+		filter.addAction(Constants.Action_Logoff);
 		registerReceiver(loginReceiver, filter);
 	}
 	
@@ -269,6 +270,12 @@ public class Main extends BaseActivity {
 			if(action.equals(Constants.Action_Employer_ReLoginSuccessful)){
 				Log.i(TAG, "用人单位重新登录");
 				Employer_reLogin = true;
+			}
+			if(action.equals(Constants.Action_Logoff)){
+				Publicer_reLogin=false;
+				is_Employer_Login=false;
+				is_Publicer_Login=false;
+				Employer_reLogin=false;
 			}
 		}
 		

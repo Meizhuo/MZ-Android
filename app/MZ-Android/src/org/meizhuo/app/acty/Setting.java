@@ -53,6 +53,7 @@ public class Setting extends BaseActivity {
 	@InjectView(R.id.logoff) LinearLayout logoff;
 	PublicerAPI publicerApi;
 	boolean isLogin;
+	boolean isLogoff;
 	UpdateHandler handler = new UpdateHandler();
 	
 	
@@ -73,11 +74,14 @@ public class Setting extends BaseActivity {
 	}
 	
 	private void initLayout(){
-		if(isLogin == true)
+		if(isLogin == true )
 		{
+			Log.i(TAG, "islogin" + isLogin);
 			login.setVisibility(View.INVISIBLE);
-			logout.setVisibility(View.VISIBLE);
 			logoff.setVisibility(View.VISIBLE);
+		}else{
+			login.setVisibility(View.VISIBLE);
+			logoff.setVisibility(View.INVISIBLE);
 		}
 		
 	}
@@ -160,9 +164,9 @@ public class Setting extends BaseActivity {
 				    break;
 				case logoff_status_finish:
 					toast("成功注销");
+					
 					login.setVisibility(View.VISIBLE);
 					logoff.setVisibility(View.INVISIBLE);
-					logout.setVisibility(View.INVISIBLE);
 					break;
 				default:
 					break;
@@ -178,18 +182,19 @@ public class Setting extends BaseActivity {
 						if(response.equals("logout successfully"))
 						{
 							sendBroadcast(new Intent(Constants.Action_Logoff));
+							new Thread(new Runnable() {
+								
+								@Override
+								public void run() {
+									// TODO Auto-generated method stub
+									h.sendEmptyMessage(logoff_status_start);
+									((App)getApplication()).cleanUpInfo();
+									h.sendEmptyMessage(logoff_status_finish);
+								}
+							}).start();
 						}
 						
-						new Thread(new Runnable() {
-							
-							@Override
-							public void run() {
-								// TODO Auto-generated method stub
-								h.sendEmptyMessage(logoff_status_start);
-								((App)getApplication()).cleanUpInfo();
-								h.sendEmptyMessage(logoff_status_finish);
-							}
-						}).start();
+					
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
