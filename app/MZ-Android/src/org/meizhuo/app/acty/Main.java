@@ -8,6 +8,7 @@ import org.meizhuo.adapter.ImagePagerAdapter.OnItemClickListener;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.CoreService;
 import org.meizhuo.app.R;
+import org.meizhuo.model.Advertisement;
 import org.meizhuo.utils.AndroidUtils;
 import org.meizhuo.utils.Constants;
 
@@ -20,6 +21,7 @@ import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +32,7 @@ import butterknife.OnClick;
 
 public class Main extends BaseActivity {
 	private static final String TAG = "Main";
+	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
 	
 	private BroadcastReceiver mReceiver = null;
 	private BroadcastReceiver loginReceiver = null;
@@ -45,12 +48,11 @@ public class Main extends BaseActivity {
 	/**注销 */
 	private boolean logoff;
 	
-
-
-	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
+	List<Advertisement>ad;
+	
 	ImagePagerAdapter adapter_imagepage;
 
-	List<Integer> imageIdList;
+//	List<Drawable> imageIdList;
 	
 	List<String> ad_list;
 	
@@ -66,28 +68,45 @@ public class Main extends BaseActivity {
 		checkEmployerReLogin();
 		checkVersion();
 		initReceiver();
+		initData();
 		
 
+	
+	}
+	
+	private void initData(){
+		ad = Advertisement.getListTestData();
+		
 		viewPager.setInterval(3000);
 		viewPager.startAutoScroll();
 
-		imageIdList = new ArrayList<Integer>();
+	/*	imageIdList = new ArrayList<Drawable>();
 		ad_list =  new ArrayList<String>();
 		ad_list.add("市人力资源局召开2014年就业工作座谈会");
 		ad_list.add("积极组织企业赴外招工 搭建劳务对接平台");
 		ad_list.add("执行国家和省有关劳动工作的方正政策");
-	
 		
-		imageIdList.add(R.drawable.aa_evernote);
+		Drawable d1 = this.getResources().getDrawable(R.drawable.aa_evernote);
+		Drawable d2 = this.getResources().getDrawable(R.drawable.bigbang);
+		Drawable d3 = this.getResources().getDrawable(R.drawable.hannibal);
+	
+		imageIdList.add(d1);
+		imageIdList.add(d2);
+		imageIdList.add(d3);*/
+		
+	/*	imageIdList.add(R.drawable.aa_evernote);
 		imageIdList.add(R.drawable.bigbang);
-		imageIdList.add(R.drawable.hannibal);
+		imageIdList.add(R.drawable.hannibal);*/
 
-		adapter_imagepage = new ImagePagerAdapter(this, imageIdList , ad_list);
+		adapter_imagepage = new ImagePagerAdapter(this, ad , null);
 		adapter_imagepage.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override public void onItemClick(int position, View view) {
 				// to do some work
-				toast("" + position);
+				Intent intent =  new Intent(Main.this, Main_Advertise.class);
+				intent.putExtra("url", ad.get(position).getUrl());
+				intent.putExtra("description", ad.get(position).getDescription());
+				startActivity(intent);
 
 			}
 		});
@@ -288,7 +307,7 @@ public class Main extends BaseActivity {
 		startService(service);
 	}
 	
-	private void  checkPublicerReLogin(){
+	private void  checkPublicerReLogin(){ 
 		Intent service =  new Intent(getContext(), CoreService.class);
 		service.setAction(Constants.Action_Publicer_To_ReLogin);
 		startService(service);

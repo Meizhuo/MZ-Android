@@ -19,18 +19,16 @@ public class InstitutionAPI {
 	 * @param responseHandler
 	 * 
 	 */
-	public static void getInstitutionInfo(String status, String name, String type,  String page,
+	public static void getInstitutionInfo( String name, String type,  String page,
 			AsyncHttpResponseHandler responseHandler){
 		RequestParams params =  new RequestParams();
-		if(status.equals("-1") || status.equals("0") || status.equals("1"))
-			params.add("status", status);
 		if(!(name == null ||name.equals("")))
 			params.add("name", name);
 		if(!(type == null || type.equals("")))
 			params.add("type", type);
 		if(!(page == null || page.equals("")))
 			params.add("page", page);
-		RestClient.get("/home/institution/search", params, responseHandler);
+		RestClient.get("/home/institution/lists", params, responseHandler);
 	}
 	
 	/**
@@ -42,7 +40,7 @@ public class InstitutionAPI {
 		RequestParams params =  new RequestParams();
 		if (!(institution_id == null || institution_id.equals("")))
 			params.add("institution_id", institution_id);
-		RestClient.get("/home/institution/info", params, responseHandler);
+		RestClient.get("/home/institution/lists", params, responseHandler);
 	}
 	
 	

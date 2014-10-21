@@ -12,6 +12,7 @@ import org.meizhuo.api.InstitutionAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
+import org.meizhuo.model.Advertisement;
 import org.meizhuo.model.Institution;
 import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.view.AutoScrollViewPager;
@@ -19,6 +20,7 @@ import org.meizhuo.view.AutoScrollViewPager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
@@ -53,10 +55,11 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	InstitutionInfoAdapter adapter_lv;
 	ImagePagerAdapter adapter_imagepage;
 	List<Institution>data;
-	List<Integer> imageIdList;
-	List<String> ad_list;
+//	List<Advertisement>imageIdList;
+	List<Advertisement>ad;
+	
+//	List<String> ad_list;
 //	List<ImageView>imageIdList;
-	String status = "";
 	String name = "";
 	String type = "";
 	String page = "1";
@@ -73,37 +76,37 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 		viewPager.setInterval(3000);
 		viewPager.startAutoScroll();
 
-		imageIdList = new ArrayList<Integer>();
-		imageIdList.add(R.drawable.bigbang);
+//		imageIdList = new ArrayList<Advertisement>();
+		ad = Advertisement.getListTestData();
+		
+		
+		/*Drawable d1 = this.getResources().getDrawable(R.drawable.aa_evernote);
+		Drawable d2 = this.getResources().getDrawable(R.drawable.bigbang);
+		Drawable d3 = this.getResources().getDrawable(R.drawable.hannibal);
+	
+		imageIdList.add(d1);
+		imageIdList.add(d2);
+		imageIdList.add(d3);*/
+		
+/*		imageIdList.add(R.drawable.bigbang);
 		imageIdList.add(R.drawable.aa_evernote);
-		imageIdList.add(R.drawable.hannibal);
-	/*	imageIdList = new ArrayList<ImageView>();
+		imageIdList.add(R.drawable.hannibal);*/
+	
 		
-		imageIdList = new ArrayList<ImageView>();
-		ImageView imageView =  new ImageView(this);
-		imageView.setImageResource(R.drawable.bigbang);
-		
-		ImageView imageView2 =  new ImageView(this);
-		imageView2.setImageResource(R.drawable.aa_evernote);
-		
-		ImageView imageView3 =  new ImageView(this);
-		imageView3.setImageResource(R.drawable.hannibal);
-		
-		imageIdList.add(imageView);
-		imageIdList.add(imageView2);
-		imageIdList.add(imageView3);*/
-		
-		ad_list =  new ArrayList<String>();
+		/*ad_list =  new ArrayList<String>();
 		ad_list.add("市人力资源局召开2014年就业工作座谈会");
 		ad_list.add("积极组织企业赴外招工 搭建劳务对接平台");
-		ad_list.add("执行国家和省有关劳动工作的方正政策");
+		ad_list.add("执行国家和省有关劳动工作的方正政策");*/
 
-		adapter_imagepage = new ImagePagerAdapter(this, imageIdList,ad_list);
+		adapter_imagepage = new ImagePagerAdapter(this, ad,null);
 		adapter_imagepage.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override public void onItemClick(int position, View view) {
 				// TODO Auto-generated method stub
-				toast("" + position);
+				Intent intent =  new Intent(InstitutionInfo.this, Main_Advertise.class);
+				intent.putExtra("url", ad.get(position).getUrl());
+				intent.putExtra("description", ad.get(position).getDescription());
+				startActivity(intent);
 			}
 		});
 		viewPager.setAdapter(adapter_imagepage);
@@ -154,7 +157,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	public void onRefresh() {
 		// TODO Auto-generated method stub
 		isloading = true;
-		InstitutionAPI.getInstitutionInfo(status, name, type, "1", new JsonResponseHandler() {
+		InstitutionAPI.getInstitutionInfo( name, type, "1", new JsonResponseHandler() {
 			
 			@Override
 			public void onStart() {
@@ -198,7 +201,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 		int i = Integer.parseInt(page);
 		i+=1;
 		page = String.valueOf(i);
-		InstitutionAPI.getInstitutionInfo(status, name, type, page, new JsonResponseHandler() {
+		InstitutionAPI.getInstitutionInfo( name, type, page, new JsonResponseHandler() {
 			
 			@Override
 			public void onStart() {
