@@ -17,7 +17,7 @@
         android:src="@drawable/aa_evernote"
         /> 
 
-    <TextView
+<!--     <TextView
         android:layout_gravity="bottom"
         style="@style/TextView"
         android:id="@+id/tv_ad_title"
@@ -28,7 +28,7 @@
         android:paddingLeft="15dp"
         android:text=""
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="12sp" /> -->
 
  
 </FrameLayout>
