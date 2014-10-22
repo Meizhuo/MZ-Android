@@ -1,7 +1,5 @@
 package org.meizhuo.app.acty;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.http.Header;
 import org.json.JSONException;
@@ -106,8 +104,9 @@ public class InstitutionInfo_Details extends BaseActivity {
 	// 进入公司简介页面
 	@OnClick(R.id.ll_company_description) public void enter_company_intro(){
 		Intent it =  new Intent(this, InstitutionInfo_Details_com_intro.class);
-		it.putExtra("content", institution.getDescription().toString());
-		it.putExtra("title", institution.getNickname().toString());
+//		it.putExtra("content", institution.getDescription().toString());
+//		it.putExtra("title", institution.getNickname().toString());
+		it.putExtra("ins_id", institution_id);
 		startActivity(it);
 		
 	}
