@@ -65,7 +65,7 @@ public class PublicerAPI {
 	 *   登出
 	 * @param responseHandler
 	 */
-	public void logout(AsyncHttpResponseHandler responseHandler) {
+	public void logoff(AsyncHttpResponseHandler responseHandler) {
 		RequestParams params =  new RequestParams();
 		RestClient.get("/home/user/logout", params, responseHandler);
 	}

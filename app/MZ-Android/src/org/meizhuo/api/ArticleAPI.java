@@ -31,7 +31,7 @@ public class ArticleAPI {
 			params.add("content", content);
 		if(!(page == null || page.equals("")))
 			params.add("page", page);
-		RestClient.get("/home/document/search", params, responseHandler);
+		RestClient.get("/home/document/lists", params, responseHandler);
 	}
 	/**
 	 * 获取一篇文章
