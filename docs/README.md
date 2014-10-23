@@ -13,4 +13,5 @@ see `code_style.md` and use the config `MZ.xml`
 Note
 
 **a little point about the AutoScrollViewPager  Repo**
+
 1.Use getPosition() method to get the Item position,not get(position).
