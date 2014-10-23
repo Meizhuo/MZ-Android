@@ -40,9 +40,20 @@ public class InstitutionAPI {
 		RequestParams params =  new RequestParams();
 		if (!(institution_id == null || institution_id.equals("")))
 			params.add("institution_id", institution_id);
-		RestClient.get("/home/institution/lists", params, responseHandler);
+		RestClient.get("/home/institution/getInfo", params, responseHandler);
 	}
 	
+	/**
+	 * 获取某个机构的简介
+	 * @param ins_id
+	 * @param responseHandler
+	 */
+	public static void getInstitution_intro(String ins_id, AsyncHttpResponseHandler responseHandler){
+		RequestParams params =  new RequestParams();
+		if (!(params == null || params.equals("")))
+			params.add("ins_id", ins_id);
+		RestClient.get("/admin/view/insIntro", params, responseHandler);
+	}
 	
 	
 	

@@ -166,7 +166,16 @@ public class CoreService extends Service {
 				public void onOK(Header[] headers, JSONObject obj) {
 					// TODO Auto-generated method stub
 					Log.i(TAG, "" + obj);
-					sendBroadcast(new Intent(Constants.Action_Publicer_ReLoginSuccessful));
+					try {
+						if(obj.getString("code").equals("20000"))
+						{
+							sendBroadcast(new Intent(Constants.Action_Publicer_ReLoginSuccessful));
+						}
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 				}
 				
 				@Override

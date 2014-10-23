@@ -19,7 +19,7 @@ public class CourseAPI {
 			params.add("subsidy_id", subsidy_id);
 		if (!(page == null || page.equals("")))
 			params.add("page", page);
-		RestClient.get("/home/course/search", params, responseHandler);
+		RestClient.get("/home/course/lists", params, responseHandler);
 	}
 	
 	

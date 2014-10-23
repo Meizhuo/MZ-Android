@@ -44,7 +44,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 	/**所属机构*/
 	@InjectView(R.id.institution_course_belong_institution) Button belong_institution;
 
-	String name,start_time,address,teacher,introduction,cost ,institution_id;
+	String name,start_time,address,teacher,introduction,cost ,institution_id,course_id;
 	WaittingDialog dialog;
 	Institution institution;
 	
@@ -69,6 +69,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		 introduction = intent.getStringExtra("introduction");
 		 institution_id = intent.getStringExtra("institution_id");
 		 cost = intent.getStringExtra("cost");
+		 course_id = intent.getStringExtra("course_id");
 		 
 	}
 	
@@ -123,7 +124,8 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 	@OnClick(R.id.ll_course_description) public void ToCourseDescription(){
 		Intent intent =  new Intent(CourseDetails_OneCourse.this, CourseDetails_description.class);
 		intent.putExtra("content", introduction);
-		intent.putExtra("content", name);
+		intent.putExtra("title", name);
+		intent.putExtra("course_id", course_id);
 		startActivity(intent);
 		
 	}

@@ -30,7 +30,7 @@
             android:id="@+id/tv_institution_name"
             style="@style/TextView"
             android:ellipsize="end"
-            android:text="蓝翔技校"
+            android:text=""
             android:textSize="18sp"
             />
     </LinearLayout>
@@ -50,7 +50,7 @@
             android:id="@+id/tv_institution_addr"
             style="@style/TextView"
             android:ellipsize="end"
-            android:text="中国山东"
+            android:text=""
             android:textColor="@color/mz_grey_lv_two"
             android:textSize="12sp"
             />
@@ -72,7 +72,7 @@
             style="@style/TextView"
             android:ellipsize="end"
             android:textColor="@color/mz_grey_lv_two"
-            android:text="职业教育"
+            android:text=""
             android:textSize="12sp"
             />
     </LinearLayout>
@@ -92,7 +92,7 @@
             android:id="@+id/tv_institution_description"
             style="@style/TextView"
             android:ellipsize="end"
-            android:text="挖掘技术哪家强?中国山东找蓝翔"
+            android:text=""
             android:textColor="@color/mz_grey_lv_two"
             android:textSize="12sp"
             />

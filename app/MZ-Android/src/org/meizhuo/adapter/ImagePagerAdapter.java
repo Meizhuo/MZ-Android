@@ -7,6 +7,7 @@ import org.meizhuo.model.Advertisement;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,14 +29,16 @@ import com.nostra13.universalimageloader.core.ImageLoader;
  * 
  */
 public class ImagePagerAdapter extends RecyclingPagerAdapter {
+	private final static String TAG = "ImagePagerAdapter" ;
 
 	private Context context;
 	private List<Advertisement> imageIdList;
 //	private List<String>adString;
 
-	private int size;
+	private int size; 
 	private boolean isInfiniteLoop;
 	private OnItemClickListener mOnItemClickListener = null;
+	private OnPositionChangeListener mOnPositionChangeListener = null;
 
 	public ImagePagerAdapter(Context context, List<Advertisement> imageIdList, List<String>list) {
 		this.context = context;
@@ -56,7 +59,11 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 	 * @param position
 	 * @return
 	 */
-	private int getPosition(int position) {
+	public  int getPosition(int position) {
+	/*	if(mOnPositionChangeListener!=null){
+			int mPosition = isInfiniteLoop ? position % size : position;
+			mOnPositionChangeListener.OnPositionChange(mPosition);
+		}*/
 		return isInfiniteLoop ? position % size : position;
 	}
 
@@ -87,14 +94,19 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 //		holder.framelayout.setBackgroundDrawable(imageIdList.get(getPosition(position)));
 //		holder.tv_ad_title.setText(adString.get(getPosition(position)));
 		if(imageIdList.get(getPosition(position)).getPic_url() != null && imageIdList.get(getPosition(position)).getPic_url().length() > 0){
+			
 			ImageLoader.getInstance().displayImage(imageIdList.get(getPosition(position)).getPic_url(), holder.imageView);
+			if(mOnPositionChangeListener != null){
+				mOnPositionChangeListener.OnPositionChange(getPosition(position));
+			}
+			Log.i(TAG, "" + getPosition(position) + imageIdList.get(getPosition(position)).getDescription());
 		}else{
 			//use default image
 		}
-		if(imageIdList.get(getPosition(position)).getDescription()!= null)
+		/*if(imageIdList.get(getPosition(position)).getDescription()!= null)
 		{
 			holder.tv_ad_title.setText(imageIdList.get(getPosition(position)).getDescription());
-		}
+		}*/
 		return view;
 	}
 
@@ -102,7 +114,7 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 		
 		@InjectView(R.id.ad_title_iv) ImageView imageView;
 //		@InjectView(R.id.framelayout) FrameLayout framelayout;
-		@InjectView(R.id.tv_ad_title) TextView tv_ad_title;
+//		@InjectView(R.id.tv_ad_title) TextView tv_ad_title;
 		
 		public ViewHolder(View v) {
 			// TODO Auto-generated constructor stub
@@ -140,5 +152,17 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 		 */
 		public void onItemClick(int position, View view);
 	}
+	
+	public void setOnPositionChangeListener(OnPositionChangeListener listener){
+		this.mOnPositionChangeListener = listener;
+	}
+	
+	public interface OnPositionChangeListener{
+		
+		public void OnPositionChange(int position);
+	}
+
+	
+
 
 }
