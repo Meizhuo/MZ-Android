@@ -80,7 +80,8 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 
 				@Override public void onClick(View v) {
 					if (mOnItemClickListener != null) {
-						mOnItemClickListener.onItemClick(position, v);
+						mOnItemClickListener.onItemClick(getPosition(position), v);
+						Log.i(TAG, ""+position);
 					}
 				}
 			});
@@ -99,7 +100,6 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 			if(mOnPositionChangeListener != null){
 				mOnPositionChangeListener.OnPositionChange(getPosition(position));
 			}
-			Log.i(TAG, "" + getPosition(position) + imageIdList.get(getPosition(position)).getDescription());
 		}else{
 			//use default image
 		}

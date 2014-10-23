@@ -4,24 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.Header;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.adapter.ImagePagerAdapter;
 import org.meizhuo.adapter.InstitutionInfoAdapter;
 import org.meizhuo.adapter.ImagePagerAdapter.OnItemClickListener;
+import org.meizhuo.adapter.ImagePagerAdapter.OnPositionChangeListener;
+import org.meizhuo.api.AdvertisementAPI;
 import org.meizhuo.api.InstitutionAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.Advertisement;
 import org.meizhuo.model.Institution;
+import org.meizhuo.utils.Constants;
 import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.view.AutoScrollViewPager;
-
+ 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.util.Log;
@@ -33,7 +38,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
@@ -52,6 +56,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	@InjectView(R.id.tv_app_title) TextView appTitle;
 	@InjectView(R.id.iv_app_icon_back) ImageView backicon;
 	@InjectView(R.id.tv_institution_search) TextView tv_institution_search;
+	@InjectView(R.id.tv_ad_title) TextView tv_ad_title;
 	InstitutionInfoAdapter adapter_lv;
 	ImagePagerAdapter adapter_imagepage;
 	List<Institution>data;
@@ -71,45 +76,89 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 		initLayout();
 	}
 	
+	private void initData(){
+		data = new ArrayList<Institution>();
+		adapter_lv = new InstitutionInfoAdapter(this, data);
+	}
+	
 	private void initLayout(){
 
 		viewPager.setInterval(3000);
 		viewPager.startAutoScroll();
+		
+		final Handler h = new Handler(){
+			public void handleMessage(android.os.Message msg) {
+				switch (msg.what) {
+				case Constants.Finish:
+					JSONObject obj1 = (JSONObject)msg.obj;
+					ad = Advertisement.create_by_jsonarray(obj1.toString());
+					adapter_imagepage = new ImagePagerAdapter(InstitutionInfo.this, ad, null);
+					
+					adapter_imagepage.setOnPositionChangeListener(new OnPositionChangeListener() {
+						
+						
+						
+						@Override
+						public void OnPositionChange(final int position) {
+							// TODO Auto-generated method stub
+							int realposition = position;
+							if(position-1<0){
+								realposition=ad.size()-1;
+							}else{
+								realposition--;
+							}
+							tv_ad_title.setText(ad.get(realposition).getDescription());
+						}
+					});
+					
+					adapter_imagepage.setOnItemClickListener(new OnItemClickListener() {
 
-//		imageIdList = new ArrayList<Advertisement>();
-		ad = Advertisement.getListTestData();
-		
-		
-		/*Drawable d1 = this.getResources().getDrawable(R.drawable.aa_evernote);
-		Drawable d2 = this.getResources().getDrawable(R.drawable.bigbang);
-		Drawable d3 = this.getResources().getDrawable(R.drawable.hannibal);
-	
-		imageIdList.add(d1);
-		imageIdList.add(d2);
-		imageIdList.add(d3);*/
-		
-/*		imageIdList.add(R.drawable.bigbang);
-		imageIdList.add(R.drawable.aa_evernote);
-		imageIdList.add(R.drawable.hannibal);*/
-	
-		
-		/*ad_list =  new ArrayList<String>();
-		ad_list.add("市人力资源局召开2014年就业工作座谈会");
-		ad_list.add("积极组织企业赴外招工 搭建劳务对接平台");
-		ad_list.add("执行国家和省有关劳动工作的方正政策");*/
+						@Override public void onItemClick(int position, View view) {
+							// TODO Auto-generated method stub
+							Intent intent =  new Intent(InstitutionInfo.this, Main_Advertise.class);
+							intent.putExtra("url", ad.get(position).getUrl());
+							intent.putExtra("description", ad.get(position).getDescription());
+							startActivity(intent);
+						}
+					});
+					viewPager.setAdapter(adapter_imagepage);
+					
+					break;
 
-		adapter_imagepage = new ImagePagerAdapter(this, ad,null);
-		adapter_imagepage.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override public void onItemClick(int position, View view) {
+				default:
+					break;
+				}
+			}
+		};
+		
+		final Message msg = h.obtainMessage();
+		AdvertisementAPI.getAdList(new JsonResponseHandler() {
+			
+			@Override
+			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				Intent intent =  new Intent(InstitutionInfo.this, Main_Advertise.class);
-				intent.putExtra("url", ad.get(position).getUrl());
-				intent.putExtra("description", ad.get(position).getDescription());
-				startActivity(intent);
+				try {
+					if(obj.getString("code").equals("20000")){
+						msg.what = Constants.Finish;
+						msg.obj = obj;
+						h.sendMessage(msg);
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			
+			@Override
+			public void onFaild(int errorType, int errorCode) {
+				// TODO Auto-generated method stub
+				
 			}
 		});
-		viewPager.setAdapter(adapter_imagepage);
+		
+
+		
 		swipeRefreshLayout.setOnRefreshListener(this);
 		swipeRefreshLayout.setColorScheme(android.R.color.holo_blue_bright, 
 				android.R.color.holo_blue_light, 
@@ -147,10 +196,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 		dialog.show();
 	}
 	
-	private void initData(){
-		data = new ArrayList<Institution>();
-		adapter_lv = new InstitutionInfoAdapter(this, data);
-	}
+
 
 
 	@Override

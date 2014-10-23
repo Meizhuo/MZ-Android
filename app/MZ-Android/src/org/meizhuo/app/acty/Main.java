@@ -1,17 +1,21 @@
 package org.meizhuo.app.acty;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.meizhuo.adapter.ImagePagerAdapter;
 import org.meizhuo.adapter.ImagePagerAdapter.OnItemClickListener;
+import org.meizhuo.adapter.ImagePagerAdapter.OnPositionChangeListener;
+import org.meizhuo.api.AdvertisementAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.CoreService;
 import org.meizhuo.app.R;
+import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.Advertisement;
 import org.meizhuo.utils.AndroidUtils;
 import org.meizhuo.utils.Constants;
-
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -21,18 +25,21 @@ import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class Main extends BaseActivity {
 	private static final String TAG = "Main";
 	@InjectView(R.id.autoscrollviewpage) org.meizhuo.view.AutoScrollViewPager viewPager;
+	@InjectView(R.id.tv_ad_title) TextView tv_ad_title;
 	
 	private BroadcastReceiver mReceiver = null;
 	private BroadcastReceiver loginReceiver = null;
@@ -52,7 +59,6 @@ public class Main extends BaseActivity {
 	
 	ImagePagerAdapter adapter_imagepage;
 
-//	List<Drawable> imageIdList;
 	
 	List<String> ad_list;
 	
@@ -75,42 +81,84 @@ public class Main extends BaseActivity {
 	}
 	
 	private void initData(){
-		ad = Advertisement.getListTestData();
-		
+
 		viewPager.setInterval(3000);
 		viewPager.startAutoScroll();
 
-	/*	imageIdList = new ArrayList<Drawable>();
-		ad_list =  new ArrayList<String>();
-		ad_list.add("市人力资源局召开2014年就业工作座谈会");
-		ad_list.add("积极组织企业赴外招工 搭建劳务对接平台");
-		ad_list.add("执行国家和省有关劳动工作的方正政策");
 		
-		Drawable d1 = this.getResources().getDrawable(R.drawable.aa_evernote);
-		Drawable d2 = this.getResources().getDrawable(R.drawable.bigbang);
-		Drawable d3 = this.getResources().getDrawable(R.drawable.hannibal);
-	
-		imageIdList.add(d1);
-		imageIdList.add(d2);
-		imageIdList.add(d3);*/
-		
-	/*	imageIdList.add(R.drawable.aa_evernote);
-		imageIdList.add(R.drawable.bigbang);
-		imageIdList.add(R.drawable.hannibal);*/
+		final Handler h =  new Handler(){
+			public void handleMessage(android.os.Message msg) {
+				switch (msg.what) {
+				case Constants.Finish:
+						JSONObject obj1 = (JSONObject)msg.obj;
+						ad = Advertisement.create_by_jsonarray(obj1.toString());
+						adapter_imagepage  = new ImagePagerAdapter(Main.this, ad, null);
 
-		adapter_imagepage = new ImagePagerAdapter(this, ad , null);
-		adapter_imagepage.setOnItemClickListener(new OnItemClickListener() {
+						adapter_imagepage.setOnPositionChangeListener(new OnPositionChangeListener() {
+					
+							
+					
+							@Override
+							public void OnPositionChange(final int position) {
+								// TODO Auto-generated method stub
+								int realposition = position;
+								if(position-1<0){
+									realposition=ad.size()-1;
+								}else{
+									realposition--;
+								}
+								tv_ad_title.setText(ad.get(realposition).getDescription());
+							}
+						});
+						
+						
+						adapter_imagepage.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override public void onItemClick(int position, View view) {
-				// to do some work
-				Intent intent =  new Intent(Main.this, Main_Advertise.class);
-				intent.putExtra("url", ad.get(position).getUrl());
-				intent.putExtra("description", ad.get(position).getDescription());
-				startActivity(intent);
+							@Override public void onItemClick(int position, View view) {
+								// to do some work
+								
+								Log.i(TAG, ""+position);
+								Intent intent =  new Intent(Main.this, Main_Advertise.class);
+								intent.putExtra("url", ad.get(position).getUrl());
+								intent.putExtra("description", ad.get(position).getDescription());
+								startActivity(intent);
 
+							}
+						});
+						viewPager.setAdapter(adapter_imagepage);
+					break;
+
+				default:
+					break;
+				}
+			}
+		};
+		final Message msg = h.obtainMessage();
+		AdvertisementAPI.getAdList(new JsonResponseHandler() {
+			
+			@Override
+			public void onOK(Header[] headers, JSONObject obj) {
+				// TODO Auto-generated method stub
+				try {
+					if(obj.getString("code").equals("20000")){
+//						ad = Advertisement.create_by_jsonarray(obj.toString());
+						msg.what = Constants.Finish;
+						msg.obj = obj;
+						h.sendMessage(msg);
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			@Override
+			public void onFaild(int errorType, int errorCode) {
+				// TODO Auto-generated method stub
+				
 			}
 		});
-		viewPager.setAdapter(adapter_imagepage);
+		
 	}
 	
 	
@@ -326,7 +374,21 @@ public class Main extends BaseActivity {
 		startService(service);
 	}
 	
-
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		viewPager.stopAutoScroll();
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		viewPager.startAutoScroll();
+	}
+	
 	
 
 

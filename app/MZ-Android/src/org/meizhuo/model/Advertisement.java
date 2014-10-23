@@ -13,35 +13,6 @@ import com.google.gson.Gson;
 public class Advertisement implements Serializable{
 	
 	
-	public static Advertisement getTestData(){
-		Advertisement ad =  new Advertisement();
-		ad.setPic_url("http://jyfw.dg.gov.cn/publicfiles///business/htmlfiles/dgjyfw/cmsmedia/image/img2635original.jpg");
-		ad.setUrl("http://jyfw.dg.gov.cn/publicfiles/business/htmlfiles/dgjyfw/tpxw/201406/2916.html");
-		ad.setDescription("市人力资源局召开2014年就业工作座谈会");
-		return ad;
-	}
-	public static Advertisement getTestData2(){
-		Advertisement ad =  new Advertisement();
-		ad.setPic_url("http://jyfw.dg.gov.cn/publicfiles///business/htmlfiles/dgjyfw/cmsmedia/image/img2525original.jpg");
-		ad.setUrl("http://jyfw.dg.gov.cn/publicfiles/business/htmlfiles/dgjyfw/tpxw/201407/2959.html");
-		ad.setDescription("积极组织企业赴外招工 搭建劳务对接平台");
-		return ad;
-	}
-	public static Advertisement getTestData3(){
-		Advertisement ad =  new Advertisement();
-		ad.setPic_url("http://jyfw.dg.gov.cn/publicfiles///business/htmlfiles/dgjyfw/cmsmedia/image/img2635original.jpg");
-		ad.setUrl("http://jyfw.dg.gov.cn/publicfiles/business/htmlfiles/dgjyfw/tpxw/201406/2917.html");
-		ad.setDescription("执行国家和省有关劳动工作的方正政策");
-		return ad;
-	}
-	
-	public static List<Advertisement> getListTestData(){
-		List<Advertisement>list = new ArrayList<Advertisement>();
-		list.add(getTestData());
-		list.add(getTestData2());
-		list.add(getTestData3());
-		return list;
-	}
 	
 	/**
 	 * 解析单个广告对象
