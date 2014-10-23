@@ -109,7 +109,23 @@
                 android:text="个人用户注册"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
+             
+              <TextView
+                  android:clickable="true"
+                android:id="@+id/acty_login_forgot_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="18dp"
+                android:gravity="center_horizontal"
+                android:text="忘记密码?"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+             
+
+             
+             
         </LinearLayout>
+        
     </ScrollView>
 
 </RelativeLayout>

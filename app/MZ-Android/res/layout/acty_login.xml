@@ -12,6 +12,7 @@
        >
         <include layout="@layout/frame_login"/>
        <include layout="@layout/frame_public_register"/>
+       
    </ViewFlipper>
   
 </RelativeLayout>
