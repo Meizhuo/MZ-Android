@@ -6,6 +6,7 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.api.EmployerAPI;
+import org.meizhuo.api.PublicerAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
@@ -16,12 +17,17 @@ import org.meizhuo.view.WaittingDialog;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class UserCenter_Employer extends BaseActivity {
@@ -54,6 +60,47 @@ public class UserCenter_Employer extends BaseActivity {
 			intent.putExtra("workplace_name", employer.getNickname());
 			intent.putExtra("contact_phone", employer.getContact_phone());
 			startActivityForResult(intent, 100);
+		}
+		
+		@OnClick(R.id.mz_usercenter_changepsw) public void changepsw(){
+			LayoutInflater inflater = LayoutInflater.from(UserCenter_Employer.this);
+			View dialogView = inflater.inflate(R.layout.dialog_change_psw, null);
+			final EditText et_change_oldpsw =(EditText) dialogView.findViewById(R.id.et_change_oldpsw);
+			final EditText et_change_newpsw =(EditText) dialogView.findViewById(R.id.et_change_newpsw);
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("修改密码");
+			builder.setView(dialogView);
+			builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					PublicerAPI.change_psw(et_change_oldpsw.getText().toString(), et_change_newpsw.getText().toString(), new JsonResponseHandler() {
+						
+						@Override
+						public void onOK(Header[] headers, JSONObject obj) {
+							// TODO Auto-generated method stub
+							try {
+								if(obj.getString("code").equals("20000")){
+									toast("修改成功");
+								}
+							} catch (JSONException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						
+						@Override
+						public void onFaild(int errorType, int errorCode) {
+							// TODO Auto-generated method stub
+							
+						}
+					});
+				}
+			});
+			builder.setNegativeButton("取消", null);
+			AlertDialog dialog =  builder.create();
+			dialog.show();
 		}
 	
 	private void initData() {
