@@ -10,6 +10,7 @@ import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.ErrorCode;
 import org.meizhuo.model.Publicer;
 import org.meizhuo.utils.Constants;
+import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.view.WaittingDialog;
 
 import com.google.gson.JsonNull;
@@ -17,14 +18,18 @@ import com.google.gson.JsonNull;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +47,7 @@ public class UserCenter_Publicer extends BaseActivity {
 	@InjectView(R.id.mz_usercenter_sex_tv) TextView sex_tv;
 	@InjectView(R.id.mz_usercenter_workplace_tv) TextView workplace_tv;
 	@InjectView(R.id.tv_userinfo_publicer_edit) TextView edit_tv;  // 右上角的编辑信息
+	@InjectView(R.id.mz_usercenter_changepsw) LinearLayout change_psw;
 	private Publicer publicer;
 	private PublicerAPI publicApi;
 	private UCHandler handler =  new UCHandler();
@@ -54,6 +60,50 @@ public class UserCenter_Publicer extends BaseActivity {
 		publicer =  new Publicer();
 		initData();
 		
+	}
+	
+	/**
+	 * 修改密码
+	 */
+	@OnClick(R.id.mz_usercenter_changepsw) public void ToChangePsw(){
+		LayoutInflater inflater = LayoutInflater.from(UserCenter_Publicer.this);
+		View dialogView = inflater.inflate(R.layout.dialog_change_psw, null);
+		final EditText et_change_oldpsw =(EditText) dialogView.findViewById(R.id.et_change_oldpsw);
+		final EditText et_change_newpsw =(EditText) dialogView.findViewById(R.id.et_change_newpsw);
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("修改密码");
+		builder.setView(dialogView);
+		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				PublicerAPI.change_psw(et_change_oldpsw.getText().toString(), et_change_newpsw.getText().toString(), new JsonResponseHandler() {
+					
+					@Override
+					public void onOK(Header[] headers, JSONObject obj) {
+						// TODO Auto-generated method stub
+						try {
+							if(obj.getString("code").equals("20000")){
+								toast("修改成功" + obj);
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					
+					@Override
+					public void onFaild(int errorType, int errorCode) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+			}
+		});
+		builder.setNegativeButton("取消", null);
+		AlertDialog dialog =  builder.create();
+		dialog.show();
 	}
 	
 	@OnClick(R.id.tv_userinfo_publicer_edit) public void EditInfo() {

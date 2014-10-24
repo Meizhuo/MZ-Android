@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <EditText 
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/et_change_oldpsw"
+        android:layout_marginTop="10dp"
+        style="@style/EditText"
+        android:text=""
+        android:hint="旧密码"
+        android:textStyle="normal"
+        />
+    
+      <EditText 
+          android:text=""
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/et_change_newpsw"
+        android:layout_marginTop="10dp"
+        style="@style/EditText"
+        android:textStyle="normal"
+        android:layout_marginBottom="10dp"
+        android:hint="新密码"
+        />
+</LinearLayout>
