@@ -59,6 +59,24 @@
               >
           </org.meizhuo.view.AutoScrollViewPager>
       </RelativeLayout>
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-32dp">
+
+        <TextView
+            android:id="@+id/tv_ad_title"
+            style="@style/TextView"
+            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:paddingTop="8dp"
+            android:paddingLeft="15dp"
+            android:background="@color/lucency_black"
+            android:textSize="12sp"
+            android:text=""
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+      
       <android.support.v4.widget.SwipeRefreshLayout 
     android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
