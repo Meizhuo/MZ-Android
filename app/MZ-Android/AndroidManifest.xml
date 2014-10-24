@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.meizhuo.app"
-    android:versionCode="7"
-    android:versionName="1.3.4" >
+    android:versionCode="8"
+    android:versionName="1.3.5" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -11,6 +11,19 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
      <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+     
+     <!-- 集成Share短信分享SDK权限 -->
+   <!--   <uses-permission android:name="android.permission.READ_CONTACTS" />
+		<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+ <!-- 集成Share短信分享SDK权限 -->
+     
 
     <application
         android:name=".App"
@@ -207,6 +220,15 @@
             android:name=".acty.Main_Advertise"
             android:launchMode="singleTask" >
         </activity>
+       <!-- 集成短信SDK -->
+   <!--     <activity
+   android:name="cn.smssdk.SMSSDKUIShell"
+   android:configChanges="keyboardHidden|orientation|screenSize"
+   android:theme="@android:style/Theme.Translucent.NoTitleBar"
+   android:windowSoftInputMode="stateHidden|adjustResize" />  -->
+   	 <!-- 集成短信SDK -->
+       
+            
     </application>
 
 </manifest>

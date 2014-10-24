@@ -23,11 +23,16 @@ import org.meizhuo.view.WaittingDialog;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 /**
@@ -50,6 +55,7 @@ public class Login extends BaseActivity{
 	@InjectView(R.id.radioFemale) RadioButton femaleRadio;
 	@InjectView(R.id.acty_register_et_email) EditText et_reg_email;
 	@InjectView(R.id.acty_register_et_workplace) EditText et_reg_workplace;
+	@InjectView(R.id.acty_login_forgot_password) TextView tv_forgot_psw;
 	private PublicerAPI publicApi;
 	private EmployerAPI employerAPI;
 	Employer employer;
@@ -65,6 +71,54 @@ public class Login extends BaseActivity{
 		publicApi =  new PublicerAPI();
 		dialog = new WaittingDialog(this);
 	}
+	/*
+	 * 忘记密码
+	 */
+	@OnClick(R.id.acty_login_forgot_password) public void forgot_psw(){
+		LayoutInflater inflater = LayoutInflater.from(Login.this);
+		View dialogView = inflater.inflate(R.layout.acty_login_forgot_psw, null);
+		final EditText et_forgot_email =(EditText) dialogView.findViewById(R.id.login_forgot_email);
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("请输入您的邮箱");
+		builder.setView(dialogView);
+		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				//if(StringUtils.isEmail(EditTextUtils.getText(et_login_username))){
+				String input = EditTextUtils.getText(et_forgot_email);
+				PublicerAPI.forgot_psw(input, new JsonResponseHandler() {
+					
+					@Override
+					public void onOK(Header[] headers, JSONObject obj) {
+						// TODO Auto-generated method stub
+						try {
+							if(obj.getString("code").equals("20000")){
+								String message = obj.getString("response");
+								toast(message);
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					
+					@Override
+					public void onFaild(int errorType, int errorCode) {
+						// TODO Auto-generated method stub
+						toast("邮件发送失败，请检查你的网络");
+					}
+				});
+				
+			}
+		});
+		builder.setNegativeButton("取消", null);
+		AlertDialog dialog =  builder.create();
+		dialog.show();
+	}
+	
+	
 	/* 登录 */
 	@OnClick(R.id.acty_login_btn_login) public void Login(){
 		if (!(AndroidUtils.isNetworkConnected(this)))

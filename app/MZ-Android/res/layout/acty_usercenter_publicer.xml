@@ -34,7 +34,7 @@
             android:layout_centerVertical="true"
             android:gravity="left"
             android:layout_marginLeft="2dp"
-            android:text="Application"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="15sp" 
             android:layout_marginRight="2dp"/>
@@ -51,6 +51,8 @@
     </RelativeLayout>
 
 </LinearLayout>
+
+    
 	
     <FrameLayout 
         android:layout_width="match_parent"
@@ -80,7 +82,16 @@
     </FrameLayout >
        
         
-       
+       <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        
+        android:scrollbarStyle="@null" >
+        
+           <LinearLayout
+               style="@style/LinearLayout"
+               android:orientation="vertical" 
+               >
 
 
     <View
@@ -100,8 +111,6 @@
             style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
             android:text="姓名:"
@@ -132,11 +141,8 @@
             style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
-            android:text="性别:"
             android:textColor="@android:color/black"
             android:textSize="17sp" />
         <TextView 
@@ -164,8 +170,6 @@
             style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
             android:text="工作单位:"
@@ -178,7 +182,42 @@
             />
         
     </LinearLayout>
+    
+   
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/ic_line_1" />
+    
+    <LinearLayout
+        android:id="@+id/mz_usercenter_changepsw"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+      android:background="@drawable/mz_btn_item_main"
+      android:clickable="true"
 
-
+         >
+          <TextView
+            style="@style/TextView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="修改密码"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+          
+          <ImageView
+              android:layout_marginTop="15dp"
+              android:layout_marginRight="18dp"
+        style="@style/ImageView"
+        android:scaleType="centerCrop"
+        android:src="@drawable/aa_mini_webview_forward_disable" />
+        
+    </LinearLayout>
+</LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
