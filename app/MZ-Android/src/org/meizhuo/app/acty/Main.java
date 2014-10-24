@@ -155,7 +155,7 @@ public class Main extends BaseActivity {
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
-				
+				toast("数据加载失败!请检查您的网络设置!");
 			}
 		});
 		
@@ -307,17 +307,21 @@ public class Main extends BaseActivity {
 			String action = intent.getAction();
 			if(action.equals(Constants.Action_Publicer_isLogin)){
 				is_Publicer_Login = true;
+				logoff = false;
 			}
 			if(action.equals(Constants.Action_Employer_isLogin)){
 				is_Employer_Login = true;
+				logoff = false;
 			}
 			if(action.equals(Constants.Action_Publicer_ReLoginSuccessful)){
 				Log.i(TAG, "普通用户重新登录");
 				Publicer_reLogin = true;
+				logoff = false;
 			}
 			if(action.equals(Constants.Action_Employer_ReLoginSuccessful)){
 				Log.i(TAG, "用人单位重新登录");
 				Employer_reLogin = true;
+				logoff = false;
 			}
 			if(action.equals(Constants.Action_Logoff)){
 				Publicer_reLogin=false;
