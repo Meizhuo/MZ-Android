@@ -33,8 +33,8 @@ public class ShowWebImageActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.show_web_img);
+		super.onCreate(savedInstanceState,R.layout.show_web_img);
+		setAppTitle("返回");
 		this.imagePath = getIntent().getStringExtra("image");
 		Log.i(TAG, ""+ imagePath);
 		this.imageTextView = (TextView) findViewById(R.id.show_webimage_imagepath_textview);
