@@ -2,37 +2,56 @@ package org.meizhuo.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.meizhuo.model.Subsidy_certificateTypes;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 /**
  * 
  * @author Jason
  *
  */
+@SuppressWarnings("serial")
 public class Subsidy_Kind implements Serializable {
 	
 	
 	/**
-	 * 
+	 * 解析一个补贴项目的类别
 	 * @param json
 	 * @return
 	 */
 	public static Subsidy_Kind create_by_json(String json) {
-		Subsidy_Kind kind=  null;
-		Gson gson = new Gson();
 		try {
-			kind = (Subsidy_Kind) gson.fromJson(json, Subsidy_Kind.class);
+			Gson gson = new Gson();
+			return (Subsidy_Kind)gson.fromJson(json, Subsidy_Kind.class);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			kind = null;
+			return null;
 		}
-		return kind;
+	}
+	
+	public static List<Subsidy_Kind> create_by_jsonarray(String jsonarray) {
+		List<Subsidy_Kind> list = new ArrayList<Subsidy_Kind>();
+		JSONObject obj = null;
+		JSONArray array = null;
+		try {
+			obj =  new JSONObject(jsonarray);
+			array = obj.getJSONArray("response");
+			for(int i = 0; i < array.length();i++){
+				list.add(create_by_json(array.getJSONArray(i).toString()));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			list = null;
+		}
+		return list;
 	}
 	
 	

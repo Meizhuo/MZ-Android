@@ -18,23 +18,30 @@ import com.google.gson.Gson;
  * @author Jason
  *
  */
+@SuppressWarnings("serial")
 public class Subsidy_certificateTypes implements Serializable{
 	private static final String TAG ="Subsidy_certificateTypes";
 	
-	
-	public static Subsidy_certificateTypes create_by_json(String json) {
-		Subsidy_certificateTypes certificateTypes = null;
-		Gson gson = new Gson();
+	/**
+	 * 解析单个证书对象
+	 * @param json
+	 * @return
+	 */
+	public static Subsidy_certificateTypes create_by_json(String json){
 		try {
-			certificateTypes = (Subsidy_certificateTypes) gson.fromJson(json, Subsidy_certificateTypes.class);
+			Gson gson =  new Gson();
+			return (Subsidy_certificateTypes)gson.fromJson(json, Subsidy_certificateTypes.class);
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
-			certificateTypes = null;
+			return null;
 		}
-		return certificateTypes;
 	}
 	
+	/**
+	 * 解析一个证书列表
+	 * @param jsonarray
+	 * @return
+	 */
 	public static ArrayList<Subsidy_certificateTypes> create_by_jsonarray(String jsonarray) {
 		ArrayList<Subsidy_certificateTypes> list = new ArrayList<Subsidy_certificateTypes>();
 		JSONObject obj = null;

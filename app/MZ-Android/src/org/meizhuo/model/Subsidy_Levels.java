@@ -2,6 +2,7 @@ package org.meizhuo.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,30 +15,51 @@ import com.google.gson.Gson;
  * @author Jason
  *
  */
+@SuppressWarnings("serial")
 public class Subsidy_Levels implements Serializable {
 	
 	
+	
 	/**
-	 * 
+	 * 解析单个补贴等级
 	 * @param json
 	 * @return
 	 */
 	public static Subsidy_Levels create_by_json(String json) {
-		Subsidy_Levels kind=  null;
-		Gson gson = new Gson();
 		try {
-			kind = (Subsidy_Levels) gson.fromJson(json, Subsidy_Levels.class);
+			Gson gson =  new Gson();
+			return (Subsidy_Levels)gson.fromJson(json, Subsidy_Levels.class);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
+	
+	/**
+	 * 解析一个证书列表
+	 * @param jsonarray
+	 * @return
+	 */
+	public static List<Subsidy_Levels> create_by_jsonarray(String jsonarray) {
+		ArrayList<Subsidy_Levels> list =  new ArrayList<Subsidy_Levels>();
+		JSONObject obj = null;
+		JSONArray array = null;
+		try {
+			obj = new JSONObject(jsonarray);
+			array = obj.getJSONArray("level");
+			for(int i = 0; i < array.length();i++){
+				list.add(create_by_json(array.getJSONObject(i).toString()));
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			kind = null;
+			list = null;
 		}
-		return kind;
+		return list;
 	}
 	
-	
 	/**
-	 * jason 直接解析返回的json
+	 * jason
 	 * @param obj
 	 * @return
 	 */
