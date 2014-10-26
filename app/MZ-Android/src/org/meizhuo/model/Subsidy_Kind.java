@@ -44,7 +44,7 @@ public class Subsidy_Kind implements Serializable {
 			obj =  new JSONObject(jsonarray);
 			array = obj.getJSONArray("response");
 			for(int i = 0; i < array.length();i++){
-				list.add(create_by_json(array.getJSONArray(i).toString()));
+				list.add(create_by_json(array.getJSONObject(i).toString()));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

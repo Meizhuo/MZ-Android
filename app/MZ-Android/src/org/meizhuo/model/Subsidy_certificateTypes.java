@@ -20,7 +20,7 @@ import com.google.gson.Gson;
  */
 @SuppressWarnings("serial")
 public class Subsidy_certificateTypes implements Serializable{
-	private static final String TAG ="Subsidy_certificateTypes";
+	private static final String TAG = "Subsidy_certificateTypes";
 	
 	/**
 	 * 解析单个证书对象
@@ -42,7 +42,7 @@ public class Subsidy_certificateTypes implements Serializable{
 	 * @param jsonarray
 	 * @return
 	 */
-	public static ArrayList<Subsidy_certificateTypes> create_by_jsonarray(String jsonarray) {
+	public static List<Subsidy_certificateTypes> create_by_jsonarray(String jsonarray) {
 		ArrayList<Subsidy_certificateTypes> list = new ArrayList<Subsidy_certificateTypes>();
 		JSONObject obj = null;
 		JSONArray array = null;
@@ -50,10 +50,11 @@ public class Subsidy_certificateTypes implements Serializable{
 			obj =  new JSONObject(jsonarray);
 			array = obj.getJSONArray("response");
 			for(int i = 0; i < array.length();i++){
-				list.add(create_by_json(array.getJSONArray(i).toString()));
+				list.add(create_by_json(array.getJSONObject(i).toString()));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+			Log.i(TAG, e.getMessage());
 			e.printStackTrace();
 			list = null;
 		}
@@ -83,9 +84,6 @@ public class Subsidy_certificateTypes implements Serializable{
 		return list;
 	}
 
-	public Subsidy_certificateTypes() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	private String certificate_type;
 
