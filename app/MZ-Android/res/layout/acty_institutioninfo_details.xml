@@ -140,6 +140,7 @@
                 android:background="@drawable/ic_line_1" />
 
             <LinearLayout
+                android:id="@+id/institution_traning_contach_phone_dial"
                 style="@style/LinearLayout"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >

@@ -94,7 +94,7 @@ public class InstitutionInfo_Details extends BaseActivity {
 		});
 		
 	}
-	@OnClick(R.id.institution_traning_contach_phone) public void dial(){
+	@OnClick(R.id.institution_traning_contach_phone_dial) public void dial(){
 		Intent intent =  new Intent();
 		intent.setAction("android.intent.action.DIAL");
 		intent.setData(Uri.parse("tel:" + institution.getContact_phone().toString()));

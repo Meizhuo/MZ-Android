@@ -50,11 +50,34 @@
             android:id="@+id/tv_institution_course_time"
             style="@style/TextView"
             android:ellipsize="end"
-            android:text="9月9日"
+            android:text=""
             android:textColor="@color/mz_grey_lv_two"
             android:textSize="12sp"
             />
     </LinearLayout>
+    
+          <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView 
+            style="@style/TextView"
+            android:ellipsize="end"
+            android:textSize="12sp"
+            android:textColor="@color/mz_grey_lv_two"
+            android:text="上课地点:"
+            />
+        <TextView 
+            android:id="@+id/tv_institution_course_address"
+            style="@style/TextView"
+            android:ellipsize="end"
+            android:text=""
+            android:textColor="@color/mz_grey_lv_two"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+        
 
         <LinearLayout 
         android:layout_width="match_parent"
@@ -66,13 +89,13 @@
             android:ellipsize="end"
             android:textSize="12sp"
             android:textColor="@color/mz_grey_lv_two"
-            android:text="课程介绍"
+            android:text="补贴费用:"
             />
         <TextView 
-            android:id="@+id/tv_institution_course_introdution"
+            android:id="@+id/tv_institution_course_subsidy"
             style="@style/TextView"
             android:ellipsize="end"
-            android:text="挖掘技术哪家强?中国山东找蓝翔"
+            android:text=""
             android:textColor="@color/mz_grey_lv_two"
             android:textSize="12sp"
             />

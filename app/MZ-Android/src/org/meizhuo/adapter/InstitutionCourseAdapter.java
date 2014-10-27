@@ -57,8 +57,8 @@ public class InstitutionCourseAdapter extends BaseAdapter{
 		}
 		h.course_name.setText(mData.get(position).getName().toString());
 		h.course_time.setText(mData.get(position).getStart_time().toString());
-		h.course_introdution.setText(mData.get(position).getIntroduction().toString());
-		
+		h.course_subsidy.setText(mData.get(position).getCost().toString());
+		h.course_address.setText(mData.get(position).getAddress().toString());
 		return convertView;
 	}
 	
@@ -66,7 +66,8 @@ public class InstitutionCourseAdapter extends BaseAdapter{
 		
 		@InjectView(R.id.tv_institution_course_name) TextView course_name;
 		@InjectView(R.id.tv_institution_course_time) TextView course_time;
-		@InjectView(R.id.tv_institution_course_introdution) TextView course_introdution;
+		@InjectView(R.id.tv_institution_course_subsidy) TextView course_subsidy;
+		@InjectView(R.id.tv_institution_course_address) TextView course_address;
 
 		public ViewHolder(View v) {
 			// TODO Auto-generated constructor stub
