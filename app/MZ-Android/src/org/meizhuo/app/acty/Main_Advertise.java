@@ -89,6 +89,7 @@ public class Main_Advertise extends BaseActivity{
 			intent.setClass(context, ShowWebImageActivity.class);
 			context.startActivity(intent);
 		}
+		
 	}
 	
 	
