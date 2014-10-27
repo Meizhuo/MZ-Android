@@ -1,14 +1,18 @@
 package org.meizhuo.app.acty;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.Header;
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.meizhuo.adapter.CertificateTypesAdapter;
+import org.meizhuo.adapter.KindAdapter;
+import org.meizhuo.adapter.LevelAdapter;
 import org.meizhuo.api.SearchAPI;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
-import org.meizhuo.model.Subsidy;
 import org.meizhuo.model.Subsidy_Kind;
 import org.meizhuo.model.Subsidy_Levels;
 import org.meizhuo.model.Subsidy_certificateTypes;
@@ -30,19 +34,31 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-import com.google.gson.Gson;
 
 
 
 public class Major_Search extends BaseActivity{
-	private static final String[] certificate_Types = {"B(国家职业资格证书、计算机信息高新技术证书、专项职业能力证书)",""};
-	private static final String[] kind = {"B1(专项职业能力)","B2","B3","B4","B5","B6",""};
-	private static final String[] level = {"B1-1","B1-2","B1-3","B1-4","B2-1(初、中级)","B2-2(高级)","B3-1(初、中级)","B3-2(高级)","B3-2(技师、高级技师)","B4-1(初、中级)","B4-2(高级)","B5-3(技师、高级技师)","B6-1(初、中级)","B6-2(高级)","B6-3(技师、高级技师)",""};
+	
 	private static final String TAG  = "Major_Search";
+	
+	private static final String[] Certificate_Types = {"B(国家职业资格证书、计算机信息高新技术证书、专项职业能力证书)",""};
+	
+	List<Subsidy_certificateTypes>_certificateTypes;
+	List<Subsidy_Kind> _kinds;
+	List<Subsidy_Levels> _levels;
+	
+	
+	CertificateTypesAdapter certificateTypesAdapter;
+	KindAdapter kindAdapter;
+	LevelAdapter levelAdapter;
+
+	
+	String certificate_Types_Selected_Item = "";
+	String kind_Selected_Item = "";
+	String level_Selected_Item = "";
 
 	/**项目类别*/
 	@InjectView(R.id.project_sp) Spinner kind_sp;
@@ -66,9 +82,12 @@ public class Major_Search extends BaseActivity{
 		certificateTypes = new Subsidy_certificateTypes();
 		kinds = new Subsidy_Kind();
 		levels = new Subsidy_Levels();
-		initKindAdapter();
-		initLevelAdapter();
-		initCertificateAdapter();
+		_certificateTypes =  new ArrayList<Subsidy_certificateTypes>();
+		_kinds = new ArrayList<Subsidy_Kind>();
+		_levels =  new ArrayList<Subsidy_Levels>();
+		initData();
+		
+		
 	}
 	
 	@OnClick(R.id.btn_search_content) public void write_search() {
@@ -115,61 +134,118 @@ public class Major_Search extends BaseActivity{
 		intent.putExtra("title", title);
 		startActivity(intent);
 	}
-	
 	private void initData(){
-		if (searchAPI == null)
-			searchAPI = new SearchAPI();
 		handler.sendEmptyMessage(Constants.Start);
 		final Message msg = handler.obtainMessage();
-		searchAPI.getCertificateTypes(new JsonResponseHandler() {
+		SearchAPI.getCertificateTypes(new JsonResponseHandler() {
 			
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				Log.i(TAG, "证书类别");
-				msg.what = Constants.Finish;
-				msg.obj = obj;
-				msg.arg1 = 1;
-				handler.sendMessage(msg);
+				try {
+					if(obj.getString("code").equals("20000")){
+						_certificateTypes = Subsidy_certificateTypes.create_by_jsonarray(obj.toString());
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
-				toast("错误码" + errorCode);
+				msg.what = Constants.Fail;
+				handler.sendMessage(msg);
+			}
+		});
+		
+		SearchAPI.getkinds(new JsonResponseHandler() {
+			
+			@Override
+			public void onOK(Header[] headers, JSONObject obj) {
+				// TODO Auto-generated method stub
+				try {
+					if(obj.getString("code").equals("20000")){
+						_kinds = Subsidy_Kind.create_by_jsonarray(obj.toString());
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					msg.what = Constants.Fail;
+					handler.sendMessage(msg);
+				}
+				
+			}
+			
+			@Override
+			public void onFaild(int errorType, int errorCode) {
+				// TODO Auto-generated method stub
+			}
+		});
+		
+		SearchAPI.getLevels(new JsonResponseHandler() {
+			
+			@Override
+			public void onOK(Header[] headers, JSONObject obj) {
+				// TODO Auto-generated method stub
+				try {
+					if(obj.getString("code").equals("20000")){
+						_levels = Subsidy_Levels.create_by_jsonarray(obj.toString());
+						msg.what = Constants.Finish;
+						handler.sendMessage(msg);
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					msg.what = Constants.Fail;
+					handler.sendMessage(msg);
+				}
+				
+			}
+			
+			@Override
+			public void onFaild(int errorType, int errorCode) {
+				// TODO Auto-generated method stub
+				msg.what = Constants.Fail;
+				handler.sendMessage(msg);
 			}
 		});
 	}
 	
+	private void initCertificateAdapter() {
+		 certificateTypesAdapter = new CertificateTypesAdapter(Major_Search.this, _certificateTypes);
+//		ArrayAdapter<String>adapter;
+//		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Certificate_Types);
+//		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		
+		certificate_sp.setAdapter(certificateTypesAdapter);
+		certificate_sp.setOnItemSelectedListener(new CertificateTypesSpinnerListener());
+		certificate_sp.setVisibility(View.VISIBLE);
+		
+	}
+	
 	private void initKindAdapter() {
-		ArrayAdapter<String>adapter;
-		adapter = new ArrayAdapter<String>(Major_Search.this,android.R.layout.simple_spinner_item, kind);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		kind_sp.setAdapter(adapter);
+		 kindAdapter = new KindAdapter(Major_Search.this, _kinds);
+		kind_sp.setAdapter(kindAdapter);
 		kind_sp.setOnItemSelectedListener(new KindSpinnerListener());
 		kind_sp.setVisibility(View.VISIBLE);
 	}
-	
+	 
 	private void initLevelAdapter() {
-		ArrayAdapter<String>adapter;
-		adapter = new ArrayAdapter<String>(Major_Search.this, android.R.layout.simple_spinner_item, level);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		level_sp.setAdapter(adapter);
-		level_sp.setOnItemSelectedListener(new levelSpinnerListener());
-		level_sp.setVisibility(View.VISIBLE);
+		 levelAdapter = new LevelAdapter(Major_Search.this, _levels);
+		
+		
+				level_sp.setAdapter(levelAdapter);
+				level_sp.setOnItemSelectedListener(new levelSpinnerListener());
+				level_sp.setVisibility(View.VISIBLE);
 	}
 	
-	private void initCertificateAdapter() {
-		ArrayAdapter<String> adapter;
-		adapter = new ArrayAdapter<String>(Major_Search.this, android.R.layout.simple_spinner_item, certificate_Types);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		certificate_sp.setAdapter(adapter);
-		certificate_sp.setOnItemSelectedListener(new CertificateTypesSpinnerListener());
-		certificate_sp.setVisibility(View.VISIBLE);
-	}
+
 	
 	 class MSHandler extends Handler{
 		 WaittingDialog waittingDialog;
+		 
 		 
 		 @Override
 		public void handleMessage(Message msg) {
@@ -184,21 +260,15 @@ public class Major_Search extends BaseActivity{
 				if(waittingDialog.isShowing())
 				waittingDialog.dismiss();
 				waittingDialog = null;
-				if (msg.arg1 == 1){
-				JSONObject obj = (JSONObject)msg.obj;
-				ArrayList<Subsidy_certificateTypes>list = Subsidy_certificateTypes.create_by_jsonObject(obj);
-				Log.i(TAG, "证书数据" + list);
-				ArrayList<String>lists = new ArrayList<String>();
-				for (int i = 0 ;i < list.size();i++){
-					lists.add(list.get(i).getCertificate_type());
-				}
+				initCertificateAdapter();
+				initKindAdapter();
+				initLevelAdapter();
 				
 				}
 				
 			}
 		}
-	 }
-	 
+	 /**国家职业资格证书、计算机信息高新技术证书、专项职业能力证书**/
 	 class CertificateTypesSpinnerListener implements OnItemSelectedListener {
 
 		@Override
@@ -206,25 +276,26 @@ public class Major_Search extends BaseActivity{
 				long id) {
 			// TODO Auto-generated method stub
 			String selectItem = parent.getItemAtPosition(position).toString();
+//			String selectedItem=((Subsidy_Kind)kindAdapter.getItem(position)).getKind();
+//			String selectedItem=((Subsidy_certificateTypes)certificateTypesAdapter.getItem(position)).getCertificate_type();
 			certificateTypes.setCertificate_type(selectItem);
 		}
 
-		@Override
+		@Override  
 		public void onNothingSelected(AdapterView<?> parent) {
 			// TODO Auto-generated method stub
 			
 		}
-		 
 	 }
-	 /**国家职业资格证书、计算机信息高新技术证书、专项职业能力证书**/
+	 /**  项目类别      **/
 	 class KindSpinnerListener implements OnItemSelectedListener {
 
 		@Override
 		public void onItemSelected(AdapterView<?> parent, View view, int position,
 				long id) {
 			// TODO Auto-generated method stub
-			String selectItem = parent.getItemAtPosition(position).toString();
-			kinds.setKind(selectItem);
+			String selectedItem=((Subsidy_Kind)kindAdapter.getItem(position)).getKind();
+			kinds.setKind(kind_Selected_Item);
 		}
 
 		@Override
@@ -234,14 +305,15 @@ public class Major_Search extends BaseActivity{
 		}
 		 
 	 }
+	 
 	 class levelSpinnerListener implements OnItemSelectedListener {
 
 		@Override
 		public void onItemSelected(AdapterView<?> parent, View view, int position,
 				long id) {
 			// TODO Auto-generated method stub
-			String selectItem = parent.getItemAtPosition(position).toString();
-			levels.setLevel(selectItem);
+			String selectItem = ((Subsidy_Levels)levelAdapter.getItem(position)).getLevel();
+		levels.setLevel(selectItem);
 			
 		}
 
@@ -252,5 +324,6 @@ public class Major_Search extends BaseActivity{
 		}
 		 
 	 }
+	 
 
 }

@@ -40,7 +40,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 	/**课程费用*/
 	@InjectView(R.id.institution_course_cost) TextView course_cost;
 	/**课程介绍*/
-	@InjectView(R.id.institution_course_introdution) TextView course_introdution;
+	@InjectView(R.id.institution_course_introdution) Button course_introdution;
 	/**所属机构*/
 	@InjectView(R.id.institution_course_belong_institution) Button belong_institution;
 
@@ -80,7 +80,6 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		 course_addr.setText(address);
 		 course_teacher.setText(teacher);
 		 course_cost.setText(cost);
-		 course_introdution.setText(introduction);
 		 InstitutionAPI.getOneInstitution(institution_id, new JsonResponseHandler() {
 			 
 			 @Override
@@ -121,7 +120,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		});
 	}
 	
-	@OnClick(R.id.ll_course_description) public void ToCourseDescription(){
+	@OnClick(R.id.institution_course_introdution) public void ToCourseDescription(){
 		Intent intent =  new Intent(CourseDetails_OneCourse.this, CourseDetails_description.class);
 		intent.putExtra("content", introduction);
 		intent.putExtra("title", name);

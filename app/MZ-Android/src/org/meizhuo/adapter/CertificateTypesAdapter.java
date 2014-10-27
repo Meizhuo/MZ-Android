@@ -3,10 +3,11 @@ package org.meizhuo.adapter;
 import java.util.List;
 
 import org.meizhuo.app.R;
-import org.meizhuo.model.Institution;
+import org.meizhuo.model.Subsidy_certificateTypes;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,26 +16,27 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class InstitutionInfoAdapter extends BaseAdapter{
+public class CertificateTypesAdapter extends BaseAdapter {
 	
-	private List<Institution> mData;
+	private List<Subsidy_certificateTypes> mList;
 	private Context mContext;
-	public InstitutionInfoAdapter(Context context, List<Institution>list) {
+
+	public CertificateTypesAdapter(Context context, List<Subsidy_certificateTypes>list) {
 		// TODO Auto-generated constructor stub
-		mData = list;
-		mContext=context;
+		mContext = context;
+		mList = list;
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return mData.size();
+		return mList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return mData.get(position);
+		return mList.get(position);
 	}
 
 	@Override
@@ -47,31 +49,29 @@ public class InstitutionInfoAdapter extends BaseAdapter{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		ViewHolder h;
-		if (convertView == null)
+		if(convertView == null) 
 		{
-			convertView = LayoutInflater.from(mContext).inflate(R.layout.lv_institution_info_item, null);
-			h = new ViewHolder(convertView);
+			convertView = LayoutInflater.from(mContext).inflate(R.layout.tv_spinner, null);
+			h =  new ViewHolder(convertView);
 			convertView.setTag(h);
-		}else
-		{
+		}else{
 			h = (ViewHolder)convertView.getTag();
 		}
-		h.tv_name.setText(mData.get(position).getName().toString());
-		h.tv_addr.setText(mData.get(position).getAddress().toString());
-		h.tv_type.setText(mData.get(position).getType().toString());
-		h.tv_description.setText(mData.get(position).getDescription().toString());
+//		h.tv_spinner.setText(mList.get(position).getCertificate_type());
+		h.tv_spinner.setText("B(国家职业资格证书、计算机信息高新技术证书、专项职业能力证书)");
 		return convertView;
 	}
+	
 	static class ViewHolder {
-		@InjectView(R.id.tv_institution_name) TextView tv_name;
-		@InjectView(R.id.tv_institution_addr) TextView tv_addr;
-		@InjectView(R.id.tv_institution_type) TextView tv_type;
-		@InjectView(R.id.tv_institution_description) TextView tv_description;
+		
+		@InjectView(R.id.tv_spinner) TextView tv_spinner;
 		
 		public ViewHolder(View v) {
 			// TODO Auto-generated constructor stub
 			ButterKnife.inject(this, v);
 		}
 	}
+	
+	
 
 }

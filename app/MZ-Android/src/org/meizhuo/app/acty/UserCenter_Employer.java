@@ -1,6 +1,5 @@
 package org.meizhuo.app.acty;
 
-import java.util.List;
 
 import org.apache.http.Header;
 import org.json.JSONException;

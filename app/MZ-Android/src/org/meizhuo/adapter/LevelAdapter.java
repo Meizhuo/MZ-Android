@@ -3,7 +3,7 @@ package org.meizhuo.adapter;
 import java.util.List;
 
 import org.meizhuo.app.R;
-import org.meizhuo.model.Institution;
+import org.meizhuo.model.Subsidy_Levels;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -15,26 +15,27 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class InstitutionInfoAdapter extends BaseAdapter{
+public class LevelAdapter extends BaseAdapter {
 	
-	private List<Institution> mData;
+	private List<Subsidy_Levels> mList;
 	private Context mContext;
-	public InstitutionInfoAdapter(Context context, List<Institution>list) {
+
+	public LevelAdapter(Context context, List<Subsidy_Levels>list) {
 		// TODO Auto-generated constructor stub
-		mData = list;
-		mContext=context;
+		mContext = context;
+		mList = list;
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return mData.size();
+		return mList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return mData.get(position);
+		return mList.get(position);
 	}
 
 	@Override
@@ -47,26 +48,20 @@ public class InstitutionInfoAdapter extends BaseAdapter{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		ViewHolder h;
-		if (convertView == null)
-		{
-			convertView = LayoutInflater.from(mContext).inflate(R.layout.lv_institution_info_item, null);
-			h = new ViewHolder(convertView);
+		if (convertView == null){
+			convertView = LayoutInflater.from(mContext).inflate(R.layout.tv_spinner, null);
+			h =  new ViewHolder(convertView);
 			convertView.setTag(h);
-		}else
-		{
+		}else{
 			h = (ViewHolder)convertView.getTag();
 		}
-		h.tv_name.setText(mData.get(position).getName().toString());
-		h.tv_addr.setText(mData.get(position).getAddress().toString());
-		h.tv_type.setText(mData.get(position).getType().toString());
-		h.tv_description.setText(mData.get(position).getDescription().toString());
+		h.tv_spinner.setText(mList.get(position).getLevel());
 		return convertView;
 	}
+	
 	static class ViewHolder {
-		@InjectView(R.id.tv_institution_name) TextView tv_name;
-		@InjectView(R.id.tv_institution_addr) TextView tv_addr;
-		@InjectView(R.id.tv_institution_type) TextView tv_type;
-		@InjectView(R.id.tv_institution_description) TextView tv_description;
+		
+		@InjectView(R.id.tv_spinner) TextView tv_spinner;
 		
 		public ViewHolder(View v) {
 			// TODO Auto-generated constructor stub

@@ -47,7 +47,6 @@ public class UserCenter_Publicer extends BaseActivity {
 	@InjectView(R.id.mz_usercenter_sex_tv) TextView sex_tv;
 	@InjectView(R.id.mz_usercenter_workplace_tv) TextView workplace_tv;
 	@InjectView(R.id.tv_userinfo_publicer_edit) TextView edit_tv;  // 右上角的编辑信息
-	@InjectView(R.id.mz_usercenter_changepsw) LinearLayout change_psw;
 	private Publicer publicer;
 	private PublicerAPI publicApi;
 	private UCHandler handler =  new UCHandler();

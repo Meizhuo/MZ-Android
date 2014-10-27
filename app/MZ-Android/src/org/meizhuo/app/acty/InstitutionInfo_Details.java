@@ -36,7 +36,6 @@ public class InstitutionInfo_Details extends BaseActivity {
 	@InjectView(R.id.institution_name) TextView institution_name;
 	@InjectView(R.id.company_name) TextView company_name;
 	@InjectView(R.id.institution_teach_type) TextView institution_teach_type;
-	@InjectView(R.id.company_description) TextView company_description;
 	@InjectView(R.id.institution_manager) TextView company_manager;
 	@InjectView(R.id.institution_traning_type) TextView training_scope;
 	@InjectView(R.id.company_teacher_resource) TextView teacher_resource;
@@ -73,6 +72,7 @@ public class InstitutionInfo_Details extends BaseActivity {
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				Log.i(TAG, "" + obj);
+				
 				if (institution == null)
 					institution = new Institution();
 				try {
@@ -94,15 +94,15 @@ public class InstitutionInfo_Details extends BaseActivity {
 		});
 		
 	}
-	@OnClick(R.id.institution_traning_contach_phone) public void dial(){
+	@OnClick(R.id.institution_traning_contach_phone_dial) public void dial(){
 		Intent intent =  new Intent();
 		intent.setAction("android.intent.action.DIAL");
-		intent.setData(Uri.parse("tel:" + 10086));
+		intent.setData(Uri.parse("tel:" + institution.getContact_phone().toString()));
 		startActivity(intent);
 	}
 	
 	// 进入公司简介页面
-	@OnClick(R.id.ll_company_description) public void enter_company_intro(){
+	@OnClick(R.id.btn_company_description) public void enter_company_intro(){
 		Intent it =  new Intent(this, InstitutionInfo_Details_com_intro.class);
 //		it.putExtra("content", institution.getDescription().toString());
 //		it.putExtra("title", institution.getNickname().toString());
@@ -133,12 +133,6 @@ public class InstitutionInfo_Details extends BaseActivity {
 				if (dialog.isShowing())
 					dialog.dismiss();
 				dialog = null;
-				/*
-				 @InjectView(R.id.institution_traning_contach_phone) TextView contach_phone;
-	@InjectView(R.id.institution_email) TextView institution_email;
-	@InjectView(R.id.institution_traning_institution_addr) TextView company_addr;
-	@InjectView(R.id.institution_traning_contact_people) TextView contact_people;
-				 */
 				if (institution.getNickname() == null)
 				{
 					institution_name.setText("");
@@ -160,12 +154,6 @@ public class InstitutionInfo_Details extends BaseActivity {
 				}
 				else{
 					institution_teach_type.setText(institution.getType().toString());
-				}
-				if (institution.getDescription() == null)
-				{
-					company_description.setText("");
-				}else{
-					company_description.setText(institution.getDescription().toString());
 				}
 				if (institution.getManager() == null)
 				{
