@@ -70,7 +70,6 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		 institution_id = intent.getStringExtra("institution_id");
 		 cost = intent.getStringExtra("cost");
 		 course_id = intent.getStringExtra("course_id");
-		 
 	}
 	
 	
