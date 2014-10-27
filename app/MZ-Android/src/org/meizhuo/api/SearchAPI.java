@@ -40,7 +40,7 @@ public class SearchAPI {
 	 * 获取证书类别的种类
 	 * @param responseHandler
 	 */
-	public void getCertificateTypes(AsyncHttpResponseHandler responseHandler){
+	public static void getCertificateTypes(AsyncHttpResponseHandler responseHandler){
 		RestClient.get("/home/subsidy/getCertificateTypes", null, responseHandler);
 	}
 	
@@ -48,7 +48,7 @@ public class SearchAPI {
 	 * 获取项目类别的种类
 	 * @param responseHandler
 	 */
-	public void getkinds(AsyncHttpResponseHandler responseHandler) {
+	public static void getkinds(AsyncHttpResponseHandler responseHandler) {
 		RestClient.get("/home/subsidy/getkinds", null, responseHandler);
 	}
 	
@@ -56,7 +56,7 @@ public class SearchAPI {
 	 * 获取级别的种类
 	 * @param responseHandler
 	 */
-	public void getLevels(AsyncHttpResponseHandler responseHandler) {
+	public static void getLevels(AsyncHttpResponseHandler responseHandler) {
 		RestClient.get("/home/subsidy/getLevels", null, responseHandler);
 	}
 	
@@ -64,7 +64,7 @@ public class SearchAPI {
 	 * 获取系列的种类
 	 * @param responseHandler
 	 */
-	public void getSeries(AsyncHttpResponseHandler responseHandler) {
+	public static void getSeries(AsyncHttpResponseHandler responseHandler) {
 		RestClient.get("/home/subsidy/getSeries", null, responseHandler);
 	}
 	
