@@ -2,6 +2,8 @@ package org.meizhuo.app.acty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.Header;
 import org.json.JSONException;
@@ -44,7 +46,6 @@ public class Major_Search extends BaseActivity{
 	
 	private static final String TAG  = "Major_Search";
 	
-	private static final String[] Certificate_Types = {"B(国家职业资格证书、计算机信息高新技术证书、专项职业能力证书)",""};
 	
 	List<Subsidy_certificateTypes>_certificateTypes;
 	List<Subsidy_Kind> _kinds;
@@ -122,7 +123,9 @@ public class Major_Search extends BaseActivity{
 	
 	@OnClick(R.id.btn_search) public void search(){
 		
-		
+		Log.i(TAG, "证书" + certificateTypes.getCertificate_type());
+		Log.i(TAG, "类别" + kinds.getKind());
+		Log.i(TAG, "等级" + levels.getLevel());
 		String kind = kinds.getKind();
 		String level = levels.getLevel();
 		String certificate_type = certificateTypes.getCertificate_type();
@@ -181,6 +184,8 @@ public class Major_Search extends BaseActivity{
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
+				msg.what = Constants.Fail;
+				handler.sendMessage(msg);
 			}
 		});
 		
@@ -226,9 +231,11 @@ public class Major_Search extends BaseActivity{
 	}
 	
 	private void initKindAdapter() {
+		
 		 kindAdapter = new KindAdapter(Major_Search.this, _kinds);
 		kind_sp.setAdapter(kindAdapter);
 		kind_sp.setOnItemSelectedListener(new KindSpinnerListener());
+		
 		kind_sp.setVisibility(View.VISIBLE);
 	}
 	 
@@ -263,7 +270,13 @@ public class Major_Search extends BaseActivity{
 				initCertificateAdapter();
 				initKindAdapter();
 				initLevelAdapter();
-				
+				break;
+			case Constants.Fail:
+				if(waittingDialog.isShowing())
+					waittingDialog.dismiss();
+				waittingDialog = null;
+				toast("网络不给力，请检查你的网络设置");
+				break;
 				}
 				
 			}
@@ -275,10 +288,9 @@ public class Major_Search extends BaseActivity{
 		public void onItemSelected(AdapterView<?> parent, View view, int position,
 				long id) {
 			// TODO Auto-generated method stub
-			String selectItem = parent.getItemAtPosition(position).toString();
 //			String selectedItem=((Subsidy_Kind)kindAdapter.getItem(position)).getKind();
-//			String selectedItem=((Subsidy_certificateTypes)certificateTypesAdapter.getItem(position)).getCertificate_type();
-			certificateTypes.setCertificate_type(selectItem);
+			String selectedItem=((Subsidy_certificateTypes)certificateTypesAdapter.getItem(position)).getCertificate_type();
+			certificateTypes.setCertificate_type(selectedItem);
 		}
 
 		@Override  
@@ -295,7 +307,7 @@ public class Major_Search extends BaseActivity{
 				long id) {
 			// TODO Auto-generated method stub
 			String selectedItem=((Subsidy_Kind)kindAdapter.getItem(position)).getKind();
-			kinds.setKind(kind_Selected_Item);
+			kinds.setKind(selectedItem);
 		}
 
 		@Override
