@@ -89,7 +89,7 @@
             android:ellipsize="end"
             android:textSize="12sp"
             android:textColor="@color/mz_grey_lv_two"
-            android:text="补贴费用:"
+            android:text="课程费用:"
             />
         <TextView 
             android:id="@+id/tv_institution_course_subsidy"
