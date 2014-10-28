@@ -20,6 +20,7 @@ import org.meizhuo.model.Subsidy_Levels;
 import org.meizhuo.model.Subsidy_certificateTypes;
 import org.meizhuo.utils.Constants;
 import org.meizhuo.utils.EditTextUtils;
+import org.meizhuo.utils.SubsidyUtils;
 import org.meizhuo.view.WaittingDialog;
 
 import android.app.AlertDialog;
@@ -28,6 +29,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.method.Touch;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -220,10 +222,6 @@ public class Major_Search extends BaseActivity{
 	
 	private void initCertificateAdapter() {
 		 certificateTypesAdapter = new CertificateTypesAdapter(Major_Search.this, _certificateTypes);
-//		ArrayAdapter<String>adapter;
-//		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Certificate_Types);
-//		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		
 		certificate_sp.setAdapter(certificateTypesAdapter);
 		certificate_sp.setOnItemSelectedListener(new CertificateTypesSpinnerListener());
 		certificate_sp.setVisibility(View.VISIBLE);
@@ -239,8 +237,8 @@ public class Major_Search extends BaseActivity{
 		kind_sp.setVisibility(View.VISIBLE);
 	}
 	 
-	private void initLevelAdapter() {
-		 levelAdapter = new LevelAdapter(Major_Search.this, _levels);
+	private void initLevelAdapter(List<Subsidy_Levels>list) {
+		 levelAdapter = new LevelAdapter(Major_Search.this, list);
 		
 		
 				level_sp.setAdapter(levelAdapter);
@@ -269,7 +267,7 @@ public class Major_Search extends BaseActivity{
 				waittingDialog = null;
 				initCertificateAdapter();
 				initKindAdapter();
-				initLevelAdapter();
+//				initLevelAdapter();
 				break;
 			case Constants.Fail:
 				if(waittingDialog.isShowing())
@@ -306,8 +304,42 @@ public class Major_Search extends BaseActivity{
 		public void onItemSelected(AdapterView<?> parent, View view, int position,
 				long id) {
 			// TODO Auto-generated method stub
+		
 			String selectedItem=((Subsidy_Kind)kindAdapter.getItem(position)).getKind();
 			kinds.setKind(selectedItem);
+			List<Subsidy_Levels>list =  new ArrayList<Subsidy_Levels>();
+			list = _levels;
+			List<Subsidy_Levels>templist =  new ArrayList<Subsidy_Levels>();
+			if(kinds.getKind().equals("B1(专项职业能力)")){
+				templist =SubsidyUtils.getSubsidy_LevelsB1(list);
+				initLevelAdapter(templist);
+			}
+			if(kinds.getKind().equals("B2")){
+			
+				templist =SubsidyUtils.getSubsidy_LevelsB2(list);
+				initLevelAdapter(templist);
+			}
+			if(kinds.getKind().equals("B3")){
+				
+				templist =SubsidyUtils.getSubsidy_LevelsB3(list);
+				initLevelAdapter(templist);
+			}
+			if(kinds.getKind().equals("B4")){
+				
+				templist =SubsidyUtils.getSubsidy_LevelsB4(list);
+				initLevelAdapter(templist);
+			}
+			if(kinds.getKind().equals("B5")){
+				
+				templist =SubsidyUtils.getSubsidy_LevelsB5(list);
+				initLevelAdapter(templist);
+			}
+			if(kinds.getKind().equals("B6")){
+				
+				templist =SubsidyUtils.getSubsidy_LevelsB6(list);
+				initLevelAdapter(templist);
+			}
+			
 		}
 
 		@Override
@@ -326,6 +358,7 @@ public class Major_Search extends BaseActivity{
 			// TODO Auto-generated method stub
 			String selectItem = ((Subsidy_Levels)levelAdapter.getItem(position)).getLevel();
 		levels.setLevel(selectItem);
+		
 			
 		}
 
