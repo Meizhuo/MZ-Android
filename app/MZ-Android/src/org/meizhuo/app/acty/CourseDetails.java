@@ -22,6 +22,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
@@ -36,6 +37,7 @@ import butterknife.OnItemClick;
  * 
  */
 public class CourseDetails extends BaseActivity implements OnRefreshListener , OnScrollListener {
+	private static final String TAG = "CourseDetails";
 
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	@InjectView(R.id.course_ListView) ListView course_lv;
@@ -90,6 +92,7 @@ public class CourseDetails extends BaseActivity implements OnRefreshListener , O
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				List<Course> list = Course.create_by_jsonarray(obj.toString());
+				Log.i(TAG, ""+list);
 				data.clear();
 				data.addAll(list);
 				adapter.notifyDataSetChanged();
@@ -186,6 +189,12 @@ public class CourseDetails extends BaseActivity implements OnRefreshListener , O
 		String cost = data.get(position).getCost();
 		String institution_id = data.get(position).getInstitution_id();
 		String course_id = data.get(position).getId();
+		String certificate_type = data.get(position).getCertificate_type();
+		String kind = data.get(position).getKind();
+		String level  =data.get(position).getLevel();
+		String money = data.get(position).getMoney();
+		String series = data.get(position).getSeries();
+		String title = data.get(position).getTitle();
 		Intent intent = new Intent(CourseDetails.this, CourseDetails_OneCourse.class);
 		intent.putExtra("name", name);
 		intent.putExtra("start_time", start_time);
@@ -194,7 +203,14 @@ public class CourseDetails extends BaseActivity implements OnRefreshListener , O
 		intent.putExtra("introduction", introduction);
 		intent.putExtra("cost", cost);
 		intent.putExtra("institution_id", institution_id);
+		intent.putExtra("certificate_type", certificate_type);
+		intent.putExtra("kind", kind);
+		intent.putExtra("level", level);
+		intent.putExtra("money", money);
+		intent.putExtra("series", series);
+		intent.putExtra("title", title);
 		intent.putExtra("course_id", course_id);
+
 		startActivity(intent);
 		
 	}
