@@ -26,7 +26,7 @@ public class Employer_Register extends BaseActivity{
 	@InjectView(R.id.acty_emRegister_et_password) EditText et_password;
 	@InjectView(R.id.acty_emRegister_et_comfirmpassword) EditText et_cofirmpassword;
 	@InjectView(R.id.acty_emRegister_contact_phone) EditText et_contact_phone;
-	@InjectView(R.id.acty_emRegister_et_phone) EditText et_phone;
+//	@InjectView(R.id.acty_emRegister_et_phone) EditText et_phone;
 	@InjectView(R.id.acty_emRegister_et_name) EditText et_name;
 	@InjectView(R.id.acty_emRegister_et_addr) EditText et_addr;
 	
@@ -83,10 +83,10 @@ public class Employer_Register extends BaseActivity{
 		}
 		//这里昵称其实就是用人公司的名称
 		String nickname = EditTextUtils.getText(et_name);
-		String phone  = EditTextUtils.getText(et_phone);
 		String email = EditTextUtils.getText(et_email);
 		String psw = EditTextUtils.getText(et_password);
 		String contact_phone = EditTextUtils.getText(et_contact_phone);
+		String phone = "";
 		String address = EditTextUtils.getText(et_addr);
 		if(employerAPI == null){
 			employerAPI =  new EmployerAPI();
