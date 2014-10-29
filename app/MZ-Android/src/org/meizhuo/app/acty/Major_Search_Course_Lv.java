@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.util.Log;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
@@ -23,6 +24,7 @@ import butterknife.InjectView;
 import butterknife.OnItemClick;
 
 public class Major_Search_Course_Lv extends BaseActivity implements OnRefreshListener , OnScrollListener{
+	
 
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	@InjectView(R.id.course_ListView) ListView course_lv;
@@ -174,14 +176,27 @@ public class Major_Search_Course_Lv extends BaseActivity implements OnRefreshLis
 		String introduction = data.get(position).getIntroduction();
 		String cost = data.get(position).getCost();
 		String institution_id = data.get(position).getInstitution_id();
+		String course_id = data.get(position).getId();
+		String certificate_type = data.get(position).getCertificate_type();
+		String kind = data.get(position).getKind();
+		String level = data.get(position).getLevel();
+		String money = data.get(position).getMoney();
+		String series = data.get(position).getSeries();
+		String title = data.get(position).getTitle();
 		Intent intent = new Intent(Major_Search_Course_Lv.this, CourseDetails_OneCourse.class);
+		intent.putExtra("certificate_type", certificate_type);
+		intent.putExtra("kind", kind);
+		intent.putExtra("level", level);
+		intent.putExtra("money", money);
+		intent.putExtra("series", series);
+		intent.putExtra("title", title);
 		intent.putExtra("name", name);
 		intent.putExtra("start_time", start_time);
 		intent.putExtra("address", address);
 		intent.putExtra("teacher", teacher);
 		intent.putExtra("introduction", introduction);
 		intent.putExtra("institution_id", institution_id);
-		
+		intent.putExtra("course_id", course_id);
 		intent.putExtra("cost", cost);
 		startActivity(intent);
 		

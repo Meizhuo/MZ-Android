@@ -95,6 +95,10 @@ public class InstitutionInfo_Details extends BaseActivity {
 		
 	}
 	@OnClick(R.id.institution_traning_contach_phone_dial) public void dial(){
+		if(institution.getContact_phone()==null || institution.getContact_phone().equals("")){
+			toast("暂无电话号码，无法拨打");
+			return ;
+		}
 		Intent intent =  new Intent();
 		intent.setAction("android.intent.action.DIAL");
 		intent.setData(Uri.parse("tel:" + institution.getContact_phone().toString()));

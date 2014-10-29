@@ -60,6 +60,7 @@ public class Course implements Serializable{
 	public Course() {
 		// TODO Auto-generated constructor stub
 	}
+
 	public String getId() {
 		return id;
 	}
@@ -131,16 +132,68 @@ public class Course implements Serializable{
 	public void setCost(String cost) {
 		this.cost = cost;
 	}
+
+	public String getCertificate_type() {
+		return certificate_type;
+	}
+
+	public void setCertificate_type(String certificate_type) {
+		this.certificate_type = certificate_type;
+	}
+
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public String getMoney() {
+		return money;
+	}
+
+	public void setMoney(String money) {
+		this.money = money;
+	}
+
+	public String getSeries() {
+		return series;
+	}
+
+	public void setSeries(String series) {
+		this.series = series;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	//文章id
+	private String id;
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", institution_id=" + institution_id
 				+ ", subsidy_id=" + subsidy_id + ", name=" + name
 				+ ", start_time=" + start_time + ", address=" + address
 				+ ", teacher=" + teacher + ", introduction=" + introduction
-				+ ", cost=" + cost + "]";
+				+ ", cost=" + cost + ", certificate_type=" + certificate_type
+				+ ", kind=" + kind + ", level=" + level + ", money=" + money
+				+ ", series=" + series + ", title=" + title + "]";
 	}
-	//文章id
-	private String id;
+
 	/**机构id*/
 	private String institution_id ;
 	/**对应的补贴项目id*/
@@ -157,5 +210,20 @@ public class Course implements Serializable{
 	private String introduction;
 	/**课程费用*/
 	private String cost;
+	/**证书类别*/
+	private String certificate_type;
+	/**项目类别*/
+	private String kind;
+	/**项目等级*/
+	private String level;
+	/**补贴金额*/
+	private String money;
+	/**系列*/
+	private String series;
+	/**资格名称*/
+	private String title;
+	
+	
+	
 	
 }

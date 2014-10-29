@@ -108,7 +108,33 @@ public class PublicerAPI {
 		params.add("id", id+"");
 		RestClient.get("/home/user/info", params, asyncHttpResponseHandler);
 	}
-
+	
+	/**
+	 * 修改密码
+	 * @param old_psw
+	 * @param new_psw
+	 * @param asyncHttpResponseHandler
+	 */
+	public static void change_psw(String old_psw, String new_psw, AsyncHttpResponseHandler asyncHttpResponseHandler) {
+		RequestParams params = new RequestParams();
+		if(!(old_psw == null && old_psw.equals("")))
+		params.add("old_psw", old_psw);
+		if(!(new_psw == null && new_psw.equals("")))
+		params.add("new_psw", new_psw);
+		RestClient.post("/home/security/changePsw", params, asyncHttpResponseHandler);
+	}
+	
+	/**
+	 * 忘记密码 发送邮箱
+	 * @param email
+	 * @param responseHandler
+	 */
+	public static void forgot_psw(String email, AsyncHttpResponseHandler responseHandler) {
+		RequestParams params = new RequestParams();
+		if(!(email == null &&email.equals("")))
+			params.add("email", email);
+		RestClient.post("/home/security/createLink", params, responseHandler);
+	}
 	
 
 }

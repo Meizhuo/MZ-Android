@@ -43,8 +43,21 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 	@InjectView(R.id.institution_course_introdution) Button course_introdution;
 	/**所属机构*/
 	@InjectView(R.id.institution_course_belong_institution) Button belong_institution;
+	/**证书类别**/
+	@InjectView(R.id.institution_course_certificate_type) TextView course_certificate_type;
+	/**项目类别**/
+	@InjectView(R.id.institution_course_kind) TextView course_kind;
+	/**等级**/
+	@InjectView(R.id.institution_course_level) TextView course_level;
+	/**系列*/
+	@InjectView(R.id.institution_course_series) TextView course_series;
+	/**资格证书*/
+	@InjectView(R.id.institution_course_title) TextView course_title;
+	/**补贴金额*/
+	@InjectView(R.id.institution_course_money) TextView course_money;
+	
 
-	String name,start_time,address,teacher,introduction,cost ,institution_id,course_id;
+	String name,start_time,address,teacher,introduction,cost ,institution_id,course_id,certificate_type,kind,level,money,series,title;
 	WaittingDialog dialog;
 	Institution institution;
 	
@@ -61,6 +74,14 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 	}
 	
 	private void initData(){
+		/*
+		 	intent.putExtra("certificate_type", certificate_type);
+		intent.putExtra("kind", kind);
+		intent.putExtra("level", level);
+		intent.putExtra("money", money);
+		intent.putExtra("series", series);
+		intent.putExtra("title", title);
+		 */
 		Intent intent = getIntent();
 		 name = intent.getStringExtra("name");
 		 start_time = intent.getStringExtra("start_time");
@@ -70,16 +91,37 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		 institution_id = intent.getStringExtra("institution_id");
 		 cost = intent.getStringExtra("cost");
 		 course_id = intent.getStringExtra("course_id");
-		 
+		certificate_type = intent.getStringExtra("certificate_type");
+		kind = intent.getStringExtra("kind");
+		level = intent.getStringExtra("level");
+		money = intent.getStringExtra("money");
+		series = intent.getStringExtra("series");
+		title = intent.getStringExtra("title");
+		
 	}
 	
-	
+	/*
+	 certificate_type = intent.getStringExtra("certificate_type");
+		kind = intent.getStringExtra("kind");
+		level = intent.getStringExtra("level");
+		money = intent.getStringExtra("money");
+		series = intent.getStringExtra("series");
+		title = intent.getStringExtra("title");
+	 */
 	private void initLayout(){
 		 course_name.setText(name);
 		 course_time.setText(start_time);
 		 course_addr.setText(address);
 		 course_teacher.setText(teacher);
 		 course_cost.setText(cost);
+		 course_certificate_type.setText(certificate_type);
+		 course_kind.setText(kind);
+		 course_level.setText(level);
+		 course_series.setText(series);
+		 course_title.setText(title);
+		 course_money.setText(money);
+		 
+		 
 		 InstitutionAPI.getOneInstitution(institution_id, new JsonResponseHandler() {
 			 
 			 @Override

@@ -99,7 +99,174 @@
                 style="@style/TextView"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="10dp"
-                android:text="开课教师:"
+                android:text="证书类别:"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/institution_course_certificate_type"
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textSize="17sp" />
+        </LinearLayout>
+        
+             
+          <View
+              android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/ic_line_1" />
+          
+             <LinearLayout
+            style="@style/LinearLayout"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="项目类别:"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/institution_course_kind"
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textSize="17sp" />
+        </LinearLayout>
+        
+             
+          <View
+              android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/ic_line_1" />
+          
+             <LinearLayout
+            style="@style/LinearLayout"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="等级:"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/institution_course_level"
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textSize="17sp" />
+        </LinearLayout>
+        
+             
+          <View
+              android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/ic_line_1" />
+          
+             <LinearLayout
+            style="@style/LinearLayout"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="系列:"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/institution_course_series"
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textSize="17sp" />
+        </LinearLayout>
+        
+             
+              <View
+              android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/ic_line_1" />
+          
+             <LinearLayout
+            style="@style/LinearLayout"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="资格证书:"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/institution_course_title"
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textSize="17sp" />
+        </LinearLayout>
+        
+                <View
+              android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/ic_line_1" />
+          
+             <LinearLayout
+            style="@style/LinearLayout"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="补贴金额:"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/institution_course_money"
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textSize="17sp" />
+        </LinearLayout>
+        
+             
+          <View
+              android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/ic_line_1" />
+          
+             <LinearLayout
+            style="@style/LinearLayout"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="开课教师："
                 android:textSize="17sp" />
 
             <TextView
