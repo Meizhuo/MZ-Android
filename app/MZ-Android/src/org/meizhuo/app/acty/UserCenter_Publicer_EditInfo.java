@@ -31,7 +31,7 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 	
 	@InjectView(R.id.usercenter_editInfo_sex) LinearLayout edit_sex;
 	@InjectView(R.id.usercenter_editInfo_sex_tv) TextView edit_sex_tv;
-	@InjectView(R.id.usercenter_editInfo_name) EditText edit_name;
+	@InjectView(R.id.usercenter_editInfo_name) TextView edit_name;
 	@InjectView(R.id.usercenter_editInfo_workplace) EditText edit_workplace;
 	PublicerAPI publicerAPI;
 	UCEHandler handler = new UCEHandler();
