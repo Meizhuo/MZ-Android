@@ -42,7 +42,10 @@ public class PublicerAPI {
 		params.add("sex", sex);
 		if(!(work_place == null || work_place.equals("")))
 		params.add("work_place", work_place);
-		RestClient.post("/home/user/register", params, responseHandler);
+		//旧接口
+//		RestClient.post("/home/user/register", params, responseHandler);
+		//新接口
+		RestClient.post("/home/person/register", params, responseHandler);
 	}
 	
 	
@@ -85,7 +88,10 @@ public class PublicerAPI {
 		params.add("nickname", nickname);
 		params.add("sex", sex);
 		params.add("work_place", work_place);
-		RestClient.post("/home/user/update", params, responseHandler);
+		//旧接口
+//		RestClient.post("/home/user/update", params, responseHandler);
+		//新接口
+		RestClient.post("/home/person/update", params, responseHandler);
 	}
 	
 	
@@ -94,7 +100,10 @@ public class PublicerAPI {
 	 * @param responseHandler
 	 */
 	public void getProfile(AsyncHttpResponseHandler asyncHttpResponseHandler) {
-		RestClient.get("/home/user/info", null, asyncHttpResponseHandler);
+		//旧接口
+//		RestClient.get("/home/user/info", null, asyncHttpResponseHandler);
+		//新接口
+		RestClient.get("/home/person/info", null, asyncHttpResponseHandler);
 	}
 	
 	
