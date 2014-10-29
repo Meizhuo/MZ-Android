@@ -181,6 +181,10 @@ public class Main extends BaseActivity {
 	}
 
 	@OnClick(R.id.btn_major_search) public void major_search() {
+		if(!AndroidUtils.isNetworkConnected(Main.this)){
+			toast("请先打开您的网络开关");
+			return ;
+		}
 		openActivity(Major_Search.class);
 		
 	}
