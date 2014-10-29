@@ -177,12 +177,11 @@ public class UserCenter_Employer extends BaseActivity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
-		if (keyCode == KeyEvent.KEYCODE_BACK){
-			closeActivity();
-			return false;
-		}else{
-			return super.onKeyDown(keyCode, event);
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+			openActivity(Main.class);
+			return true;
 		}
+		return super.onKeyDown(keyCode, event);
 	}
 	
 
