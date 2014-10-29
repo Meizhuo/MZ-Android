@@ -74,7 +74,7 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
-			
+				
 				msg.what = Constants.Fail;
 				handler.sendMessage(msg);
 			}
@@ -144,10 +144,12 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 				backintent.putExtra("work_place", work_place);
 				UserCenter_Publicer_EditInfo.this.setResult(1001, backintent);
 				UserCenter_Publicer_EditInfo.this.finish();
+				break;
 			case Constants.Fail:
 				if (waittingDialog.isShowing())
 					waittingDialog.dismiss();
 				toast("保存失败，请检查您的网络");
+				break;
 			default:
 				break;
 			}

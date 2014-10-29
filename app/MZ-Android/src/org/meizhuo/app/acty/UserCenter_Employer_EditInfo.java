@@ -1,6 +1,7 @@
 package org.meizhuo.app.acty;
 
 import org.apache.http.Header;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.api.EmployerAPI;
 import org.meizhuo.app.BaseActivity;
@@ -73,14 +74,26 @@ public class UserCenter_Employer_EditInfo extends BaseActivity{
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				msg.what = Constants.Finish;
-				handler.sendMessage(msg);
+				try {
+					if(obj.getString("code").equals("20000"))
+					{
+						msg.what = Constants.Finish;
+						handler.sendMessage(msg);
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					msg.what = Constants.Fail;
+					handler.sendMessage(msg);
+				}
+				
 			}
 			
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
-				
+				msg.what = Constants.Fail;
+				handler.sendMessage(msg);
 			}
 		});
 		
@@ -120,6 +133,16 @@ public class UserCenter_Employer_EditInfo extends BaseActivity{
 				backintent.putExtra("work_addr", work_addr);
 				setResult(101, backintent);
 				UserCenter_Employer_EditInfo.this.finish();
+				break;
+			case Constants.Fail:
+				if(dialog.isShowing())
+					dialog.dismiss();
+				toast("保存失败，请检查您的网络设置!");
+				break;
+				
+			default:
+					break;
+				
 			}
 		}
 	}
