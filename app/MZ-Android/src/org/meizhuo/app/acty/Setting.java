@@ -77,7 +77,7 @@ public class Setting extends BaseActivity {
 		if(isLogin == true )
 		{
 			Log.i(TAG, "islogin" + isLogin);
-			login.setVisibility(View.INVISIBLE);
+			login.setVisibility(View.GONE);
 			logoff.setVisibility(View.VISIBLE);
 		}else{
 			login.setVisibility(View.VISIBLE);

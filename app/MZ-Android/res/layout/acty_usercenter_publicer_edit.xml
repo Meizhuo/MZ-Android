@@ -57,19 +57,18 @@
         android:background="@drawable/mz_btn_item_main"
         >
         <TextView
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             style="@style/TextView"
             android:text="姓名:" 
             />
-        <EditText 
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+        <TextView 
             android:layout_marginRight="10dp"
             android:id="@+id/usercenter_editInfo_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
+              android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            style="@style/TextView"
+            android:text="" 
             />
     </LinearLayout>
     
@@ -110,7 +109,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             style="@style/TextView"
-            android:text="男" 
+            android:text="" 
             />
         
     </LinearLayout>

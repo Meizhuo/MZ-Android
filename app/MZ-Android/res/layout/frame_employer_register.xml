@@ -135,37 +135,7 @@
                     android:textSize="16sp"
                     />
             </LinearLayout>
-               <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/white" >
-            </View>
-                     <LinearLayout 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                >
-                <ImageView 
-                    android:layout_width="wrap_content" 
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_login_icon_user_name"
-                    />
-                <EditText 
-                    android:id="@+id/acty_emRegister_et_phone"
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:background="@color/lucency_white"
-                    android:hint="手机号码(选填)"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textCursorDrawable="@null"
-                    android:textSize="16sp"
-                    />
-            </LinearLayout>
+             
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

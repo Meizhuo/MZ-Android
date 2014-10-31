@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -216,6 +217,16 @@ public class UserCenter_Publicer extends BaseActivity {
 			workplace_tv.setText(workplace);
 		}
 		
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+			openActivity(Main.class);
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 	

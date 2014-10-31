@@ -31,7 +31,7 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 	
 	@InjectView(R.id.usercenter_editInfo_sex) LinearLayout edit_sex;
 	@InjectView(R.id.usercenter_editInfo_sex_tv) TextView edit_sex_tv;
-	@InjectView(R.id.usercenter_editInfo_name) EditText edit_name;
+	@InjectView(R.id.usercenter_editInfo_name) TextView edit_name;
 	@InjectView(R.id.usercenter_editInfo_workplace) EditText edit_workplace;
 	PublicerAPI publicerAPI;
 	UCEHandler handler = new UCEHandler();
@@ -74,7 +74,7 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
-			
+				
 				msg.what = Constants.Fail;
 				handler.sendMessage(msg);
 			}
@@ -144,10 +144,12 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 				backintent.putExtra("work_place", work_place);
 				UserCenter_Publicer_EditInfo.this.setResult(1001, backintent);
 				UserCenter_Publicer_EditInfo.this.finish();
+				break;
 			case Constants.Fail:
 				if (waittingDialog.isShowing())
 					waittingDialog.dismiss();
 				toast("保存失败，请检查您的网络");
+				break;
 			default:
 				break;
 			}

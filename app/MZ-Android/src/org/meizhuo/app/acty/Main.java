@@ -181,6 +181,10 @@ public class Main extends BaseActivity {
 	}
 
 	@OnClick(R.id.btn_major_search) public void major_search() {
+		if(!AndroidUtils.isNetworkConnected(Main.this)){
+			toast("请先打开您的网络开关");
+			return ;
+		}
 		openActivity(Major_Search.class);
 		
 	}
@@ -188,7 +192,7 @@ public class Main extends BaseActivity {
 	@OnClick(R.id.btn_usercenter) public void usercenter() {
 		boolean isLogin = is_Publicer_Login || is_Employer_Login || Publicer_reLogin || Employer_reLogin;
 		if(!isLogin || logoff){
-			toast("请先到设置模块进行登录");
+			openActivity(Login.class);
 			return;
 		}
 		if (!AndroidUtils.isNetworkConnected(Main.this)){

@@ -42,7 +42,7 @@ public class EmployerAPI {
 		RequestParams params = new RequestParams();
 		params.add("account", account);
 		params.add("psw", psw);
-		RestClient.post("/home/employer/login", params, responseHandler);
+		RestClient.post("/home/user/login", params, responseHandler);
 	}
 	
 	/**
