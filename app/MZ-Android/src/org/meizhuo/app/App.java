@@ -4,6 +4,8 @@ import org.meizhuo.api.RestClient;
 import org.meizhuo.utils.DataPool;
 
 
+import cn.jpush.android.api.JPushInterface;
+
 import com.loopj.android.http.PersistentCookieStore;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -21,8 +23,10 @@ public class App extends Application {
 	
 
 	@Override public void onCreate() {
-		//短信SDK集成
-//		SMSSDK.initSDK(this, "<您的appkey>", "<您的appsecret>");
+		
+		 JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+         JPushInterface.init(this);     		// 初始化 JPush
+		
 		
 		ButterKnife.setDebug(true);
 		//init RestClient

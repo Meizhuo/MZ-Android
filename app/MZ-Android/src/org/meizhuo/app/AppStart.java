@@ -2,6 +2,8 @@ package org.meizhuo.app;
 
 import org.meizhuo.app.acty.Main;
 
+import cn.jpush.android.api.JPushInterface;
+
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -21,6 +23,18 @@ public class AppStart extends BaseActivity {
 			}
 		}, 1500);
 	}
+	
+
+@Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
 	
 
 	
