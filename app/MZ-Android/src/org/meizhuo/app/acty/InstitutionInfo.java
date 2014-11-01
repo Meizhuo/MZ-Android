@@ -219,6 +219,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 				data.clear();
 				data.addAll(institution);
 				adapter_lv.notifyDataSetChanged();
+				page = "1";
 				if (institution.size() < 10) {
 					hasMore = false;
 				} else {
@@ -264,31 +265,14 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 				adapter_lv.notifyDataSetChanged();
 				hasMore = true;
 			
-				
-					if( institutions.size() < 10 )
-					{
-						Log.i(TAG, page);
-						try {
-							Log.i(TAG, "" + obj.getJSONArray("response").toString());
-							if(obj.getJSONArray("response").toString() == null || obj.getJSONArray("response").toString().equals("[]")){
-								Log.i(TAG, "执行了");
-								hasMore = true;
-								page = "1";
-							}else{
-								hasMore = false;
-								toast("已经到达底部");
-						
-							}
-						} catch (JSONException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						
-							
-					}
-				
-				
+				if( institutions.size() < 10 )
+				{
 					
+							hasMore = false;
+							toast("已经到达底部");
+					
+						
+				}
 			}
 			
 			@Override
@@ -313,12 +297,11 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 			int visibleItemCount, int totalItemCount) {
 		// TODO Auto-generated method stub
 		
-		if (swipeRefreshLayout.isRefreshing() || isloading)
+		if (swipeRefreshLayout.isRefreshing() || isloading )
 			return;
 		if (firstVisibleItem + visibleItemCount >= totalItemCount && totalItemCount != 0 && hasMore){
 			isloading = true;
 			onLoadMore();
-		
 		}
 	}
 
