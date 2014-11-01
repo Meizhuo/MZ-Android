@@ -92,7 +92,7 @@ public class Major_Search_Course_Lv extends BaseActivity implements OnRefreshLis
 					hasMore = true;
 				}
 				if (list.size() == 0) {
-					toast("暂无培训机构开设该课程!");
+					toast("暂无培训机构开设相关课程!");
 				}
 			}
 			

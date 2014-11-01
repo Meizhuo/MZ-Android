@@ -86,7 +86,7 @@
             android:ellipsize="end"
             android:textSize="12sp"
             android:textColor="@color/mz_grey_lv_two"
-            android:text="公司描述:"
+            android:text="培训类型:"
             />
         <TextView 
             android:id="@+id/tv_institution_description"

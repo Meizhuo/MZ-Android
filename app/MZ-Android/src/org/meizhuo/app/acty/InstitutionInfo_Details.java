@@ -34,7 +34,7 @@ public class InstitutionInfo_Details extends BaseActivity {
 	private static final String TAG = "InstitutionInfo_Details";
 
 	@InjectView(R.id.institution_name) TextView institution_name;
-	@InjectView(R.id.company_name) TextView company_name;
+//	@InjectView(R.id.company_name) TextView company_name;
 	@InjectView(R.id.institution_teach_type) TextView institution_teach_type;
 	@InjectView(R.id.institution_manager) TextView company_manager;
 	@InjectView(R.id.institution_traning_type) TextView training_scope;
@@ -143,14 +143,6 @@ public class InstitutionInfo_Details extends BaseActivity {
 				}else
 				{
 					institution_name.setText(institution.getNickname().toString());
-				}
-				if (institution.getName() == null)
-				{
-					company_name.setText("");
-				}
-				else
-				{
-					company_name.setText(institution.getName().toString());
 				}
 				if (institution.getType() == null)
 				{

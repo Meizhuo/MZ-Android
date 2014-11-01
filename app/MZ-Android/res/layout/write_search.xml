@@ -10,6 +10,7 @@
         android:layout_marginTop="10dp"
         style="@style/EditText"
         android:hint="请输入关键字进行搜索"
+        android:textStyle="normal"
         android:textColorHint="@color/lucency_white"
         />
     <TextView 

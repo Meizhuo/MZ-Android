@@ -132,6 +132,10 @@ public class Major_Search extends BaseActivity{
 		String level = levels.getLevel();
 		String certificate_type = certificateTypes.getCertificate_type();
 		String title = "";
+		if(kind == null || kind.equals("") || level == null || level.equals("") || certificate_type == null || certificate_type.equals("")){
+			toast("数据加载不完全，请重新加载！");
+			return ;
+		}
 		Intent intent = new Intent(Major_Search.this, Major_Search_lv.class);
 		intent.putExtra("kind", kind);
 		intent.putExtra("level", level);
@@ -154,6 +158,8 @@ public class Major_Search extends BaseActivity{
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					msg.what = Constants.Fail;
+					handler.sendMessage(msg);
 				}
 			}
 			
@@ -171,11 +177,14 @@ public class Major_Search extends BaseActivity{
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				try {
+					
 					if(obj.getString("code").equals("20000")){
+						Log.i(TAG, "进去了2");
 						_kinds = Subsidy_Kind.create_by_jsonarray(obj.toString());
 					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
+					Log.i(TAG, "解析错误2");
 					e.printStackTrace();
 					msg.what = Constants.Fail;
 					handler.sendMessage(msg);
@@ -186,6 +195,7 @@ public class Major_Search extends BaseActivity{
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
+				Log.i(TAG, "访问失败了2");
 				msg.what = Constants.Fail;
 				handler.sendMessage(msg);
 			}
@@ -198,12 +208,14 @@ public class Major_Search extends BaseActivity{
 				// TODO Auto-generated method stub
 				try {
 					if(obj.getString("code").equals("20000")){
+						Log.i(TAG, "进去了3");
 						_levels = Subsidy_Levels.create_by_jsonarray(obj.toString());
 						msg.what = Constants.Finish;
 						handler.sendMessage(msg);
 					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
+					Log.i(TAG, "解析错误3");
 					e.printStackTrace();
 					msg.what = Constants.Fail;
 					handler.sendMessage(msg);
@@ -214,6 +226,7 @@ public class Major_Search extends BaseActivity{
 			@Override
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
+				Log.i(TAG, "访问失败了3");
 				msg.what = Constants.Fail;
 				handler.sendMessage(msg);
 			}
@@ -267,13 +280,13 @@ public class Major_Search extends BaseActivity{
 				waittingDialog = null;
 				initCertificateAdapter();
 				initKindAdapter();
-//				initLevelAdapter();
 				break;
 			case Constants.Fail:
 				if(waittingDialog.isShowing())
 					waittingDialog.dismiss();
 				waittingDialog = null;
 				toast("网络不给力，请检查你的网络设置");
+				Major_Search.this.finish();
 				break;
 				}
 				

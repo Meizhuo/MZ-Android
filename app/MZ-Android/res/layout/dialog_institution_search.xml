@@ -9,6 +9,7 @@
         android:id="@+id/et_search_institution"
         android:layout_marginTop="10dp"
         style="@style/EditText"
+        android:textStyle="normal"
         android:hint="请输入关键字进行搜索"
         android:textColorHint="@color/lucency_white"
         />

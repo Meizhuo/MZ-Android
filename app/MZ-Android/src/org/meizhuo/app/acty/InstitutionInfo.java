@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.adapter.ImagePagerAdapter;
@@ -214,7 +215,6 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				Log.i(TAG, obj.toString());
 				List<Institution> institution = Institution.create_by_jsonarray(obj.toString());
 				data.clear();
 				data.addAll(institution);
@@ -259,16 +259,35 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
-				Log.i(TAG, "" + obj);
 				List<Institution>institutions = Institution.create_by_jsonarray(obj.toString());
 				data.addAll(institutions);
 				adapter_lv.notifyDataSetChanged();
 				hasMore = true;
-				if(obj.isNull("response") || institutions.size() < 10)
-				{
-					hasMore = false;
-					toast("已经到达底部");
-				}
+			
+				
+					if( institutions.size() < 10 )
+					{
+						Log.i(TAG, page);
+						try {
+							Log.i(TAG, "" + obj.getJSONArray("response").toString());
+							if(obj.getJSONArray("response").toString() == null || obj.getJSONArray("response").toString().equals("[]")){
+								Log.i(TAG, "执行了");
+								hasMore = true;
+								page = "1";
+							}else{
+								hasMore = false;
+								toast("已经到达底部");
+						
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+							
+					}
+				
+				
 					
 			}
 			
@@ -293,6 +312,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
 		// TODO Auto-generated method stub
+		
 		if (swipeRefreshLayout.isRefreshing() || isloading)
 			return;
 		if (firstVisibleItem + visibleItemCount >= totalItemCount && totalItemCount != 0 && hasMore){
