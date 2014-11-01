@@ -59,7 +59,11 @@ public class InstitutionInfoAdapter extends BaseAdapter{
 		h.tv_name.setText(mData.get(position).getName().toString());
 		h.tv_addr.setText(mData.get(position).getAddress().toString());
 		h.tv_type.setText(mData.get(position).getType().toString());
-		h.tv_description.setText(mData.get(position).getDescription().toString());
+		if(mData.get(position).getTraining_scope()==null || mData.get(position).getTraining_scope().equals("")){
+			h.tv_description.setText("");
+		}else{
+			h.tv_description.setText(mData.get(position).getTraining_scope().toString());
+		}
 		return convertView;
 	}
 	static class ViewHolder {
