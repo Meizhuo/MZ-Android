@@ -186,7 +186,7 @@ public class Major_Search_lv extends BaseActivity implements OnRefreshListener, 
 				if(obj.isNull("response") || subsidy.size() < 10)
 				{
 					hasMore = false;
-					toast("已经到达底部");
+					toast("数据加载完毕!");
 				}
 					
 			}
