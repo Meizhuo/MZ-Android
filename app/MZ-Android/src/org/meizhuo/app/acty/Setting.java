@@ -259,6 +259,9 @@ public class Setting extends BaseActivity {
 						toast("已经是最新版本，无需更新");
 						return ;
 					}
+					if(versioncode > currentVersion){
+						
+					
 					AlertDialog.Builder builder =  new AlertDialog.Builder(Setting.this);
 					builder.setTitle("更新提示");
 					builder.setMessage("当前版本:" + AndroidUtils.getAppVersionName(Setting.this) + "\n更新版本号:" + versionname + "\n" + updateInfo);
@@ -275,6 +278,7 @@ public class Setting extends BaseActivity {
 					builder.setNegativeButton("稍后更新", null);
 					AlertDialog alertdialog = builder.create();
 					alertdialog.show();
+					}
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

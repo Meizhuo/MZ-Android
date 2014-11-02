@@ -1,5 +1,7 @@
 package org.meizhuo.utils;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -80,6 +82,27 @@ public class StringUtils {
 		Pattern pattern = Pattern.compile(format);
 		Matcher matcher = pattern.matcher(companyName);
 		return !matcher.find();
+	}
+	/**
+	 * 服务器不支持中文路径的情况下需要转换url的编码
+	 * @param url
+	 * @return
+	 */
+	public static String encodeGB(String url){
+		//转换中文编码
+		String split[] = url.split("/");
+		for(int i = 0 ; i <split.length;i++){
+			try {
+				split[i] = URLEncoder.encode(split[i], "GB2312");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			split[0] = split[0] + "/" + split[i];
+		}
+		
+		 split[0] = split[0].replaceAll("\\+", "%20");//处理空格  
+	        return split[0]; 
 	}
 
 }
