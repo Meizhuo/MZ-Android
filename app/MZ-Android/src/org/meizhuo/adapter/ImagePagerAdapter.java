@@ -75,20 +75,19 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 			holder = new ViewHolder(view);
 //			view = holder.imageView = new ImageView(context);
 			view.setTag(holder);
-			
-			holder.imageView.setOnClickListener(new OnClickListener() {
-
-				@Override public void onClick(View v) {
-					if (mOnItemClickListener != null) {
-						mOnItemClickListener.onItemClick(getPosition(position), v);
-						Log.i(TAG, ""+position);
-					}
-				}
-			});
 
 		} else {
 			holder = (ViewHolder) view.getTag();
 		}
+		holder.imageView.setOnClickListener(new OnClickListener() {
+
+			@Override public void onClick(View v) {
+				if (mOnItemClickListener != null) {
+					mOnItemClickListener.onItemClick(getPosition(position), v);
+					Log.i(TAG, "点击位置"+getPosition(position));
+				}
+			}
+		});
 		/*holder.imageView.setImageResource(imageIdList
 				.get(getPosition(position)));*/
 //		holder.framelayout.setBackgroundResource(imageIdList.get(getPosition(position)));
@@ -99,6 +98,7 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 			ImageLoader.getInstance().displayImage(imageIdList.get(getPosition(position)).getPic_url(), holder.imageView);
 			if(mOnPositionChangeListener != null){
 				mOnPositionChangeListener.OnPositionChange(getPosition(position));
+				Log.i(TAG, "图片显示位置"+getPosition(position));
 			}
 		}else{
 			//use default image
