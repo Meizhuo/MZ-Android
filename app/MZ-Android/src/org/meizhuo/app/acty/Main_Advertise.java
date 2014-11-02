@@ -10,8 +10,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 /**
  * 广告显示页面
@@ -22,6 +25,7 @@ import android.webkit.WebViewClient;
 public class Main_Advertise extends BaseActivity{
 	
 	@InjectView(R.id.webview) WebView webview;
+	@InjectView(R.id.pb)ProgressBar pb;
 	
 	String url = "";
 	String description = "";
@@ -50,6 +54,7 @@ public class Main_Advertise extends BaseActivity{
 		webview.getSettings().setJavaScriptEnabled(true);
 		webview.loadUrl(url);
 		webview.setWebViewClient(new MyWebViewClient());
+		webview.setWebChromeClient(new MyWebChromeClient());
 		//添加js交互接口类 
 		webview.addJavascriptInterface(new JavascriptInterface(this), "imagelistner");
 	}
@@ -123,6 +128,19 @@ public class Main_Advertise extends BaseActivity{
 			// TODO Auto-generated method stub
 			
 			super.onReceivedError(view, errorCode, description, failingUrl);
+		}
+	}
+	
+	private class MyWebChromeClient extends WebChromeClient{
+		@Override
+		public void onProgressChanged(WebView view, int newProgress) {
+			// TODO Auto-generated method stub
+			pb.setMax(100);
+			pb.setProgress(newProgress);
+			if(newProgress==100){
+				pb.setVisibility(View.GONE);
+			}
+			super.onProgressChanged(view, newProgress);
 		}
 	}
 

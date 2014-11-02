@@ -40,12 +40,26 @@
     </RelativeLayout>
 
 </LinearLayout>
-    
+     <LinearLayout 
+         style="@style/LinearLayout"
+         android:orientation="vertical"
+         >
+    <ProgressBar  
+        android:id="@+id/pb"  
+        style="?android:attr/progressBarStyleHorizontal"  
+        android:layout_width="fill_parent"  
+        android:layout_height="4dp"  
+        android:indeterminateOnly="false"  
+        android:max="100"  
+        android:progressDrawable="@drawable/progress_bar_states" >  
+    </ProgressBar> 
 
         <WebView
             android:id="@+id/webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
         </WebView>
+        
+        </LinearLayout>
 
 </LinearLayout>
