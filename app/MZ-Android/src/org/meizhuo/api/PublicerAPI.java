@@ -126,9 +126,9 @@ public class PublicerAPI {
 	 */
 	public static void change_psw(String old_psw, String new_psw, AsyncHttpResponseHandler asyncHttpResponseHandler) {
 		RequestParams params = new RequestParams();
-		if(!(old_psw == null && old_psw.equals("")))
+		if(!(old_psw == null || old_psw.equals("")))
 		params.add("old_psw", old_psw);
-		if(!(new_psw == null && new_psw.equals("")))
+		if(!(new_psw == null || new_psw.equals("")))
 		params.add("new_psw", new_psw);
 		RestClient.post("/home/security/changePsw", params, asyncHttpResponseHandler);
 	}
@@ -140,7 +140,7 @@ public class PublicerAPI {
 	 */
 	public static void forgot_psw(String email, AsyncHttpResponseHandler responseHandler) {
 		RequestParams params = new RequestParams();
-		if(!(email == null &&email.equals("")))
+		if(!(email == null ||email.equals("")))
 			params.add("email", email);
 		RestClient.post("/home/security/createLink", params, responseHandler);
 	}
