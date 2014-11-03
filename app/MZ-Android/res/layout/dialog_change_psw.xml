@@ -11,6 +11,7 @@
         style="@style/EditText"
         android:text=""
         android:hint="旧密码"
+        android:password="true"
         android:textStyle="normal"
         />
     
@@ -22,7 +23,19 @@
         android:layout_marginTop="10dp"
         style="@style/EditText"
         android:textStyle="normal"
+        android:password="true"
         android:layout_marginBottom="10dp"
         android:hint="新密码"
+        />
+          <EditText 
+          android:text=""
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:password="true"
+        android:id="@+id/et_change_confirmnewpsw"
+        style="@style/EditText"
+        android:textStyle="normal"
+        android:layout_marginBottom="10dp"
+        android:hint="确认新密码"
         />
 </LinearLayout>

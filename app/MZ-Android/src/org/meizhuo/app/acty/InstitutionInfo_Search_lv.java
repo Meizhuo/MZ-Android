@@ -131,7 +131,7 @@ public class InstitutionInfo_Search_lv extends BaseActivity implements OnRefresh
 				if(obj.isNull("response") || institutions.size() < 10)
 				{
 					hasMore = false;
-					toast("已经到达底部");
+					toast("数据加载完毕!");
 				}
 					
 			}

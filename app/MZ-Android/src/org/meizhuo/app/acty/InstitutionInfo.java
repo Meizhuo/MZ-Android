@@ -269,9 +269,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 				{
 					
 							hasMore = false;
-							toast("已经到达底部");
-					
-						
+							toast("数据加载完毕!");
 				}
 			}
 			

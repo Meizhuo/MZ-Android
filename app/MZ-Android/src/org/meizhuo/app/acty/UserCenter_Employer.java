@@ -66,6 +66,7 @@ public class UserCenter_Employer extends BaseActivity {
 			View dialogView = inflater.inflate(R.layout.dialog_change_psw, null);
 			final EditText et_change_oldpsw =(EditText) dialogView.findViewById(R.id.et_change_oldpsw);
 			final EditText et_change_newpsw =(EditText) dialogView.findViewById(R.id.et_change_newpsw);
+			final EditText et_confirm_newpsw = (EditText)dialogView.findViewById(R.id.et_change_confirmnewpsw);
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("修改密码");
 			builder.setView(dialogView);
@@ -74,6 +75,10 @@ public class UserCenter_Employer extends BaseActivity {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
+					if(!(et_change_newpsw.getText().toString().equals(et_confirm_newpsw.getText().toString()))){
+						toast("两次新密码输入不一致,修改失败!");
+						return ;
+					}
 					PublicerAPI.change_psw(et_change_oldpsw.getText().toString(), et_change_newpsw.getText().toString(), new JsonResponseHandler() {
 						
 						@Override
@@ -82,6 +87,9 @@ public class UserCenter_Employer extends BaseActivity {
 							try {
 								if(obj.getString("code").equals("20000")){
 									toast("修改成功");
+								}
+								if(obj.getString("error_code").equals("40000")){
+									toast("修改失败,可能是旧密码输入错误！");
 								}
 							} catch (JSONException e) {
 								// TODO Auto-generated catch block

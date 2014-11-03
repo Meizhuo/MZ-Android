@@ -13,9 +13,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import butterknife.InjectView;
 
 /**
@@ -29,6 +32,7 @@ public class Professional_Article extends BaseActivity  {
 	
 	private static final String TAG = "Professional_Article";
 	@InjectView(R.id.webview) WebView webview;
+	@InjectView(R.id.pb)ProgressBar pb;
 	String content = "";
 	String title = "";
 	List<Integer> imageIdList;
@@ -65,6 +69,7 @@ public class Professional_Article extends BaseActivity  {
 	
 		webview.loadUrl(url);
 		webview.setWebViewClient(new MyWebViewClient());
+		webview.setWebChromeClient(new MyWebChromeViewClient());
 		//添加js交互接口类
 		webview.addJavascriptInterface(new JavascriptInterface(this), "imagelistner");
 	}
@@ -130,6 +135,8 @@ public class Professional_Article extends BaseActivity  {
 			super.onPageStarted(view, url, favicon);
 		}
 		
+		
+		
 		@Override
 		public void onReceivedError(WebView view, int errorCode,
 				String description, String failingUrl) {
@@ -139,6 +146,33 @@ public class Professional_Article extends BaseActivity  {
 		}
 	}
 	
+	
+//	private class MyWebChromeViewClient extends WebChromeClient {  
+//	    @Override  
+//	    public void onProgressChanged(WebView view, int newProgress) {  
+//	        pb.setProgress(newProgress);  
+//	        if(newProgress==100){  
+//	            pb.setVisibility(View.GONE);  
+//	        }  
+//	        super.onProgressChanged(view, newProgress);  
+//	    }  
+	
+	private class MyWebChromeViewClient extends WebChromeClient{
+		@Override
+		public void onProgressChanged(WebView view, int newProgress) {
+			// TODO Auto-generated method stub
+			if(newProgress != 0){
+				pb.setVisibility(View.VISIBLE);
+				pb.setProgress(newProgress);
+			}
+			
+			if(newProgress == 100){
+				pb.setVisibility(View.GONE);
+			}
+			super.onProgressChanged(view, newProgress);
+		}
+	}
+//	
 
 	
 
