@@ -96,7 +96,7 @@ public class UserCenter_Employer extends BaseActivity {
 								e.printStackTrace();
 							}
 						}
-						
+						 
 						@Override
 						public void onFaild(int errorType, int errorCode) {
 							// TODO Auto-generated method stub
