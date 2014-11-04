@@ -150,6 +150,7 @@ public class Login extends BaseActivity{
 					@Override
 					public void onOK(Header[] headers, JSONObject obj) {
 						// TODO Auto-generated method stub
+						Log.i(TAG, "" + obj);
 						try {
 							if(obj.getString("code").equals("20000")){
 								
@@ -168,6 +169,16 @@ public class Login extends BaseActivity{
 							if(obj.getString("error_code").equals("40000")){
 								toast("密码错误");
 								return ;
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						try {
+							if(obj.getString("error_code").equals("43001")){
+								String msg = obj.getString("msg");
+								toast(msg);
 							}
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
