@@ -1,6 +1,5 @@
 package org.meizhuo.adapter;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.meizhuo.app.R;

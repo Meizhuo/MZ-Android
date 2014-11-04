@@ -3,7 +3,6 @@ package org.meizhuo.app.acty;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.meizhuo.adapter.ImagePagerAdapter;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.fragment.Professional_Training_Base;
