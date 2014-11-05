@@ -299,6 +299,11 @@ public class Login extends BaseActivity{
 			toast("手机号码不能为空!");
 			return ;
 		}
+		if(StringUtils.isEmpty(EditTextUtils.getText(et_reg_email)))
+		{
+			toast("邮箱不能为空!");
+			return ;
+		}
 		if (StringUtils.isEmpty(EditTextUtils.getText(et_reg_password)))
 		{
 			toast("密码不能为空!");
@@ -323,6 +328,10 @@ public class Login extends BaseActivity{
 		}
 		if (!StringUtils.isPassword(EditTextUtils.getText(et_reg_password))){
 			toast("密码请填写8-16位数字或字母");
+			return ;
+		}
+		if(!StringUtils.isEmail(EditTextUtils.getText(et_reg_email))){
+			toast("请输入正确的邮箱格式!");
 			return ;
 		}
 		
