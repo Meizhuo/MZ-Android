@@ -167,7 +167,8 @@ public class Login extends BaseActivity{
 						
 						try {
 							if(obj.getString("error_code").equals("40000")){
-								toast("密码错误");
+								String msg = obj.getString("msg");
+								toast(msg);
 								return ;
 							}
 						} catch (JSONException e) {
@@ -431,5 +432,6 @@ public class Login extends BaseActivity{
 		flipper.setInAnimation(this, R.anim.push_up_in);
 		flipper.setOutAnimation(this, R.anim.push_up_out);
 	}
+	
 	
 }

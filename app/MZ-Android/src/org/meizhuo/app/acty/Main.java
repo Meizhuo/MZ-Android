@@ -69,6 +69,8 @@ public class Main extends BaseActivity {
 	private boolean Employer_reLogin;
 	/** 注销 */
 	private boolean logoff;
+	/**修改密码成功*/
+	private boolean has_change_psw;
 
 	List<Advertisement> ad;
 
@@ -252,11 +254,11 @@ public class Main extends BaseActivity {
 		loginReceiver = new LoginReceiver();
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Constants.Action_Publicer_isLogin);
-		;
 		filter.addAction(Constants.Action_Employer_isLogin);
 		filter.addAction(Constants.Action_Publicer_ReLoginSuccessful);
 		filter.addAction(Constants.Action_Employer_ReLoginSuccessful);
 		filter.addAction(Constants.Action_Logoff);
+		filter.addAction(Constants.Action_Changed_Psw_Success);
 		registerReceiver(loginReceiver, filter);
 	}
 
@@ -281,6 +283,7 @@ public class Main extends BaseActivity {
 		registerReceiver(mReceiver, filter);
 
 	}
+	
 
 	class AppStartReceiver extends BroadcastReceiver {
 
@@ -415,6 +418,13 @@ public class Main extends BaseActivity {
 				logoff = false;
 			}
 			if (action.equals(Constants.Action_Logoff)) {
+				Publicer_reLogin = false;
+				is_Employer_Login = false;
+				is_Publicer_Login = false;
+				Employer_reLogin = false;
+			}
+			if (action.equals(Constants.Action_Changed_Psw_Success))
+			{
 				Publicer_reLogin = false;
 				is_Employer_Login = false;
 				is_Publicer_Login = false;

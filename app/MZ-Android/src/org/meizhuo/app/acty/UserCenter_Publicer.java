@@ -4,6 +4,7 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.api.PublicerAPI;
+import org.meizhuo.app.App;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
@@ -91,10 +92,14 @@ public class UserCenter_Publicer extends BaseActivity {
 						try {
 							if(obj.getString("code").equals("20000")){
 								toast("修改成功");
+								sendBroadcast(new Intent(Constants.Action_Changed_Psw_Success));
+								openActivity(Login.class);
 							}
 							if(obj.getString("error_code").equals("40000")){
-								toast("修改失败,可能是旧密码输入错误！");
+								String message = obj.getString("msg");
+								toast(message);
 							}
+							
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

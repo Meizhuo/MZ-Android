@@ -87,10 +87,15 @@ public class UserCenter_Employer extends BaseActivity {
 							try {
 								if(obj.getString("code").equals("20000")){
 									toast("修改成功");
+									sendBroadcast(new Intent(Constants.Action_Changed_Psw_Success));
+									openActivity(Login.class);
 								}
 								if(obj.getString("error_code").equals("40000")){
-									toast("修改失败,可能是旧密码输入错误！");
+									String message = obj.getString("msg");
+									toast(message);
 								}
+								
+							
 							} catch (JSONException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();

@@ -32,6 +32,8 @@ public class Constants {
 	public static final String Action_Logout = "Logout";
 	/**注销*/
 	public static final String Action_Logoff = "Logoff";
+	/**修改密码成功*/
+	public static final String Action_Changed_Psw_Success = "Changed_Psw_Success";
 
 
 	
