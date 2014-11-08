@@ -163,11 +163,12 @@ public class Login extends BaseActivity{
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-						}
+						} 
 						
 						try {
 							if(obj.getString("error_code").equals("40000")){
-								toast("密码错误");
+								String msg = obj.getString("msg");
+								toast(msg);
 								return ;
 							}
 						} catch (JSONException e) {
@@ -204,9 +205,7 @@ public class Login extends BaseActivity{
 						dialog = null;
 					}
 				});
-		}
-		//用人单位登录，邮箱判断
-		if(StringUtils.isEmail(EditTextUtils.getText(et_login_username))){
+		}else if(StringUtils.isEmail(EditTextUtils.getText(et_login_username))){
 			if(employerAPI == null)
 				employerAPI =  new EmployerAPI();
 			employerAPI.Login(EditTextUtils.getText(et_login_username),
@@ -224,6 +223,16 @@ public class Login extends BaseActivity{
 				@Override
 				public void onOK(Header[] headers, JSONObject obj) {
 							// TODO Auto-generated method stub
+					Log.i(TAG, "返回的obj" + obj);
+					try {
+						if(obj.getString("error_code").equals("40000")){
+							toast("密码错误");
+							return ;
+						}
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 							try {
 								if (obj.getString("code").equals("20000"))
 								{
@@ -235,18 +244,10 @@ public class Login extends BaseActivity{
 							} catch (JSONException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
-								toast("网络不给力，请检查你的网络设置");
+								Log.i(TAG, "出现的异常" + e.getMessage());
 								closeActivity();
 							}
-							try {
-								if(obj.getString("error_code").equals("40000")){
-									toast("密码错误");
-									return ;
-								}
-							} catch (JSONException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+							
 						}
 						
 						@Override
@@ -267,6 +268,9 @@ public class Login extends BaseActivity{
 							dialog = null;
 						}
 					});
+		}else{
+			toast("请使用正确的邮箱或者电话号码进行登录!");
+			return;
 		}
 	}
 	
@@ -296,6 +300,11 @@ public class Login extends BaseActivity{
 			toast("手机号码不能为空!");
 			return ;
 		}
+		if(StringUtils.isEmpty(EditTextUtils.getText(et_reg_email)))
+		{
+			toast("邮箱不能为空!");
+			return ;
+		}
 		if (StringUtils.isEmpty(EditTextUtils.getText(et_reg_password)))
 		{
 			toast("密码不能为空!");
@@ -320,6 +329,10 @@ public class Login extends BaseActivity{
 		}
 		if (!StringUtils.isPassword(EditTextUtils.getText(et_reg_password))){
 			toast("密码请填写8-16位数字或字母");
+			return ;
+		}
+		if(!StringUtils.isEmail(EditTextUtils.getText(et_reg_email))){
+			toast("请输入正确的邮箱格式!");
 			return ;
 		}
 		
@@ -419,5 +432,6 @@ public class Login extends BaseActivity{
 		flipper.setInAnimation(this, R.anim.push_up_in);
 		flipper.setOutAnimation(this, R.anim.push_up_out);
 	}
+	
 	
 }

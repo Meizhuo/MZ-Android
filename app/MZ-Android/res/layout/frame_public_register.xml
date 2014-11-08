@@ -65,7 +65,7 @@
                    android:layout_height="wrap_content"
                    android:layout_marginLeft="6dp"
                    android:background="@color/lucency_white"
-                   android:hint="邮箱(选填)"
+                   android:hint="邮箱(必填)"
                    android:textColor="@color/white"
                    android:textColorHint="@color/white"
                    android:textCursorDrawable="@null"
