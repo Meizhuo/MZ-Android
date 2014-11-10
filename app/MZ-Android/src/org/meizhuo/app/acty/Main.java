@@ -21,6 +21,7 @@ import org.meizhuo.utils.Constants;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
+import android.app.DownloadManager.Request;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -55,9 +56,9 @@ public class Main extends BaseActivity {
 	private BroadcastReceiver loginReceiver = null;
 	private BroadcastReceiver logoffReceiver = null;
 	// DownloadManager
-//	private DownloadManager downloadManager;
-//	private SharedPreferences prefs;
-//	private static final String DL_ID = "downloadId";
+	private DownloadManager downloadManager;
+	private SharedPreferences prefs;
+	private static final String DL_ID = "downloadId";
 
 	/** 普通用户第一次登陆 */
 	private boolean is_Publicer_Login;
@@ -84,7 +85,7 @@ public class Main extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.acty_main);
 		setDisplayBackIcon(false);
-//		initDownload();
+		initDownload();
 		initLoginReceiver();
 		initLogout_Receiver();
 		initLogoffReceiver();
@@ -96,10 +97,10 @@ public class Main extends BaseActivity {
 
 	}
 
-//	private void initDownload() {
-//		downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-//		prefs = PreferenceManager.getDefaultSharedPreferences(this);
-//	}
+	private void initDownload() {
+		downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+	}
 
 	private void initData() {
 
@@ -313,39 +314,39 @@ public class Main extends BaseActivity {
 							public void onClick(DialogInterface dialog,
 									int which) {
 								// TODO Auto-generated method stub
-								Intent intent = new Intent(Intent.ACTION_VIEW);
+//								Intent intent = new Intent(Intent.ACTION_VIEW);
 								Uri uri = Uri.parse(url);
-								 intent.setData(uri);
-								 startActivity(intent);
+//								 intent.setData(uri);
+//								 startActivity(intent);
 								
-//									DownloadManager.Request request = new DownloadManager.Request(
-//											uri);
-//									request.setAllowedNetworkTypes(Request.NETWORK_MOBILE
-//											| Request.NETWORK_WIFI);
-//									request.setAllowedOverRoaming(false);
-//									// 设置文件类型
-//									MimeTypeMap mimeTypeMap = MimeTypeMap
-//											.getSingleton();
-//									String mimeString = mimeTypeMap
-//											.getMimeTypeFromExtension(MimeTypeMap
-//													.getFileExtensionFromUrl(url));
-//									request.setMimeType(mimeString);
-//									// 在通知栏中显示
-//									request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
-//									request.setVisibleInDownloadsUi(true);
-//									// sdcard的目录下的download文件夹
-//									request.setDestinationInExternalPublicDir(
-//											"/download/", "meizhuo.apk");
-//									request.setTitle("东莞技能培训");
-//									long id = downloadManager.enqueue(request);
-//									// 保存id
-//									prefs.edit().putLong(DL_ID, id).commit();
-//								
-//
-//								registerReceiver(
-//										receiver,
-//										new IntentFilter(
-//												DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+									DownloadManager.Request request = new DownloadManager.Request(
+											uri);
+									request.setAllowedNetworkTypes(Request.NETWORK_MOBILE
+											| Request.NETWORK_WIFI);
+									request.setAllowedOverRoaming(false);
+									// 设置文件类型
+									MimeTypeMap mimeTypeMap = MimeTypeMap
+											.getSingleton();
+									String mimeString = mimeTypeMap
+											.getMimeTypeFromExtension(MimeTypeMap
+													.getFileExtensionFromUrl(url));
+									request.setMimeType(mimeString);
+									// 在通知栏中显示
+									request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+									request.setVisibleInDownloadsUi(true);
+									// sdcard的目录下的download文件夹
+									request.setDestinationInExternalPublicDir(
+											"/download/", "meizhuo.apk");
+									request.setTitle("东莞技能培训");
+									long id = downloadManager.enqueue(request);
+									// 保存id
+									prefs.edit().putLong(DL_ID, id).commit();
+								
+
+								registerReceiver(
+										receiver,
+										new IntentFilter(
+												DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 							}
 						});
 				builder.setCancelable(false);
@@ -370,30 +371,30 @@ public class Main extends BaseActivity {
 		}
 	};
 
-//	private BroadcastReceiver receiver = new BroadcastReceiver() {
-//		@Override
-//		public void onReceive(Context context, Intent intent) {
-//			// 这里可以取得下载的id，这样就可以知道哪个文件下载完成了。适用与多个下载任务的监听
-//			Log.v(TAG,
-//					""
-//							+ intent.getLongExtra(
-//									DownloadManager.EXTRA_DOWNLOAD_ID, 0));
-//			queryDownloadStatus();
-//			if(intent.getAction().equals(DownloadManager.ACTION_DOWNLOAD_COMPLETE)){
-//				Intent i = new Intent(Intent.ACTION_VIEW);
-//				String apkFilePath = new StringBuilder(Environment.getExternalStorageDirectory().getAbsolutePath())
-//                .append(File.separator).append("/download/").append(File.separator)
-//                .append("meizhuo.apk").toString();
-//				 File file = new File(apkFilePath);
-//			        if (file != null && file.length() > 0 && file.exists() && file.isFile()) {
-//			            i.setDataAndType(Uri.parse("file://" + apkFilePath), "application/vnd.android.package-archive");
-//			            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//			           Main.this.startActivity(i);
-//			        }
-//				
-//			}
-//		}
-//	};
+	private BroadcastReceiver receiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// 这里可以取得下载的id，这样就可以知道哪个文件下载完成了。适用与多个下载任务的监听
+			Log.v(TAG,
+					""
+							+ intent.getLongExtra(
+									DownloadManager.EXTRA_DOWNLOAD_ID, 0));
+			queryDownloadStatus();
+			if(intent.getAction().equals(DownloadManager.ACTION_DOWNLOAD_COMPLETE)){
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				String apkFilePath = new StringBuilder(Environment.getExternalStorageDirectory().getAbsolutePath())
+                .append(File.separator).append("/download/").append(File.separator)
+                .append("meizhuo.apk").toString();
+				 File file = new File(apkFilePath);
+			        if (file != null && file.length() > 0 && file.exists() && file.isFile()) {
+			            i.setDataAndType(Uri.parse("file://" + apkFilePath), "application/vnd.android.package-archive");
+			            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			           Main.this.startActivity(i);
+			        }
+				
+			}
+		}
+	};
 
 	/** 登录接收器 */
 	class LoginReceiver extends BroadcastReceiver {
@@ -492,36 +493,35 @@ public class Main extends BaseActivity {
 		viewPager.startAutoScroll();
 	}
 
-//	@SuppressLint("NewApi")
-//	private void queryDownloadStatus() {
-//		DownloadManager.Query query = new DownloadManager.Query();
-//		query.setFilterById(prefs.getLong(DL_ID, 0));
-//		Cursor c = downloadManager.query(query);
-//		if (c.moveToFirst()) {
-//			int status = c.getInt(c
-//					.getColumnIndex(DownloadManager.COLUMN_STATUS));
-//			switch (status) {
-//			case DownloadManager.STATUS_PAUSED:
-//				Log.v(TAG, "STATUS_PAUSED");
-//			case DownloadManager.STATUS_PENDING:
-//				Log.v(TAG, "STATUS_PENDING");
-//			case DownloadManager.STATUS_RUNNING:
-//				// 正在下载，不做任何事情
-//				Log.v(TAG, "STATUS_RUNNING");
-//				break;
-//			case DownloadManager.STATUS_SUCCESSFUL:
-//				// 完成
-//				Log.v(TAG, "下载完成");
-//			
-//				break;
-//			case DownloadManager.STATUS_FAILED:
-//				// 清除已下载的内容，重新下载
-//				Log.v(TAG, "STATUS_FAILED");
-//				downloadManager.remove(prefs.getLong(DL_ID, 0));
-//				prefs.edit().clear().commit();
-//				break;
-//			}
-//		}
-//	}
+	private void queryDownloadStatus() {
+		DownloadManager.Query query = new DownloadManager.Query();
+		query.setFilterById(prefs.getLong(DL_ID, 0));
+		Cursor c = downloadManager.query(query);
+		if (c.moveToFirst()) {
+			int status = c.getInt(c
+					.getColumnIndex(DownloadManager.COLUMN_STATUS));
+			switch (status) {
+			case DownloadManager.STATUS_PAUSED:
+				Log.v(TAG, "STATUS_PAUSED");
+			case DownloadManager.STATUS_PENDING:
+				Log.v(TAG, "STATUS_PENDING");
+			case DownloadManager.STATUS_RUNNING:
+				// 正在下载，不做任何事情
+				Log.v(TAG, "STATUS_RUNNING");
+				break;
+			case DownloadManager.STATUS_SUCCESSFUL:
+				// 完成
+				Log.v(TAG, "下载完成");
+			
+				break;
+			case DownloadManager.STATUS_FAILED:
+				// 清除已下载的内容，重新下载
+				Log.v(TAG, "STATUS_FAILED");
+				downloadManager.remove(prefs.getLong(DL_ID, 0));
+				prefs.edit().clear().commit();
+				break;
+			}
+		}
+	}
 
 }
