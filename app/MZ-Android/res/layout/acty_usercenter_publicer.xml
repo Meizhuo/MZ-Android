@@ -9,12 +9,12 @@
     <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="45dp"
-    android:background="@color/mz_blue_title_nomal"
+    android:background="@color/mz_blue_title_nomal2"
     android:orientation="horizontal" >
 
     <RelativeLayout
         android:id="@+id/btn_app_back"
-        android:background="@drawable/mz_btn_title_back"
+        android:background="@drawable/mz_btn_title_back2"
         android:layout_width="wrap_content"
         android:layout_height="45dp" >
 
