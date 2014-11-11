@@ -106,6 +106,19 @@ public class Employer_Register extends BaseActivity{
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
 				try {
+					if(obj.getString("error_code").equals("40000")){
+						String msg = obj.getString("msg");
+						toast(msg);
+						return ;
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				try {
+					
 					if(obj.getString("code").equals("20000"))
 					{
 						toast("注册成功!");
@@ -115,6 +128,9 @@ public class Employer_Register extends BaseActivity{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				
+		
 			}
 			@Override
 			public void onFaild(int errorType, int errorCode) {

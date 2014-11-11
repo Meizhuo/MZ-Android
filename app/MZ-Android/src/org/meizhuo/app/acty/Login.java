@@ -8,6 +8,7 @@ import org.meizhuo.api.PublicerAPI;
 import org.meizhuo.app.AppInfo;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
+import org.meizhuo.app.acty.Major_Search.MSHandler;
 import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.Employer;
 import org.meizhuo.model.ErrorCode;
@@ -370,6 +371,20 @@ public class Login extends BaseActivity{
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
 				// TODO Auto-generated method stub
+					
+				try {
+					if(obj.getString("error_code").equals("40000")){
+						String message = obj.getString("msg");
+						toast(message);
+						return ;
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+					
+					
+					
 				try {
 					if(obj.getString("code").equals("20000"))
 					{
@@ -380,6 +395,8 @@ public class Login extends BaseActivity{
 					e.printStackTrace();
 				}
 				flipper.showPrevious();
+				
+			
 			}
 			
 			@Override
