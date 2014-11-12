@@ -10,7 +10,9 @@
     <color name="mz_blue_light">#00CCFF</color>
     <color name="mz_blue_strong">#FF0066FF</color>
     <color name="mz_blue_title_nomal">#3B5998</color>
+    <color name="mz_blue_title_nomal2">#1AB3E9</color>
     <color name="mz_blue_title_press">#36528C</color>
+    <color name="mz_blue_title_press2">#4EA9CD</color>
     <color name="blue_main_item">#02bbf3</color>
     <color name="black">#ff000000</color>
     <color name="lucency_white">#00ffffff</color>

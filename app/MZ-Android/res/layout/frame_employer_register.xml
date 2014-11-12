@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#46629E"
+    android:background="@color/mz_blue_title_nomal2"
    >
    <ScrollView 
        android:layout_width="wrap_content"
@@ -209,7 +209,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/mz_btn_login"
+                android:background="@drawable/mz_btn_login2"
                 android:text="确认"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -219,7 +219,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/mz_btn_login"
+                android:background="@drawable/mz_btn_login2"
                 android:text="取消 "
                 android:textColor="@color/white"
                 android:textSize="18sp"

@@ -13,7 +13,7 @@ import android.content.Context;
  *
  */
 public class RestClient {
-	public static final String BASE_URL = "http://61.29.161.61:88/mz/index.php";
+	public static final String BASE_URL = "http://120.24.64.127/mz/index.php";
 	private static int  HTTP_Timeout = 12*1000;
 	public static Context context;
 	

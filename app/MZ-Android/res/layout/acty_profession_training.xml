@@ -13,7 +13,7 @@
         android:layout_height="48dip"
         android:background="@android:color/white"
         android:textSize="14sp"
-        app:pstsIndicatorColor="@color/mz_blue_title_nomal"
+        app:pstsIndicatorColor="@color/mz_blue_title_nomal2"
         app:pstsIndicatorHeight="4dp"
         app:pstsShouldExpand="true" />
 

@@ -5,7 +5,6 @@ import org.json.JSONObject;
 import org.meizhuo.utils.JsonUtils;
 import org.meizhuo.utils.L;
 
-import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 /**
