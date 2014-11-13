@@ -32,6 +32,7 @@ public class AppInfo {
 		DataPool dp = new DataPool(DataPool.SP_Name_Publicer, context);
 		return (String) dp.get(DataPool.SP_Key_Publicer_Name);
 	}
+	
 
 	/** 保存普通 用户密码 */
 	public static boolean setPublicerPSW(Context context, String userpsw) {
