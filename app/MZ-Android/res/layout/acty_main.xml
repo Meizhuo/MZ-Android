@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mz_white"
+    android:background="@color/mz_blue_title_nomal2"
     android:orientation="vertical" >
 
     <include layout="@layout/acty_base_header" />
@@ -43,7 +43,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
              android:background="@drawable/aa_main_bg3"
             android:orientation="vertical" >
 
