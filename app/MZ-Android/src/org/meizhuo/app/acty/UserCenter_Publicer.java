@@ -235,7 +235,6 @@ public class UserCenter_Publicer extends BaseActivity {
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
 		if (requestCode == 1000 && resultCode == 1001){
 			String name = data.getStringExtra("name");
 			String sex = data.getStringExtra("sex");
