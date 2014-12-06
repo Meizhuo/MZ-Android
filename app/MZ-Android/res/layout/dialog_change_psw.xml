@@ -25,7 +25,7 @@
         android:textStyle="normal"
         android:password="true"
         android:layout_marginBottom="10dp"
-        android:hint="新密码"
+        android:hint="新密码(8-16位数字或字母)"
         />
           <EditText 
           android:text=""

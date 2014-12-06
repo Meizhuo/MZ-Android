@@ -75,6 +75,21 @@ public class UserCenter_Employer extends BaseActivity {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
+					if((et_change_oldpsw.getText().toString()) == null || (et_change_oldpsw.getText().toString()).equals(""))
+					{
+						toast("旧密码不能为空!");
+						return ;
+					}
+					if((et_change_newpsw.getText().toString()) == null || (et_change_newpsw.getText().toString()).equals(""))
+					{
+						toast("新密码不能为空!");
+						return ;
+					}
+					if((et_change_oldpsw.getText().toString()) == null || (et_change_oldpsw.getText().toString()).equals(""))
+					{
+						toast("旧密码不能为空!");
+						return ;
+					}
 					if(!(et_change_newpsw.getText().toString().equals(et_confirm_newpsw.getText().toString()))){
 						toast("两次新密码输入不一致,修改失败!");
 						return ;

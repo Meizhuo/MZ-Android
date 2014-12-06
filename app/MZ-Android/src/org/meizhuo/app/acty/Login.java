@@ -151,7 +151,7 @@ public class Login extends BaseActivity{
 					@Override
 					public void onOK(Header[] headers, JSONObject obj) {
 						// TODO Auto-generated method stub
-						Log.i(TAG, "" + obj);
+						Log.i(TAG, "普通用户登录拿到的obj" + obj);
 						try {
 							if(obj.getString("code").equals("20000")){
 								

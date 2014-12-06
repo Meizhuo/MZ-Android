@@ -133,7 +133,7 @@ public class Professional_Training_AboutNews extends BaseFragment implements OnR
 				if(obj.isNull("response") || documentInfos.size() < 10)
 				{
 					hasMore = false;
-					toast("已经到达底部");
+					toast("数据加载完毕!");
 				}
 					
 			}
