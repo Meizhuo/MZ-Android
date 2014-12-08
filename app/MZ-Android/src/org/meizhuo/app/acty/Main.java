@@ -201,7 +201,7 @@ public class Main extends BaseActivity {
 
 	@OnClick(R.id.btn_professional_evaluation)
 	public void Professional_Evaluation() {
-		openActivity(Professional_Evaluation.class);
+		openActivity(ProfessionalEvaluation.class);
 	}
 
 	@OnClick(R.id.btn_institution_info)

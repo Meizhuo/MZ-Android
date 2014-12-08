@@ -192,15 +192,15 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.PublicConsult_Cultivate"
+            android:name=".acty.PublicConsultCultivate"
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.PublicConsult_Org"
+            android:name=".acty.PublicConsultOrg"
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.PublicConsult_Policy"
+            android:name=".acty.PublicConsultPolicy"
             android:launchMode="singleTask" >
         </activity>
         <activity
@@ -253,12 +253,12 @@
         </activity>
         <!-- Professional_Article -->
           <activity
-            android:name=".acty.Professional_Article"
+            android:name=".acty.ProfessionalArticle"
             android:launchMode="singleTask" >
         </activity>
         <!-- Professional_Evaluation -->
           <activity
-            android:name=".acty.Professional_Evaluation"
+            android:name=".acty.ProfessionalEvaluation"
             android:launchMode="singleTask" >
         </activity>
         <!-- CourseDetails -->

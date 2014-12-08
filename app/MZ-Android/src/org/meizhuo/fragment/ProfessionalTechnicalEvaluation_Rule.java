@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import org.meizhuo.adapter.Professional_Training_Article_Title_Adapter;
 import org.meizhuo.api.ArticleAPI;
 import org.meizhuo.app.R;
-import org.meizhuo.app.acty.Professional_Article;
+import org.meizhuo.app.acty.ProfessionalArticle;
 import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.DocumentInfo;
 
@@ -161,7 +161,7 @@ public class ProfessionalTechnicalEvaluation_Rule extends BaseFragment implement
 	
 	
 	@OnItemClick(R.id.lv) public void item_click(int position) {
-		Intent intent =  new Intent(getActivity(), Professional_Article.class);
+		Intent intent =  new Intent(getActivity(), ProfessionalArticle.class);
 		intent.putExtra("content", data.get(position).getContent());
 		intent.putExtra("title", data.get(position).getTitle());
 		intent.putExtra("doc_id", data.get(position).getId());

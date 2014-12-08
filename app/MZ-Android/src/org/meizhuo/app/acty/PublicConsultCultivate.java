@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-public class PublicConsult_Cultivate extends BaseActivity {
+public class PublicConsultCultivate extends BaseActivity {
 
 	ArrayList<HashMap<String, Object>> chatList = null;
 	String[] from = { "image", "text" };

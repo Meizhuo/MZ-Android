@@ -34,7 +34,7 @@ import android.widget.ListView;
  * @author Jayin
  * 
  */
-public class Professional_Evaluation extends BaseActivity {
+public class ProfessionalEvaluation extends BaseActivity {
 	private static final String TAG = "Professional_Evaluation";
 	
 	@InjectView(R.id.tabs) com.astuetz.PagerSlidingTabStrip mPagerSlidingTabStrip;
