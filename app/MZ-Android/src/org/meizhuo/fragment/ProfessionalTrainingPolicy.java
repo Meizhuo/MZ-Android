@@ -12,6 +12,9 @@ import org.meizhuo.app.acty.Professional_Article;
 import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.DocumentInfo;
 
+import butterknife.InjectView;
+import butterknife.OnItemClick;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -22,27 +25,23 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
-import butterknife.InjectView;
-import butterknife.OnItemClick;
-
 /**
- * 全国统考
+ * 法律法规及政策
  * @author Jason
  *
  */
-public class Professional_Technical_Evaluation_Examination extends BaseFragment implements OnRefreshListener, OnScrollListener {
-
+public class ProfessionalTrainingPolicy extends BaseFragment implements OnRefreshListener, OnScrollListener{
 	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	Professional_Training_Article_Title_Adapter adatper_title;
 	List<DocumentInfo>data;
-	String category_id = "7", title = "", content = "", page = "1";
+	String category_id = "2", title = "", content = "", page = "1";
 	boolean hasMore = true, isloading = false;
 
 	@Override public View onCreateView(LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState,
-				R.layout.fm_professional_training_base);
+				R.layout.fm_professional_training_policy);
 		initData();
 		initLayout();
 		onRefresh();
@@ -176,5 +175,7 @@ public class Professional_Technical_Evaluation_Examination extends BaseFragment 
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 }

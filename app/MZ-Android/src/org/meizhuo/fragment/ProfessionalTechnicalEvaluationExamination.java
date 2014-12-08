@@ -26,17 +26,17 @@ import butterknife.InjectView;
 import butterknife.OnItemClick;
 
 /**
- * 通知信息
+ * 全国统考
  * @author Jason
  *
  */
-public class Professional_Training_Notification extends BaseFragment implements OnRefreshListener, OnScrollListener{
+public class ProfessionalTechnicalEvaluationExamination extends BaseFragment implements OnRefreshListener, OnScrollListener {
 
 	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	Professional_Training_Article_Title_Adapter adatper_title;
 	List<DocumentInfo>data;
-	String category_id = "4", title = "", content = "", page = "1";
+	String category_id = "7", title = "", content = "", page = "1";
 	boolean hasMore = true, isloading = false;
 
 	@Override public View onCreateView(LayoutInflater inflater,
@@ -176,4 +176,5 @@ public class Professional_Training_Notification extends BaseFragment implements 
 		// TODO Auto-generated method stub
 		
 	}
+
 }

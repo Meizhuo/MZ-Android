@@ -26,17 +26,17 @@ import butterknife.InjectView;
 import butterknife.OnItemClick;
 
 /**
- * 办事指南
+ * 通知信息
  * @author Jason
  *
  */
-public class Professional_Technical_Evaluation_Guide extends BaseFragment implements OnScrollListener, OnRefreshListener{
+public class ProfessionalTrainingNotification extends BaseFragment implements OnRefreshListener, OnScrollListener{
 
 	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	Professional_Training_Article_Title_Adapter adatper_title;
 	List<DocumentInfo>data;
-	String category_id = "6", title = "", content = "", page = "1";
+	String category_id = "4", title = "", content = "", page = "1";
 	boolean hasMore = true, isloading = false;
 
 	@Override public View onCreateView(LayoutInflater inflater,
@@ -176,5 +176,4 @@ public class Professional_Technical_Evaluation_Guide extends BaseFragment implem
 		// TODO Auto-generated method stub
 		
 	}
-
 }

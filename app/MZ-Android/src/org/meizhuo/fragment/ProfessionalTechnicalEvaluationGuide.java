@@ -24,19 +24,19 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import butterknife.InjectView;
 import butterknife.OnItemClick;
+
 /**
- * 基本职能
+ * 办事指南
  * @author Jason
  *
  */
-public class Professional_Training_Base extends BaseFragment implements OnRefreshListener, OnScrollListener{
-	private static final String TAG = "Professional_Training_Base";
-	
+public class ProfessionalTechnicalEvaluationGuide extends BaseFragment implements OnScrollListener, OnRefreshListener{
+
 	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	Professional_Training_Article_Title_Adapter adatper_title;
 	List<DocumentInfo>data;
-	String category_id = "1", title = "", content = "", page = "1";
+	String category_id = "6", title = "", content = "", page = "1";
 	boolean hasMore = true, isloading = false;
 
 	@Override public View onCreateView(LayoutInflater inflater,
@@ -177,10 +177,4 @@ public class Professional_Training_Base extends BaseFragment implements OnRefres
 		
 	}
 
-
-
-
-
-
-	
 }

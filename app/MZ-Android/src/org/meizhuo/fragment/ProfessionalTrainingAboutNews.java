@@ -37,7 +37,7 @@ import android.widget.ListView;
  * @author Jason
  *
  */
-public class Professional_Training_AboutNews extends BaseFragment implements OnRefreshListener, OnScrollListener{
+public class ProfessionalTrainingAboutNews extends BaseFragment implements OnRefreshListener, OnScrollListener{
 	private static final String TAG = "Professional_Training_AboutNews";
 
 	@InjectView(R.id.lv) ListView lv;

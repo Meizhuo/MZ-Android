@@ -24,19 +24,19 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import butterknife.InjectView;
 import butterknife.OnItemClick;
-
 /**
- * 政策法规
+ * 基本职能
  * @author Jason
  *
  */
-public class Professional_Technical_Evaluation_Rule extends BaseFragment implements OnScrollListener, OnRefreshListener{
-
+public class ProfessionalTrainingBase extends BaseFragment implements OnRefreshListener, OnScrollListener{
+	private static final String TAG = "Professional_Training_Base";
+	
 	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	Professional_Training_Article_Title_Adapter adatper_title;
 	List<DocumentInfo>data;
-	String category_id = "5", title = "", content = "", page = "1";
+	String category_id = "1", title = "", content = "", page = "1";
 	boolean hasMore = true, isloading = false;
 
 	@Override public View onCreateView(LayoutInflater inflater,
@@ -176,4 +176,11 @@ public class Professional_Technical_Evaluation_Rule extends BaseFragment impleme
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+
+
+
+	
 }

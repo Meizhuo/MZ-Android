@@ -12,9 +12,6 @@ import org.meizhuo.app.acty.Professional_Article;
 import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.DocumentInfo;
 
-import butterknife.InjectView;
-import butterknife.OnItemClick;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -25,23 +22,27 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
+import butterknife.InjectView;
+import butterknife.OnItemClick;
+
 /**
- * 法律法规及政策
+ * 政策法规
  * @author Jason
  *
  */
-public class Professional_Training_Policy extends BaseFragment implements OnRefreshListener, OnScrollListener{
+public class ProfessionalTechnicalEvaluation_Rule extends BaseFragment implements OnScrollListener, OnRefreshListener{
+
 	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	Professional_Training_Article_Title_Adapter adatper_title;
 	List<DocumentInfo>data;
-	String category_id = "2", title = "", content = "", page = "1";
+	String category_id = "5", title = "", content = "", page = "1";
 	boolean hasMore = true, isloading = false;
 
 	@Override public View onCreateView(LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState,
-				R.layout.fm_professional_training_policy);
+				R.layout.fm_professional_training_base);
 		initData();
 		initLayout();
 		onRefresh();
@@ -175,7 +176,4 @@ public class Professional_Training_Policy extends BaseFragment implements OnRefr
 		// TODO Auto-generated method stub
 		
 	}
-
-
-
 }
