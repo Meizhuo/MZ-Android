@@ -195,7 +195,7 @@ public class CourseDetails extends BaseActivity implements OnRefreshListener , O
 		String money = data.get(position).getMoney();
 		String series = data.get(position).getSeries();
 		String title = data.get(position).getTitle();
-		Intent intent = new Intent(CourseDetails.this, CourseDetails_OneCourse.class);
+		Intent intent = new Intent(CourseDetails.this, CourseDetailsOneCourse.class);
 		intent.putExtra("name", name);
 		intent.putExtra("start_time", start_time);
 		intent.putExtra("address", address);

@@ -8,7 +8,7 @@ import org.meizhuo.api.PublicerAPI;
 import org.meizhuo.app.AppInfo;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
-import org.meizhuo.app.acty.Major_Search.MSHandler;
+import org.meizhuo.app.acty.MajorSearch.MSHandler;
 import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.Employer;
 import org.meizhuo.model.ErrorCode;
@@ -429,7 +429,7 @@ public class Login extends BaseActivity{
 		AppInfo.setPublicername(getContext(), et_login_username.getText().toString());
 		AppInfo.setPublicerPSW(getContext(), et_login_password.getText().toString());
 		Log.i(TAG, "登录保存信息" + AppInfo.getPublicername(getContext()));
-		openActivity(UserCenter_Publicer.class);
+		openActivity(UserCenterPublicer.class);
 	}
 	/**
 	 * 保存用人单位信息
@@ -441,7 +441,7 @@ public class Login extends BaseActivity{
 		AppInfo.setEmployername(getContext(), et_login_username.getText().toString());
 		AppInfo.setEmployerPSW(getContext(), et_login_password.getText().toString());
 		Log.i(TAG, "保存用人单位" + AppInfo.getEmployername(getContext()));
-		openActivity(UserCenter_Employer.class);
+		openActivity(UserCenterEmployer.class);
 	}
 	
 	

@@ -28,7 +28,7 @@ import butterknife.InjectView;
  * 
  */
 @SuppressLint("SetJavaScriptEnabled")
-public class Professional_Article extends BaseActivity  {
+public class ProfessionalArticle extends BaseActivity  {
 	
 	private static final String TAG = "Professional_Article";
 	@InjectView(R.id.webview) WebView webview;

@@ -44,7 +44,7 @@ import butterknife.OnClick;
 
 
 
-public class Major_Search extends BaseActivity{
+public class MajorSearch extends BaseActivity{
 	
 	private static final String TAG  = "Major_Search";
 	
@@ -94,7 +94,7 @@ public class Major_Search extends BaseActivity{
 	}
 	
 	@OnClick(R.id.btn_search_content) public void write_search() {
-		LayoutInflater inflater = LayoutInflater.from(Major_Search.this);
+		LayoutInflater inflater = LayoutInflater.from(MajorSearch.this);
 		View dialogView = inflater.inflate(R.layout.write_search, null);
 		final EditText write_search_et =(EditText) dialogView.findViewById(R.id.write_search_et);
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -109,7 +109,7 @@ public class Major_Search extends BaseActivity{
 				String kind = "";
 				String level = "";
 				String certificate_type = "";
-				Intent intent = new Intent(Major_Search.this, Major_Search_lv.class);
+				Intent intent = new Intent(MajorSearch.this, MajorSearchLv.class);
 				intent.putExtra("title", input);
 				intent.putExtra("kind", kind);
 				intent.putExtra("level", level);
@@ -136,7 +136,7 @@ public class Major_Search extends BaseActivity{
 			toast("数据加载不完全，请重新加载！");
 			return ;
 		}
-		Intent intent = new Intent(Major_Search.this, Major_Search_lv.class);
+		Intent intent = new Intent(MajorSearch.this, MajorSearchLv.class);
 		intent.putExtra("kind", kind);
 		intent.putExtra("level", level);
 		intent.putExtra("certificate_type", certificate_type);
@@ -234,7 +234,7 @@ public class Major_Search extends BaseActivity{
 	}
 	
 	private void initCertificateAdapter() {
-		 certificateTypesAdapter = new CertificateTypesAdapter(Major_Search.this, _certificateTypes);
+		 certificateTypesAdapter = new CertificateTypesAdapter(MajorSearch.this, _certificateTypes);
 		certificate_sp.setAdapter(certificateTypesAdapter);
 		certificate_sp.setOnItemSelectedListener(new CertificateTypesSpinnerListener());
 		certificate_sp.setVisibility(View.VISIBLE);
@@ -243,7 +243,7 @@ public class Major_Search extends BaseActivity{
 	
 	private void initKindAdapter() {
 		
-		 kindAdapter = new KindAdapter(Major_Search.this, _kinds);
+		 kindAdapter = new KindAdapter(MajorSearch.this, _kinds);
 		kind_sp.setAdapter(kindAdapter);
 		kind_sp.setOnItemSelectedListener(new KindSpinnerListener());
 		
@@ -251,7 +251,7 @@ public class Major_Search extends BaseActivity{
 	}
 	 
 	private void initLevelAdapter(List<Subsidy_Levels>list) {
-		 levelAdapter = new LevelAdapter(Major_Search.this, list);
+		 levelAdapter = new LevelAdapter(MajorSearch.this, list);
 		
 		
 				level_sp.setAdapter(levelAdapter);
@@ -270,7 +270,7 @@ public class Major_Search extends BaseActivity{
 			// TODO Auto-generated method stub
 			 switch (msg.what) {
 			case Constants.Start:
-				waittingDialog = new WaittingDialog(Major_Search.this);
+				waittingDialog = new WaittingDialog(MajorSearch.this);
 				waittingDialog.setText("正在加载数据");
 				waittingDialog.show();
 				break;
@@ -286,7 +286,7 @@ public class Major_Search extends BaseActivity{
 					waittingDialog.dismiss();
 				waittingDialog = null;
 				toast("网络不给力，请检查你的网络设置");
-				Major_Search.this.finish();
+				MajorSearch.this.finish();
 				break;
 				}
 				

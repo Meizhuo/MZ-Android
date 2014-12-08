@@ -180,7 +180,7 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.UserCenter_Publicer"
+            android:name=".acty.UserCenterPublicer"
             android:launchMode="singleTask" >
         </activity>
         <activity
@@ -192,27 +192,27 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.PublicConsult_Cultivate"
+            android:name=".acty.PublicConsultCultivate"
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.PublicConsult_Org"
+            android:name=".acty.PublicConsultOrg"
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.PublicConsult_Policy"
+            android:name=".acty.PublicConsultPolicy"
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.InstitutionConsult_Teacher"
+            android:name=".acty.InstitutionConsultTeacher"
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.InstitutionConsult_Textbook"
+            android:name=".acty.InstitutionConsultTextbook"
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.InstitutionConsult_Skill"
+            android:name=".acty.InstitutionConsultSkill"
             android:launchMode="singleTask" >
         </activity>
           <activity
@@ -228,37 +228,37 @@
             android:launchMode="singleTask" >
         </activity>
            <activity
-            android:name=".acty.UserCenter_Publicer_EditInfo"
+            android:name=".acty.UserCenterPublicerEditInfo"
             android:launchMode="standard" >
         </activity>
         <!-- Major_Search -->
            <activity
-            android:name=".acty.Major_Search"
+            android:name=".acty.MajorSearch"
             android:launchMode="singleTask" >
         </activity>
         <!-- Major_Search_lv -->
            <activity
-            android:name=".acty.Major_Search_lv"
+            android:name=".acty.MajorSearchLv"
             android:launchMode="singleTask" >
         </activity>
            <!-- UserCenter_Employer -->
         <activity
-            android:name=".acty.UserCenter_Employer"
+            android:name=".acty.UserCenterEmployer"
             android:launchMode="singleTask" >
         </activity>
         <!-- UserCenter_Employer_EditInfo -->
          <activity
-            android:name=".acty.UserCenter_Employer_EditInfo"
+            android:name=".acty.UserCenterEmployerEditInfo"
             android:launchMode="standard" >
         </activity>
         <!-- Professional_Article -->
           <activity
-            android:name=".acty.Professional_Article"
+            android:name=".acty.ProfessionalArticle"
             android:launchMode="singleTask" >
         </activity>
         <!-- Professional_Evaluation -->
           <activity
-            android:name=".acty.Professional_Evaluation"
+            android:name=".acty.ProfessionalEvaluation"
             android:launchMode="singleTask" >
         </activity>
         <!-- CourseDetails -->
@@ -268,22 +268,22 @@
         </activity>
         <!-- InstitutionInfo_Details -->
             <activity
-            android:name=".acty.InstitutionInfo_Details"
+            android:name=".acty.InstitutionInfoDetails"
             android:launchMode="singleTask" >
         </activity>
         <!-- CourseDetails_OneCourse -->
                   <activity
-            android:name=".acty.CourseDetails_OneCourse"
+            android:name=".acty.CourseDetailsOneCourse"
             android:launchMode="singleTask" >
         </activity>
         <!-- InstitutionInfo_Search_lv -->
                   <activity
-            android:name=".acty.InstitutionInfo_Search_lv"
+            android:name=".acty.InstitutionInfoSearchLv"
             android:launchMode="singleTask" >
         </activity>
         <!-- Major_Search_Course_Lv -->
                          <activity
-            android:name=".acty.Major_Search_Course_Lv"
+            android:name=".acty.MajorSearchCourseLv"
             android:launchMode="singleTask" >
         </activity>    
          <!-- ShowWebImageActivity -->
@@ -297,17 +297,17 @@
         
          <!-- InstitutionInfo_Details_com_intro -->
  	  <activity
-            android:name=".acty.InstitutionInfo_Details_com_intro"
+            android:name=".acty.InstitutionInfoDetailsComIntro"
             android:launchMode="singleTask" >
         </activity>   
          <!-- CourseDetails_description -->
          <activity
-            android:name=".acty.CourseDetails_description"
+            android:name=".acty.CourseDetailsDescription"
             android:launchMode="singleTask" >
         </activity>
         <!-- Main_Advertise -->   
             <activity
-            android:name=".acty.Main_Advertise"
+            android:name=".acty.MainAdvertise"
             android:launchMode="singleTask" >
         </activity>
        <!-- 集成短信SDK -->

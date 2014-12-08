@@ -23,7 +23,7 @@ import android.widget.ListView;
 import butterknife.InjectView;
 import butterknife.OnItemClick;
 
-public class Major_Search_Course_Lv extends BaseActivity implements OnRefreshListener , OnScrollListener{
+public class MajorSearchCourseLv extends BaseActivity implements OnRefreshListener , OnScrollListener{
 	
 
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
@@ -52,7 +52,7 @@ public class Major_Search_Course_Lv extends BaseActivity implements OnRefreshLis
 		Intent intent =  getIntent();
 		subsidy_id = intent.getStringExtra("subsidy_id");
 		data = new ArrayList<Course>();
-		adapter = new InstitutionCourseAdapter(Major_Search_Course_Lv.this, data);
+		adapter = new InstitutionCourseAdapter(MajorSearchCourseLv.this, data);
 	}
 	
 	private void initLayout(){
@@ -183,7 +183,7 @@ public class Major_Search_Course_Lv extends BaseActivity implements OnRefreshLis
 		String money = data.get(position).getMoney();
 		String series = data.get(position).getSeries();
 		String title = data.get(position).getTitle();
-		Intent intent = new Intent(Major_Search_Course_Lv.this, CourseDetails_OneCourse.class);
+		Intent intent = new Intent(MajorSearchCourseLv.this, CourseDetailsOneCourse.class);
 		intent.putExtra("certificate_type", certificate_type);
 		intent.putExtra("kind", kind);
 		intent.putExtra("level", level);

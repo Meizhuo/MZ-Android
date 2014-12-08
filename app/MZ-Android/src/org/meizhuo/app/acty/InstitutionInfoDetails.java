@@ -29,7 +29,7 @@ import android.widget.TextView;
  * @author Jason
  *
  */
-public class InstitutionInfo_Details extends BaseActivity {
+public class InstitutionInfoDetails extends BaseActivity {
 	
 	private static final String TAG = "InstitutionInfo_Details";
 
@@ -107,7 +107,7 @@ public class InstitutionInfo_Details extends BaseActivity {
 	
 	// 进入公司简介页面
 	@OnClick(R.id.btn_company_description) public void enter_company_intro(){
-		Intent it =  new Intent(this, InstitutionInfo_Details_com_intro.class);
+		Intent it =  new Intent(this, InstitutionInfoDetailsComIntro.class);
 //		it.putExtra("content", institution.getDescription().toString());
 //		it.putExtra("title", institution.getNickname().toString());
 		it.putExtra("ins_id", institution_id);
@@ -128,7 +128,7 @@ public class InstitutionInfo_Details extends BaseActivity {
 			// TODO Auto-generated method stub
 			switch (msg.what) {
 			case Constants.Start:
-				dialog = new WaittingDialog(InstitutionInfo_Details.this);
+				dialog = new WaittingDialog(InstitutionInfoDetails.this);
 				dialog.show();
 				break;
 	

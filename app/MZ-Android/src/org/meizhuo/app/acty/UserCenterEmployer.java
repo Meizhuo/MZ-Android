@@ -29,7 +29,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class UserCenter_Employer extends BaseActivity {
+public class UserCenterEmployer extends BaseActivity {
 	private static final String TAG = "UserCenter_Employer";
 	/**工作单位名称*/
 	@InjectView(R.id.mz_usercenter_em_workplace_name) TextView workplace_name;
@@ -54,7 +54,7 @@ public class UserCenter_Employer extends BaseActivity {
 	}
 	
 		@OnClick(R.id.tv_userinfo_employer_edit) public void edit_info(){
-			Intent intent  =  new Intent(this, UserCenter_Employer_EditInfo.class);
+			Intent intent  =  new Intent(this, UserCenterEmployerEditInfo.class);
 			intent.putExtra("work_addr", employer.getAddress());
 			intent.putExtra("workplace_name", employer.getNickname());
 			intent.putExtra("contact_phone", employer.getContact_phone());
@@ -62,7 +62,7 @@ public class UserCenter_Employer extends BaseActivity {
 		}
 		
 		@OnClick(R.id.mz_usercenter_changepsw) public void changepsw(){
-			LayoutInflater inflater = LayoutInflater.from(UserCenter_Employer.this);
+			LayoutInflater inflater = LayoutInflater.from(UserCenterEmployer.this);
 			View dialogView = inflater.inflate(R.layout.dialog_change_psw, null);
 			final EditText et_change_oldpsw =(EditText) dialogView.findViewById(R.id.et_change_oldpsw);
 			final EditText et_change_newpsw =(EditText) dialogView.findViewById(R.id.et_change_newpsw);
@@ -175,7 +175,7 @@ public class UserCenter_Employer extends BaseActivity {
 			// TODO Auto-generated method stub
 			switch (msg.what) {
 			case Constants.Start:
-				waittingDialog =  new WaittingDialog(UserCenter_Employer.this);
+				waittingDialog =  new WaittingDialog(UserCenterEmployer.this);
 				waittingDialog.show();
 				break;
 			case Constants.Finish:

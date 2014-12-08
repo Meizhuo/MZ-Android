@@ -24,7 +24,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 
-public class InstitutionInfo_Search_lv extends BaseActivity implements OnRefreshListener , OnScrollListener{
+public class InstitutionInfoSearchLv extends BaseActivity implements OnRefreshListener , OnScrollListener{
 	
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	@InjectView(R.id.lv_institutionInfo) ListView lv_institution;
@@ -49,7 +49,7 @@ public class InstitutionInfo_Search_lv extends BaseActivity implements OnRefresh
 		Intent intent =  getIntent();
 		name  = intent.getStringExtra("name");
 		data =  new ArrayList<Institution>();
-		adapte_lv = new InstitutionInfoAdapter(InstitutionInfo_Search_lv.this, data);
+		adapte_lv = new InstitutionInfoAdapter(InstitutionInfoSearchLv.this, data);
 	}
 	
 	private void initLayout(){
@@ -173,7 +173,7 @@ public class InstitutionInfo_Search_lv extends BaseActivity implements OnRefresh
 	}
 	
 	@OnItemClick(R.id.lv_institutionInfo) public void item_click(int position){
-		Intent intent = new Intent(this,InstitutionInfo_Details.class);
+		Intent intent = new Intent(this,InstitutionInfoDetails.class);
 		intent.putExtra("uid", data.get(position).getUid());
 		startActivity(intent);
 	}

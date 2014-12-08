@@ -17,7 +17,6 @@ import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.Advertisement;
 import org.meizhuo.utils.AndroidUtils;
 import org.meizhuo.utils.Constants;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
@@ -142,7 +141,7 @@ public class Main extends BaseActivity {
 
 									Log.i(TAG, "url位置" + position);
 									Intent intent = new Intent(Main.this,
-											Main_Advertise.class);
+											MainAdvertise.class);
 									intent.putExtra("url", ad.get(position)
 											.getUrl());
 									intent.putExtra("description",
@@ -202,7 +201,7 @@ public class Main extends BaseActivity {
 
 	@OnClick(R.id.btn_professional_evaluation)
 	public void Professional_Evaluation() {
-		openActivity(Professional_Evaluation.class);
+		openActivity(ProfessionalEvaluation.class);
 	}
 
 	@OnClick(R.id.btn_institution_info)
@@ -216,7 +215,7 @@ public class Main extends BaseActivity {
 			toast("请先打开您的网络开关");
 			return;
 		}
-		openActivity(Major_Search.class);
+		openActivity(MajorSearch.class);
 
 	}
 
@@ -233,11 +232,11 @@ public class Main extends BaseActivity {
 			return;
 		}
 		if (is_Publicer_Login || Publicer_reLogin) {
-			openActivity(UserCenter_Publicer.class);
+			openActivity(UserCenterPublicer.class);
 		}
 
 		if (is_Employer_Login || Employer_reLogin) {
-			openActivity(UserCenter_Employer.class);
+			openActivity(UserCenterEmployer.class);
 		}
 
 	}

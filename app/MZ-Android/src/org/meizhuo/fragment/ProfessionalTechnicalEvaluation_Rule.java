@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import org.meizhuo.adapter.Professional_Training_Article_Title_Adapter;
 import org.meizhuo.api.ArticleAPI;
 import org.meizhuo.app.R;
-import org.meizhuo.app.acty.Professional_Article;
+import org.meizhuo.app.acty.ProfessionalArticle;
 import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.DocumentInfo;
 
@@ -26,17 +26,17 @@ import butterknife.InjectView;
 import butterknife.OnItemClick;
 
 /**
- * 通知信息
+ * 政策法规
  * @author Jason
  *
  */
-public class Professional_Training_Notification extends BaseFragment implements OnRefreshListener, OnScrollListener{
+public class ProfessionalTechnicalEvaluation_Rule extends BaseFragment implements OnScrollListener, OnRefreshListener{
 
 	@InjectView(R.id.lv) ListView lv;
 	@InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
 	Professional_Training_Article_Title_Adapter adatper_title;
 	List<DocumentInfo>data;
-	String category_id = "4", title = "", content = "", page = "1";
+	String category_id = "5", title = "", content = "", page = "1";
 	boolean hasMore = true, isloading = false;
 
 	@Override public View onCreateView(LayoutInflater inflater,
@@ -161,7 +161,7 @@ public class Professional_Training_Notification extends BaseFragment implements 
 	
 	
 	@OnItemClick(R.id.lv) public void item_click(int position) {
-		Intent intent =  new Intent(getActivity(), Professional_Article.class);
+		Intent intent =  new Intent(getActivity(), ProfessionalArticle.class);
 		intent.putExtra("content", data.get(position).getContent());
 		intent.putExtra("title", data.get(position).getTitle());
 		intent.putExtra("doc_id", data.get(position).getId());

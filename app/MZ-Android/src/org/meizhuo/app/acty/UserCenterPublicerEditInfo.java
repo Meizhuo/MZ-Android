@@ -26,7 +26,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class UserCenter_Publicer_EditInfo extends BaseActivity{
+public class UserCenterPublicerEditInfo extends BaseActivity{
 	
 	
 	@InjectView(R.id.usercenter_editInfo_sex) LinearLayout edit_sex;
@@ -38,7 +38,6 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState,R.layout.acty_usercenter_publicer_edit);
 		setAppTitle("编辑信息");
 		initLayout();
@@ -56,7 +55,6 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 		publicerAPI.updateProfile(name, sex, work_place, new JsonResponseHandler() {
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
-				// TODO Auto-generated method stub
 				try {
 					if(obj.getString("code").equals("20000"))
 					{
@@ -64,7 +62,6 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 						handler.sendMessage(msg);
 					}
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					msg.what = Constants.Fail;
 					handler.sendMessage(msg);
@@ -73,7 +70,6 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 			
 			@Override
 			public void onFaild(int errorType, int errorCode) {
-				// TODO Auto-generated method stub
 				
 				msg.what = Constants.Fail;
 				handler.sendMessage(msg);
@@ -94,7 +90,6 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
-		// TODO Auto-generated method stub
 		menu.add(0, 1, 0, "男");
 		menu.add(0, 2, 0, "女");
 
@@ -103,7 +98,6 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 	
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
 		AdapterContextMenuInfo itemInfo = (AdapterContextMenuInfo)item.getMenuInfo();
 		switch (item.getItemId()) {
 		case 1:
@@ -125,10 +119,9 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 		WaittingDialog waittingDialog;
 		@Override
 		public void handleMessage(Message msg) {
-			// TODO Auto-generated method stub
 			switch (msg.what) {
 			case Constants.Start:
-				waittingDialog  = new WaittingDialog(UserCenter_Publicer_EditInfo.this);
+				waittingDialog  = new WaittingDialog(UserCenterPublicerEditInfo.this);
 				waittingDialog.show();
 				break;
 			case Constants.Finish:
@@ -138,12 +131,12 @@ public class UserCenter_Publicer_EditInfo extends BaseActivity{
 				String sex = edit_sex_tv.getText().toString();
 				String name =  edit_name.getText().toString();
 				String work_place = edit_workplace.getText().toString();
-				Intent backintent = new Intent(UserCenter_Publicer_EditInfo.this,UserCenter_Publicer.class);
+				Intent backintent = new Intent(UserCenterPublicerEditInfo.this,UserCenterPublicer.class);
 				backintent.putExtra("name", name);
 				backintent.putExtra("sex", sex);
 				backintent.putExtra("work_place", work_place);
-				UserCenter_Publicer_EditInfo.this.setResult(1001, backintent);
-				UserCenter_Publicer_EditInfo.this.finish();
+				UserCenterPublicerEditInfo.this.setResult(1001, backintent);
+				UserCenterPublicerEditInfo.this.finish();
 				break;
 			case Constants.Fail:
 				if (waittingDialog.isShowing())

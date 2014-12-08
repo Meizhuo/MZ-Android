@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
-import org.meizhuo.fragment.Professional_Training_Base;
-import org.meizhuo.fragment.Professional_Training_AboutNews;
-import org.meizhuo.fragment.Professional_Training_Notification;
-import org.meizhuo.fragment.Professional_Training_Policy;
+import org.meizhuo.fragment.ProfessionalTrainingBase;
+import org.meizhuo.fragment.ProfessionalTrainingAboutNews;
+import org.meizhuo.fragment.ProfessionalTrainingNotification;
+import org.meizhuo.fragment.ProfessionalTrainingPolicy;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -36,10 +36,10 @@ public class Professional_Training extends BaseActivity {
 		super.onCreate(savedInstanceState, R.layout.acty_profession_training );
 		setAppTitle("职业培训信息");
 
-		fragments.add(new Professional_Training_AboutNews());
-		fragments.add(new Professional_Training_Base());
-		fragments.add(new Professional_Training_Policy());
-		fragments.add(new Professional_Training_Notification());
+		fragments.add(new ProfessionalTrainingAboutNews());
+		fragments.add(new ProfessionalTrainingBase());
+		fragments.add(new ProfessionalTrainingPolicy());
+		fragments.add(new ProfessionalTrainingNotification());
 
 		mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),
 				fragments));

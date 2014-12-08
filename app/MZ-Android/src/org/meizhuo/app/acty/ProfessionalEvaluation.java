@@ -9,12 +9,12 @@ import org.meizhuo.adapter.ImagePagerAdapter.OnItemClickListener;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.app.acty.Professional_Training.MyPagerAdapter;
-import org.meizhuo.fragment.Professional_Technical_Evaluation_Examination;
-import org.meizhuo.fragment.Professional_Technical_Evaluation_Guide;
-import org.meizhuo.fragment.Professional_Technical_Evaluation_Rule;
-import org.meizhuo.fragment.Professional_Training_AboutNews;
-import org.meizhuo.fragment.Professional_Training_Base;
-import org.meizhuo.fragment.Professional_Training_Policy;
+import org.meizhuo.fragment.ProfessionalTechnicalEvaluationExamination;
+import org.meizhuo.fragment.ProfessionalTechnicalEvaluationGuide;
+import org.meizhuo.fragment.ProfessionalTechnicalEvaluation_Rule;
+import org.meizhuo.fragment.ProfessionalTrainingAboutNews;
+import org.meizhuo.fragment.ProfessionalTrainingBase;
+import org.meizhuo.fragment.ProfessionalTrainingPolicy;
 import org.meizhuo.model.MTrainingInstitution;
 
 import butterknife.InjectView;
@@ -34,7 +34,7 @@ import android.widget.ListView;
  * @author Jayin
  * 
  */
-public class Professional_Evaluation extends BaseActivity {
+public class ProfessionalEvaluation extends BaseActivity {
 	private static final String TAG = "Professional_Evaluation";
 	
 	@InjectView(R.id.tabs) com.astuetz.PagerSlidingTabStrip mPagerSlidingTabStrip;
@@ -46,9 +46,9 @@ public class Professional_Evaluation extends BaseActivity {
 		super.onCreate(savedInstanceState, R.layout.acty_profession_training );
 		setAppTitle("职业技术鉴定");
 
-		fragments.add(new Professional_Technical_Evaluation_Rule());
-		fragments.add(new Professional_Technical_Evaluation_Guide());
-		fragments.add(new Professional_Technical_Evaluation_Examination());
+		fragments.add(new ProfessionalTechnicalEvaluation_Rule());
+		fragments.add(new ProfessionalTechnicalEvaluationGuide());
+		fragments.add(new ProfessionalTechnicalEvaluationExamination());
 
 		mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),
 				fragments));

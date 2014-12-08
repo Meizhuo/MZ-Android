@@ -15,7 +15,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 @SuppressLint("SetJavaScriptEnabled")
-public class CourseDetails_description extends BaseActivity{
+public class CourseDetailsDescription extends BaseActivity{
 
 	/*@InjectView(R.id.tv_course_title) TextView tv_course_title;
 	@InjectView(R.id.tv_course_content) TextView tv_course_content;
