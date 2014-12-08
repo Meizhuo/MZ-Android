@@ -116,7 +116,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 
 						@Override public void onItemClick(int position, View view) {
 							// TODO Auto-generated method stub
-							Intent intent =  new Intent(InstitutionInfo.this, Main_Advertise.class);
+							Intent intent =  new Intent(InstitutionInfo.this, MainAdvertise.class);
 							intent.putExtra("url", ad.get(position).getUrl());
 							intent.putExtra("description", ad.get(position).getDescription());
 							startActivity(intent);

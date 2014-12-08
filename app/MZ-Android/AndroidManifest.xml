@@ -307,7 +307,7 @@
         </activity>
         <!-- Main_Advertise -->   
             <activity
-            android:name=".acty.Main_Advertise"
+            android:name=".acty.MainAdvertise"
             android:launchMode="singleTask" >
         </activity>
        <!-- 集成短信SDK -->

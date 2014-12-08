@@ -142,7 +142,7 @@ public class Main extends BaseActivity {
 
 									Log.i(TAG, "url位置" + position);
 									Intent intent = new Intent(Main.this,
-											Main_Advertise.class);
+											MainAdvertise.class);
 									intent.putExtra("url", ad.get(position)
 											.getUrl());
 									intent.putExtra("description",

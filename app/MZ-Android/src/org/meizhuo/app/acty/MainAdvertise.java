@@ -22,7 +22,7 @@ import android.widget.ProgressBar;
  *
  */
 @SuppressLint("SetJavaScriptEnabled")
-public class Main_Advertise extends BaseActivity{
+public class MainAdvertise extends BaseActivity{
 	
 	@InjectView(R.id.webview) WebView webview;
 	@InjectView(R.id.pb)ProgressBar pb;
