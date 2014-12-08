@@ -26,7 +26,7 @@ import butterknife.OnItemClick;
  * @author Jason
  *
  */
-public class CourseDetails_OneCourse extends  BaseActivity {
+public class CourseDetailsOneCourse extends  BaseActivity {
 	private static final String TAG = "CourseDetails_OneCourse";
 	
 	/**课程名称*/
@@ -67,7 +67,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState , R.layout.acty_institution_course_item);
 		setAppTitle("课程信息");
-		dialog  = new WaittingDialog(CourseDetails_OneCourse.this);
+		dialog  = new WaittingDialog(CourseDetailsOneCourse.this);
 		institution =  new Institution();
 		initData();
 		initLayout();
@@ -128,7 +128,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 			public void onStart() {
 				// TODO Auto-generated method stub
 				 if (dialog == null)
-					 dialog = new WaittingDialog(CourseDetails_OneCourse.this);
+					 dialog = new WaittingDialog(CourseDetailsOneCourse.this);
 				 dialog.show();
 			}
 			
@@ -150,7 +150,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 			public void onFaild(int errorType, int errorCode) {
 				// TODO Auto-generated method stub
 				toast("网络不给力,请检查您的网络设置!");
-				CourseDetails_OneCourse.this.finish();
+				CourseDetailsOneCourse.this.finish();
 			}
 			
 			@Override
@@ -163,7 +163,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 	}
 	
 	@OnClick(R.id.institution_course_introdution) public void ToCourseDescription(){
-		Intent intent =  new Intent(CourseDetails_OneCourse.this, CourseDetails_description.class);
+		Intent intent =  new Intent(CourseDetailsOneCourse.this, CourseDetailsDescription.class);
 		intent.putExtra("content", introduction);
 		intent.putExtra("title", name);
 		intent.putExtra("course_id", course_id);
@@ -172,7 +172,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 	}
 	
   @OnClick(R.id.institution_course_belong_institution) public void toTheInstitution(){
-	  if (!AndroidUtils.isNetworkConnected(CourseDetails_OneCourse.this))
+	  if (!AndroidUtils.isNetworkConnected(CourseDetailsOneCourse.this))
 	  {
 		  toast("请连接网络");
 		  return ;

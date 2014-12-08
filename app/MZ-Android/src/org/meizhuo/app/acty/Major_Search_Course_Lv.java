@@ -183,7 +183,7 @@ public class Major_Search_Course_Lv extends BaseActivity implements OnRefreshLis
 		String money = data.get(position).getMoney();
 		String series = data.get(position).getSeries();
 		String title = data.get(position).getTitle();
-		Intent intent = new Intent(Major_Search_Course_Lv.this, CourseDetails_OneCourse.class);
+		Intent intent = new Intent(Major_Search_Course_Lv.this, CourseDetailsOneCourse.class);
 		intent.putExtra("certificate_type", certificate_type);
 		intent.putExtra("kind", kind);
 		intent.putExtra("level", level);

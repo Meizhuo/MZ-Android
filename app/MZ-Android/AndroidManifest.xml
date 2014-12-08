@@ -273,7 +273,7 @@
         </activity>
         <!-- CourseDetails_OneCourse -->
                   <activity
-            android:name=".acty.CourseDetails_OneCourse"
+            android:name=".acty.CourseDetailsOneCourse"
             android:launchMode="singleTask" >
         </activity>
         <!-- InstitutionInfo_Search_lv -->
@@ -302,7 +302,7 @@
         </activity>   
          <!-- CourseDetails_description -->
          <activity
-            android:name=".acty.CourseDetails_description"
+            android:name=".acty.CourseDetailsDescription"
             android:launchMode="singleTask" >
         </activity>
         <!-- Main_Advertise -->   
