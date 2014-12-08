@@ -8,7 +8,7 @@ import org.meizhuo.api.PublicerAPI;
 import org.meizhuo.app.AppInfo;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
-import org.meizhuo.app.acty.Major_Search.MSHandler;
+import org.meizhuo.app.acty.MajorSearch.MSHandler;
 import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.Employer;
 import org.meizhuo.model.ErrorCode;

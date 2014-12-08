@@ -36,7 +36,7 @@ import butterknife.OnItemClick;
 
 import com.google.gson.Gson;
 
-public class Major_Search_lv extends BaseActivity implements OnRefreshListener, OnScrollListener{
+public class MajorSearchLv extends BaseActivity implements OnRefreshListener, OnScrollListener{
 	 private static final String TAG = "Major_Search_lv";
 	 @InjectView(R.id.search_ListView) ListView search_lv;
 	 @InjectView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
@@ -76,7 +76,7 @@ public class Major_Search_lv extends BaseActivity implements OnRefreshListener, 
 	}
 	
 	@OnItemClick(R.id.search_ListView) public void item_click(int position){
-		Intent it =  new Intent(this, Major_Search_Course_Lv.class);
+		Intent it =  new Intent(this, MajorSearchCourseLv.class);
 		 subsidy_id = data.get(position).getId();
 		 it.putExtra("subsidy_id", subsidy_id);
 		 startActivity(it);

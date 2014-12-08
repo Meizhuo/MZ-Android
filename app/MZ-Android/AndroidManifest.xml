@@ -233,12 +233,12 @@
         </activity>
         <!-- Major_Search -->
            <activity
-            android:name=".acty.Major_Search"
+            android:name=".acty.MajorSearch"
             android:launchMode="singleTask" >
         </activity>
         <!-- Major_Search_lv -->
            <activity
-            android:name=".acty.Major_Search_lv"
+            android:name=".acty.MajorSearchLv"
             android:launchMode="singleTask" >
         </activity>
            <!-- UserCenter_Employer -->
@@ -283,7 +283,7 @@
         </activity>
         <!-- Major_Search_Course_Lv -->
                          <activity
-            android:name=".acty.Major_Search_Course_Lv"
+            android:name=".acty.MajorSearchCourseLv"
             android:launchMode="singleTask" >
         </activity>    
          <!-- ShowWebImageActivity -->

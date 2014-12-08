@@ -215,7 +215,7 @@ public class Main extends BaseActivity {
 			toast("请先打开您的网络开关");
 			return;
 		}
-		openActivity(Major_Search.class);
+		openActivity(MajorSearch.class);
 
 	}
 
