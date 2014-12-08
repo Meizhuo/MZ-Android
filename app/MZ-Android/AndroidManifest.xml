@@ -204,7 +204,7 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.InstitutionConsult_Teacher"
+            android:name=".acty.InstitutionConsultTeacher"
             android:launchMode="singleTask" >
         </activity>
         <activity
