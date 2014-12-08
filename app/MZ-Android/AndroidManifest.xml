@@ -208,11 +208,11 @@
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.InstitutionConsult_Textbook"
+            android:name=".acty.InstitutionConsultTextbook"
             android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name=".acty.InstitutionConsult_Skill"
+            android:name=".acty.InstitutionConsultSkill"
             android:launchMode="singleTask" >
         </activity>
           <activity
@@ -268,7 +268,7 @@
         </activity>
         <!-- InstitutionInfo_Details -->
             <activity
-            android:name=".acty.InstitutionInfo_Details"
+            android:name=".acty.InstitutionInfoDetails"
             android:launchMode="singleTask" >
         </activity>
         <!-- CourseDetails_OneCourse -->
@@ -278,7 +278,7 @@
         </activity>
         <!-- InstitutionInfo_Search_lv -->
                   <activity
-            android:name=".acty.InstitutionInfo_Search_lv"
+            android:name=".acty.InstitutionInfoSearchLv"
             android:launchMode="singleTask" >
         </activity>
         <!-- Major_Search_Course_Lv -->
@@ -297,7 +297,7 @@
         
          <!-- InstitutionInfo_Details_com_intro -->
  	  <activity
-            android:name=".acty.InstitutionInfo_Details_com_intro"
+            android:name=".acty.InstitutionInfoDetailsComIntro"
             android:launchMode="singleTask" >
         </activity>   
          <!-- CourseDetails_description -->

@@ -17,7 +17,6 @@ import org.meizhuo.imple.JsonResponseHandler;
 import org.meizhuo.model.Advertisement;
 import org.meizhuo.utils.AndroidUtils;
 import org.meizhuo.utils.Constants;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DownloadManager;

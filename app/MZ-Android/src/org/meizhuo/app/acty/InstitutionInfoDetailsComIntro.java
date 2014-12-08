@@ -15,7 +15,7 @@ import android.webkit.WebViewClient;
 import butterknife.InjectView;
 
 @SuppressLint("SetJavaScriptEnabled")
-public class InstitutionInfo_Details_com_intro extends BaseActivity{
+public class InstitutionInfoDetailsComIntro extends BaseActivity{
 	
 
 //	@InjectView(R.id.tv_intro_title) TextView tv_intro_title;

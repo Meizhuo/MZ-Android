@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.Header;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.adapter.ImagePagerAdapter;
@@ -21,7 +20,6 @@ import org.meizhuo.model.Institution;
 import org.meizhuo.utils.Constants;
 import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.view.AutoScrollViewPager;
- 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -61,11 +59,8 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	InstitutionInfoAdapter adapter_lv;
 	ImagePagerAdapter adapter_imagepage;
 	List<Institution>data;
-//	List<Advertisement>imageIdList;
 	List<Advertisement>ad;
 	
-//	List<String> ad_list;
-//	List<ImageView>imageIdList;
 	String name = "";
 	String type = "";
 	String page = "1";
@@ -186,7 +181,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				String input = EditTextUtils.getText(et_search_institution);
-				Intent intent = new Intent(InstitutionInfo.this, InstitutionInfo_Search_lv.class);
+				Intent intent = new Intent(InstitutionInfo.this, InstitutionInfoSearchLv.class);
 				intent.putExtra("name", input);
 				startActivity(intent);
 				
@@ -310,7 +305,7 @@ public class InstitutionInfo extends BaseActivity implements OnRefreshListener, 
 	}
 	
 	@OnItemClick(R.id.lv_institutionInfo) public void item_click(int position) {
-		Intent intent = new Intent(this,InstitutionInfo_Details.class);
+		Intent intent = new Intent(this,InstitutionInfoDetails.class);
 		intent.putExtra("uid", data.get(position).getUid());
 		startActivity(intent);
 	}

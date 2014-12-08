@@ -177,7 +177,7 @@ public class CourseDetails_OneCourse extends  BaseActivity {
 		  toast("请连接网络");
 		  return ;
 	  }
-	  Intent it = new Intent(this, InstitutionInfo_Details.class);
+	  Intent it = new Intent(this, InstitutionInfoDetails.class);
 	  it.putExtra("uid", institution_id);
 	  startActivity(it);
   }
