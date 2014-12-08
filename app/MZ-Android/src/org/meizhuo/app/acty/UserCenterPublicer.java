@@ -4,21 +4,14 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.meizhuo.api.PublicerAPI;
-import org.meizhuo.app.App;
 import org.meizhuo.app.BaseActivity;
 import org.meizhuo.app.R;
 import org.meizhuo.imple.JsonResponseHandler;
-import org.meizhuo.model.ErrorCode;
 import org.meizhuo.model.Publicer;
 import org.meizhuo.utils.Constants;
-import org.meizhuo.utils.EditTextUtils;
 import org.meizhuo.view.WaittingDialog;
-
-import com.google.gson.JsonNull;
-
 import butterknife.InjectView;
 import butterknife.OnClick;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,11 +22,8 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * 用戶中心
@@ -41,7 +31,7 @@ import android.widget.Toast;
  * @author Lenovo
  * 
  */
-public class UserCenter_Publicer extends BaseActivity {
+public class UserCenterPublicer extends BaseActivity {
 	
 	private static final String TAG = "UserCenter_Publicer";
 	
@@ -67,7 +57,7 @@ public class UserCenter_Publicer extends BaseActivity {
 	 * 修改密码
 	 */
 	@OnClick(R.id.mz_usercenter_changepsw) public void ToChangePsw(){
-		LayoutInflater inflater = LayoutInflater.from(UserCenter_Publicer.this);
+		LayoutInflater inflater = LayoutInflater.from(UserCenterPublicer.this);
 		View dialogView = inflater.inflate(R.layout.dialog_change_psw, null);
 		final EditText et_change_oldpsw =(EditText) dialogView.findViewById(R.id.et_change_oldpsw);
 		final EditText et_change_newpsw =(EditText) dialogView.findViewById(R.id.et_change_newpsw);
@@ -79,7 +69,6 @@ public class UserCenter_Publicer extends BaseActivity {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
 				if((et_change_oldpsw.getText().toString()) == null || (et_change_oldpsw.getText().toString()).equals(""))
 				{
 					toast("旧密码不能为空!");
@@ -103,7 +92,6 @@ public class UserCenter_Publicer extends BaseActivity {
 					
 					@Override
 					public void onOK(Header[] headers, JSONObject obj) {
-						// TODO Auto-generated method stub
 						try {
 							if(obj.getString("code").equals("20000")){
 								toast("修改成功");
@@ -116,14 +104,12 @@ public class UserCenter_Publicer extends BaseActivity {
 							}
 							
 						} catch (JSONException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
 					
 					@Override
 					public void onFaild(int errorType, int errorCode) {
-						// TODO Auto-generated method stub
 						
 					}
 				});
@@ -138,7 +124,7 @@ public class UserCenter_Publicer extends BaseActivity {
 		String name = publicer.getName();
 		String gender = publicer.getGender();
 		String workplace = publicer.getWorkPlace();
-		Intent intent =  new Intent(UserCenter_Publicer.this, UserCenter_Publicer_EditInfo.class);
+		Intent intent =  new Intent(UserCenterPublicer.this, UserCenterPublicerEditInfo.class);
 		intent.putExtra("name", name);
 		intent.putExtra("gender", gender);
 		intent.putExtra("workplace", workplace);
@@ -154,7 +140,6 @@ public class UserCenter_Publicer extends BaseActivity {
 		publicApi.getProfile(new JsonResponseHandler() {
 			@Override
 			public void onOK(Header[] headers, JSONObject obj) {
-				// TODO Auto-generated method stub
 				Log.i(TAG, obj.toString());
 				try {
 					String sex = obj.getString("sex");
@@ -169,7 +154,6 @@ public class UserCenter_Publicer extends BaseActivity {
 					}
 					handler.sendMessage(msg);
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					msg.what =  Constants.Fail;
 					handler.sendMessage(msg);
@@ -178,7 +162,6 @@ public class UserCenter_Publicer extends BaseActivity {
 			
 			@Override
 			public void onFaild(int errorType, int errorCode) {
-				// TODO Auto-generated method stub
 				toast("获取数据失败" + errorCode);
 				msg.what = Constants.Fail;
 				handler.sendMessage(msg);
@@ -200,10 +183,9 @@ public class UserCenter_Publicer extends BaseActivity {
 		
 		@Override
 		public void handleMessage(Message msg) {
-			// TODO Auto-generated method stub
 			switch (msg.what) {
 			case Constants.Start:
-				dialog =  new WaittingDialog(UserCenter_Publicer.this);
+				dialog =  new WaittingDialog(UserCenterPublicer.this);
 				dialog.show();
 				break;
 			case Constants.Finish:
@@ -220,7 +202,7 @@ public class UserCenter_Publicer extends BaseActivity {
 					dialog.dismiss();
 				}
 				toast("网络不给力,请检查你的网络设置");
-				UserCenter_Publicer.this.finish();
+				UserCenterPublicer.this.finish();
 				break;
 
 			}
@@ -248,7 +230,6 @@ public class UserCenter_Publicer extends BaseActivity {
 	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
 		if(keyCode == KeyEvent.KEYCODE_BACK){
 			openActivity(Main.class);
 			return true;

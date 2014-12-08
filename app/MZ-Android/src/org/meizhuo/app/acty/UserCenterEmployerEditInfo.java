@@ -23,7 +23,7 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class UserCenter_Employer_EditInfo extends BaseActivity{
+public class UserCenterEmployerEditInfo extends BaseActivity{
 	
 	@InjectView(R.id.tv_userinfo_emEdit_save) TextView edit_info;
 	@InjectView(R.id.usercenter_em_editInfo_workplacename) EditText edit_workplace;
@@ -114,7 +114,7 @@ public class UserCenter_Employer_EditInfo extends BaseActivity{
 			// TODO Auto-generated method stub
 			switch (msg.what) {
 			case Constants.Start:
-				dialog =  new WaittingDialog(UserCenter_Employer_EditInfo.this);
+				dialog =  new WaittingDialog(UserCenterEmployerEditInfo.this);
 				dialog.setText("正在保存...");
 				dialog.show();
 				
@@ -132,7 +132,7 @@ public class UserCenter_Employer_EditInfo extends BaseActivity{
 				backintent.putExtra("contact_phone", contact_phone);
 				backintent.putExtra("work_addr", work_addr);
 				setResult(101, backintent);
-				UserCenter_Employer_EditInfo.this.finish();
+				UserCenterEmployerEditInfo.this.finish();
 				break;
 			case Constants.Fail:
 				if(dialog.isShowing())

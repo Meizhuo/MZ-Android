@@ -233,11 +233,11 @@ public class Main extends BaseActivity {
 			return;
 		}
 		if (is_Publicer_Login || Publicer_reLogin) {
-			openActivity(UserCenter_Publicer.class);
+			openActivity(UserCenterPublicer.class);
 		}
 
 		if (is_Employer_Login || Employer_reLogin) {
-			openActivity(UserCenter_Employer.class);
+			openActivity(UserCenterEmployer.class);
 		}
 
 	}
